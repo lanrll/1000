@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 60px;
+            height: 112px;
+            margin: 100px auto;
+            background: url(images/ren.jpg);
+            animation: play 1s infinite step-start;
+        }
+        @keyframes play{
+            12.5%{
+                background-position: 78px 0;
+            }
+            25%{
+                background-position: 140px 0;
+            }
+            27.5%{
+                background-position: 190px 0;
+            }
+            50%{
+                background-position: 0 112px;
+            }
+            62.5%{
+                background-position: 78px 112px;
+            }
+            75%{
+                background-position: 140px 112px;
+            }
+            87.5%{
+                background-position: 190px 112px;
+
+            }
+            100%{
+                background-position: 0 0;
+
+            }
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

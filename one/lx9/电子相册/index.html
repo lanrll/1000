@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>电子相册</title>
+        <style>
+			*{
+				margin:0;
+				padding:0;
+				}
+			ul,li{
+				list-style:none;
+				}
+			a{
+				text-decoration:none;
+				}
+			body{
+				background-color:#615750;
+				}
+			.box1{
+				width:800px;
+				height:450px;
+				margin:0 auto;
+				position:relative;
+				}
+			.box1 img{
+				position:absolute;
+				}
+			.box2{
+				overflow:auto;
+				}
+			.box2 ul{
+				width:20000px;
+				height:100px;
+				}
+			.box2 ul li{
+				float:left;
+				margin:10px;
+				} 
+			img:target{
+				z-index:1;
+				}
+		</style>
+    </head>
+    
+    <body>
+    	<div class="box1">
+        	<img src="images/big1.jpg" id="b1"/>
+            <img src="images/big2.jpg" id="b2"/>
+            <img src="images/big3.jpg" id="b3"/>
+            <img src="images/big4.jpg" id="b4"/>
+            <img src="images/big5.jpg" id="b5"/>
+            <img src="images/big6.jpg" id="b6"/>
+            <img src="images/big7.jpg" id="b7"/>
+            <img src="images/big8.jpg" id="b8"/>
+            <img src="images/big9.jpg" id="b9"/>
+            <img src="images/big10.jpg" id="b10"/>
+        </div>
+        
+        <div class="box2">
+        	<ul>
+            	<li><a href="#b1"><img src="images/sm1.jpg" /></a></li>
+                <li><a href="#b2"><img src="images/sm2.jpg" /></a></li>
+                <li><a href="#b3"><img src="images/sm3.jpg" /></a></li>
+                <li><a href="#b4"><img src="images/sm4.jpg" /></a></li>
+                <li><a href="#b5"><img src="images/sm5.jpg" /></a></li>
+                <li><a href="#b6"><img src="images/sm6.jpg" /></a></li>
+                <li><a href="#b7"><img src="images/sm7.jpg" /></a></li>
+                <li><a href="#b8"><img src="images/sm8.jpg" /></a></li>
+                <li><a href="#b9"><img src="images/sm9.jpg" /></a></li>
+                <li><a href="#b10"><img src="images/sm10.jpg" /></a></li>
+            </ul>
+        </div>
+    </body>
+</html>

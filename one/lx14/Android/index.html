@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Android</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .d{
+            width: 590px;
+            height: 444px;
+            border: 1px solid blue;
+            margin: 50px auto;
+        }
+        span{
+            float: left;
+            background-color: #98cb44;
+        }
+        .d1{
+            width: 220px;
+            height: 100px;
+            background-color: #98cb44;
+            border-top-left-radius:100px;
+            border-top-right-radius: 100px; 
+            margin: 0 0 10px 60px;
+        }
+        .d1 span{
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 40px;
+        } 
+        .d1 span:nth-child(1){
+            margin-left: 50px;
+        }
+        .d1 span:nth-child(2){
+            margin-left: 80px;
+        }
+        .d2 span:nth-child(2n+1){
+            width: 50px;
+            height: 150px;
+            border-radius: 25px;
+        }
+        .d2 span:nth-child(2){
+            width: 220px;
+            height: 180px;
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            margin: 0 10px;
+        }
+        .d3{
+            width: 140px;
+            height: 80px;
+            margin-left: 100px;
+        }
+        .d3 span{
+            width: 50px;
+            height: 80px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 25px;
+        }
+        .d3 span:nth-child(1){
+            margin-right: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d">
+        <div class="d1">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="d2">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="d3">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</body>
+</html>

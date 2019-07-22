@@ -1,0 +1,383 @@
+@charset "utf-8";
+
+.box{
+    width: 972px;
+    height: 100%;
+    margin: 0 auto;
+}
+header{
+    height: 65px;
+    /* width: 100%; */
+}
+.header{
+    width: 1123px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header ul {
+    padding-left: 150px;
+}
+header ul li{
+    float: left;
+    padding: 0 13px;
+}
+header ul li a{
+    font-size: 16px;
+}
+header p{
+    font-size: 16px;
+}
+.img1{
+    display: block;
+    margin: 0 auto;
+}
+.subnav{
+    margin: 0 auto;
+    width: 972px;
+    height: 138px;
+    display: flex;
+}
+.subnav div{
+    width: 11%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+}
+.subnav div span{
+    font-size: 50px;
+    color: #a3a3a3;
+    margin-top:20px; 
+}
+.subnav div:hover{
+    color: #f40;
+}
+
+.banner1{
+    width: 1240px;
+    height: 390px;
+    /* width: 100%; */
+    margin: 0 auto;
+}
+.banner1 .banner1_left{
+    width: 620px;
+    height: 100%;
+    float: left;
+    background: url(../images/br_04.jpg) no-repeat center;
+}
+.banner1 .banner1_right{
+    overflow: hidden;
+    height: 100%;
+    widows: 620px;
+    background-color: #cccccc;
+    position: relative;
+}
+.banner1 .banner1_right span{
+    display: block;
+    width: 490px;
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 80px;
+    text-align: center;
+}
+.banner1 .banner1_right p{
+    width: 490px;
+    margin-top:30px; 
+    padding-left:5px; 
+}
+.banner1 .banner1_right i{
+    position: absolute;
+    right: 110px;
+    bottom: 90px;
+}
+.banner1 .banner1_right a{
+    float: left;
+    width: 120px;
+    height: 40px;
+    border-radius: 20px;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    background-color: deepskyblue;
+}
+.banner1 .banner1_right a:hover{
+    background-color: #ff4400;
+}
+.banner2{
+    height: 520px;
+}
+.biaot{
+    width: 100%;
+    height: 155px;
+}
+.biaot p:first-child{
+    font-size: 35px;
+    text-align: center;
+    padding-top: 50px;
+}
+.biaot p:last-child{
+    text-align: center;
+    margin-top: 25px;
+    color: #7a7a7a;
+}
+.banner2 div:nth-child(2){
+    display: block;
+    height: 65px;
+    text-align: center;
+    position: relative;
+}
+.banner2 div:nth-child(2) span{
+    display: block;
+    width: 27px;
+    height: 27px;
+    background-color: #cccccc;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+}
+.banner2 div:nth-child(2) span:first-child{
+    right: 490px;
+}
+.banner2 div:nth-child(2) span:last-child{
+    right: 450px;
+}
+.banner2 .banner2_bottom{
+    width: 913px;
+    height: 270px;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
+.banner2 .banner2_bottom div{
+    width: 298px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.banner2 .banner2_bottom div p:nth-child(2){
+    font-size: 22px;
+}
+.banner3{
+    height: 720px;
+    position: relative;
+}
+.banner3 div:nth-child(2){
+    width: 960px;
+    height: 450px;
+    margin-top: 20px;
+    display: flex;
+    flex-flow: wrap;
+}
+.banner3 div:nth-child(2) div{
+    width: 16%;
+    height: 25%;
+    background: url(../images/br_08.jpg) no-repeat center;
+    border-top: 1px solid #eef7fd;
+    border-right: 1px solid #eef7fd;
+}
+.banner3 div:nth-child(2) div:nth-child(1){
+    border-top:none;
+}
+.banner3 div:nth-child(2) div:nth-child(2){
+    border-top:none;
+    background: url(../images/br_09.jpg) no-repeat center;
+}
+.banner3 div:nth-child(2) div:nth-child(3){
+    border-top:none;
+    background: url(../images/br_10.jpg) no-repeat center;
+}
+.banner3 div:nth-child(2) div:nth-child(4){
+    border-top:none;
+    background: url(../images/br_11.jpg) no-repeat center;
+}
+.banner3 div:nth-child(2) div:nth-child(5){
+    border-top:none;
+    background: url(../images/br_12.jpg) no-repeat center;
+}
+.banner3 div:nth-child(2) div:nth-child(6){
+    border-top:none;
+    background: url(../images/br_13.jpg) no-repeat center;
+}
+.banner3 div:nth-child(2) div:nth-child(6n){
+    border-right: none;
+}
+.banner3 p:nth-child(3){
+    display: block;
+    height: 90px;
+    text-align: center;
+    line-height: 90px;
+}
+.banner3 p:nth-child(3) span{
+    font-size: 20px;
+}
+.banner4{
+    height: 305px;
+    background-color: #0060e6;
+}
+.banner4 .banner4_left{
+    width: 500px;
+    float: left;
+    height: 100%;
+    position: relative;
+}
+.banner4 .banner4_left p{
+    font-size: 40px;
+    color:#ffffff;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.banner4 .banner4_left ul{
+    width: 480px;
+    height: 70px;
+}
+.banner4 .banner4_left ul li{
+    float: left;
+    width: 230px;
+    height: 30px;
+    border-bottom:1px solid #44aaf0; 
+    color: #ffebfa;
+    line-height: 30px;
+}
+.banner4 .banner4_left ul li:nth-child(2n){
+    margin-left: 10px;
+}
+.banner4 .banner4_left ul li input{
+    width: 115px;
+    background-color: #0060e6;
+}
+.banner4 .banner4_left span:nth-child(3){
+    display: block;
+    width: 130px;
+    height: 42px;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 21px;
+    font-size: 14px;
+    color: #0aa5ed;
+    background-color: #fff;
+    margin-top: 25px;
+}
+.banner4 .banner4_left span:last-child{
+    display: block;
+    width: 350px;
+    height: 30px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    position: absolute;
+    right: -30px;
+    bottom: 75px;
+}
+.banner4 .banner4_right{
+    width: 370px;
+    height: 50px;
+    float: right;
+    padding-top: 160px;
+    color: #ffffff;
+    position: relative;
+}
+.banner4 .banner4_right i{
+    float: left;
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    /* color: #ffffff; */
+}
+.banner4  .banner4_right p:nth-child(3){
+    font-size: 20px;
+    width: 240px;
+}
+.banner4 .banner4_right span{
+    /* float: right;
+    display: block;
+    width: 50px;
+    height: 50px;
+    padding: 0 10px;
+    text-align: center;
+    line-height: 50px; */
+    font-size: 30px;
+    position: absolute;
+}
+.banner4 .banner4_right span:nth-child(4){
+    right: 10px;
+    bottom: 10px;
+}
+.banner4 .banner4_right span:nth-child(5){
+    right: 50px;
+    bottom: 10px;
+}
+
+footer{
+    height: 427px;
+    background:url(../images/br_33.jpg) repeat-x;
+}
+footer .footer1{
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+footer .footer1 span:nth-child(1){
+    font-size: 25px;
+    font-weight: 700;
+}
+footer .footer1 p:nth-child(1){
+    font-size: 14px;
+    font-weight: 700;
+}
+footer .footer1 p:nth-child(2){
+    font-size: 25px;
+    font-weight: 700;
+}
+footer .footer1 p:last-child{
+    padding-right: 40px;
+}
+
+footer .footer2{
+    height: 257px;
+}
+footer .footer2 dl{
+    float: left;
+    width: 80px;
+    padding-top: 40px;
+    padding-right: 40px;
+}
+footer .footer2 dl dt{
+    height: 35px;
+    font-size: 14px;
+}
+footer .footer2 dl dd{
+    height: 25px;
+    color: #8b8b8b;
+}
+footer .footer2 div{
+    float: right;
+    margin-right: 10px;
+    margin-top: 60px;
+    text-align: center;
+}
+footer .footer2 div p{
+    margin-top: 10px;
+}
+footer .footer3{
+    height: 52px;
+    line-height: 52px;
+    border-top: 1px solid #cccccc; 
+}
+footer .footer3 p span{
+    float:right;
+}

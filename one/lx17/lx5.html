@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            height: 100%;
+        }
+        section{
+            height: 100%;
+            background-color:deepskyblue;
+            position: relative;
+        }
+        section div{
+            width: 100px;
+            height: 190px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transform: translate(-50%,50%) rotate(60deg);
+            transition: all .3s linear;
+        }
+        section:hover div{
+            transform: translate(1000px,-800px) rotate(10deg);
+        } 
+    </style>
+</head>
+<body>
+    <section>
+        <div>
+            <img src="images/rocket.png" alt="">
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,22 @@
+@charset "utf-8";
+section{
+    background-color: #f4f5f5;
+}
+section .section_p{
+    display: block;
+    width: 10rem;
+    height: 7.2rem /* 540/75 */;
+    margin-bottom: .13rem /* 10/75 */;
+}
+section .section_p img:nth-child(1){
+    width: 10rem;
+    height: 5.6rem /* 420/75 */;
+}
+section .section_p div{
+    height: 1.47rem /* 110/75 */;
+}
+section .section_p div img{
+    display: block;
+    width: 1.07rem /* 80/75 */;
+    height: .13rem /* 10/75 */;
+}

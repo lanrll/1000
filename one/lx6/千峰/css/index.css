@@ -1,0 +1,291 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	}
+a{
+	text-decoration:none;
+	}
+ul li{
+	list-style:none;
+	}
+.box{
+	width:1001px;
+	margin:0 auto;
+	}
+.header{
+	height:60px;
+	background:#232323 url(../images/logo.jpg) no-repeat 10px center;;
+	}
+.header ul{
+	float:right;
+	}
+.header ul li{
+	float:left;
+	}
+.header ul li a{
+	height:60px;
+	float:left;
+	font-size:14px;
+	color:#fcffff;
+	padding:0 15px;
+	line-height:60px;
+	}
+.header ul span{
+	height:17px;
+	float:left;
+	border-left:1px solid #444444;
+	border-right:1px solid #000000;
+	margin-top:23px;
+	}
+.header ul li a:hover{
+	background-color:#f15a23;
+	}
+.content{
+	padding-top:30px;
+	padding-bottom:30px;
+	height:290px;
+	background-color:#f5f5f5;
+	}
+.content .content1{
+	width:249px;
+	height:290px;
+	float:left;
+	border-right:1px solid #e1e2f6;
+	}
+.content .content1 a img{
+	margin-top:20px;
+	margin-left:104px;
+	}
+h3{
+	width:100px;
+	height:25px;
+	margin-top:15px;
+	margin-left:85px;
+	margin-bottom:15px;
+	text-align:center;
+	}
+.content .content1 a h3{
+	color:#233040;
+	}
+.content .content1 .contentC1{
+	font-size:14px;
+	color:#4f6d77;
+	width:240px;
+	height:15px;
+	margin-left:5px;
+	margin-bottom:18px;
+	}
+.content .content1 .contentContent{
+	color:#a1b9c3;
+	font-size:14px;
+	width:130px;
+	height:20px;
+	line-height:20px;
+	margin:0 auto;
+	} 	
+.content div:nth-child(4){
+	border:none;
+	}
+.content .contentt a img{
+	margin-top:20px;
+	margin-left:75px;
+	}
+h3{
+	width:100px;
+	height:25px;
+	margin-top:15px;
+	margin-left:85px;
+	margin-bottom:15px;
+	text-align:center;
+	} 
+.news{
+	height:310px;
+	width:1001px;
+	}
+.news .newsLeft{
+	width:650px;
+	height:310px;
+	float:left;
+	}
+.news .newsLeft .newsLeftLeft{
+	width:299px;
+	height:226px;
+	border:1px solid #dcdcda;
+	float:left;
+	margin-top:40px;
+	madgin-bottom:40px;
+	}
+.news .newsLeft .newsLeftLeft a img{
+	margin-top:1px;
+	margin-left:1px;
+	}
+.news .newsLeft .newsLeftRight{
+	width:315px;
+	height:220px;
+	padding:45px 15px;
+	float:right;
+	}
+.news .newsLeft .newsLeftRight1{
+	width:323px;
+	height:110px;
+	} 
+.news .newsLeft h3{
+	margin:0;
+	}
+.news .newsLeft .newsLeftRight1 p:nth-child(2){
+	width:200px;
+	height:45px;
+	font-size:16px;
+	line-height:45px;
+	}
+.news .newsLeft .newsLeftRight1 p:nth-child(3){
+	width:315px;
+	height:35px;
+	font-size:13px;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	color:#959595;
+	}	
+.news .newsLeft .newsLeftRight2{
+	width:323px;
+	height:110px;
+	border-top:1px dashed #cacaca;
+	padding-top:15px;
+	}
+.news .newsLeft .newsLeftRight2 li{
+	height:25px;
+	width:300px;
+	}
+.news .newsLeft .newsLeftRight2 li a{
+	float:left;
+	font-size:14px;
+	height:25px;
+	width:300px;
+	color:#4a3c49;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	padding-left:8px;
+	background:url(../images/news2.jpg) no-repeat 2px center;
+	line-height:25px;
+	}
+.news .newsRight{
+	width:338px;
+	height:230px;
+	float:left;
+	border-left:1px solid #dddddd;
+	margin:40px 0;
+	padding-left:12px;
+	}
+.news .newsRight p:nth-child(1){
+	font-size:20px;
+	font-weight:600;
+	padding-bottom:20px;
+	}
+.news .newsRight p:nth-child(2){
+	height:25px;
+	width:280px;
+	background:url(../images/news3.jpg) ;
+	}
+.news .newsRight p:nth-child(3){
+	font-size:15px;
+	color:#656b67;
+	padding:20px 0;}
+.news .newsRight .newsRightp{
+	font-size:14px;
+	height:25px;
+	line-height:25px;
+	color:#5a6e65;
+	}
+.bottom{
+	height:215px;
+	background-color:#222222;
+	}
+.bottom .bottomLeft{
+	height:125px;
+	width:451px;
+	margin:30px 30px 25px 10px; 
+	padding:17px 0;
+	float:left;
+	border-right:1px solid #404040;
+	}
+.bottom .bottomLeft dl{
+	float:left;
+	width:90px;
+	height:125px;
+	}
+.bottom .bottomLeft dt{
+	height:30px;
+	font-size:13px;
+	text-align:center;
+	}
+.bottom .bottomLeft dt a{
+	color:#ffffff;
+	}
+.bottom .bottomLeft dd{
+	font-size:12px;
+	height:20px;
+	text-align:center;
+	}
+.bottom .bottomLeft dd a{
+	color:#9b9b9b;
+	}
+.bottom .bottomCenter{
+	float:left;
+	width:250px;
+	height:145px;
+	border-right:1px solid #404040;
+	background:url(../images/bottom1.jpg) no-repeat ;
+	margin:25px 0;
+	padding:10px 0px; 
+	}
+.bottom .bottomRight{
+	float:right;
+	height:215px;
+	width:250px;
+	background:url(../images/bottom2.jpg) no-repeat 45px 25px;
+	}
+.bottom .bottomRight p{
+	font-size:12px;
+	color:#464543;
+	padding:175px 85px 5px 75px;
+	text-align:center;
+	}
+.last{
+	height:45px;
+	background-color:#101010;
+	}
+.last p{
+	font-size:12px;
+	color:#9d9d9d;
+	padding-top:15px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

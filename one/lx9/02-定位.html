@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		}
+	.maoba{
+		width:300px;
+		height:10000px;
+		background-color:deepskyblue;
+		margin:100px auto;
+		}
+	.maoba div{
+		width:100px;
+		height:50px;
+		background-color:yellow;
+		margin:10px 0;
+		}
+	.maoba .damao{
+		position:static;
+		left:100px;
+		}
+	.maoba .ermao{
+		position:relative;
+		left:200px;
+		}
+	.maoba .simao{
+		position:absolute;
+		left:800px;
+		}
+	.maoba .meimao{
+		position:fixed;
+		right:10px;
+		bottom:10px;
+		}
+</style>
+</head>
+
+<body>
+	<div class="maoba">
+    		<div class="damao">damao</div>
+            <div class="ermao">ermao</div>
+            <div class="sanmao">sammao</div>
+            <div class="simao">simao</div>
+            <div class="meimao">meimao</div>
+            <div class="gt">gt</div>
+    </div>
+<!--
+	定位 由定位模式  和  边偏移组成 top left bottom  right
+    四种 static 静态定位   relative 相对定位   absolute 绝对定位   fixed 固定定位
+-->
+</body>
+</html>

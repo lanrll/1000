@@ -1,0 +1,113 @@
+@charset "utf-8";
+body{
+    height: 100%;
+    flex-direction:column;
+    display: flex;
+}
+header{
+    height: 44vw;
+    background-color: #3f454f;
+}
+header .header_top{
+    height: 10vw;
+    display: flex;
+    align-items: flex-end;
+    justify-content:space-between;
+    flex: 1;
+}
+header .header_top a{
+    font-size: 7vw;
+    color: #fff;
+}
+header .header_top a:nth-child(2){
+    font-size: 5vw;
+}
+header .header_top span{
+    display: block;
+    width: 55vw;
+}
+header .header_top a:hover{
+    color:#ff4400;
+}
+header .header_bottom{
+    height: 34vw;
+    display: flex;
+} 
+header .header_bottom div{
+    width: 25vw;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+}
+header .header_bottom div p a{
+    font-size: 6vw;
+    color: #fff;
+}
+header .header_bottom div p:nth-child(1) a{
+    font-size: 10vw;
+}
+header .header_bottom div a:hover{
+    color: rgb(180, 166, 44);
+}
+main{
+    flex: 1;
+    overflow: auto;
+    /* 内容撑开滚动条 */
+    display: flex;
+    flex-flow:wrap; 
+    align-content:flex-start;
+    background-color: #f5f5f9;
+}
+main div{
+    width: 24.9vw;
+    height: 24vw;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center; 
+    border-right: 0.1vw solid #e6e6e6;
+    border-bottom: 0.1vw solid #e6e6e6;
+    background-color: #fff;
+}
+main div:nth-child(4n){
+    border-right: none;
+}
+main div p a{
+    font-size: 4vw;
+    color: #ff4400; 
+}
+main div p:nth-child(1) a{
+    font-size: 10vw;
+}
+main div p a:hover{
+    color:rgb(180, 166, 44);
+}
+main img{
+    width: 100vw;
+    margin: 4.4vw 0;
+    height: 24vw;
+}
+footer{
+    height: 14vw;
+    background-color: #ffffff;
+    display: flex;
+    border-top: 0.1vw solid #9d9d9d;
+}
+footer div{
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+footer div p a{
+    font-size: 3vw;
+    color: #9d9d9d;
+}
+footer div p:nth-child(1) a{
+    font-size: 7vw;
+}
+footer div p a:hover{
+    color:#00aaee;
+}

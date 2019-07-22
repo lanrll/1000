@@ -1,0 +1,184 @@
+@charset "utf-8";
+/* CSS Document */
+
+.box1{
+	height:63px;
+	background-color:#232323
+	}
+.box1 .header{
+	height:63px;
+	width:1003px;
+	margin:0 auto;
+	background-color:#232323;
+	}
+.box1 .header h1{
+	height:63px;
+	line-height:63px;
+	width:170px;
+	text-align:center;
+	float:left;
+	}
+.box1 .header ul{
+	float:right;
+	height:63px;
+	}
+.box1 .header ul li{
+	float:left;
+	}
+.box1 .header ul li a{
+	float:left;
+	height:63px;
+	padding:0 15px;
+	line-height:63px;
+	color:#ffffff;
+	}
+.box1 .header ul span{
+	height:17px;
+	border-left:1px solid #444444;
+	border-right:1px solid #000000;
+	margin-top:22px;
+	float:left;
+	}
+.box1 .header ul li a:hover{
+	background-color:#f15a23;
+	}
+.box2{
+	height:265px;
+	background-color:#c52c1e;
+	margin:0 zuto;
+	overflow:hidden;
+	background:url(../images/2.jpg) center;
+	}
+.box3{
+	height:905px;
+	background-color:#fff;
+	}
+.box3 p{
+	width:1003px;
+	margin:0 auto;
+	color:#666666;
+	font-size:12px;
+	text-indent:32px;
+	}
+.box3 p:nth-child(1){
+	height:45px;
+	text-indent:0;
+	line-height:45px;
+	}
+.box3 p:nth-child(3){
+	height:60px;
+	line-height:30px;
+	margin-top:35px;
+	}
+.box3 p:nth-child(3) i{
+	color:#f15a23;
+	font-weight:700;
+	}
+.box3 p:nth-child(4){
+	color:#111111;
+	margin-top:30px;
+	height:60px;
+	line-height:30px;
+	}
+.box3 p:nth-child(5){
+	margin-top:30px;
+	}
+.box3 p:nth-child(6){
+	margin-top:10px;
+	}
+.box3 p:nth-child(7){
+	margin-top:10px;
+	}
+.box3 p:nth-child(8){
+	margin-top:10px;
+	}
+.box3 p:nth-child(9){
+	margin-top:10px;
+	}
+.box3 p:nth-child(10) span{
+	color:#111111;
+	font-size:13px;
+	font-weight:700;
+	}
+.box3 p:nth-child(10){
+	margin-top:30px;
+	height:60px;
+	line-height:30px;
+	margin-top:35px;
+	}
+.box3 p:nth-child(11){
+	font-size:18px;
+	color:#f15a23;
+	margin-top:30px;
+	}
+.box3 img:nth-child(12){
+	display:block;
+	margin:45px auto;
+	}
+.box4{
+	height:214px;
+	background-color:#222222;
+	}
+.box4 .boxMain{
+	height:214px;
+	width:1003px;
+	margin:0 auto;
+	}
+.box4 .boxMain dl{
+	float:left;
+	padding:0 5px;
+	text-align:center;
+	margin:40px 5px;
+	}
+.box4 .boxMain dt{
+	margin:10px 0;
+	}
+.box4 .boxMain dt a{
+	color:#ffffff;
+	}
+.box4 .boxMain dd a{
+	color:#999999;
+	}
+.box4 .boxMain span{
+	margin-top:33px;
+	float:left;
+	height:155px;
+	border-left:1px solid red;
+	}
+.box4 .boxMain .img1{
+	float:left;
+	margin:30px 60px 12px 40px;
+	}
+.box4 .boxMain .img2{
+	float:right;
+	margin:25px 30px 0 30px;
+	}
+.box4 .boxMain p{
+	color:#464646;
+	text-align:center;
+	}
+.box5{
+	height:45px;
+	background-color:#101010;
+	}
+.box5 div{
+	height:45px;
+	width:1003px;
+	margin:0 auto;
+	}
+.box5 p{
+	color:#999999;
+	height:45;
+	line-height:45px;
+	text-align:center;
+	font-size:12px;
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	

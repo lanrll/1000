@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+
+ul{
+	margin:30px auto;
+	width:1000px;
+	}
+li{
+	list-style:none;
+	float:left;
+	text-align:center;
+	}
+a{
+	text-decoration:none;
+	font-size:12px;
+	}
+.nav1{
+	border-bottom:8px  solid #e1481c;
+	padding-left:10px;
+	}
+.nav1 li{
+	background-color:#dfdfdf;
+	margin:0 1px;
+	width:80px;
+	height:20px;
+	}
+.nav1 a{
+	color:#686868;
+	line-height:20px;
+	}
+.nav1 .nav1s2{
+	display:none;
+	}
+.nav1 li:hover .nav1s2{
+	display:block;
+	}
+.nav1 li:hover .nav1s1{
+	display:none;
+	}
+	
+.nav2{
+	height:37px;
+	background:url(../images/nav2.jpg);
+	}
+.nav2 li{
+	line-height:30px;
+	height:40px;
+	}
+.nav2 li a{
+	padding:0 15px;
+	}
+.nav2 li:hover{
+	line-height:45px;
+	background-color:#fbe20c;
+	margin-top:-10px;
+	}	
+.nav3{
+	height:40px;
+	background-color:#9a0000;
+	}
+.nav3 li{
+	line-height:40px;
+	}
+.nav3 li a{
+	padding:0 15px;
+	color:#ffffff;
+	}
+.nav3 li:hover{
+	background:url(../images/nav3-1.jpg); 
+	}
+.nav3 li:hover a{
+	color:#ff003d;
+	background:url(../images/nav3.jpg) no-repeat center 0;
+	}
+.nav4{
+	height:37px;
+	border-bottom:1px solid #ccc;
+	padding-left:25px;
+	}
+.nav4 li{
+	height:36px;
+	line-height:36px;
+	background-color:#f7f7f7;
+	border:1px solid #ccc;
+	margin-right:15px;
+	border-bottom:none;
+	}	
+.nav4 li a{
+	padding:0 15px;
+	}	
+.nav4 li:hover{
+	height:37px;
+	background-color:green;
+	}	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

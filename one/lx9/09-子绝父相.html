@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+	.box{
+		width:800px;
+		height:500px;
+		background-color:deepskyblue;
+		position:absolute;
+		left:10px;
+		}
+	.box ul {
+		height:20px;
+		background-color:green;
+		width:200px;
+		position:absolute;
+		right:0;
+		bottom:40px;
+		}
+	li{
+		float:left;
+		list-style:none;
+		width:10px;
+		height:10px;
+		background-color:#ccc;
+		margin:0 10px;
+		}
+	.dv{
+		width:800px;
+		height:800px;
+		background-color:deeppink;
+		}
+</style>
+</head>
+
+<body>
+<!-- 
+	子绝父相  ->   儿子绝对定位 父元素相对定位 
+    子绝父绝  ->   儿子绝对定位  父元素也是绝对定位   ->   为什么要说子绝父相？
+ -->
+ 	<div class="box">
+    	此处是轮播图...
+        <ul>
+        	<li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="dv"></div>
+</body>
+</html>

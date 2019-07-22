@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: url(images/j.jpg) no-repeat fixed;
+        }
+        ul{
+            width: 100px;
+            height: 100px;
+            margin: 50px auto;
+            position: relative;
+            transform-style:preserve-3d; 
+            transform: rotateX(-30deg) rotateY(0deg);
+            animation: play 5s linear infinite;
+        }
+        ul li{
+            width: 100px;
+            height: 100px;
+            list-style: none;
+            position: absolute;
+        }
+        ul li img{
+            width: 100px;
+            height: 100px;
+            transition: all 1s;
+        }
+        ul li:nth-child(1){
+            transform: rotateY(60deg) translateZ(100px);
+        }
+        ul li:nth-child(2){
+            transform: rotateY(120deg) translateZ(100px);
+        }
+        ul li:nth-child(3){
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        ul li:nth-child(4){
+            transform: rotateY(240deg) translateZ(100px);
+        }
+        ul li:nth-child(5){
+            transform: rotateY(300deg) translateZ(100px);
+        }
+        ul li:nth-child(6){
+            transform: rotateY(360deg) translateZ(100px);
+        }
+        @keyframes play{
+            form{
+                transform: rotateX(-30deg) rotateY(0deg)
+            }
+            to{
+                transform: rotateX(-30deg) rotateY(360deg)
+            }
+        }
+        ul:hover{
+            animation-play-state: paused;
+        }
+        ul:hover li{
+            opacity: .5;
+        }
+        ul li:hover{
+            opacity: 1;
+        }
+        ul li:hover img{
+            transform: scale(1.5);
+        }
+        div{
+            width: 800px;
+            height: 600px;
+            border: 1px solid #cccccc;
+            margin: 100px auto;
+            position: relative;
+        }
+        div img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        img:target{
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#i1"><img src="images/5.jpg"></a></li>
+        <li><a href="#i2"><img src="images/8.jpg"></a></li>
+        <li><a href="#i3"><img src="images/9.jpg"></a></li>
+        <li><a href="#i4"><img src="images/10.jpg"></a></li>
+        <li><a href="#i5"><img src="images/11.jpg"></a></li>
+        <li><a href="#i6"><img src="images/14.jpg"></a></li>
+    </ul>
+    <div>
+        <img src="images/5.jpg" id="i1">
+        <img src="images/8.jpg" id="i2">
+        <img src="images/9.jpg" id="i3">
+        <img src="images/10.jpg" id="i4">
+        <img src="images/11.jpg" id="i5">
+        <img src="images/14.jpg" id="i6">
+    </div>
+</body>
+</html>

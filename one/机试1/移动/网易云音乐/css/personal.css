@@ -1,0 +1,85 @@
+@charset "utf-8";
+section{
+    background-color: #eeeff0;
+}
+section .section1{
+    height: 2.53rem /* 190/75 */;
+    width: 100%;
+    background-color: #fff;
+    position: relative;
+    border-bottom:.01rem /* 1/75 */ solid #e2e3e4; 
+}
+section .section1 img{
+    display: block;
+    width: 1.6rem /* 120/75 */;
+    height: 1.6rem /* 120/75 */;
+    position: absolute;
+    top: .4rem /* 30/75 */;
+    left: .4rem /* 30/75 */;
+}
+section .section1 p{
+    font-size:.4rem /* 30/75 */;
+    position: absolute;
+    left: 2.3rem /* 130/75 */;
+    top: .73rem /* 55/75 */; 
+}
+section .section1 span{
+    display: block;
+    width: .93rem /* 70/75 */;
+    height: .4rem /* 30/75 */;
+    border-radius: .2rem;
+    text-align: center;
+    line-height: .4rem;
+    font-size: .27rem /* 20/75 */;
+    color: #cccccc;
+    border: .03rem /* 2/75 */ solid #cccccc;
+    position: absolute;
+    top: 1.3rem;
+    left: 2.3rem;
+}
+section .section1 i{
+    display: block;
+    width: 1.67rem /* 125/75 */;
+    height: .67rem /* 50/75 */;
+    text-align: center;
+    line-height: .67rem /* 50/75 */;
+    border-radius: .33rem /* 25/75 */;
+    font-size: .29rem /* 22/75 */;
+    color: #d33a31;
+    border: .03rem /* 2/75 */ solid #d33a31;
+    position: absolute;
+    right: .4rem /* 30/75 */;
+    top: 1rem;
+}
+section .section2{
+    height: 1.33rem /* 100/75 */;
+    width: 100%;
+    background-color: #fff;
+}
+section .section2 div{
+    float: left;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: .29rem /* 22/75 */;
+    color: #979798;
+}
+section ul li{
+    font-size: .4rem /* 30/75 */;
+    color: #868687;
+}
+section ul li span:nth-child(1){
+    background-color: #fff;
+    padding: .01rem .37rem /* 20/75 */;
+    left: -1.8rem;
+    color: #8f8e94;
+}
+section ul li:nth-child(1){
+    margin: .27rem /* 20/75 */ 0 .27rem 1.83rem;
+}
+section ul li:nth-child(4){
+    margin-bottom: .27rem /* 20/75 */;
+}

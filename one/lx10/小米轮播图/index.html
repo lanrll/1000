@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>小米轮播图	</title>
+<link rel="stylesheet" type="text/css" href="base.css" />
+<style>
+	.box{
+		width:960px;
+		height:540px;
+		border:5px solid red;
+		position:relative;
+		margin:20px auto;
+		}
+	.box img{
+		width:960px;
+		height:540px;
+		position:absolute;
+		}
+	.box ul{
+		position:absolute;
+		z-index:2;
+		bottom:15px;
+		right:20px;
+		}
+	.box ul li{
+		float:left;
+		}
+	.box li a{
+		display:block;
+		width:8px;
+		height:8px;
+		margin:0 5px;
+		background-color:#878787;
+		border:3px solid #b8b8b8;
+		border-radius:7px;
+		}
+	.box li a:hover{
+		background-color:#ededed;
+		border:3px solid #919191;
+		}
+	img:target{
+		z-index:1;
+		}
+	.left{
+		width:41px;
+		height:69px;
+		background:url(images/mi.png) no-repeat -85px top;
+		position:absolute;
+		left:0;
+		top:50%;
+		z-index:2;
+		}
+	.right{
+		width:41px;
+		height:69px;
+		background:url(images/mi.png) no-repeat -125px top;
+		position:absolute;
+		right:0;
+		top:50%;
+		z-index:2;
+		}
+	.left:hover{
+		background:url(images/mi.png) no-repeat left top;
+		}
+	.right:hover{
+		background:url(images/mi.png) no-repeat -45px top;
+		}
+</style>
+</head>
+
+<body>
+	<div class="box">
+        <img src="images/banner_01.jpg"  id="b1"/>
+        <img src="images/banner_02.jpg"  id="b2"/>
+        <img src="images/banner_03.jpg"  id="b3"/>
+        <img src="images/banner_04.jpg"  id="b4"/>
+        <img src="images/banner_05.jpg"  id="b5"/>
+        <ul>
+            <li><a href="#b1"></a></li>
+            <li><a href="#b2"></a></li>
+            <li><a href="#b3"></a></li>
+            <li><a href="#b4"></a></li>
+            <li><a href="#b5"></a></li>
+        </ul>
+        <div class="left">
+        </div>
+        <div class="right">
+        </div>
+    </div>
+</body>
+</html>

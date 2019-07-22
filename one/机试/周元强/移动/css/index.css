@@ -1,0 +1,110 @@
+@charset "utf-8";
+body{
+    display: flex;
+    flex-direction: column;
+}
+header{
+    height: 1.47rem /* 110/75 */;
+    background-color: #c34943;
+    width: 100%;
+    text-align: center;
+    line-height: 1.47rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+header input{
+    width: 9.2rem /* 690/75 */;
+    height: 1.07rem /* 80/75 */;
+    border-radius: .13rem /* 10/75 */;
+    padding-left: .93rem /* 70/75 */;
+    box-sizing: border-box;
+    font-size: .37rem /* 28/75 */;
+}
+header span{
+    color: #707070;
+    font-size: .21rem /* 16/75 */;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+}
+section{
+    flex: 1;
+    overflow: auto;
+}
+section nav{
+    height: .97rem /* 73/75 */;
+    border-bottom: .01rem /* 1/75 */ solid #e8e8e8;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+section nav span a{
+    font-size: .4rem /* 30/75 */;
+}
+section div{
+    width: 9.2rem /* 690/75 */;
+    margin: 0 auto;
+    min-height: 2rem /* 150/75 */;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    overflow: auto;
+    border-bottom: 1px solid #e8e8e8;
+}
+section div p:nth-child(1){
+    margin-top: .4rem /* 30/75 */;
+    font-size: .53rem /* 40/75 */;
+    font-weight: 700;
+}
+section div .section_lastp {
+    font-size: .27rem /* 20/75 */;
+    /* font-weight: 700; */
+    color: #aaabac;
+    margin-top: .27rem /* 20/75 */;
+    margin-bottom: .33rem /* 25/75 */;
+}
+section div .section_lastp span:nth-child(1){
+    float: left;
+    width: .8rem /* 60/75 */;
+    height: .4rem /* 30/75 */;
+    border: .01rem /* 1/75 */ solid #c34943;
+    border-radius:5px; 
+    text-align: center;
+    line-height: .4rem;
+    color: #e5645f;
+}
+section div .section_imgp{
+    display: flex;
+    justify-content: space-between;
+}
+section div .section_imgp img{
+    width: 3rem /* 225/75 */;
+    height: 2rem /* 150/75 */;
+}
+
+
+footer{
+    height: 1.19rem /* 89/75 */;
+    border-top: .01rem /* 1/75 */ solid #aaabac;
+    display: flex;
+    justify-content: space-around;
+}
+footer div{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+footer div a{
+    text-align: center;
+}
+footer div a p:nth-child(1){
+    font-size: .67rem /* 50/75 */;
+}
+footer div a p:nth-child(2){
+    font-size: .24rem /* 18/75 */;
+}
