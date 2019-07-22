@@ -1,0 +1,27 @@
+@charset "utf-8";
+body{
+    display: flex;
+    flex-direction: column;
+
+}
+header{
+    height: 4.73rem /* 355/75 */;
+    background-color: rgb(148, 104, 104);
+}
+
+section{
+    flex: 1;
+    overflow: auto;
+
+}
+
+section div{
+    width: .27rem /* 20/75 */;
+    height: 26.67rem /* 2000/75 */;
+    border: .13rem /* 10/75 */ solid deepskyblue;
+}
+
+footer{
+    height: 1.33rem /* 100/75 */;
+    background-color: rgb(45, 148, 71);
+}
