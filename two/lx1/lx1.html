@@ -1,0 +1,44 @@
+<!-- /*
+ * @Author: zyq 
+ * @Date: 2019-07-23 11:34:40 
+ * @Last Modified by:   zyq 
+ * @Last Modified time: 2019-07-23 11:34:40 
+ */ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+</head>
+<body>
+    <input type="text" id="num1"> + <input type="text" id="num2">
+    <button onclick="fn()">计算</button>
+    <input type="text" id="num3">
+    <script>
+        function fn() {
+            var num1 = parseFloat(document.getElementById('num1').value)
+            // console.log(num1)
+            var num2 = parseFloat(document.getElementById('num2').value)
+            var num3 = parseFloat(num1 + num2)
+            document.getElementById('num3').value = num3
+            // console.log(num3)
+        }
+    </script>
+    <!-- <input type="text" id="num1"> + <input type="text" id="num2">
+		<button onclick="fn()">计算</button>
+		<input type="text" id="num3">
+		<script>
+			function fn () {
+				// 得到两个文本框的值,计算和
+				// 把计算的和防盗第三个input里
+				var num1 = document.getElementById('num1').value
+				//console.log(num1)
+				var num2 = document.getElementById('num2').value
+				var num3 = num1 + num2
+				document.getElementById('num3').value = num3
+			}
+		</script> -->
+</body>
+</html>

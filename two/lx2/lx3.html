@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        for( i=0 ; i<3; i++){
+            var pcnum = Number(parseInt (Math.random()*3) + 1)
+            console.log(pcnum)
+            var usernum = Number(prompt("输入1-3中的数字，分别代表石头，剪刀，布"))
+            // console.log(usernum)
+        switch(usernum){
+            case 1:{
+                switch(pcnum){
+                    case 1:console.log("equal") 
+                        break
+                    case 2:console.log("win")
+                        break
+                    case 3:console.log("lose") 
+                        break
+                }
+                break
+            }
+            case 2:{
+                switch(pcnum){
+                    case 1:console.log("lose")
+                    break
+                    case 2:console.log("equal")
+                    break
+                    case 3:console.log("win")
+                    break
+                }
+                break
+            }
+            case 3:{
+                switch(pcnum){
+                    case 1:console.log("win")
+                    break
+                    case 2:console.log("lose")
+                    break
+                    case 3:console.log("equal")
+                    break
+                }
+                break
+            }
+        }
+        }
+    </script>
+</body>
+</html>

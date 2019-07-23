@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div onclick="fn()" id="box" style="background: red;"></div>
+    <script>
+        // for(i=0 ;i<5 ;i++){
+            var isRed = 0
+            function fn(){
+                var box = document.getElementById("box")
+                console.log(box.style.background)
+                if(isRed==0){
+                    box.style.background = "blue"
+                    isRed++
+                }else if(isRed==1){
+                    box.style.background = "green"
+                    isRed++
+                }else if(isRed==2){
+                    box.style.background = "black"
+                    isRed++
+                }
+                else if(isRed==3){
+                    box.style.background = "yellow"
+                    isRed++
+                }
+                else if(isRed==4){
+                    box.style.background = "pink"
+                    isRed++
+                }else{
+                    box.style.background = "red"
+                    isRed = 0
+                }
+                // isRed = !isRed
+            } 
+        // }
+    </script>
+</body>
+</html>

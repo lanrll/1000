@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+            var sg = Number(prompt("请输入身高")) 
+            var tz = Number(prompt("请输入体重"))
+            
+            if(tz <= (sg-108)*2+10 && tz >= (sg-108)*2-10 ){
+                alert("体重合适")
+            }else if(tz >(sg-108)*2+10){
+                alert("胖")
+            }else{
+                alert("廋")
+            }
+    </script>
+</body>
+</html> 
