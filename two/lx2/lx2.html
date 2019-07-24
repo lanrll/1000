@@ -7,10 +7,9 @@
     <title>Document</title>
 </head>
 <body>
-    <script>        
+    <!-- <script>        
             var sg = Number(prompt("请输入身高")) 
-            var tz = Number(prompt("请输入体重"))
-            
+            var tz = Number(prompt("请输入体重"))           
             if(tz <= (sg-108)*2+10 && tz >= (sg-108)*2-10 ){
                 alert("体重合适")
             }else if(tz >(sg-108)*2+10){
@@ -18,6 +17,19 @@
             }else{
                 alert("廋")
             }
+    </script> -->
+    <!-- 20190724 -->
+    <script>
+        var height = Number(prompt("请输入身高"));
+        var weight = Number(prompt("请输入体重"));
+        var num = (weight-108)*2
+        if( weight>=num-10 && weight<=num+10 ){
+            alert("体重合适");
+        }else if(weight<num-10){
+            alert("瘦了");
+        }else if(weight>num+10){
+            alert("胖了");
+        }
     </script>
 </body>
 </html> 

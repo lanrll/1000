@@ -13,7 +13,7 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" placeholder="请输入一个整数" id="num">
+    <!-- <input type="text" placeholder="请输入一个整数" id="num">
     <button onclick="fn()">判断</button>
     <script>
         function fn(){
@@ -24,6 +24,22 @@
             }
             else {
                 alert("不是偶数")
+            }
+        }
+    </script> -->
+    <!-- 20190724 -->
+    <script>
+        for(i=0;i<10;i++){   
+            var num = Number(prompt("请输入一个整数"))
+            if(num >= 0){
+                if(num%2 == 0){
+                    alert(num+"是偶数");
+                }else{
+                    alert(num+"不是偶数");
+                }
+            }else{
+                alert("输入不合法");
+                continue;
             }
         }
     </script>
