@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 100-900之间的水仙花
+        function fn(a){
+            var a;
+            a=a*a*a;
+            return a;
+        }
+        for( i=100 ; i<1000 ;i++){
+            var i1 = i%10;
+            var i2 = parseInt(i/10%10)
+            var i3 = parseInt(i/100%10)
+            if(i == fn(i1)+fn(i2)+fn(i3)){
+                document.write(i+"是水仙花 "+"<br>")
+                // console.log(i+"水仙花")
+             }
+            //  document.write(i+"&nbsp;")
+        }
+        
+    </script>
+</body>
+</html>

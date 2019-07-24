@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 打印星星
+        for(i=0;i<=6;i++){
+            for(n=0;n<=6-i;n++){
+                document.write("&nbsp;")
+            }
+            for(j=0;j<(2*i-1);j++){
+                document.write("*")
+            }
+            document.write("<br>")
+        }
+
+        for(i=6;i>=0;i--){
+            for(n=0;n<=6-i;n++){
+                document.write("&nbsp;")
+            }
+            for(j=0;j<(2*i-1);j++){
+                document.write("*")
+            }
+            document.write("<br>")
+        }
+        //❤ 11 9 7 5 3 1
+        //空 0 1 2 3 4 5
+        //行 1 2 3 4 5 6
+    </script>
+</body>
+</html>
