@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 3、编写函数判断任意一个数是否是素数 -->
+</head>
+<body>
+    <!-- <script>
+        var num = Number(prompt("请输入一个整数"));
+        function f(n){
+            for(i=2;1<n/2;i++){
+                if(n%i==0){
+                    break;
+                }
+            }
+            if(i>=n/2){
+                console.log(n+"是素数")
+            }else{
+                console.log(n+"不是是素数")
+            }
+        }
+        f(num);
+    </script> -->
+    <script>
+        var num = Number(prompt("请输入一个整数"))
+        function f(n){
+            for(i=2;i<n/2;i++){
+                if(n%i==0){
+                    break
+                }
+            }
+            if(i>=n/2){
+                document.write(n+"是素数")
+            }else{
+                document.write(n+"不是素数")
+            }
+        }
+        f(num);
+    </script>
+    <!-- 2019072519 -->
+</body>
+</html>

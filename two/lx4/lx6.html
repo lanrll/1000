@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 编写函数实现：两个数平方的阶乘相加的和
+     要求：三个函数实现，一个求阶乘，一个求平方，第三个函数利用这两个函数求出最终结果 -->
+</head>
+<body>
+    <!-- <script>
+        var n = Number(prompt("输入一个数"))
+        var m = Number(prompt("输入一个数"))
+        function f(n){
+            if(n>=2){
+                return f(n-1)*n
+            }else{
+                return 1;
+            }
+        }
+        function f1(n){
+            return n*n;
+        }
+        function g(n,m){
+            var sun = f(f1(n))+f(f1(m))
+            return sun;
+        }
+        document.write(g(n,m));
+    </script> -->
+    <script>
+        var m = Number(prompt("输入m，求两个数平方的阶乘相加的和"))
+        var n = Number(prompt("输入n，求两个数平方的阶乘相加的和"))
+        function square(n){
+            return n*n
+        }
+        function factorial(n){
+            for(i=1,product=1;i<=n;i++){
+                product *=i
+            }
+            return product;
+        }
+        function add(m,n){
+            var sun = factorial(square(m)) + factorial(square(n))
+            return sun; 
+        }
+        document.write(add(m,n));
+    </script>
+    <!-- 2019072520 -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1、编写一个函数，计算n ~ m之间的闰年（传参实现） -->
+</head>
+<body>
+    <!-- <script>
+        var m = Number(prompt("开始年"));
+        var n = Number(prompt("结束年"));
+        fn(m,n);
+        function fn(m,n){
+            if(m<=n){
+                for(i=m;i<=n;i++){
+                    if(i%4==0 && i%100!=0 || i%400==0){
+                        console.log(i+"是闰年")
+                    }
+                }
+            }else{
+                alert("输入不合法 开始年<结束年")
+            }
+        }
+    </script> -->
+    <script>
+        var m = Number(prompt("输入开始年"))
+        var n = Number(prompt("输入结束年"))
+        function f(m,n){
+            if(m<=n){
+                for(i=m;i<=n;i++){
+                    if(i%4==0 && i%100!=0 || i%400==0){
+                        document.write(i+"是闰年<br>")
+                    }
+                }
+            }else{
+                alert("输入不合法")
+            }
+        }
+        f(m,n)
+    </script>
+    <!-- 2019072519 -->
+</body>
+</html>

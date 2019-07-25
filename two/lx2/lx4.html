@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         for( i=0; i<3; i++){
             var year = Number(prompt('输入一个年份'))
             if(year % 4 == 0 && year % 100 != 0 || year % 400 ==0){
@@ -16,7 +16,15 @@
                 console.log(year +'年不是闰年')
             }
         }
-        
+    </script> -->
+    <!-- 20190725 -->
+    <script>
+        var year = Number(prompt("请输入年份"));
+        if( year%4==0 && year%100!=0 || year%400==0){
+            document.write(year+"是闰年")
+        }else{
+            document.write(year+"不是闰年")
+        }
     </script>
 </body>
 </html>

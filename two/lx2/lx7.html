@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         var s = Number(prompt("请输入一个三位整数"))
         var gw = s%10
         var sw = parseInt(s/10%10)
@@ -17,16 +17,28 @@
         }else{
             console.log(s+'不是水仙花数！')
         }
-          
         console.log(fn(gw))
         console.log(fn(sw))
         console.log(fn(bw))
-
         function fn(a){
             var a;
             a=a*a*a;
             return a;
         }
+    </script> -->
+    <!-- 2019072516 -->
+    <script>
+        var num = Number(prompt("输入一个三位水仙花数"));
+        var gw = num%10
+        var sw = parseInt(num/10%10);
+        var bw = parseInt(num/100);
+        function f(n){
+            return n*n*n;
+        }
+        if(num==f(gw)+f(sw)+f(bw)){
+            document.write(num+"是水仙花数")
+        }
+        document.write(num+"不是水仙花数")
     </script>
 </body>
 </html>

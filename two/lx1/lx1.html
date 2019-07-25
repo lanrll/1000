@@ -16,7 +16,7 @@
     <input type="text" id="num1"> + <input type="text" id="num2">
     <button onclick="fn()">计算</button>
     <input type="text" id="num3">
-    <script>
+    <!-- <script>
         function fn() {
             var num1 = parseFloat(document.getElementById('num1').value)
             // console.log(num1)
@@ -25,7 +25,7 @@
             document.getElementById('num3').value = num3
             // console.log(num3)
         }
-    </script>
+    </script> -->
     <!-- <input type="text" id="num1"> + <input type="text" id="num2">
 		<button onclick="fn()">计算</button>
 		<input type="text" id="num3">
@@ -39,6 +39,15 @@
 				var num3 = num1 + num2
 				document.getElementById('num3').value = num3
 			}
-		</script> -->
+        </script> -->
+        <!-- 20190724 -->
+    <script>
+        function fn(){
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var num3 = parseFloat(num1 +num2);
+            document.getElementById("num3").value = num3;
+        }
+    </script>
 </body>
 </html>
