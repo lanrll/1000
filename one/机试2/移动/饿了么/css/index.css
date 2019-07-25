@@ -5,8 +5,53 @@ body{
 
 }
 header{
-    height: 4.73rem /* 355/75 */;
-    background-color: rgb(148, 104, 104);
+    height: 3.29rem /* 355/108 */;
+    /* background-color: rgb(148, 104, 104); */
+    position: relative;
+}
+header p{
+    display: block;
+    width: 9.44rem /* 1020/108 */;
+    margin: .83rem /* 90/108 */ auto;
+    height: .56rem /* 60/108 */;
+    line-height: .56rem;
+    font-size: .46rem /* 50/108 */;
+    color: #010101;
+    font-weight: 700;
+}
+header p span{
+    color: #12beff;
+}
+header p i{
+    color: #b0b0b0;
+}
+header p b{
+    float: right;
+    color: #12beff;
+    font-size: .42rem /* 45/108 */;
+}
+header p em{
+    float: right;
+    margin-right: .19rem /* 20/108 */;
+    font-size: .37rem /* 40/108 */;
+    color: #12beff;
+}
+header input{
+    display: block;
+    width: 9.44rem /* 1020/108 */;
+    height: .93rem /* 100/108 */;
+    margin: 0 auto;
+    background-color: #e8e8e8;
+    color: #a8a8a8;
+    border-radius: .46rem /* 50/108 */;
+    text-align: center;
+}
+header span:last-child{
+    position: absolute;
+    bottom: .42rem /* 45/108 */;
+    left: 35%;
+    font-size: .37rem /* 40/108 */;
+    color: #737373;
 }
 
 section{
@@ -16,12 +61,42 @@ section{
 }
 
 section div{
-    width: .27rem /* 20/75 */;
-    height: 26.67rem /* 2000/75 */;
-    border: .13rem /* 10/75 */ solid deepskyblue;
+    width: .19rem /* 20/108 */;
+    height: 18.52rem /* 2000/108 */;
+    border: .09rem /* 10/108 */ solid deepskyblue;
 }
 
 footer{
-    height: 1.33rem /* 100/75 */;
-    background-color: rgb(45, 148, 71);
+    height: .93rem /* 100/108 */;
+    border-top: #cacacc solid .02rem /* 2/108 */; 
+    /* background-color: rgb(45, 148, 71); */
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
+footer div{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+footer div a{
+    font-size: .19rem /* 20/108 */;
+    color: #808080;
+}
+footer div a:hover{
+    color: #029bff;
+}
+footer div a p{
+    text-align: center;
+    font-size: .28rem /* 30/108 */;
+}
+footer div a p:nth-child(1){
+    display: block;
+    font-size:.37rem /* 40/108 */;
+    /* margin: 0 auto; */
+    margin-bottom: .05rem /* 5/108 */ ;
+
 }

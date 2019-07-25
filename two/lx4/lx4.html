@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 利用递归求100的阶乘 -->
+    <!-- 编写函数计算任意数字的阶乘（两种方法） -->
+</head>
+<body>
+    <!-- <script>
+        var n = Number(prompt("输入n计算n！"))
+        function f(n){
+            if(n>=2){
+                n = f(n-1)*n
+                return n
+            }else if(n==1){
+                return 1;
+            }else{
+                alert("输入不合法")
+            }
+        }
+        function g(n){
+            var sun=1;
+            for(i=1;i<=n;i++){
+                sun *=i
+            }
+            return sun;
+        }
+        console.log(f(n));
+        console.log(g(n));
+        
+    </script> -->
+    <script>
+        var num = Number(prompt("输入一个数n，计算n！"))
+        function f(n){
+            if(n>1){
+                return f(n-1)*n
+            }else{
+                return 1;
+            }
+        }
+        function g(n){
+            for(i=1,j=1;i<=n;i++){
+                j *=i
+            }
+            return j
+        }
+        document.write(f(num));
+        document.write("<br>")
+        document.write(g(num));
+    </script>
+    <!-- 2019072519 -->
+</body>
+</html>

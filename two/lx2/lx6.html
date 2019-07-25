@@ -15,7 +15,7 @@
 </head>
 <body>
     <div onclick="fn()" id="box" style="background: red;"></div>
-    <script>
+    <!-- <script>
         // for(i=0 ;i<5 ;i++){
             var isRed = 0
             function fn(){
@@ -45,6 +45,39 @@
                 // isRed = !isRed
             } 
         // }
+    </script> -->
+    <!-- 2019072509 -->
+    <script>
+        var change = 0;
+        function fn(){
+            var box = document.getElementById("box")
+            console.log(box.style.background)
+            if(change==0){
+                box.style.background = "blue"
+                change++;
+                console.log(box.style.background);
+            }else if(change==1){
+                box.style.background = "black"
+                change++;
+                console.log(box.style.background);
+            }else if(change==2){
+                box.style.background = "green"
+                change++;
+                console.log(box.style.background);
+            }else if(change==3){
+                box.style.background = "yellow"
+                change++;
+                console.log(box.style.background);
+            }else if(change==4){
+                box.style.background = "pink"
+                change++;
+                console.log(box.style.background);
+            }else if(change==5){
+                box.style.background = "purple"
+                change=0;
+                console.log(box.style.background);
+            }                                   
+        }
     </script>
 </body>
 </html>

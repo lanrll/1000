@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         // 求1+2!+3!+...+20!的值
         var n = Number(prompt("请输入n 求1+2!+3!+...+n!的值"))
         var sun = 0;
@@ -21,6 +21,17 @@
         }
         // document.write("<br>")
         // document.write(sun)
+    </script> -->
+    <script>
+        for(i=1,sun=0;i<=20;i++){
+            var product =1;
+            for(j=1;j<=i;j++){
+                product *=j
+            }
+            sun +=product;
+        }
+        document.write(sun)
     </script>
+    <!-- 2019072517 -->
 </body>
 </html>

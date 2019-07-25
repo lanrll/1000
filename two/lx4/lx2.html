@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--  2、函数实现1-100中7的倍数或者带7的数（逢任何数字（通过传参）过） -->
+</head>
+<body>
+    <!-- <script>
+        var n = Number(prompt("在1-100内逢n和n的倍数过，请输入n，n<100"))
+        function F(n){
+            for(i=1;i<=100;i++){
+                var gw = i%10;
+                if(gw==n){
+                    console.log("过");
+                }else if(i%n==0){
+                    console.log("过");
+                }else{
+                    console.log(i);
+                }
+            }
+        }
+        F(n);
+    </script> -->
+    <script>
+        var num = Number(prompt("游戏1-100逢n及n的倍数过，输入n"))
+        function f(n){
+            for(i=1;i<=100;i++){
+                var bit = i%10;
+                if(i%n==0){
+                    document.write("过<br>")
+                }else if(bit==n){
+                    document.write("过<br>")
+                }else{
+                    document.write(i+"<br>")
+                }
+            }
+        }
+        f(num);
+    </script>
+    <!-- 2019072519 -->
+</body>
+</html>

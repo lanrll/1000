@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         // 100-900之间的水仙花
         function fn(a){
             var a;
@@ -24,7 +24,20 @@
              }
             //  document.write(i+"&nbsp;")
         }
-        
+    </script> -->
+    <script>
+        function f(n){
+            return n*n*n;
+        }
+        for(i=1;i<1000;i++){
+            var bit = i%10;
+            var ten = parseInt(i/10%10);
+            var hundred = parseInt(i/100);
+            if(i==f(bit)+f(ten)+f(hundred)){
+                document.write(i+"是水仙花数<br>")
+            }
+        }
     </script>
+    <!-- 2019072517 -->
 </body>
 </html>

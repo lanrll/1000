@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 斐波那契数列指的是这样一个数列 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89........
+         斐波纳契数列以如下被以递归的方法定义：F(0)=1，F(1)=1, F(n)=F(n-1)+F(n-2)（n>2，n∈N*）-->
+</head>
+<body>
+    <!-- <script>
+        var n = Number(prompt(" 斐波纳契数列第n项输入n"))
+        // function f(n){
+        //     if(n>2){
+        //         return f(n-1)+f(n-2);
+        //     }else if(n=1){
+        //         return 1;
+        //     }else{
+        //         return 1;
+        //     }
+        // }
+        function f(n){
+            if(n==1 || n==2){
+                return 1;
+            }
+            return f(n-1)+f(n-2);
+        }
+        document.write(f(n));
+    </script> -->
+    <script>
+        var n = Number(prompt("输入n，求斐波纳契数列第n项"));
+        function f(n){
+            if(n==1 || n==2){
+                return 1;
+            }else{
+                return f(n-1)+f(n-2)
+            }
+        }
+        document.write(f(n));
+    </script>
+    <!-- 2019072519 -->
+</body>
+</html>

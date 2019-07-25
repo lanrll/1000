@@ -7,19 +7,33 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
+    <!-- <script>
         //输出100-200之间所有的素数（只能被1和自己整除的数）
         for(i=100;i<200;i++){
             var num=0;
             for(n=2;n<=i/2;n++){
                 if(i%n == 0){
                     num=1;
+                    break;
                 }
             }
             if(num==0){
                 document.write(i+"是素数<br>")
             }
         }
+    </script> -->
+    <script>
+        for(i=100;i<=200;i++){
+            for(j=2;j<i/2;j++){
+                if(i%j==0){
+                    break;
+                }
+            }
+            if(j>i/2){
+                document.write(i+"是素数<br>")
+            }
+        }
     </script>
+    <!-- 2019072517 -->
 </body>
 </html>
