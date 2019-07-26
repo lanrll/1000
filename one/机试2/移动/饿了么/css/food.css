@@ -1,0 +1,190 @@
+@charset "uft-8";
+
+header{
+    height: 3.98rem /* 430/108 */;
+    background-color: #0096ff;
+}
+header .header_div1{
+    height: 1.85rem /* 200/108 */;
+    width: 9.12rem /* 985/108 */;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .46rem /* 50/108 */;
+    color: #ffffff;
+}
+header .header_div1 a{
+    color: #ffffff;
+}
+header .header_div2{
+    width: 9.12rem /* 985/108 */;
+    height: 1.02rem /* 110/108 */;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #95d3fc;
+    font-size: .37rem /* 40/108 */;
+}
+header .header_div2 a:hover{
+    color: #ffffff;
+}
+header .header_div3{
+    height: 1.1rem /* 119/108 */;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: .42rem /* 45/108 */;
+    color: #343434;
+    background-color: #fff;
+    border-bottom: .01rem /* 1/108 */ solid #cccccc;
+}
+header .header_div3 a{
+    /* display: block; */
+    text-align: center;
+    flex: 1;
+    line-height: 1.1rem;
+    height:100%;
+    background-color: #fff;
+}
+header .header_div3 a:hover{
+    color: #323232;
+    font-weight: 700;
+    height: 105%;
+}
+section main{
+    width: 9.41rem /* 1016/108 */;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: wrap;
+}
+section main .img1{
+    display: block;
+    width: 2.22rem /* 240/108 */;
+    height: 2.22rem /* 240/108 */;
+}
+section main div{
+    width: 6.94rem /* 750/108 */;
+    height: 3.33rem /* 360/108 */;
+    border-bottom: .01rem /* 1/108 */ solid #cccccc;
+    padding-top: .46rem /* 50/108 */;
+    box-sizing: border-box;
+    position: relative;
+}
+section main div P:nth-child(1){
+    font-size: .46rem /* 50/108 */;
+    color: #313131;
+    font-weight: 700;
+    line-height: .6rem /* 65/108 */;
+    display: block;
+    width: 6.48rem /* 700/108 */;
+    height: .6rem /* 65/108 */;
+    margin: .14rem /* 15/108 */ 0;
+    /* position: relative; */
+}
+section main div .uu1{
+    position: absolute;
+    right: 0;
+    top: 18%;
+    /* float: right; */
+}
+section main div .uu1 li{
+    display: block;
+    width: .05rem /* 5/108 */;
+    height: .05rem /* 5/108 */;
+    border-radius: .03rem /* 3/108 */;
+    background-color: #b9b9b9;
+    margin: .05rem /* 5/108 */;
+}
+section main div p:nth-child(3){
+    display: block;
+    font-size:.28rem /* 30/108 */;
+    margin: .28rem /* 30/108 */ auto;
+}
+section main div p:nth-child(3) span:nth-child(1){
+    color: #f40;
+}
+section main div p:nth-child(3) span:nth-child(2){
+    color: #848484;
+}
+section main div .fncs{
+    float: right;
+    width: 1.06rem /* 115/108 */;
+    height: .32rem /* 35/108 */;
+    line-height: .32rem /* 35/108 */;
+    text-align: center;
+    color: #f4ffff;
+    font-size: .23rem /* 25/108 */;
+    background-color: #03a4ff;
+    border: .01rem /* 1/108 */ solid #50caff;
+    border-left: none;
+    border-top-right-radius: .04rem /* 4/108 */;
+    border-bottom-right-radius: .04rem;
+}
+section main div .zsd{
+    float: right;
+    width: 1.06rem /* 115/108 */;
+    height: .32rem /* 35/108 */;
+    line-height: .32rem /* 35/108 */;
+    text-align: center;
+    color: #2a9ed7;
+    font-size: .23rem /* 25/108 */;
+    background-color: #ffffff;
+    border: .01rem /* 1/108 */ solid #aac5e0;
+    border-right: none;
+    border-top-left-radius: .04rem /* 4/108 */;
+    border-bottom-left-radius: .04rem;
+}
+section main div .fncs{
+    color: #2a9ed7;
+    background-color: #ffffff;
+}
+section main div .zsd{
+    color: #ffffff;
+    background-color: #2a9ed7;
+}
+section main div p:nth-child(4){
+    display: block;
+    font-size:.28rem /* 30/108 */;
+    color: #9f9f9f;
+    margin: .23rem /* 25/108 */ auto;
+}
+section main div .psjm{
+    text-decoration-line: line-through;
+    color: #aeaeae;
+    font-size: .23rem /* 25/108 */;
+}
+section main div .distance{
+    float: right;
+}
+section main div .time{
+    float: right;
+    margin-right: .09rem /* 10/108 */;
+}
+section main div p:last-child {
+    font-size: .29rem /* 31/108 */;
+    padding-top: .28rem /* 30/108 */;
+}
+section main div p:last-child span{
+    border-radius: .04rem /* 4/108 */;
+    padding: .09rem /* 10/108 */ .14rem /* 15/108 */;
+}
+section main div .mj{
+    border: .01rem /* 1/108 */ solid #df5c6a;
+    color: #df5c6a;
+}
+section main div .zczq{
+    border: .01rem /* 1/108 */ solid #6a6a6a;
+    color: #6a6a6a;
+}
+section main div p:last-child span:last-child{
+    float: right;
+    color: #b6b6b6;
+}
+section main div .vip{
+    border: .01rem /* 1/108 */ solid #af8354;
+    color: #af8354;
+}

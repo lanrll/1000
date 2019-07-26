@@ -1,9 +1,5 @@
 @charset "utf-8";
-body{
-    display: flex;
-    flex-direction: column;
 
-}
 header{
     height: 3.29rem /* 355/108 */;
     /* background-color: rgb(148, 104, 104); */
@@ -45,6 +41,7 @@ header input{
     color: #a8a8a8;
     border-radius: .46rem /* 50/108 */;
     text-align: center;
+    font-size: .37rem /* 40/108 */;
 }
 header span:last-child{
     position: absolute;
@@ -53,50 +50,127 @@ header span:last-child{
     font-size: .37rem /* 40/108 */;
     color: #737373;
 }
-
-section{
-    flex: 1;
-    overflow: auto;
-
+section .img1{
+    display: block;
+    margin: .28rem /* 30/108 */ auto;
+    width: 9.33rem /* 1008/108 */;
+    height: 2.39rem /* 258/108 */;
 }
-
-section div{
-    width: .19rem /* 20/108 */;
-    height: 18.52rem /* 2000/108 */;
-    border: .09rem /* 10/108 */ solid deepskyblue;
-}
-
-footer{
-    height: .93rem /* 100/108 */;
-    border-top: #cacacc solid .02rem /* 2/108 */; 
-    /* background-color: rgb(45, 148, 71); */
+section .section_div1{
+    height: 4.72rem /* 510/108 */;
     display: flex;
-    justify-content: space-between;
-    /* align-items: center; */
+    flex-flow: wrap;
+    position: relative;
 }
-footer div{
-    height: 100%;
-    width: 25%;
+section .section_div1 div{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 20%;
+    height: 50%;
 }
-footer div a{
-    font-size: .19rem /* 20/108 */;
-    color: #808080;
+section .section_div1 div a{
+    color: #979797;
+    font-size: .32rem /* 35/108 */;
 }
-footer div a:hover{
+section .section_div1 div a:hover{
+    color: #f40;
+}
+section .section_div1 div a p{
+    display: block;
+    margin: .09rem /* 10/108 */ auto;
+    text-align: center;
+}
+section .section_div1 div a p:first-child{
+    display: block;
+    font-size: .93rem /* 100/108 */;
+    margin-bottom: .19rem /* 20/108 */;
+}
+section .section_div1 ul{
+    position: absolute;
+    bottom: 0;
+    left: 4.53rem /* 500/108 */;
+}
+section .section_div1 ul li{
+    float: left;
+    width: .28rem /* 30/108 */;
+    height: .05rem /* 5/108 */;
+    margin: 0 .09rem /* 10/108 */;
+    background-color: #dfdfdf;
+}
+section .section_div1 ul li:hover{
+    background-color: #6fb1e5;
+}
+
+section .section_div2{
+    width: 9.33rem /* 1008/108 */;
+    height: 1.2rem /* 130/108 */;
+    margin: .37rem /* 40/108 */ auto;
+    display: flex;
+    justify-content: space-between;
+}
+section .section_div2 div{
+    width: 2.22rem /* 240/108 */;
+    height: 1.19rem /* 129/108 */;
+    border-radius: .09rem /* 10/108 */;
+    border:.01rem /* 1/108 */ solid #e2e2e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section .section_div2 div span{
+    font-size: .37rem /* 40/108 */;
+    color: #2e2e2e;
+}
+section .section_div2 div i{
+    font-size: .46rem /* 50/108 */;
+    color: #f40;
+}
+/* TODO: a:hover无法实现效果 */
+section .section_div2 div a:hover{
     color: #029bff;
 }
-footer div a p{
-    text-align: center;
-    font-size: .28rem /* 30/108 */;
+section .section_div3{
+    width: 9.33rem /* 1008/108 */;
+    height: 1.11rem /* 120/108 */;
+    margin: 0 auto;
+    margin-bottom: .56rem /* 60/108 */;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f7e1a7;
+    border-radius: .09rem /* 10/108 */;
 }
-footer div a p:nth-child(1){
+section .section_div3 a{
+    margin: 0 .37rem /* 40/108 */;
+    font-size: .32rem /* 35/108 */;
+    color: #7d6a32;
+}
+section .section_div3 a:nth-child(1) span:nth-child(1){
+    font-size: .42rem /* 45/108 */;
+}
+section .section_div3 a:nth-child(1) span:nth-child(2){
+    font-size: .42rem /* 45/108 */;
+    font-weight: 700;
+}
+section .section_div4{
+    width: 9.33rem /* 1008/108 */;
+    margin: 0 auto;
+}
+section .section_div4 p{
     display: block;
-    font-size:.37rem /* 40/108 */;
-    /* margin: 0 auto; */
-    margin-bottom: .05rem /* 5/108 */ ;
-
+    height: .83rem /* 90/108 */;
+    font-size: .51rem /* 55/108 */;
+    font-weight: 700;
+}
+section .section_div4 div{
+    /* width: 100%; */
+    /* overflow: auto; */
+    display: flex;
+    justify-content: space-between;
+    flex-flow: wrap;
+}
+section .section_div4 div img{
+    margin-bottom: .23rem /* 25/108 */;
 }
