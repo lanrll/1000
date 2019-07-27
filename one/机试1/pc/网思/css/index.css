@@ -1,6 +1,6 @@
 @charset "utf-8";
 .box{
-    width: 1173px;
+    width: 1193px;
     height: 100%;
     margin: 0 auto;
     position: relative;
@@ -190,6 +190,8 @@ header p span{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 .main1 .main1_bottom div p:nth-child(1){
     background-color: #ebecf0;
@@ -203,6 +205,26 @@ header p span{
     margin-bottom: 20px;
     padding: 4px;
     border: 2px solid #dedede;
+    transition: all 1s linear;
+}
+.main1 .main1_bottom div .main1_p{
+    /* background-color: #ebecf0; */
+    /* background-color: red; */
+    color: #fff;
+    display: block;
+    width: 135px;
+    height: 135px;
+    border-radius: 70px;
+    text-align: center;
+    line-height: 135px;
+    /* font-size: 60px; */
+    margin-bottom: 20px;
+    padding: 4px;
+    border: 2px solid #ffffff;
+    transition: all 1s linear;
+    position: absolute;
+    top: -150px;
+    /* left: 5; */
 }
 .main1 .main1_bottom div P:nth-child(2){
     font-size: 16px;
@@ -218,6 +240,21 @@ header p span{
     font-size: 14px;
     line-height: 24px;
 }
+.main1 .main1_bottom div:hover p:nth-child(1){
+    background-color: red;
+    color: #ebecf0;
+}
+.main1 .main1_bottom div:hover .main1_p{
+    top: 0;
+    font-size: 60px;
+    /* background-color: red; */
+}
+.main1 .main1_bottom div:hover p:nth-child(2){
+    color: #b6372c;
+}
+.main1 .main1_bottom div:hover p:nth-child(4){
+    text-decoration-line: underline;
+}
 .main2{
     height: 770px;
     background-color: #f5f6fa;
@@ -227,17 +264,48 @@ header p span{
     height: 435px;
     display: flex;
     flex-direction: row-reverse;
-
     /* align-items: */
     flex-flow: wrap;
+    justify-content: space-between;
+    align-items: baseline;
 }
-.main2 .main2_bottom img{
+.main2 .main2_bottom .main2_bottom_div{
+    width: 267px;
+    height: 202px;
+    position: relative;
+    overflow: hidden;
+}
+.main2 .main2_bottom .main2_bottom_div .overlay{
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(248, 11, 11, .6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s linear; 
+    /* opacity: .6; */
+}
+.main2 .main2_bottom .main2_bottom_div .overlay p:nth-child(1){
+    font-size: 50px;
+    color: #ffffff;
+}
+.main2 .main2_bottom .main2_bottom_div:hover .overlay{
+    top: 0;
+}
+/* .main2 .main2_bottom img{
     display: block;
-    /* width: 260px; */
+    width: 260px;
     height: 202px;
     flex: 1;
     margin-left: 10px;
-}
+} */
+/* .main2 .main2_bottom img:hover{
+    opacity: .6;
+} */
 .main2 .main2_span{
     display: block;
     width: 65px;
@@ -267,18 +335,24 @@ header p span{
     width: 100%;
     height: 295px;
     display: flex;
+    justify-content: space-between;
 }
-.main3 .main3_bottom div{
-    width: 25%;
+.main3 .main3_bottom .main3_bottom_div{
+    width: 295px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: #ffffff;
-    padding-right: 90px;
-    box-sizing: border-box;
+    /* margin-right: 50px; */
+    /* box-sizing: border-box; */
+    position: relative;
+    overflow: hidden;
 }
-.main3 .main3_bottom div p:nth-child(1){
+.main3 .main3_bottom .main3_bottom_div .main3_bottom_last_div{
+    margin: 0;
+}
+.main3 .main3_bottom .main3_bottom_div p:nth-child(1){
     display: block;
     width: 50px;
     height: 40px;
@@ -287,13 +361,15 @@ header p span{
     padding: 20px  10px;
     border-radius: 5px;
 }
-.main3 .main3_bottom div p:nth-child(1) span:first-child{
+.main3 .main3_bottom .main3_bottom_div p:nth-child(1) span:first-child{
     font-size: 20px;
 }
-.main3 .main3_bottom div p:nth-child(3){
+.main3 .main3_bottom .main3_bottom_div p:nth-child(3){
+    display: block;
+    width: 210px;
     color: #bbbbbe;
 }
-.main3 .main3_bottom div p:last-child{
+.main3 .main3_bottom .main3_bottom_div p:last-child{
     display: block;
     width: 38px;
     height: 38px;
@@ -302,6 +378,28 @@ header p span{
     text-align: center;
     line-height: 38px;
     font-size: 20px;
+}
+.main3 .main3_bottom .main3_bottom_div .overlay_up{
+    position: absolute;
+    top: -53%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transition: all .5s linear;
+}
+.main3 .main3_bottom  .main3_bottom_div:hover .overlay_up{
+    top: 0;
+}
+.main3 .main3_bottom .main3_bottom_div .overlay_bottom{
+    position: absolute;
+    bottom: -50%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transition: all .5s linear;
+}
+.main3 .main3_bottom .main3_bottom_div:hover .overlay_bottom{
+    bottom: -1%;
 }
 .main3 input{
     width: 180px;
@@ -317,6 +415,9 @@ header p span{
     position: absolute;
     bottom: 50px;
     left: 500px;
+}
+.main3 input:hover{
+    background-color: red;
 }
 
 .main4{

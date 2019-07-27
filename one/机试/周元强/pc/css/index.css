@@ -171,10 +171,15 @@ header .header ul li a:hover{
 .banner2 .banner2_bottom ul li:nth-child(1){
     width: 565px;
     height: 322px;
+    overflow: hidden;
 }
 .banner2 .banner2_bottom ul li:nth-child(1) img{
     width: 565px;
     height: 322px;
+    transition: all .5s linear;
+}
+.banner2 .banner2_bottom ul li:nth-child(1):hover img{
+    transform: scale(1.5);
 }
 .banner2 .banner2_bottom ul li:nth-child(2){
     font-size: 20px;
@@ -210,19 +215,23 @@ header .header ul li a:hover{
     width: 20%;
     height: 50%;
     float: left;
-    background: url(../images/anli1.png) no-repeat center -170px ;
+    background: url(../images/anli1.png) no-repeat center -140px ;
+    transition: all .5s linear;
 }
 .banner3 ul li:nth-child(2){
-    background: url(../images/anli2.png) no-repeat center -170px ;
+    background: url(../images/anli2.png) no-repeat center -140px ;
 }
 .banner3 ul li:nth-child(3){
-    background: url(../images/anli6.png) no-repeat center -170px ;
+    background: url(../images/anli6.png) no-repeat center -140px ;
 }
 .banner3 ul li:nth-child(4){
-    background: url(../images/anli8.png) no-repeat center -170px ;
+    background: url(../images/anli8.png) no-repeat center -140px ;
 }
 .banner3 ul li:nth-child(5){
-    background: url(../images/anli9.png) no-repeat center -170px ;
+    background: url(../images/anli9.png) no-repeat center -140px ;
+}
+.banner3 ul li:hover{
+    background: url(../images/anli1.png) no-repeat center 10px
 }
 footer{
     height: 293px;
