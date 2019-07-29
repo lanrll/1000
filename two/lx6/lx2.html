@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 通过循环按行顺序为一个5×5的二维数组a赋1到25的自然数，然后输出该数组的左下半三角。试编程； -->
+</head>
+<body>
+    <script>
+        var a = new Array(5)
+        var sum = 1
+        for( i=0; i<a.length; i++){
+            a[i] = new Array(5)
+            for( j=0; j<a.length; j++){
+                a[i][j] = sum;
+                sum++;
+                document.write(a[i][j]+"&nbsp")
+            }
+            document.write("<br>")
+        }
+        console.log(a)
+        for( i=0; i<a.length; i++){
+            for( j=0; j<=i; j++){
+                document.write(a[i][j]+"&nbsp")
+            }
+            document.write("<br>")
+        }
+    </script>
+</body>
+</html>

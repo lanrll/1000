@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var n = Number(prompt("请输入一个四位数"));
+        function g(n){
+            return (n+5)%10
+        }
+        // function h(m,n){
+        //     var num;
+        //     num = m;
+        //     m = n;
+        //     n = num;
+        //     // return m,n
+        // }
+        // function f(n){
+            var bit = n%10;
+            var ten = parseInt(n/10%10);
+            var hundred = parseInt(n/100%10);
+            var thousand = parseInt(n/1000);
+            console.log(n);
+            bit = g(bit);
+            ten = g(ten);
+            hundred = g(hundred);
+            thousand = g(thousand);
+            // console.log(bit)
+            // console.log(ten)
+            // console.log(hundred)
+            // console.log(thousand)
+            console.log(''+thousand+hundred+ten+bit)
+            // h(bit,thousand);
+            // h(ten,hundred);
+            var num;
+            num = bit ;
+            bit = thousand;
+            thousand = num;
+            num = ten;
+            ten = hundred;
+            hundred = num;
+            console.log(''+thousand+hundred+ten+bit)
+        // }
+        // f(n);
+    </script>
+</body>
+</html>

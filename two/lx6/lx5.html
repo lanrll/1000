@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 编写函数map(arr) 把数组中的每一位数字都增加30% -->
+</head>
+<body>
+    <script>
+        function randomNum( min, max){
+            switch(arguments.length){
+                case 1:
+                    return parseInt(Math.random()*min+1, 10)
+                    break;
+                case 2:
+                    return parseInt(Math.random()*(max-min+1)+min, 10);
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
+        }
+        arr = new Array(10)
+        for( i=0; i<arr.length; i++){
+            arr[i] = randomNum( 1, 100)
+        }
+        console.log(arr)
+        function f(n){
+            return parseInt(n*(1+0.3))
+        }
+        for( i=0; i<arr.length;i++){
+            arr[i] = f(arr[i])
+        }
+        console.log(arr)
+    </script>
+</body>
+</html>

@@ -18,7 +18,6 @@
     <script>
         function fn(){
             var num = document.getElementById("num").value 
-            
             if(num%2 == 0){
                 alert("是偶数")
             }
@@ -28,7 +27,7 @@
         }
     </script> -->
     <!-- 20190724 -->
-    <script>
+    <!-- <script>
         for(i=0;i<10;i++){   
             var num = Number(prompt("请输入一个整数"))
             if(num >= 0){
@@ -42,6 +41,22 @@
                 continue;
             }
         }
+    </script> -->
+    <script>
+        for(i=0;i<1;i++){
+            var n = Number(prompt('输入一个正整数'));
+            if(n >= 0  && String(n).indexOf(".") < 0 ){
+                if(n%2 == 0){
+                    console.log(n+"偶数");
+                }else{
+                    console.log(n+'奇数');
+                }
+            }else{
+                alert("输入不合法，请重新输入");
+                i--;
+            }
+        }
     </script>
+    <!-- 20190729 -->
 </body>
 </html>

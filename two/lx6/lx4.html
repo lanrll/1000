@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 定义一个含有11个元素的数组  计算下标为奇数的元素的平均数（自定义函数实现） -->
+</head>
+<body>
+    <script>
+        //生成从minNum到maxNum的随机数
+        function randomNum( minNum, maxNum){
+            switch(arguments.length){
+                case 1:
+                    return parseInt(Math.random()*minNum+1, 10);
+                    break;
+                case 2:
+                    return parseInt(Math.random()*(maxNum-minNum+1)+minNum, 10);
+                    break;
+                default: 
+                    return 0;
+                    break;
+            }
+        }
+        arr = new Array(11)
+        for( i=0; i<arr.length; i++){
+            arr[i] = randomNum( 1, 100)
+        }
+        console.log(arr)
+        var sum = 0;
+        var n = 0;
+        for( i=0; i<arr.length; i++){
+            if(i%2 != 0){
+                sum += arr[i];
+                n++
+            }
+        }
+        console.log(sum/n)
+    </script>
+</body>
+</html>

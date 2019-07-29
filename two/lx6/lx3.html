@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 有一个数组，先从小到大排好序，再输入一个数，要求按规律将它插入数组中。   -->
+</head>
+<body>
+    <script>
+        //生成从minNum到maxNum的随机数
+        function randomNum(minNum,maxNum){ 
+            switch(arguments.length){ 
+                case 1: 
+                    return parseInt(Math.random()*minNum+1,10); 
+                break; 
+                case 2: 
+                    return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+                break; 
+                    default: 
+                        return 0; 
+                    break; 
+            } 
+        } 
+        arr = new Array(10)
+        for( i=0; i<arr.length; i++){
+            arr[i] = randomNum(1,1000);
+        }
+        console.log("原数组："+arr)
+        arr.sort((a,b)=> a-b)
+        console.log("排序后："+arr)
+        var n = Number(prompt("输入一个数，插入"+arr))
+        arr.splice( 5, 0, n)
+        arr.sort((a,b) => a-b)
+        // for( i=0; i<arr.length; i++){
+        //     if(n <= arr[i]){
+        //         arr.splice( i, 0, n)
+        //     }else if( n > arr[i]){
+        //         continue;
+        //     }
+        // }
+        console.log(arr)
+    </script>
+</body>
+</html>

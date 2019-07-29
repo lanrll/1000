@@ -19,7 +19,7 @@
             }
     </script> -->
     <!-- 20190724 -->
-    <script>
+    <!-- <script>
         var height = Number(prompt("请输入身高"));
         var weight = Number(prompt("请输入体重"));
         var num = (weight-108)*2
@@ -30,6 +30,19 @@
         }else if(weight>num+10){
             alert("胖了");
         }
+    </script> -->
+    <script>
+        var height = Number(prompt("请输入身高"))
+        var weight = Number(prompt("请输入体重"))
+        var n = (height-108)*2
+        if(weight>=n-10 && weight<=n+10){
+            console.log("合适")
+        }else if(weight> n+10){
+            console.log('胖')
+        }else if(weight< n-10){
+            console.log("瘦")
+        }
     </script>
+    <!-- 20190729 -->
 </body>
 </html> 
