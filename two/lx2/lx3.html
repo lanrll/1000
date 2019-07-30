@@ -49,8 +49,7 @@
             }
         }
     </script> -->
-    <!-- 20190724 -->
-    <script>
+    <!-- <script>
         for(i=0;i<3;i++){
             var pc = Number(parseInt (Math.random()*3)+1);
             console.log(pc);
@@ -88,6 +87,43 @@
                 break;
             }
         }
-    </script>
+    </script> -->
+     <!-- 20190724 -->
+     <script>
+         var pc = Number(parseInt(Math.random()*3)+1);
+         console.log(pc)
+         var user = Number(prompt("请输入1-3中的一个数，分别代表石头，剪刀，步"))
+         switch(pc){
+            case 1: 
+                switch(user){
+                    case 1:console.log("equal")
+                        break;
+                    case 2:console.log("lose")
+                        break;
+                    case 3:console.log("win")
+                }
+                break;
+            case 2:
+                switch(user){
+                    case 1: console.log("win")
+                        break;
+                    case 2: console.log("equal")
+                        break;
+                    case 3: console.log("lose")
+                }
+                break;
+            case 3: 
+                switch(user){
+                    case 1: console.log("lose")
+                        break;
+                    case 2: console.log("win")
+                        break;
+                    case 3: console.log("equal")
+                        break;
+                }
+                break;
+         }
+     </script>
+     <!-- 20190730 -->
 </body>
 </html>

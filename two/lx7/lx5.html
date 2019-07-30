@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 统计字符串中每个字符的个数，aabccd统计每个字符出现的次数，结果显示 a 2、b 1、c 2、d1 -->
+</head>
+<body>
+    <script>
+        var obj = {}
+        var str = "He feels standardized education does not benefit those children who are either below or above average intelligence."
+        // var str = "asd asd asd dsa"
+        console.log(str)
+        for( i=0; i<str.length ; i++){
+            if(obj[str[i]] === undefined){
+                obj[str[i]] = 1
+            }else {
+                obj[str[i]]++
+            }
+        }
+        console.log(obj)
+    </script>
+</body>
+</html>

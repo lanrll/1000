@@ -27,7 +27,7 @@
         }
     </script> -->
     <!-- 2019072516 -->
-    <script>
+    <!-- <script>
         var num = Number(prompt("输入一个三位水仙花数"));
         var gw = num%10
         var sw = parseInt(num/10%10);
@@ -39,6 +39,20 @@
             document.write(num+"是水仙花数")
         }
         document.write(num+"不是水仙花数")
+    </script> -->
+    <script>
+        var num = Number(prompt("输入一个三位数"))
+        var bit = num%10
+        var ten = parseInt(num/10%10)
+        var hundred = parseInt(num/100)
+        function f(n){
+            return n*n*n
+        }
+        if(num == f(bit)+ f(ten) +f(hundred)){
+            console.log(num+"是水仙花数")
+        }else{
+            console.log(num+"不是水仙花数")
+        }
     </script>
 </body>
 </html>

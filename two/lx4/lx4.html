@@ -32,7 +32,7 @@
         console.log(g(n));
         
     </script> -->
-    <script>
+    <!-- <script>
         var num = Number(prompt("输入一个数n，计算n！"))
         function f(n){
             if(n>1){
@@ -50,7 +50,25 @@
         document.write(f(num));
         document.write("<br>")
         document.write(g(num));
-    </script>
+    </script> -->
     <!-- 2019072519 -->
+
+    <script>
+        var n = Number(prompt("输入n，求n！"))
+        for( i=1, n1=1; i<=n; i++){
+            n1 *=i
+        }
+        function f(n){
+            if(n==1){
+                return 1
+            }else{
+                return f(n-1)*n
+            }
+        }
+        var n2 = f(n)
+        console.log(n1)
+        console.log(n2)
+    </script>
+    <!-- 20190730 -->
 </body>
 </html>

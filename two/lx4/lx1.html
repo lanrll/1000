@@ -24,7 +24,7 @@
             }
         }
     </script> -->
-    <script>
+    <!-- <script>
         var m = Number(prompt("输入开始年"))
         var n = Number(prompt("输入结束年"))
         function f(m,n){
@@ -39,7 +39,25 @@
             }
         }
         f(m,n)
-    </script>
+    </script> -->
     <!-- 2019072519 -->
+
+    <script>
+        function f( m , n){
+            if(m<=n){
+                for( i =m; i<=n; i++){
+                    if(i%4 == 0 && i%100 !=0 || i%400 == 0){
+                        document.write(i+"是闰年")
+                    }
+                }
+            }else{
+                alert("输入不合法")
+            }
+        }
+        var m = Number(prompt("输入起始年"))
+        var n = Number(prompt("输入截至年"))
+        f( m, n)
+    </script>
+    <!-- 20190730 -->
 </body>
 </html>

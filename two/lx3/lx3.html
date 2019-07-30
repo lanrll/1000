@@ -20,6 +20,7 @@
             }
         }
         console.log(sun1+sun2);
+
     //求出1-1/2+1/3-1/4…..1/100的和
         var sun1=0,sun2=0;
         for(i=1;i<=100;i++){
@@ -33,7 +34,8 @@
         }
         console.log(sun1+sun2);
     </script> -->
-    <script>
+
+    <!-- <script>
         var sun1=0,sun2=0;
         for(i=1;i<=100;i++){
             if(i%2==0){
@@ -43,6 +45,19 @@
             }
         }
         console.log(sun1+sun2);
+    </script> -->
+
+    <script>
+        var num1 = 0, num2 = 0
+        for(i=1 ;i<=100 ; i++){
+            if(i%2 == 0){
+                num1 = num1 - 1/i
+            }else{
+                num2 = num2 + 1/i
+            }
+        } 
+        console.log(num1+num2)
     </script>
+    <!-- 20190730 -->
 </body>
 </html>

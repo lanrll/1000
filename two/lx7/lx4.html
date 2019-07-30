@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 快速排序 -->
+</head>
+<body>
+    <script>
+        function randomNum( min , max){
+            switch(arguments.length){
+                case 1: 
+                    return parseInt(Math.random()*min+1, 10)
+                    break;
+                case 2: 
+                    return parseInt(Math.random()*(max-min+1)+min, 10) 
+                    break;
+                default: 
+                    return 0
+                    break;
+            }
+        }
+        var a = new Array(10)
+        for( i=0; i<a.length ; i++){
+            a[i] = randomNum( 1, 100)
+        }
+        console.log(a)
+        function f( a, left , right){
+            if(left >= right){
+                return 
+            }
+            var i = left
+            var j = right
+            var base = a[j]
+            while (i < j) {//把所有比基准值小的数放在左边大的数放在右边
+                while (i < j && a[i] <= base) { //找到一个比基准值大的数交换
+                    i++
+                }
+                a[j] = a[i] // 将较大的值放在右边如果没有比基准值大的数就是将自己赋值给自己（i 等于 j）
+                while (j > i && a[j] >= base) { //找到一个比基准值小的数交换
+                    j--
+                }
+                a[i] = a[j] // 将较小的值放在左边如果没有找到比基准值小的数就是将自己赋值给自己（i 等于 j）
+            }
+            a[j] = base // 将基准值放至中央位置完成一次循环（这时候 j 等于 i ）
+            f(a, left, j-1) // 将左边的无序数组重复上面的操作
+            f(a, j+1, right) // 将右边的无序数组重复上面的操作
+        }
+        f( a, 0, a.length-1)
+        console.log(a)
+    </script>
+</body>
+</html>

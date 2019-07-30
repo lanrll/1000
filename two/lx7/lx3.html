@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 插入排序 -->
+</head>
+<body>
+    <script>
+        function randomNum( min, max){
+            switch(arguments.length){
+                case 1: 
+                    return parseInt(Math.random()*min+1, 10)
+                    break;
+                case 2: 
+                    return parseInt(Math.random()*(max-min+1)+min, 10)
+                    break;
+                default:
+                    return 0
+                    break;
+            }
+        }
+        var a = new Array(10)
+        for( i=0; i<a.length ; i++){
+            a[i] = randomNum( 1, 100)
+        }
+        console.log(a)
+        for( j = 1 ; j<a.length ; j++){
+            for( k = j ; k>= 0 ; k--){
+                if(a[k] < a[k-1]){
+                    var temp = a[k]
+                    a[k] = a[k-1]
+                    a[k-1] = temp
+                }
+            }
+        }
+        console.log(a)
+    </script>
+</body>
+</html>

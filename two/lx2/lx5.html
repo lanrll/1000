@@ -38,7 +38,7 @@
         }
     </script> -->
     <!-- 2019072509 -->
-    <script>
+    <!-- <script>
         var date = Number(prompt("请输入一个八位日期（列20190725）"));
         console.log(date)
         var day = date%100;
@@ -66,6 +66,33 @@
             case 2:day+=31;
         }
         console.log(date+"是"+year+"年的第"+day+"天")
+    </script> -->
+    <script>
+        var date = Number(prompt("请输入一个至少四位日期（列20190730）"))
+        var day = date%100
+        var month = parseInt(date/100%100)
+        var year = parseInt(date/10000)
+        switch(month){
+            case 12: day += 31
+            case 11: day += 30
+            case 10: day += 31
+            case 9: day += 30
+            case 8: day += 31
+            case 7: day += 30
+            case 6: day += 31
+            case 5: day += 30
+            case 4: day += 31
+            case 3:{
+                if( year%4 == 0 && year%100 != 0 || year%400 ==0){
+                    day += 28
+                }else{
+                    day += 39
+                }
+            } 
+            case 2: day += 31
+        }
+        console.log(date+"是"+year+"年第"+day+"天")
     </script>
+    <!-- 20190730 -->
 </body>
 </html>

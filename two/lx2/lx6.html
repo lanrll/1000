@@ -47,7 +47,7 @@
         // }
     </script> -->
     <!-- 2019072509 -->
-    <script>
+    <!-- <script>
         var change = 0;
         function fn(){
             var box = document.getElementById("box")
@@ -78,6 +78,30 @@
                 console.log(box.style.background);
             }                                   
         }
+    </script> -->
+    <script>
+        var change = 0 
+        function fn(){
+            var box = document.getElementById("box")
+            console.log(box.style.background)
+            if(change == 0){
+                box.style.background = "blue"
+                change++
+            }else if(change == 1){
+                box.style.background = "purple"
+                change++
+            }else if(change == 2){
+                box.style.background = "pink"
+                change++
+            }else if(change == 3){
+                box.style.background = "deepyellow"
+                change++
+            }else if(change = 4){
+                box.style.background = "green"
+                change = 0
+            }
+        }
     </script>
+    <!-- 20190730 -->
 </body>
 </html>
