@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 秒杀倒计时 -->
+    <style>
+      p{
+          display: block;
+          width: 800px;
+          height: 200px;
+          margin: 100px auto;
+          background-color:red;
+          color: #ffffff;
+          text-align: center;
+          line-height: 200px;
+          font-size: 50px
+      } 
+      
+    </style>
+</head>
+<body>
+    <p>距离放学还有
+        <span id="span1"></span>天
+        <span></span>时
+        <span></span>分
+        <span></span>秒
+    </p>
+    <script>
+        var date = document.getElementsByTagName("span1")
+        var str = ""
+        var today = new Date()
+        var tohour = today.getHours()
+        var tominute = today.getMinutes()
+        var tosecond = today.getSeconds()
+        console.log(today.toDateString())
+        var endday = new  Date(2019 , 8 , 4 , 18 , 0 , 0)
+        var endhour = endday.getHours()
+        var endminute = today.getMinutes()
+        var endsecond = today.getSeconds()
+        var coutDown = (endday.getTime()-today.getTime())
+        console.log(coutDown)
+        console.log(""+tohour+tominute+tosecond)
+        syday = parseInt(coutDown/(60*60*24*1000))
+        day = parseInt(coutDown) - parseInt(syday*(60*60*24*1000))
+
+        syhour = parseInt(day/(60*60*1000)),//除去天的毫秒数转换成小时
+        hour = day - syhour*60*60*1000,//除去天、小时的毫秒数
+        syminute = parseInt(hour/(60*1000)),//除去天的毫秒数转换成分钟
+        minute = hour - syminute*60*1000;//除去天、小时、分的毫秒数
+        sysecond = parseInt((coutDown - syday*60*60*24*1000 - syhour*60*60*1000 - syminute*60*1000)/1000)//除去天、小时、分的毫秒数转化为秒
+
+        date[0] = syday
+        date[1] = syhour
+        date[2] = syminute
+        date[3] = sysecond
+
+        for(i =0 ;i<4;i++){
+            str += "<b>"+date[i]+"</b>"
+            span1.innerHTML = str
+        }
+        // document.getElementById("div").innerHTML=(shengyuD + "天" + shengyuH + "小时" + shengyuM + "分" + S + "秒" + "<br>");
+        // setTimeout("clock()",500);
+        // setTimeout(clock,500);  
+
+
+        // function clock(){
+        // var today=new Date(),//当前时间
+        //     h=today.getHours(),
+        //     m=today.getMinutes(),
+        //     s=today.getSeconds();
+        // var stopTime=new Date("Feb 9 2019 00:00:00"),//结束时间
+        //     stopH = stopTime.getHours(),
+        //     stopM = stopTime.getMinutes(),
+        //     stopS = stopTime.getSeconds();
+        // var shenyu = stopTime.getTime() - today.getTime(),//倒计时毫秒数
+        //     shengyuD = parseInt(shenyu/(60*60*24*1000)),//转换为天
+        //     D = parseInt(shenyu) - parseInt(shengyuD*60*60*24*1000),//除去天的毫秒数
+        //     shengyuH = parseInt(D/(60*60*1000)),//除去天的毫秒数转换成小时
+        //     H = D - shengyuH*60*60*1000,//除去天、小时的毫秒数
+        //     shengyuM = parseInt(H/(60*1000)),//除去天的毫秒数转换成分钟
+        //     M = H - shengyuM*60*1000;//除去天、小时、分的毫秒数
+        //     S = parseInt((shenyu - shengyuD*60*60*24*1000 - shengyuH*60*60*1000 - shengyuM*60*1000)/1000)//除去天、小时、分的毫秒数转化为秒
+        //     document.getElementById("div").innerHTML=(shengyuD + "天" + shengyuH + "小时" + shengyuM + "分" + S + "秒" + "<br>");
+        //     // setTimeout("clock()",500);
+        //     setTimeout(clock,500);
+        // }
+    </script>
+</body>
+</html>

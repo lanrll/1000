@@ -5,23 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="../gg/base.js"></script>
     <!-- 冒泡排序 -->
 </head>
 <body>
     <script>
-        function randomNum( min, max){
-            switch(arguments.length){
-                case 1:
-                    return parseInt(Math.random()*min+1, 10)
-                    break;
-                case 2:
-                    return parseInt(Math.random()*(max-min+1)+min, 10)
-                    break;
-                default:
-                    return 0
-                    break;
-            }
-        }
         var arr = new Array(10)
         for( i = 0 ; i< arr.length ; i++){
             arr[i] = randomNum( 1, 100)

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 点击div随机换色 -->
+    <script src="../gg/base.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <script>
+        var box1 = document.getElementById("box1")
+        var box2 = document.getElementById("box2")
+        var box3 = document.getElementById("box3")
+        box1.onclick = () =>  {
+            var r = randomNum( 0, 255)
+            var g = randomNum( 0, 255)
+            var b = randomNum( 0, 255)
+            var a = Math.random()
+            box1.style.background = "rgba("+r+","+g+","+b+","+a+")" 
+            console.log(box1.style.background+1)
+        }
+        box2.onclick = () => {
+            var box2 = document.getElementById("box2")
+            var arr = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"]
+            // var a1 = arr[randomNum(0,15)]
+            // var a2 = arr[randomNum(0,15)]
+            // var a3 = arr[randomNum(0,15)]
+            // var a4 = arr[randomNum(0,15)]
+            // var a5 = arr[randomNum(0,15)]
+            // var a6 = arr[randomNum(0,15)]
+            var a = new Array(6)
+            var str = "#"
+            for( i=0; i<a.length; i++){
+                a[i] = randomNum(0 , arr.length)
+                str  += arr[a[i]]
+            }
+            box2.style.background = str
+            console.log(box2.style.background+2)
+        }
+        box3.onclick = () => {
+            var color = Math.random().toString(16).slice(-6)
+            box3.style.background = "#"+color
+            console.log(box3.style.background+3)
+        }
+    </script>
+</body>
+</html>
