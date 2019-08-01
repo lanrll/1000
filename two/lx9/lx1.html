@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- rili -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul,li{
+            list-style-type: none;
+        }
+        #calendar{
+            width: 400px;
+            height: 400px;
+            margin: 200px auto;
+            border: 1px solid #000000;
+        }
+        #calendar div{
+            padding: 0 25px;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* background-color: deepskyblue; */
+        }
+        #calendar #week{
+            height: 50px;
+            margin: 0 25px;
+            /* background-color: #f40; */
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom:1px solid #000000; 
+        }
+        #calendar #datelist{
+            height: 300px;
+            margin: 10px 25px;
+            display: flex;
+            flex-flow: wrap;
+        }
+        #calendar #datelist li{
+            display: block;
+            width: 14%;
+            height: 14%;
+            text-align: center;
+            line-height: 35px;
+        }
+        .color1{
+            color: rosybrown;
+        }
+        .color2{
+            background-color: rgb(253, 1, 220) ;
+        }
+        .color3{
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="calendar">
+        <div>
+            <a href="javascript:void(0);" onclick="f()" id="upmonth">上个月</a>
+            <h4 id="title"></h4>
+            <a href="javascript:;" onclick="g()" id="nextmonth">下个月</a>
+        </div>
+        <ul id="week">
+            <li>日</li>
+            <li>一</li>
+            <li>二</li>
+            <li>三</li>
+            <li>四</li>
+            <li>五</li>
+            <li>六</li>
+        </ul>
+        <ul id="datelist"></ul>
+    </div>
+    <script>
+        var datelist1 = document.getElementById("datelist")
+        var title1 = document.getElementById("title")
+        var a1 = document.querySelector('#upmonth')
+        var a2 = document.querySelector('#nextmonth')
+
+        var str2 = ""
+        var str3 = ""
+
+        function f() {
+             date.setMonth(date.getMonth()-1)
+        }
+        setInterval(() => {
+            var date = new Date()
+            var year = date.getFullYear()
+
+            var month = date.getMonth()+1
+            var str1 = year+"年"+month+"月"
+            title1.innerHTML = str1
+
+            var today = date.getDate()
+            var week = date.getDay(date.setDate(1))
+            var endday = date.getDate(date.setMonth(date.getMonth()+1,0))
+            console.log(today+","+week+","+endday)
+
+            for(i=0 ; i<week;i++){
+                str2 += "<li></li>"
+            }
+            datelist1.innerHTML = str2
+            
+            for(j =1 ;j <= endday; j++){
+                if(j=== today){
+                    str2 += "<li class='color2'>"+j+"</li>"
+                }else if(j<today){
+                    str2 += "<li class='color3'>" +j+ "</li>"
+                }else if((week+j)%7 == 0 || (week+j)%7 == 1){
+                    str2 += "<li class='color1'>" +j+ "</li>"
+                }else{
+                    str2 += "<li>" +j+ "</li>"
+                }
+            }
+            datelist1.innerHTML = str2;
+        },1000)
+    </script>
+</body>
+</html>
