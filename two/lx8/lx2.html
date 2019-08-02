@@ -15,11 +15,15 @@
           background-color:red;
           color: #ffffff;
           text-align: center;
-          line-height: 200px;
+          line-height: 50px;
           font-size: 50px
       } 
       p span{
           color: #ffffff;
+          font-size: 10px;
+      }
+      p b{
+          font-size: 30px;
       }
     </style>
 </head>
@@ -31,7 +35,7 @@
             var coutDown = document.getElementById("p1")
             var date = new Date()
             var time = date.getTime()
-            date.setMonth(12,4)
+            date.setMonth(7,4)
             date.setHours(18,0,0)
             var endTime = date.getTime()
             var distance = (endTime-time)/1000
@@ -42,7 +46,8 @@
             var minute = parseInt(distance/60)
             var second = distance%60
             var str =  ""+g(day)+"<span>天</span>"+g(hour)+"<span>时</span>"+g(minute)+"<span>分</span>"+g(second)+"<span>秒</span>"
-            coutDown.innerHTML = str
+            coutDown.innerHTML = '<b>离</b>' +date.getFullYear()+ "<b>年</b>" +(date.getMonth()+1)+'<b>月</b>'+date.getDate()+'<b>号还有</b><br>' +str
+            // coutDown.innerHTML = str
         },500)
 
         function g(n){

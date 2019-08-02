@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 表格创建删除 -->
+    <style>
+        table,td{
+            border: 1px solid #666666;
+            border-collapse: collapse;
+            margin: 100px auto;
+        }
+        td{
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .ccc{
+            background-color: #ccc;
+        }
+        .ac{
+            background-color: #999999;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var json = [
+            {
+                name: '帽子',
+                size: '12',
+                color: '蓝色',
+                price: 123
+
+            },
+            {
+                name: '衣服',
+                size: 'L',
+                color: '白色',
+                price: 250
+            },
+            {
+                name: '裤子',
+                size: 'L',
+                color: '白色',
+                price: 500
+            },
+            {
+                name: '鞋子',
+                size: 42,
+                color: '白色',
+                price: 1235
+            },
+            {
+                name: '裤头',
+                size: 'L',
+                color: '红色',
+                price: 50
+            },
+            {
+                name: '帽子',
+                size: '12',
+                color: '蓝色',
+                price: 123
+
+            },
+            {
+                name: '衣服',
+                size: 'L',
+                color: '白色',
+                price: 250
+            },
+            {
+                name: '裤子',
+                size: 'L',
+                color: '白色',
+                price: 500
+            },
+            {
+                name: '鞋子',
+                size: 42,
+                color: '白色',
+                price: 1235
+            },
+            {
+                name: '裤头',
+                size: 'L',
+                color: '红色',
+                price: 50
+            },
+            
+        ]    
+
+        var table = document.createElement('table')
+        json.forEach(function( item, index){
+            var tr = document.createElement('tr')
+            for( var key in item){
+                var td = document.createElement('td')
+                td.innerHTML = item[key]
+                tr.appendChild(td)
+            }
+            var delTd = document.createElement('td')
+            delTd.innerHTML = '<a href="javascript:;">删除</a>'
+            tr.appendChild(delTd)
+            table.appendChild(tr)
+        })
+        document.body.appendChild(table)
+
+        var trs = document.querySelectorAll('tr')
+        for( i=0; i<trs.length ; i++){
+            if(i%2){
+                trs[i].className = 'ccc'
+            }
+            trs[i].setAttribute( 'data-index', i)
+            trs[i].onmouseenter = function () {
+                this.className = 'ac'
+            }
+            trs[i].onmouseleave = function() {
+                var index = this.getAttribute( 'data-index')
+                if( index%2){
+                    this.className = 'ccc'
+                }else{
+                    this.className = ""
+                }
+            }
+        }
+
+        var delBtns = document.querySelectorAll('a')
+        for( i=0; i<delBtns.length; i++){
+            delBtns[i].onclick = function() {
+                var tr = this.parentNode.parentNode
+                if( confirm('确定要删除吗？')){
+                    tr.remove()
+                }
+            }
+        }
+    </script>
+</body>
+</html>

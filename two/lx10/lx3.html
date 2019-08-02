@@ -21,7 +21,7 @@
         }
         .tab div{
             width: 960px; 
-            height: 720px;
+            height: 600px;
             /* height: 500px; */
             margin: 0 auto;
             
@@ -93,22 +93,19 @@
                 }
                 this.className = "up"
                 imgs[this.index].className = "up"
-                console.log(up)
+                // console.log(up)
                 n= this.index
             }
         }
     
         setInterval( () => {
-            // var up = document.querySelectorAll('.tab li')
-            // var imgs = document.querySelectorAll('.tab a')
             for( j=0; j<up.length ;j++){
                 up[j].className = ""
                 imgs[j].className = ""
             }
             up[n].className = 'up';
-            console.log(up)
+            // console.log(up)
             imgs[up[n].index].className = 'up';
-            // n++
             if(n<up.length-1){
                 n++
             }else{

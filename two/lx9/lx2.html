@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 猜数字 -->
+    <script src="../gg/base.js"></script>
+</head>
+<body>
+    <script>
+        var pcnum = randomNum( 0, 100)
+        console.log(pcnum);
+        var times = 1
+        // function g(){
+        //     var num = prompt('猜数字，请输入0-100') 
+        //     times++
+        //     if(num == pcnum){
+        //         alert('你猜对了，共猜了'+times+'次')
+        //         return g()
+        //     }else if(num < pcnum){
+        //         alert('猜小了')
+        //         return g()
+        //     }else if(num == ''){
+        //         alert('输入不能为空')
+        //         return g()
+        //     }else if(num  > pcnum){
+        //         alert('猜大了')
+        //         return g()
+        //     }
+        // }
+        // g()
+
+        var i = 0
+        var num 
+        while ( num != pcnum) {
+            num = prompt('猜数字，0-100')
+            if(num > pcnum){
+                alert('猜大了')
+                i++
+                continue
+            }else if(num < pcnum){
+                alert('猜小了')
+                i++
+                continue
+            }else if(num == ''){
+                alert('输入不能为空')
+                i++
+                continue
+            }else {
+                alert('你猜对了，你一共猜了'+i+'次')
+            }
+        }
+        // alert('' +i+ "")
+    </script>    
+</body>
+</html>
