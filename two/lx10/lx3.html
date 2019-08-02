@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 选项卡/轮播图 -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .tab{
+            width: 100%;
+            height: 100%;
+        }
+        .tab ul{
+            width: 500px;
+            margin: 0 auto;
+        }
+        .tab div{
+            width: 960px; 
+            height: 720px;
+            /* height: 500px; */
+            margin: 0 auto;
+            
+        }
+        .tab li{
+            list-style: none;
+            float: left;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+        }
+        .tab a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            display: none
+        }
+        .tab img{
+            width: 100%;
+            height: 100%;
+        }
+        li.up{
+            background: #ff4400;
+        }
+        .tab a.up{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab">
+        <ul>
+            <li class="up">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+        </ul>
+        <div>
+            <a class="up" href="javascript:;"><img src="http://t-1.tuzhan.com/138cdf1cde7f/c-2/l/2013/06/15/09/9924391ae9844d0dbc011f0978026c05.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://t-1.tuzhan.com/71fce5367a3f/c-2/l/2014/09/01/22/e91143832170464bb55a4bb6bb36bb30.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://hbimg.b0.upaiyun.com/adaede513ff42cd6dbb884c5493ebe22f95806dd8dfb-vhiTrq_fw658" alt=""></a>
+            <a href="javascript:;"><img src="http://t-1.tuzhan.com/3dd38240cf42/c-2/l/2013/11/05/09/c8950fd35f634f0297bc680a51e7d91f.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://pic1.win4000.com/wallpaper/b/57b678215028b.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://uploads.5068.com/allimg/160325/62-160325141226.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://uploads.5068.com/allimg/160325/62-160325141226-51.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://gss0.baidu.com/-Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/b3fb43166d224f4a2375757c0af790529922d1f4.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://uploads.5068.com/allimg/160325/62-160325141226-50.jpg" alt=""></a>
+            <a href="javascript:;"><img src="http://uploads.5068.com/allimg/1801/79-1P111163537.jpg" alt=""></a>
+        </div>
+    </div>
+    <script>
+        var up = document.querySelectorAll('.tab li')
+        var imgs = document.querySelectorAll('.tab a')
+        var n=1
+
+        for( i=0; i<up.length ; i++){
+            up[i].index = i;
+            up[i].onclick = function(){
+                for( j=0; j<up.length ;j++){
+                    up[j].className = ""
+                    imgs[j].className = ""
+                }
+                this.className = "up"
+                imgs[this.index].className = "up"
+                console.log(up)
+                n= this.index
+            }
+        }
+    
+        setInterval( () => {
+            // var up = document.querySelectorAll('.tab li')
+            // var imgs = document.querySelectorAll('.tab a')
+            for( j=0; j<up.length ;j++){
+                up[j].className = ""
+                imgs[j].className = ""
+            }
+            up[n].className = 'up';
+            console.log(up)
+            imgs[up[n].index].className = 'up';
+            // n++
+            if(n<up.length-1){
+                n++
+            }else{
+                n=0
+            }
+        },1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 全选 -->
+</head>
+<body>
+    <input type="checkbox" id="all">
+    <div>
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+        <input type="checkbox">
+    </div>
+    <script>
+        var all = document.querySelector("#all")
+        var single = document.querySelectorAll('div input') 
+        var num = 0
+
+        all.onchange = function() {
+            for( i=0; i<single.length; i++){
+                single[i].checked = this.checked
+            }
+            num = single.length ? single.length : 0
+        }
+        
+        for( j=0 ; j<single.length ; j++){
+            single[j].onchange = function() {
+                this.checked ? num++ : num--
+                all.checked = num == single.length 
+            }
+        }
+    </script>
+</body>
+</html>

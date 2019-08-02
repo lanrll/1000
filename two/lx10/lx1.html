@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../gg/base.js"></script>
+    <!-- 位置动画 -->
+    <style>
+        body{
+            position: relative;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: #994455;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        // console.log(isBrowser())   
+        var box = document.querySelector('#box')
+        
+        box.onclick = function(){
+            // var timer1 = setInterval( () => {
+            //     var left = box.offsetLeft
+            //     var top = box.offsetTop
+            //     if(left<=600 && top == 0){
+            //         box.style.left = left+2+"px"
+            //     }else{
+            //         clearInterval(timer1)
+            //     }
+            // },10)
+            var timer2 = setInterval( () => {
+                var left = box.offsetLeft
+                var top = box.offsetTop
+                if(left<=600 && top == 0){
+                    box.style.left = left+2+"px"
+                }else if(left = 600 && top <=400){
+                    // clearInterval(timer)
+                    box.style.left = left+1+"px"
+                    box.style.top = top+1+"px"
+                }else if(top > 400 && left < 1000){
+                    box.style.left = left-1+"px"
+                    box.style.top = top+1+"px"
+                }else if(top < 800 && left < 600){
+                    box.style.left = left-1+"px"
+                    box.style.top = top-1+"px"
+                }else if(top < 400 && left < 600 ){
+                    box.style.left = left+1+"px"
+                    box.style.top = top-1+"px"
+                }
+
+            },1)
+        }
+    </script>
+</body>
+</html>
