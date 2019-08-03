@@ -615,7 +615,7 @@ menu .loginbar div ul li a:hover{
     flex-flow: wrap;
     margin: 0 auto;
 }
-.banner5 .banner5_div{
+.banner5_div{
     width: 390px;
     height: 450px;
     margin-bottom: 30px;
@@ -623,7 +623,7 @@ menu .loginbar div ul li a:hover{
     background-color: #fefefe;
     position: relative;
 }
-.banner5 .banner5_div:nth-child(3n){
+.banner5_div:nth-child(3n){
     margin-right: 0;
 }
 .biaot{
@@ -842,4 +842,60 @@ menu .loginbar div ul li a:hover{
 }
 .banner5 .banner5_4 .banner5_4_div2 p:nth-child(2){
     color: #a2a2a2;
+}
+.banner5 .banner5_5 .banner5_5_div{
+    width: 350px;
+    height: 360px;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: wrap;
+}
+.banner5 .banner5_5 .banner5_5_div div{
+    width: 165px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.banner5 .banner5_5 .banner5_5_div div p{
+    width: 165px;
+    text-align: center;
+    color: #666666;
+}
+.banner5 .banner5_5 .banner5_5_div div p:nth-child(2){
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #438c95;
+    margin-top: 20px;
+}
+.banner5 .banner5_6 .banner5_6_div{
+    width: 353px;
+    height: 370px;
+    margin: 0 auto;
+}
+.banner5 .banner5_6 .banner5_6_div img{
+    float: left;
+}
+.banner5 .banner5_6 .banner5_6_div img:nth-child(3){
+    margin: 0 35px;
+}
+
+.title{
+    height: 60px;
+}
+.title p{
+    text-align: center;
+    color: #222222;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.banner6{
+    width: 1192px;
+    height: 966px;
+    display: flex;
+    flex-flow: wrap;
+    margin:  0 auto;
 }
