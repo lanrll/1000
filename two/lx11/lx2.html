@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 小键盘控制元素上下左右移动 -->
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div')
+        document.onkeydown = function(e){
+            e = e || event
+            var code = e.keyCode || e.which
+            console.log(code)
+            if(code === 104){
+                div.style.top = div.offsetTop - 5 + 'px'
+            }else if(code === 98){
+                div.style.top = div.offsetTop + 5 + 'px'
+            }else if(code === 100){
+                div.style.left = div.offsetLeft - 5 +'px'
+            }else if(code === 102){
+                div.style.left = div.offsetLeft + 5 +'px'
+            }
+        }
+    </script>
+</body>
+</html>

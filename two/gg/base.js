@@ -54,4 +54,10 @@ function getStyle (obj, attr) {
     } else {
       return getComputedStyle(obj, false)[attr]
     }
-  }
+}
+// 设置元素的样式
+function css (obj, attr) {
+    for (var key in attr) {
+      obj.style[key] = attr[key] 
+    }
+}

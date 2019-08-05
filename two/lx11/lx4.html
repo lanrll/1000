@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 模拟select下拉菜单 -->
+</head>
+<body>
+    <input type="text" name="" id="">
+    <ul style="display: none">
+        <li>成都</li>
+        <li>上海</li>
+        <li>北京</li>
+        <li>重庆</li>
+        <li>广州</li>
+    </ul>
+    <script>
+        var input = document.querySelector('input')
+        var ul = document.querySelector('ul')
+        var lis = ul.children
+
+        input.onfocus = function(){
+            ul.style.display = 'block'
+        }
+
+        input.onblur = function(){
+            ul.style.display = 'none'
+        }
+
+        Array.from(lis).forEach(function (li){
+            li.onmousedown = function(){
+                input.value = this.innerHTML
+            }
+        })
+    </script>
+</body>
+</html>

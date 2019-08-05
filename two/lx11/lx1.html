@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 一串内容跟随鼠标 -->
+    <style>
+        div{
+            width: 20px;
+            height: 20px;
+            background-color: #cccccc;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var cache = document.createDocumentFragment()
+        for ( i=0; i<20; i++){
+            var div = document.createElement('div')
+            div.innerHTML = i +1 
+            cache.appendChild(div)
+        }
+        document.body.appendChild(cache)
+        var div = document.querySelectorAll('div')
+        document.onmousemove = function(e) {
+            e = e || event
+            for( i=div.length - 2; i>=0 ; i--){
+                div[ i +1].style.left = div[i].style.left
+                div[ i +1].style.top = div[i].style.top
+            }
+            div[0].style.left = e.clientX + 'px'
+            div[0].style.top = e.clientY + 'px'
+        }
+    </script>
+</body>
+</html>

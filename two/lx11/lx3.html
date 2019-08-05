@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 自定义右键菜单 -->
+    <script src="../gg/base.js"></script>
+</head>
+<body>
+    <script>
+        var ul = document.createElement('ul')
+        ul.style.position = 'absolute'
+        document.oncontextmenu = function(e){
+            e = e || event
+            css( ul, {
+                left: e.clientX + 'px',
+                top: e.clientY + 'px'
+            })
+            ul.innerHTML = '<li>什么事</li><li>什么事</li><li>什么事</li>'
+            document.body.appendChild(ul)
+            if(e.preventDefault){
+                e.preventDefault()
+            }else{
+                window.event.returnValue = false
+                // return false
+            }
+        }    
+    </script>
+</body>
+</html>

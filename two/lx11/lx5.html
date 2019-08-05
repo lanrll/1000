@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 即时编辑表格 -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        #box{
+            width: 500px;
+            margin: 100px auto;
+        }
+        table,th,td{
+            border: 1px solid #000000;
+            border-collapse: collapse;
+        }
+        td,th{
+            width: 100px;
+            height: 30px;
+            padding: 10px;
+        }
+        input[type="text"]{
+            display: none;
+            height: 20px;
+            width: 60px;
+            border: 1px solid #cccccc;
+        }
+        tbody tr td:nth-child(1){
+            text-align: center;
+        }
+        tfoot td{
+            text-align: right;
+        }
+        .editBtn{
+            color: #666666;
+        }
+        .delBtn{
+            color: red;
+        }
+        .okBtn,.cancelBtn{
+            display: none;
+        }
+
+        .edit span{
+            display: none;
+        }
+        .edit input[type="text"]{
+            display: inline-block;
+        }
+        .edit .editBtn,.edit .delBtn{
+            display: none;
+        }
+        .edit .okBtn,.edit .cancelBtn{
+            display: inline
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <table>
+            <thead>    
+                <tr>
+                    <td><label>全选：<input type="checkbox" id="allcheck"></label></td>
+                    <td>名称</td>
+                    <td>单价</td>
+                    <td>数量</td>
+                    <td>编辑</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td><span>张三</span><input type="text"></td>
+                    <td><span>18</span><input type="text"></td>
+                    <td><span>1</span><input type="text"></td>
+                    <td>
+                        <a href="havascript:;" class="editBtn">编辑</a>
+                        <a href="havascript:;" class="okBtn">确定</a>
+                        <a href="havascript:;" class="cancelBtn">取消</a>
+                        <a href="havascript:;" class="delBtn">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td><span>李四</span><input type="text"></td>
+                    <td><span>25</span><input type="text"></td>
+                    <td><span>2</span><input type="text"></td>
+                    <td>
+                        <a href="havascript:;" class="editBtn">编辑</a>
+                        <a href="havascript:;" class="okBtn">确定</a>
+                        <a href="havascript:;" class="cancelBtn">取消</a>
+                        <a href="havascript:;" class="delBtn">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td><span>王二</span><input type="text"></td>
+                    <td><span>50</span><input type="text"></td>
+                    <td><span>3</span><input type="text"></td>
+                    <td>
+                        <a href="havascript:;" class="editBtn">编辑</a>
+                        <a href="havascript:;" class="okBtn">确定</a>
+                        <a href="havascript:;" class="cancelBtn">取消</a>
+                        <a href="havascript:;" class="delBtn">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td><span>狗蛋</span><input type="text"></td>
+                    <td><span>28</span><input type="text"></td>
+                    <td><span>4</span><input type="text"></td>
+                    <td>
+                        <a href="havascript:;" class="editBtn">编辑</a>
+                        <a href="havascript:;" class="okBtn">确定</a>
+                        <a href="havascript:;" class="cancelBtn">取消</a>
+                        <a href="havascript:;" class="delBtn">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td><span>小米</span><input type="text"></td>
+                    <td><span>225</span><input type="text"></td>
+                    <td><span>5</span><input type="text"></td>
+                    <td>
+                        <a href="havascript:;" class="editBtn">编辑</a>
+                        <a href="havascript:;" class="okBtn">确定</a>
+                        <a href="havascript:;" class="cancelBtn">取消</a>
+                        <a href="havascript:;" class="delBtn">删除</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="checkbox" class="check"></td>
+                    <td><span>华为</span><input type="text"></td>
+                    <td><span>1845</span><input type="text"></td>
+                    <td><span>13</span><input type="text"></td>
+                    <td>
+                        <a href="havascript:;" class="editBtn">编辑</a>
+                        <a href="havascript:;" class="okBtn">确定</a>
+                        <a href="havascript:;" class="cancelBtn">取消</a>
+                        <a href="havascript:;" class="delBtn">删除</a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td >总价：￥<b id="money"></b></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <script>
+        var editBtns = document.querySelectorAll('.editBtn')
+        var okBtns = document.querySelectorAll('.okBtn')
+        var cancelBtns = document.querySelectorAll('.cancelBtn')
+        var delBtns = document.querySelectorAll('.delBtn')
+        var allchecks = document.querySelector('#allcheck')
+        var checks = document.querySelectorAll('.check')
+        //编辑
+        Array.from(editBtns).forEach(function(btn) {
+            btn.onclick = function() {
+                var tr = btn.parentNode.parentNode
+                tr.className = 'edit'
+                var spans = tr.querySelectorAll('span')
+                Array.from(spans).forEach(function(span) {
+                    span.nextElementSibling.value = span.innerHTML
+                })
+            }
+        })
+        // 确定
+        Array.from(okBtns).forEach(function(btn) {
+            btn.onclick = function () {
+                var tr = btn.parentNode.parentNode
+                tr.className = ''
+                var spans = tr.querySelectorAll('span')
+                Array.from(spans).forEach(function(span){
+                    span.innerHTML = span.nextElementSibling.value
+                })
+            }
+        })
+        // 取消
+        Array.from(cancelBtns).forEach(function(btn){
+            btn.onclick = function () {
+                var tr = btn.parentNode.parentNode
+                tr.className = ''
+            }
+        })
+        // 删除
+        Array.from(delBtns).forEach(function(btn){
+            btn.onclick = function() {
+                var tr = btn.parentNode.parentNode
+                if(confirm("确定删除？")){
+                    tr.remove()
+                }
+            }
+        })
+        // 全选
+        var num = 0
+        allchecks.onchange = function() {
+            for( i=0 ;i<checks.length ;i++){
+                checks[i].checked = this.checked
+            }
+            num = checks.length ? checks.length : 0
+        }
+        for( j=0; j<checks.length; j++){
+            checks[j].onchange = function() {
+                this.checked ? num++ : num--
+                allchecks.checked = num == checks.length
+            }
+        }
+    </script>
+</body>
+</html>
