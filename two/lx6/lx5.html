@@ -6,23 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- 编写函数map(arr) 把数组中的每一位数字都增加30% -->
+    <script src="../gg/base.js"></script>
 </head>
 <body>
-    <script>
-        
-        function randomNum( min, max){
-            switch(arguments.length){
-                case 1:
-                    return parseInt(Math.random()*min+1, 10)
-                    break;
-                case 2:
-                    return parseInt(Math.random()*(max-min+1)+min, 10);
-                    break;
-                default:
-                    return 0;
-                    break;
-            }
-        }
+    <!-- <script>
         arr = new Array(10)
         for( i=0; i<arr.length; i++){
             arr[i] = randomNum( 1, 100)
@@ -39,6 +26,14 @@
         console.log(arr.map(x => x * (1 + 0.3)))
         // console.log(arr.from( arr, x => x*(1.3)))
         // console.log(arr.from({length:10},( v, i) => i))
+    </script> -->
+    <script>
+        var arr = new Array(10)
+        for( i=0; i<arr.length; i++){
+            arr[i] = randomNum( 0, 100)
+        }
+        console.log(arr)
+        console.log(arr.map(x => x*(1+0.3)))
     </script>
 </body>
 </html>

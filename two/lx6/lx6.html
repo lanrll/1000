@@ -6,22 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <!-- 输入一个数判断是否在数组中 -->
+    <script src="../gg/base.js"></script>
 </head>
 <body>
-    <script>
-        function randomNum( min, max){
-            switch(arguments.length){
-                case 1:
-                    return parseInt(Math.random()*min+1,  10)
-                    break;
-                case 2:
-                    return parseInt(Math.random()*(max-min+1)+min, 10)
-                    break;
-                default:
-                    return 0
-                    break;
-            }
-        }
+    <!-- <script>
         arr = new Array(10)
         for( i=0; i<arr.length; i++){
             arr[i] = randomNum( 1, 100)
@@ -55,6 +43,20 @@
         }else{
             console.log(n+"在数组"+arr+"中")
         }
+    </script> -->
+    <script>
+        var arr = new Array(10)
+        for( i=0; i<arr.length ; i++){
+            arr[i] = randomNum( 0, 100)
+        }
+        console.log(arr)
+        var num = Number(prompt("请输入一个数"))
+        if(arr.indexOf(num) < 0){
+            alert(num+"不在数组"+arr+"中")
+        }else{
+            alert(num+"在数组"+arr+"中第"+(arr.indexOf(num)+1) +'位')
+        }
     </script>
+    <!-- 20190805 -->
 </body>
 </html>
