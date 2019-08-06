@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 拖拽 -->
+    <script src="../gg/base.js"></script>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background-color: deepskyblue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        box
+    </div>
+    <script>
+        var box = document.querySelector('#box')
+        box.onmousedown = function(e){
+            e = e || event
+            var disX = e.offsetX
+            var disY = e.offsetY
+            document.onmousemove = function(e){
+                e = e || event
+                var left = e.clientX - disX
+                var top = e.clientY - disY
+                if(top < 0 ) top = 0
+                if(left < 0) left = 0
+                if(left > myTool.getBodySize().width - box.offsetWidth){
+                    left = myTool.getBodySize().width - box.offsetWidth
+                }
+                if(top > myTool.getBodySize().height - box.offsetHeight){
+                    top = myTool.getBodySize().height - box.offsetHeight
+                }
+                myTool.css( box, {
+                    left: left + 'px',
+                    top: top + 'px'
+                })
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null
+            }
+            if(e.preventDefault){
+                e.preventDefault()
+            }else{
+                window.event.returnValue = false
+            }
+        }
+    </script>
+</body>
+</html>

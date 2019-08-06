@@ -20,7 +20,7 @@
             border: 1px solid #000000;
             border-collapse: collapse;
         }
-        td,th{
+        th,td{
             width: 100px;
             height: 30px;
             padding: 10px;
@@ -80,10 +80,10 @@
                     <td><span>18</span><input type="text"></td>
                     <td><span>1</span><input type="text"></td>
                     <td>
-                        <a href="havascript:;" class="editBtn">编辑</a>
-                        <a href="havascript:;" class="okBtn">确定</a>
-                        <a href="havascript:;" class="cancelBtn">取消</a>
-                        <a href="havascript:;" class="delBtn">删除</a>
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="okBtn">确定</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <a href="javascript:;" class="delBtn">删除</a>
                     </td>
                 </tr>
                 <tr>
@@ -92,10 +92,10 @@
                     <td><span>25</span><input type="text"></td>
                     <td><span>2</span><input type="text"></td>
                     <td>
-                        <a href="havascript:;" class="editBtn">编辑</a>
-                        <a href="havascript:;" class="okBtn">确定</a>
-                        <a href="havascript:;" class="cancelBtn">取消</a>
-                        <a href="havascript:;" class="delBtn">删除</a>
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="okBtn">确定</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <a href="javascript:;" class="delBtn">删除</a>
                     </td>
                 </tr>
                 <tr>
@@ -104,10 +104,10 @@
                     <td><span>50</span><input type="text"></td>
                     <td><span>3</span><input type="text"></td>
                     <td>
-                        <a href="havascript:;" class="editBtn">编辑</a>
-                        <a href="havascript:;" class="okBtn">确定</a>
-                        <a href="havascript:;" class="cancelBtn">取消</a>
-                        <a href="havascript:;" class="delBtn">删除</a>
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="okBtn">确定</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <a href="javascript:;" class="delBtn">删除</a>
                     </td>
                 </tr>
                 <tr>
@@ -116,10 +116,10 @@
                     <td><span>28</span><input type="text"></td>
                     <td><span>4</span><input type="text"></td>
                     <td>
-                        <a href="havascript:;" class="editBtn">编辑</a>
-                        <a href="havascript:;" class="okBtn">确定</a>
-                        <a href="havascript:;" class="cancelBtn">取消</a>
-                        <a href="havascript:;" class="delBtn">删除</a>
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="okBtn">确定</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <a href="javascript:;" class="delBtn">删除</a>
                     </td>
                 </tr>
                 <tr>
@@ -128,10 +128,10 @@
                     <td><span>225</span><input type="text"></td>
                     <td><span>5</span><input type="text"></td>
                     <td>
-                        <a href="havascript:;" class="editBtn">编辑</a>
-                        <a href="havascript:;" class="okBtn">确定</a>
-                        <a href="havascript:;" class="cancelBtn">取消</a>
-                        <a href="havascript:;" class="delBtn">删除</a>
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="okBtn">确定</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <a href="javascript:;" class="delBtn">删除</a>
                     </td>
                 </tr>
                 <tr>
@@ -140,16 +140,16 @@
                     <td><span>1845</span><input type="text"></td>
                     <td><span>13</span><input type="text"></td>
                     <td>
-                        <a href="havascript:;" class="editBtn">编辑</a>
-                        <a href="havascript:;" class="okBtn">确定</a>
-                        <a href="havascript:;" class="cancelBtn">取消</a>
-                        <a href="havascript:;" class="delBtn">删除</a>
+                        <a href="javascript:;" class="editBtn">编辑</a>
+                        <a href="javascript:;" class="okBtn">确定</a>
+                        <a href="javascript:;" class="cancelBtn">取消</a>
+                        <a href="javascript:;" class="delBtn">删除</a>
                     </td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td >总价：￥<b id="money"></b></td>
+                    <td colspan="5">总价：￥<b id="money"></b></td>
                 </tr>
             </tfoot>
         </table>
@@ -205,7 +205,7 @@
             for( i=0 ;i<checks.length ;i++){
                 checks[i].checked = this.checked
             }
-            num = checks.length ? checks.length : 0
+            num = this.length ? checks.length : 0
         }
         for( j=0; j<checks.length; j++){
             checks[j].onchange = function() {

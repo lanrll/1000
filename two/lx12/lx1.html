@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 鼠标滚轮 -->
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #333333;
+            overflow: hidden;
+            position: relative;
+        }
+        #content{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="content">
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+            <p>拼搏到无能为力</p>
+            <p>坚持到感动自己</p>
+        </div>
+    </div>
+    <script>
+        var box = document.querySelector('#box')
+        var content = document.querySelector('#content')
+        box.addEventListener( 'mousewheel', function(e){
+            e = e || event
+            if(e.wheelDelta > 0){
+                var top = content.offsetTop + 3
+                if( top > 0) top = 0
+                content.style.top = top + 'px'
+            }else{
+                var top = content.offsetTop - 3
+                if(top < box.clientHeight - content.offsetHeight){
+                    top = box.clientHeight - content.offsetHeight
+                }
+                content.style.top = top + 'px'
+            }
+        })
+    </script>
+</body>
+</html>

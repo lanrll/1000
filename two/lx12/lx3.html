@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 事件委托列表 -->
+    <script src="../gg/base.js"></script>
+    <style>
+        ul{
+            margin-top: 100px;
+        }
+        li{
+            width: 100px;
+            height: 30px;
+            margin: 20px 0;
+            background-color: deepskyblue;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <input type="text" id="menu">
+    <button id="add">添加</button>
+    <br>
+    <input type="text" id="delmenu">
+    <button id="del">删除</button>
+    <script>
+        var ul = document.querySelector('ul')
+        ul.onclick = function(e) {
+            e = e || event
+            var target = e.target || e.srcElement
+            if( target.nodeName === 'LI'){
+                alert(target.innerHTML)
+            }
+        }
+        document.querySelector('#add').onclick = function(){
+            var menu = document.querySelector('#menu').value 
+            var li = document.createElement('li')
+            li.innerHTML = menu
+            ul.appendChild(li)
+        }
+        document.querySelector("#del").onclick = function(){
+            var delmenu = document.querySelector("#delmenu").value
+            var li = document.querySelectorAll('li')
+            for( i=0; i<li.length; i++){
+                if( li[i].innerHTML == delmenu){
+                    li[i].remove()
+                }
+                console.log(li[i].innerHTML)
+            }
+        }
+    </script>
+</body>
+</html>
