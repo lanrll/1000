@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 按顺序插入数字 -->
+    <script src="../gg/base.js"></script>
+</head>
+<body>
+    <script>
+        var arr = new Array(10);
+        for( i=0; i<arr.length; i++){
+            arr[i] = myTool.randomNum( 0, 100)
+        }
+        // arr.forEach(() => {myTool.randomNum( 0, 100)} )
+        console.log(arr)
+        arr.sort(( a, b) => a-b )
+        console.log(arr)    
+        
+        var num = Number(prompt("输入一个0-100的数字"))
+        for( j=0; j<arr.length; j++){
+            if(num < arr[j]){
+                arr.splice( j, 0, num);
+                break;
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 插入菜单 -->
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <input type="text" id="get">
+    <button id="add">添加</button>
+    <script>
+        // var menu = new Array(4)
+        var lis = document.querySelectorAll('li')
+        var n = 0
+        document.querySelector('#add').onclick = function(){
+            var gets = document.querySelector('#get').value
+            console.log(gets)
+            lis[n].innerHTML = gets
+            n++;
+            if(n> lis.length -1) n = lis.length - 1
+        }
+    </script>
+</body>
+</html>

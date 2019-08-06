@@ -212,19 +212,20 @@
         }
         for( j=0 ;j<checks.length; j++){
             checks[j].onchange = function(){
-                if(this.checked){
-                    num++
-                    sun = sun + prices[j].innerHTML*nums[j].innerHTML 
-                }else{
-                    num--
-                    sun = sun - prices[j].innerHTML*nums[j].innerHTML 
-                }
-                moneys.innerHTML = sun
-                // this.checked ? num++ : num--
+                // var pricesNum = prices[j].innerHTML
+                // var numsNum = nums[j].innerHTML
+                // if(this.checked){
+                //     num++
+                //     sun = sun + pricesNum*numsNum
+                // }else{
+                //     num--
+                //     sun = sun - pricesNum*numsNum
+                // }
+                // moneys.innerHTML = sun
+                this.checked ? num++ : num--
                 allchecks.checked = num == checks.length 
             }
         }
-
     </script>
 </body>
 </html>
