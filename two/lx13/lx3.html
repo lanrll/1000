@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 验证码 -->
+</head>
+<body>
+  <input type="text" id="get">
+  <button id="var">验证</button>
+  <h1></h1>
+  <script>
+    function randomChar(){
+      var arr = new Array(3)
+      arr[0] = String.fromCharCode(Math.floor(Math.random()*10+48));
+      arr[1] = String.fromCharCode(Math.floor(Math.random()*26+97));
+      arr[2] = String.fromCharCode(Math.floor(Math.random()*26+65));
+      return arr[Math.floor(Math.random()*arr.length)];
+    }
+    var str = ''
+    for( i =0 ; i < 4 ; i++){
+      str += randomChar()
+    }
+    document.querySelector('h1').innerHTML = str
+    document.querySelector('#var').onclick = function(){
+      var get = document.querySelector('#get').innerHTML
+      console.log(get)
+      var reg = /^\w{4}$/i;
+      var is = reg.test(get)
+      console.log(is)
+    }
+  </script>
+</body>
+</html>
