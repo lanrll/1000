@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 正则表达式 -->
+</head>
+<body>
+    <script>
+        var str = prompt("输入")
+        // 以字母开头，数字结尾，中间任意一个字符
+        // var reg = /^[a-z]\w[0-9]$/i
+
+        // 密码不能少于6位的字符
+        // var reg = /^\d{6}$/
+
+        // 以a开头   b字符至少出现2个，至多出现6个(b连续出现) 
+        // var reg = /^ab{2,6}$/
+
+        // 变量的命名正则表达式(不能用数字开头 由字母、数字、下划线 、$组成)   
+        // var reg = /^(\w|\$)(\w|\d|\$)+$/
+
+        // 以010开头的座机号(后面是8位数字)
+        // var reg = /^010\d{8}$/
+
+        // 手机号以13开头，以8结尾
+        // var reg = /^13\d{8}8$/
+
+        // 密码只能用6个*
+        // var reg = /^\*{6}$/
+
+        // 第一位是数字，第二位是A或a，后面至多出现6个字符
+        // var reg = /^\d[a-z].{0,6}$/i
+
+        // 写出中国人姓名正则
+        // var reg = /^[\u4e00-\u9fa5]{1,4}$/
+
+        // 写一个qq号的正则，至少5位  至多12位数字
+        // var reg = /^[1-9]\d{4,11}$/
+
+        // 检验压缩包  xxx.zip或xxx.rar或xxx.tar 三个格式
+        // var reg = /^\w+\.(z|r|t)(i|a)(p|r)$/
+
+        // 身份证 （18位  考虑最后一位可能为x）
+        var reg = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/
+
+        is = reg.test(str)
+        console.log(is)
+    </script>
+</body>
+</html>
