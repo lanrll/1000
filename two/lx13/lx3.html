@@ -25,7 +25,7 @@
     }
     document.querySelector('h1').innerHTML = str
     document.querySelector('#var').onclick = function(){
-      var get = document.querySelector('#get').innerHTML
+      var get = document.querySelector('#get').value
       console.log(get)
       var reg = /^\w{4}$/i;
       var is = reg.test(get)

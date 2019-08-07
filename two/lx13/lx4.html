@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<link rel="stylesheet" href="lx4.css">
+	<!-- <script src="lx4.js"></script> -->
+</head>
+<body>
+	<div id="calendar">
+		<h4>2019年8月</h4>
+		<a href="javascript:;" class="a1" id="prev">上月</a>
+		<a href="javascript:;" class="a2" id="next">下月</a>
+		<ul class="week">
+			<li>日</li>
+			<li>一</li>
+			<li>二</li>
+			<li>三</li>
+			<li>四</li>
+			<li>五</li>
+			<li>六</li>
+		</ul>
+		<ul class="dateList" id="dateList">
+		</ul>
+	</div>
+	<!-- <script>
+		var iNow = 0;
+		var dateList = document.querySelector('#dateList')
+		var prev = document.querySelector('#prev')
+		var next = document.querySelector('#next')
+		var title = document.querySelector('h4');
+
+		prev.onclick = function(){
+			iNow--;
+			calendar(iNow);
+		}
+
+		next.onclick = function(){
+			iNow++;
+			calendar(iNow);
+		}
+		calendar(iNow);
+		function  calendar(n) {
+			var date = new Date();
+			var nowDate = date.getDate();
+			date.setMonth(date.getMonth()+n, 1)
+			var year = date.getFullYear();
+			var month = date.getMonth()+1
+			title.innerHTML = year+'年'+month+"月"
+			var week = date.getDay();
+			date.setMonth(date.getMonth()+1, 0);
+			var allDays = date.getDate();
+			var str = ''
+			for( i= 0; i<week ; i++){
+				str += '<li></li>'
+			}
+			for( j=1; j <= allDays; j++){
+				if(n > 0){
+					if( (week+j)%7 === 0 || (week+j)%7 === 1){
+						str += '<li class="sun">' +j+ "</li>"
+					}else {
+						str += '<li>' +j+ '</li>'
+					}
+				}else if( n < 0){
+					str += '<li class="ccc">'+j+'</li>';
+				}else{
+					if(j < nowDate){
+						str += "<li class='ccc'>" +j+ '</li>'
+					}else if(j===nowDate){
+						str += '<li class="red">' +j+ '</li>'
+					}else if((week+j)%7 === 0 || (week+j)%7 ===1){
+						str += '<li class="sun">' +j+ '</li>'
+					}else{
+						str += '<li>' +j+ '</li>'
+					}
+				}
+			}
+			dateList.innerHTML = str
+		}
+	</script> -->
+</body>
+</html>
+<script src="lx4.js"></script>

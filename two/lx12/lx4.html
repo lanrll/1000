@@ -210,18 +210,20 @@
             }
             // num = this.length ? checks.length : 0
         }
+        var index = 0
         for( j=0 ;j<checks.length; j++){
+            checks[j].index = j
             checks[j].onchange = function(){
-                // var pricesNum = prices[j].innerHTML
-                // var numsNum = nums[j].innerHTML
-                // if(this.checked){
-                //     num++
-                //     sun = sun + pricesNum*numsNum
-                // }else{
-                //     num--
-                //     sun = sun - pricesNum*numsNum
-                // }
-                // moneys.innerHTML = sun
+                var pricesNum = prices[this.index].innerHTML
+                var numsNum = nums[this.index].innerHTML
+                if(this.checked){
+                    num++
+                    sun = sun + pricesNum*numsNum
+                }else{
+                    num--
+                    sun = sun - pricesNum*numsNum
+                }
+                moneys.innerHTML = sun
                 this.checked ? num++ : num--
                 allchecks.checked = num == checks.length 
             }

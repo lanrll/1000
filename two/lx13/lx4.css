@@ -1,0 +1,61 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#calendar{
+  width: 210px;
+  margin: 100px auto;
+  overflow: hidden;
+  border: 1px solid #000000;
+  padding: 20px;
+  position: relative;
+}
+#calendar h4{
+  text-align: center;
+  margin-bottom: 10px;
+}
+#calendar .a1{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+#calendar .a2{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+#calendar .week{
+  height: 30px;
+  line-height: 20px;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 10px;
+}
+#calendar .week li{
+  float: left;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  list-style: none;
+}
+#calendar .dateList{
+  overflow: hidden;
+  clear: both;
+}
+#calendar .dateList li{
+  float: left;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  list-style: none;
+}
+#calendar .dateList .ccc{
+  color: #cccccc;
+}
+#calendar .dateList .red{
+  background-color: #f40;
+  color: #ffffff;
+}
+#calendar .dateList .sun{
+  color: #ff0000;
+}
