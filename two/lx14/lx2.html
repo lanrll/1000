@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 点击li弹出下标 -->
+  <style>
+    li{
+      width: 50px;
+      height: 30px;
+      background-color: deepskyblue;
+      margin:  10px auto;
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    var lis = document.querySelectorAll('li')
+    for(let i=0; i < lis.length ; i++){
+      lis[i].onclick = function() {
+        console.log(i)
+      }
+    }
+
+  </script>
+</body>
+</html>

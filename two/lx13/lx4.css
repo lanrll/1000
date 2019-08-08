@@ -39,7 +39,7 @@
 }
 #calendar .dateList{
   overflow: hidden;
-  clear: both;
+  /* clear: both; */
 }
 #calendar .dateList li{
   float: left;
