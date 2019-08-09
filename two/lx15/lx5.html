@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 缓冲运动 -->
+  <script src="../gg/base.js"></script>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: deepskyblue;
+      position: absolute;
+      top: 0;
+      left: 800px;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    var box = document.querySelector('div')
+    box.onclick = function(){
+      // clearInterval(this.timer)
+      // var start = parseInt(myTool.getStyle(this, 'left'))
+      // var end = 1000
+      // this.timer = setInterval(() => {
+      //   var distance = end - start
+      //   var speed = distance > 0 ? Math.ceil(distance/10) : Math.floor(distance/10)
+      //   start += speed
+      //   console.log(speed)
+      //   this.style.left = start + 'px'
+      //   if(start === end){
+      //     clearInterval(this.timer)
+      //   }
+      // }, 30);
+      myTool.slowMove(box, 'top', 1000)
+    }
+  </script>
+</body>
+</html>

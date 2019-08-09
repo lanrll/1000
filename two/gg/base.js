@@ -1,5 +1,6 @@
 var myTool = {
-    /** 封装一个获取外部样式的方法
+    /** 
+     * 封装一个获取外部样式的方法
     * @param obj   <DOM object> 获取样式的DOM元素
     * @param attr  <string>     要获取的属性的名称
     * @return      <string>     样式属性值
@@ -12,7 +13,8 @@ var myTool = {
         }
     },
 
-    /** 设置元素的样式
+    /** 
+     * 设置元素的样式
     * @param obj  <DOM object> 要设置样式的DOM元素
     * @param attr <object>     设置样式的键值对  比如： {left: '100px', top: '200px'}
     *  */
@@ -22,7 +24,8 @@ var myTool = {
         }
     },
 
-    /** 给一个元素添加事件监听
+    /** 
+     * 给一个元素添加事件监听
     * @param obj   <DOM object>  条件事件监听的DOM元素
     * @param type  <string>      要监听的事件类型（不带‘on’）
     * @param fn    <function>    事件处理函数
@@ -31,14 +34,66 @@ var myTool = {
     on: function( obj, type, fn, isCapture){
         // 判断isCapture是否被传递，如果没传值是undefined，这个时候就应该赋值为false，否则就等于传递进来的值
         isCapture = isCapture === undefined ? false : isCapture
-        if(obj.attachEvent){
+        if(obj.attachEvent){ var box = document.querySelector('#box')
+        box.onclick = function(){
+          myTool.move(box, 'left', 500, 3000)
+        }
             obj.attachEvent('on' + type,fn)
         }else{
             obj.addEvevtListener(type, fn, isCapture)
         }
     },
 
-    /**随机数 
+    /**
+     * 让元素在固定时间内某个属性匀速运动到某个点
+     * @param obj      <Dom object>   要运动的元素    
+     * @param attr     <string>       运动的属性名
+     * @param end      <number>       运动终点
+     * @param duration <number>       运动持续时间，单位ms
+     * @param fn       <function>     回调函数，动画结束后调用
+     */
+    move: function(obj, attr, end, duration, fn){
+        clearInterval(obj.timer)
+        var start = parseInt(this.getStyle(obj, attr))
+        var distance = end - start
+        var step = parseInt(duration/30)
+        var speed = distance/step
+        var n = 0
+        obj.timer = setInterval( function(){
+            n++
+            obj.style[attr] = start + n*speed + 'px'
+            if(n === step){
+                clearInterval(obj.timer)
+                obj.style[attr] = end + 'px'
+                fn && fn()
+            }
+        },30)
+    },
+
+    /**
+     * 缓冲运动
+     * @param obj      <Dom object>   要运动的元素    
+     * @param attr     <string>       运动的属性名
+     * @param end      <number>       运动终点
+    //  * @param duration <number>       运动持续时间，单位ms
+     * @param fn       <function>     回调函数，动画结束后调用
+     */
+    slowMove: function(obj, attr, end, fn){
+        clearInterval(obj.timer)
+        var start = parseInt(this.getStyle(obj, attr))
+        obj.timer = setInterval(() => {
+            var distance = end - start
+            var speed = distance > 0 ? Math.ceil(distance/10) : Math.floor(distance/10)
+            start += speed
+            obj.style[attr] = start + 'px'
+            if(start === end){
+                clearInterval(obj.timer)
+            }
+        }, 30);
+    },
+
+    /**
+     * 随机数 
     * @param min    <number>    随机的最小数
     * @param max    <number>    随机的最大数
     * @return       <number>    随机数
@@ -57,7 +112,8 @@ var myTool = {
         }
     },
 
-    /** 获取浏览器宽高
+    /** 
+     * 获取浏览器宽高
      * @return  <object>    { width, height}
      */
     getBodySize: function(){

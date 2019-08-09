@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 筋斗云导航效果 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    ul{
+      list-style: none;
+    }
+    body{
+      background-color: #000000;
+    }
+    .nav{
+      width: 800px;
+      height: 42px;
+      background-color:#fff;
+      margin: 100px auto;
+      border-radius: 5px;
+      position: relative; 
+    }
+    .cloud{
+      width: 83px;
+      height: 42px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url(cloud.gif) no-repeat;
+    }
+    .nav ul{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .nav li{
+      float: left;
+      width: 88px;
+      height: 42px;
+      line-height: 42px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav" id="nav">
+    <span class="cloud" id="cloud"></span>
+    <ul id="box">
+      <li>首页新闻</li>
+      <li>千锋师资</li>
+      <li>千锋活动策划</li>
+      <li>企业文化</li>
+      <li>招聘信息</li>
+      <li>公司简介</li>
+      <li>上海校区</li>
+      <li>广州校区</li>
+    </ul>
+  </div>
+</body>
+</html>
+<script src="../gg/base.js"></script>
+  <script>
+    var aLi = document.querySelector("#box").children
+    var cloud = document.querySelector("#cloud")
+    var index = 0
+    for(let i=0 ; i < aLi.length ; i++){
+      aLi[i].onmouseenter = function(){
+        myTool.move(cloud, 'left', this.offsetLeft, 500)
+      } 
+      aLi[i].onmouseleave = function(){
+        myTool.move(cloud, 'left', aLi[index].offsetLeft, 500)
+      }
+      aLi[i].onclick = function(){
+        index = i
+      }
+    }
+  </script>

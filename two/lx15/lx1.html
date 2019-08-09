@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 动画移动 -->
+  <style>
+    #box{
+      width: 100px;
+      height: 100px;
+      background-color: deepskyblue;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    var box = document.querySelector('#box')
+    var start = 0 
+    var distance = 500
+    var time = 3000
+    var step = Math.floor(time/30)
+    var speed = distance/step
+    box.onclick = function(){
+      var n = 0
+      var timer = setInterval(() => {
+        n++;
+        this.style.left = start + n*speed + 'px'
+        if(n === step){
+          clearInterval(timer)
+        }
+      }, 30);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 动画移动 -->
+  <style>
+    div{
+      height: 100px;
+      width: 100px;
+      background-color: deepskyblue;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: 4s;
+    }
+    .right{
+      left: 500px;
+    }
+    .down{
+      top: 500px;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <script>
+    // var box = document.querySelector('#box')
+    document.querySelector('#box').onclick = function(){
+      this.className = 'right down'
+    }
+  </script>
+</body>
+</html>
