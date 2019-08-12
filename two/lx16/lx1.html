@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 选项卡 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #tab{
+      width: 500px;
+      margin: 100px auto;
+    }
+    li{
+      list-style: none;
+      float: left;
+      width: 100px;
+      /* height: 30px; */
+      line-height: 30px;
+      text-align: center;
+    }
+    li a{
+      float: left;
+      width: 80px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      margin: 0 10px;
+      text-decoration: none;
+      border-radius: 20px;
+      background-color: #fff;
+    }
+    li a.ac{
+      background-color: #cccccc;
+      color: #ffffff;
+    }
+    #tab div a{
+      display: block;
+      width: 500px;
+      display: none;
+    }
+    #tab div a.ac{
+      display: block;
+    }
+    #tab img{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div id="tab">
+    <ul>
+      <li><a href="javascript:;" class="ac">1</a></li>
+      <li><a href="havascript:;">2</a> </li>
+      <li><a href="havascript:;">3</a> </li>
+      <li><a href="havascript:;">4</a> </li>
+      <li><a href="havascript:;">5</a> </li>
+    </ul>
+    <div>
+      <a href="javascript:;" class="ac"><img src="http://pic166.nipic.com/file/20180527/11949215_140246196000_2.jpg"></a>
+      <a href="javascript:;"><img src="http://pic35.nipic.com/20131121/3822951_144045377000_2.jpg"></a>
+      <a href="javascript:;"><img src="http://pic31.nipic.com/20130731/13345615_081736258119_2.jpg"></a>
+      <a href="javascript:;"><img src="http://www.leawo.cn/attachment/201409/1/1723875_1409556793I3Eg.jpg"></a>
+      <a href="javascript:;"><img src="http://pic22.nipic.com/20120625/10406243_171052315138_2.jpg"></a>
+    </div>
+  </div>
+  <script>
+    function Tab(){
+      this.btns = document.querySelectorAll("#tab li a")
+      this.imgs = document.querySelectorAll('#tab div a')
+      this.init()
+    }
+    Tab.prototype.init = function(){
+      for( let i=0; i< this.btns.length; i++ ){
+        this.btns[i].onclick = ()=>{
+          this.change(i)
+        }
+      }
+    }
+    Tab.prototype.change = function(index){
+      for( j=0; j<this.btns.length; j++){
+        this.btns[j].classList.remove('ac')
+        this.imgs[j].classList.remove('ac')
+      }
+      this.btns[index].className = 'ac'
+      this.imgs[index].className = 'ac'
+    }
+    new Tab()
+  </script>
+</body>
+</html>

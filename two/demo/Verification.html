@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 验证码 -->
+</head>
+<body>
+  <h1></h1>
+  <input type="text" id="get">
+  <button class="ver">验证</button>
+  <script>
+    function randomChar(){
+      var arr = new Array(3)
+      arr[0] = String.fromCharCode(Math.floor(Math.random()*10+48));
+      arr[1] = String.fromCharCode(Math.floor(Math.random()*26+97));
+      arr[2] = String.fromCharCode(Math.floor(Math.random()*26+65));
+      return arr[Math.floor(Math.random()*arr.length)]
+    }
+    var str = ''
+    for( i=0; i<4; i++){
+      str += randomChar()
+    }
+    document.querySelector('h1').innerHTML = str
+    console.log(...str)
+    var brr = [...str]
+    console.log(brr)
+    document.querySelector('.ver').onclick = function(){
+      var get = document.querySelector('#get').value
+      var crr = [...get]
+      console.log(crr)
+      var index = 0
+      for( j=0; j<4; j++){
+        if(brr[j] === crr[j]){
+          index++
+          console.log(index)
+        }else{
+          continue;
+        }
+      }
+      if(index === 3){
+        alert('true')
+      }else{
+        alert('false')
+      }
+    }
+  </script>
+</body>
+</html>

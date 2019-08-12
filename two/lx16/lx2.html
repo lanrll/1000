@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 乘法表 -->
+</head>
+<body>
+  <script>
+    function Cfb(n){
+      this.n = n
+      this.str = ''
+      this.init = function(){
+        for(i = 1; i<=this.n; i++){
+          for( j=1 ; j<=i; j++){
+            this.str += `${j} * ${i} = ${i*j}&nbsp;`
+          }
+          this.str += '<br>'
+        }
+        this.print()
+      }
+      this.print = function(){
+        document.write(this.str)
+      }
+      this.init()
+    }
+    var n = Number(prompt('输入'))
+    new Cfb(n)
+  </script>
+</body>
+</html>

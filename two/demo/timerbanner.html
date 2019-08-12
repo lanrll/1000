@@ -14,14 +14,14 @@
     li{
       list-style: none;
     }
-    #div1{
+    #dv1{
       width: 850px;
       height: 500px;
       margin: 50px auto;
       overflow: hidden;
       position: relative;
-    }  
-    #div1 ul li{
+    }
+    #dv1 ul li{
       height: 500px;
       opacity: 0;
       position: absolute;
@@ -30,17 +30,17 @@
       z-index: 0;
       transition: opacity 2s;
     }
-    #div1 ul li.ac{
+    #dv1 ul li.ac{
       z-index: 5;
       opacity: 1;
     }
-    #div1 ol{
+    #dv1 ol{
       position: absolute;
       right: 10%;
-      bottom: 10px;
+      bottom: 10%;
       z-index: 6;
     }
-    #div1 ol li{
+    #dv1 ol li{
       width: 20px;
       height: 20px;
       background-color: #fff;
@@ -49,12 +49,12 @@
       line-height: 20px;
       text-align: center;
       border-radius: 10px;
-    } 
-    #div1 ol li.ac{
+    }
+    #dv1 ol li.ac{
       background-color: red;
       color: #fff;
     }
-    #div1>a{
+    #dv1>a{
       text-decoration: none;
       position: absolute;
       top: 50%;
@@ -66,7 +66,7 @@
       font-size: 40px;
       vertical-align: middle;
       color: #fff;
-      background-color: rgba(0,0,0,.2);
+      background-color: rgba(0, 0, 0, .2); 
       z-index: 6;
     }
     #goPrev{
@@ -78,13 +78,13 @@
   </style>
 </head>
 <body>
-  <div id="div1">
+  <div id="dv1">
     <ul>
-      <li class="ac"><a href="javascript:alert(0);"><img src="1.jpg"></a></li>
-      <li><a href="javascript:alert(1);"><img src="2.jpg"></a></li>
-      <li><a href="javascript:alert(2);"><img src="3.jpg"></a></li>
-      <li><a href="javascript:alert(3);"><img src="4.jpg"></a></li>
-      <li><a href="javascript:alert(4);"><img src="5.jpg"></a></li>
+      <li class="ac"><a href="javascript:;"><img src="../lx15/1.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/2.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/3.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/4.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/5.jpg"></a></li>
     </ul>
     <ol>
       <li class="ac">1</li>
@@ -94,18 +94,18 @@
       <li>5</li>
     </ol>
     <a href="javascript:;" id="goPrev">&laquo;</a>
-    <a href="javascript:;" id="goNext">&raquo;</a>
+    <a href="javascript:;" id="goNext">&laquo;</a>
   </div>
   <script>
-    var div = document.querySelector('#div1')
+    var div = document.querySelector('#dv1')
     var imgs = div.querySelector('ul').children
     var btns = div.querySelector('ol').children
     var goPrev = document.querySelector('#goPrev')
     var goNext = document.querySelector('#goNext')
-    var  index = 0
-    var  lastIndex = 0
+    var index = 0
+    var lastIndex = 0
     Array.from(btns).forEach((btn, i) => {
-      btn.onclick = function(){
+      btn.onclick = function (){
         lastIndex = index
         index = i
         changeImg()
@@ -122,19 +122,19 @@
     goPrev.onclick = function(){
       lastIndex = index
       index--
-      if(index < 0) index = btns.length - 1
+      if(index < 0 ) index = btns.length -1
       changeImg()
     }
     var timer = setInterval(() => {
       goNext.onclick()
-    }, 3000);
+    }, 1000);
     div.onmouseenter = function(){
       clearInterval(timer)
     }
     div.onmouseleave = function(){
       timer = setInterval(() => {
         goNext.onclick()
-      }, 3000);
+      }, 1000);
     }
     function changeImg(){
       btns[lastIndex].classList.remove('ac')

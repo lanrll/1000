@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 回到顶部 -->
+  <style>
+    body{
+      height: 10000px;
+    }
+    div{
+      width: 30px;
+      height: 30px;
+      background-color: #cccc;
+      position: fixed;
+      text-align: center;
+      line-height: 30px;
+    }
+    .gotop{
+      right: 50px;
+      bottom: 80px;
+    }
+    .gobottom{
+      right: 50px;
+      bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="gotop">上</div>
+  <div class="gobottom">下</div>
+  <script>
+    var timer1 = null
+    var timer2 = null
+    document.querySelector('.gotop').onclick = function(){
+      clearInterval(timer2)
+      var start = document.documentElement.scrollTop;
+      var end = 0
+      timer1 = setInterval(function(){
+        start -= 20
+        document.documentElement.scrollTop = start
+        if(start <= end ) clearInterval(timer1)
+      },10)
+    }
+    document.querySelector('.gobottom').onclick = function(){
+      clearInterval(timer1)
+      var start = document.documentElement.scrollTop;
+      var end = 10000
+      timer2 = setInterval( function(){
+        start += 20
+        document.documentElement.scrollTop = start
+        if(start >= end) clearInterval(timer2)
+      },10)
+    }
+  </script>
+</body>
+</html>

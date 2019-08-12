@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 导航栏跟随效果 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background-color: #000000;
+    }
+    .nav{
+      /* width: 800px; */
+      width: 70%;
+      height: 42px;
+      background-color: #fff;
+      margin: 100px auto;
+      border-radius: 5px;
+      position: relative;  
+    }
+    .nav ul{
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .cloud{
+      width: 83px;
+      height: 42px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url(../lx15/cloud.gif) no-repeat;
+    }
+    .nav li{
+      list-style: none;
+      float: left;
+      /* margin: 0 10px; */
+    }
+    .nav li a{
+      text-decoration: none;
+      float: left;
+      /* width: 88px; */
+      padding: 0 10px;
+      height: 42px;
+      line-height: 42px;
+      text-align: center;
+      /* cursor: pointer; */
+    }
+  </style>
+</head>
+<body>
+  <div id="nav" class="nav">
+    <span id="cloud" class="cloud"></span>
+    <ul id="box">
+      <li><a href="javascript:;">新闻首页</a></li>
+      <li><a href="javascript:;">千峰师资</a></li>
+      <li><a href="javascript:;">千峰活动车花</a></li>
+      <li><a href="javascript:;">企业文化</a></li>
+      <li><a href="javascript:;">超平信息</a></li>
+      <li><a href="javascript:;">公司见状</a></li>
+      <li><a href="javascript:;">上海校区</a></li>
+      <li><a href="javascript:;">广东小区</a></li>
+      <li><a href="javascript:;">晨读小区</a></li>
+    </ul>
+  </div>
+</body>
+</html>
+<script src="../gg/base.js"></script>
+<script>
+  var lis = document.querySelectorAll('li')
+  var cloud = document.querySelector('#cloud')
+  var index = 0
+  for(let i=0; i < lis.length ; i++){
+    lis[i].onmouseenter = function(){
+      // myTool.move(cloud, 'left', this.offsetLeft, 500)
+      myTool.slowMove(cloud, 'left', this.offsetLeft)
+    }
+    lis[i].onmouseleave = function(){
+      // myTool.move(cloud, 'left', lis[index].offsetLeft, 500)
+      myTool.slowMove(cloud, 'left', lis[index].offsetLeft)
+    }
+    lis[i].onclick = function(){
+      index = i
+    }
+  }
+</script>
