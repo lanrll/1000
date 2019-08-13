@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 放大镜效果 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      width: 300px;
+      height: 300px;
+      border: 1px solid #111111;
+      position: relative;
+    }
+    .box img{
+      width: 100%;
+      height: 100%;
+    }
+    .bigBox{
+      width: 300px;
+      height: 300px;
+      overflow: hidden;
+      position: absolute;
+      top: 0;
+      left: 310px;
+      display: none;
+    }
+    .bigBox img{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    span{
+      display: none;
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: #ff0;
+      opacity: .1;
+      left: 0;
+      top: 0;
+    }
+  </style>
+  <script src="../gg/base.js"></script>
+</head>
+<body>
+  <div class="box">
+    <img src="./3.jpg">
+    <span></span>
+  </div>
+  <div class="bigBox">
+    <img src="./3.jpg">
+  </div>
+  <script>
+    class Zoom {
+      constructor(){
+        this.box = document.querySelector('.box')
+        this.span = document.querySelector('span')
+        this.bigBox = document.querySelector('.bigBox')
+        this.bigImg = this.bigBox.querySelector('img')
+        this.mousemove()
+        this.mouseout()
+      }
+      mousemove(){
+        this.box.onmousemove = (e) => {
+          this.span.style.display = 'block'
+          this.bigBox.style.display = 'block'
+          this.spanMove(e.clientX, e.clientY)
+        }
+      }
+      spanMove(cx, cy){
+        let top = cy - this.box.offsetTop - this.span.offsetHeight/2
+        let left = cx - this.box.offsetLeft - this.span.offsetWidth/2
+        if(top < 0) top = 0;
+        if(left < 0) left = 0;
+        if(left > this.box.offsetWidth-this.span.offsetWidth) 
+          left = this.box.offsetWidth - this.span.offsetWidth
+        if(top > this.box.offsetHeight - this.span.offsetHeight)
+          top = this.box.offsetHeight - this.span.offsetHeight
+        myTool.css(this.span, {
+          left: left + 'px',
+          top: top + 'px'
+        })
+        this.bigImgMove(left, top)
+      }
+      bigImgMove(left, top){
+        myTool.css(this.bigImg, {
+          left: -3 * left + 'px',
+          top: -3 * top + 'px'
+        })
+      }
+      mouseout(){
+        this.box.onmouseleave = () => {
+          this.span.style.display = 'none'
+          this.bigBox.style.display = 'none'
+        }
+      }
+    }
+    new Zoom()
+  </script>
+</body>
+</html>

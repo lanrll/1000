@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 轮播图 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    #dv{
+      width: 850px;
+      height: 500px;
+      margin: 50px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    #dv ul li{
+      height: 500px;
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 0;
+      transition: opacity 1s;
+    }
+    #dv ul li.ac{
+      z-index: 5;
+      opacity: 1;
+    }
+    #dv ol{
+      position: absolute;
+      right: 10%;
+      bottom: 10px;
+      z-index: 6;
+    }
+    #dv ol li{
+      float: left;
+    }
+    #dv ol li a{
+      text-decoration: none;
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      margin-left: 5px;
+      float: left;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    #dv ol li a.ac{
+      background-color: red;
+      color: #fff;
+    }
+    #dv>a{
+      text-decoration: none;
+      position: absolute;
+      top: 50%;
+      margin-top: -10px;
+      height: 40px;
+      line-height: 32px;
+      text-align: center;
+      width: 40px;
+      font-size: 40px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, .2);
+      z-index: 6;
+    }
+    #goPrev{
+      left: 0;
+    }
+    #goNext{
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="dv">
+    <ul>
+      <li class="ac"><a href="javascript:;"><img src="../lx15/1.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/2.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/3.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/4.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../lx15/5.jpg"></a></li>
+    </ul>
+    <ol>
+      <li><a href="javascript:;" class="ac">1</a></li>
+      <li><a href="javascript:;">2</a></li>
+      <li><a href="javascript:;">3</a></li>
+      <li><a href="javascript:;">4</a></li>
+      <li><a href="javascript:;">5</a></li>
+    </ol>
+    <a href="javascript:;" id="goPrev">&laquo;</a>
+    <a href="javascript:;" id="goNext">&raquo;</a>
+  </div>
+  <script>
+    class Tab{
+      constructor(){
+        this.div = document.querySelector('#dv')
+        this.imgs = document.querySelector('ul').children
+        this.btns = document.querySelectorAll('ol li a')
+        this.Prev = document.querySelector('#goPrev')
+        this.Next = document.querySelector('#goNext')
+        this.index = 0
+        this.lastIndex = 0
+        this.init()
+        this.timer()
+        this.mouse()
+        this.goNext()
+        this.goPrev()
+      }
+      init(){
+        Array.from(this.btns).forEach((btn, i) => {
+          btn.onclick = () => {
+            this.lastIndex = this.index
+            this.index = i
+            this.change()
+          }
+        })
+      }
+      goNext(){
+        this.Next.onclick = () => {
+          this.lastIndex = this.index
+          this.index++
+          if(this.index === this.btns.length){
+            this.index = 0
+          }
+          this.change()
+        }
+      }
+      goPrev(){
+        this.Prev.onclick = () => {
+          this.lastIndex = this.index
+          this.index--
+          if(this.index < 0) this.index = this.btns.length - 1
+          this.change()
+        }
+      }
+      timer(){
+        this.time = setInterval(() =>{
+          // this.goNext()
+          this.lastIndex = this.index
+          this.index++
+          if(this.index === this.btns.length){
+            this.index = 0
+          }
+          this.change()
+        },1000)
+      }
+      mouse(){
+        this.div.onmouseenter = () => {
+          clearInterval(this.time)
+        }
+        this.div.onmouseleave = () => {
+          this.timer()
+        }
+      }
+      change(){
+        this.btns[this.lastIndex].classList.remove('ac')
+        this.imgs[this.lastIndex].classList.remove('ac')
+        this.btns[this.index].classList.add('ac')
+        this.imgs[this.index].classList.add('ac')
+      }
+    }
+    new Tab()
+  </script>
+</body>
+</html>

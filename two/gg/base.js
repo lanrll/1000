@@ -18,9 +18,9 @@ var myTool = {
     * @param obj  <DOM object> 要设置样式的DOM元素
     * @param attr <object>     设置样式的键值对  比如： {left: '100px', top: '200px'}
     *  */
-    css: function( obj, attr){
-        for( var key in attr){
-            obj.style[key] = attr[key]
+    css: function (obj, attr) {
+        for (var key in attr) {
+        obj.style[key] = attr[key] 
         }
     },
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 拖拽 -->
+  <script src="../gg/base.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    h3{
+      background-color: #ccc;
+    }
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="box1">
+    <h3>title</h3>
+  </div>
+  <div id="box"></div>
+  <script>
+    class Drag{
+      constructor(selector, titleSector){
+        this.div = document.querySelector(selector)
+        this.title = titleSector ? this.div.querySelector(titleSector) : this.div
+        this.init()
+      }
+      init(){
+        this.title.onmousedown = e => {
+          let disX = e.offsetX
+          let disY = e.offsetY
+          document.onmousemove = e => {
+            let left = e.clientX - disX
+            let top = e.clientY - disY
+            this.move({left, top})
+          }
+          document.onmouseup = function(){
+            document.onmousemove = null
+          }
+          e.preventDefault()
+        }
+      }
+      move(posObj){
+        if(posObj.left < 0) posObj.left = 0;
+        if(posObj.top < 0) posObj.top = 0;
+        if(posObj.left > myTool.getBodySize().width - this.div.offsetWidth) posObj.left = myTool.getBodySize().width - this.div.offsetWidth;
+        if(posObj.top > myTool.getBodySize().height - this.div.offsetHeight) posObj.top =  myTool.getBodySize().height - this.div.offsetHeight;
+        
+        posObj.left += 'px'
+        posObj.top += 'px'
+        myTool.css(this.div , posObj)
+      }
+    }
+    new Drag('#box')
+    new Drag('#box1','h3')
+  </script>
+</body>
+</html>
