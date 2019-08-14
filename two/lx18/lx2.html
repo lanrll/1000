@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 轮播图-左右 -->
+  <script src="../gg/base.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    #dv{
+      width: 850px;
+      height: 480px;
+      margin: 50px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    #dv ul{
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    #dv ul.trans{
+      transition: left 1s;
+    }
+    #dv ul li{
+      height: 480px;
+      float: left;
+    }
+    img{
+      height: 480px;
+      width: 850px;
+    }
+    #dv ol{
+      position: absolute;
+      right: 5%;
+      bottom: 10px;
+      z-index: 9;
+    }
+    #dv ol li{
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      margin-left: 5px;
+      float: left;
+      line-height: 20px;
+      text-align: center;
+      cursor: pointer;
+      border-radius: 10px; 
+    }
+    #dv ol li.ac{
+      background-color: #f40;
+      color: #fff;
+      box-shadow: 2px 2px 2px black;
+    }
+    #dv>a{
+      text-decoration: none;
+      position: absolute;
+      top: 50%;
+      margin-top: -10px;
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      line-height: 32px;
+      font-size: 40px;
+      color: #fff;
+      background-color: rgba(0, 0, 0, .3);
+      z-index: 9;
+    }
+    #goPrev{
+      left: 0;
+    }
+    #goNext{
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="dv">
+    <ul class="trans">
+      <li><a href="javascript:;"><img src="images/main1.jpg"></a></li>
+      <li><a href="javascript:;"><img src="images/banner4.jpg"></a></li>
+      <li><a href="javascript:;"><img src="images/banner5.jpg"></a></li>
+      <li><a href="javascript:;"><img src="images/banner6.png"></a></li>
+      <li><a href="javascript:;"><img src="images/banner7.jpg"></a></li>
+      <li><a href="javascript:;"><img src="images/banner8.jpg"></a></li>
+    </ul>
+    <ol>
+      <li class="ac">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ol>
+    <a href="javascript:;" id="goPrev">&laquo;</a>
+    <a href="javascript:;" id="goNext">&raquo;</a>
+  </div>
+  <script>
+    var div = document.querySelector('#dv')
+    var ul = document.querySelector('ul')
+    var btns = div.querySelectorAll('ol li')
+    var goPrev = document.querySelector('#goPrev')
+    var goNext = document.querySelector('#goNext')
+    var liWidth = ul.children[0].offsetWidth;
+    var len = ul.children.length
+    var index = 0;
+    var lastIndex = 0;
+    ul.appendChild(ul.children[0].cloneNode(true))
+    myTool.css(ul, {
+      width: liWidth*(len+1) + 'px'
+    })
+    Array.from(btns).forEach((btn, i) => {
+      btn.onclick = function(){
+        lastIndex = index
+        index = i
+        bt()
+        us()
+      }
+    })
+    console.log(len)
+    function bt(){
+      btns[lastIndex].classList.remove('ac')
+      btns[index].classList.add('ac')
+    }
+    function us(){
+      ul.style.left = -index*liWidth + 'px'  
+    }
+    goNext.onclick = function(){
+      lastIndex = index
+      index++
+      if(index === len){
+        index = 0
+        ul.style.left = -len*liWidth + 'px'
+        setTimeout(() => {
+          ul.classList.remove('trans')
+          ul.style.left = '0px'
+          setTimeout(() => {
+            ul.classList.add('trans')
+          },10)
+        },1100)
+      }else{
+        us()
+      }
+      bt()
+    }
+    goPrev.onclick = function(){
+      lastIndex = index
+      index--
+      if(index < 0){
+        index = len -1
+        ul.classList.remove('trans')
+        ul.style.left = -len*liWidth + 'px'
+        setTimeout(() => {
+          ul.classList.add('trans')
+          us()
+        },10)
+      }else{
+        us()
+      }
+      bt()
+    }
+    var timer = setInterval(() => {
+      goNext.onclick()
+    },2000)
+    div.onmouseenter = function(){
+      clearInterval(timer)
+    }
+    div.onmouseleave = function(){
+      timer = setInterval(() => {
+      goNext.onclick()
+      },2000)
+    }
+  </script>
+</body>
+</html>

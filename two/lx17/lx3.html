@@ -54,17 +54,19 @@
   </div>
   <script>
     window.onload = function(){
-      // window.onresize = function(){
-        let box = document.querySelector('#box'),
-            items = box.children,
-            itemWidth = items[0].offsetWidth,
-            gap = 10;
-        var cols = parseInt(myTool.getBodySize().width/(itemWidth+gap))
-        myTool.css(box, {
-          width: cols*itemWidth+(cols-1)*gap + 'px'
-        })
-        var arr = Array(cols);
-        for( var i =0 ; i<items.length; i++){
+      let box = document.querySelector('#box'),
+          items = Array.from(box.children),
+          itemWidth = items[0].offsetWidth,
+          gap = 10,
+          len = 0;
+      var cols = parseInt(myTool.getBodySize().width/(itemWidth+gap))
+      myTool.css(box, {
+        width: cols*itemWidth+(cols-1)*gap + 'px'
+      })
+      var arr = Array(cols);
+      waterfall()
+      function waterfall(){
+        for( var i = len ; i<items.length; i++){
           if(i < cols){
             myTool.css(items[i], {
               top: '0px',
@@ -72,7 +74,7 @@
             })
             arr[i] = items[i].offsetHeight+gap
           }else{
-            for(j = 0, minIndex=0 ; j<arr.length; j++){
+            for(j = 1, minIndex=0 ; j<arr.length; j++){
               if(arr[j] < arr[minIndex]) minIndex = j
             }
             myTool.css(items[i], {
@@ -80,105 +82,72 @@
               top: arr[minIndex] + 'px'
             })
             arr[minIndex] += items[i].offsetHeight + gap
-          }
-        }
-        window.onscroll = function(){
-          var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
-          // console.log(scrollTop)
-          if(scrollTop >= items[items.length-1].offsetTop + items[items.length-1].offsetHeight - myTool.getBodySize().height-300){
-            console.log('end')
-            setTimeout(() => {
-              // var datas = [
-              //   "images/01.jpg",
-              //   "images/02.jpg",
-              //   "images/03.jpg",
-              //   "images/04.jpg",
-              //   "images/05.jpg",
-              //   "images/06.jpg",
-              //   "images/07.jpg",
-              //   "images/08.jpg",
-              //   "images/09.jpg",
-              //   "images/10.jpg",
-              //   "images/11.jpg",
-              //   "images/12.jpg",
-              //   "images/13.jpg",
-              //   "images/14.jpg",
-              //   "images/15.jpg",
-              //   "images/16.jpg",
-              //   "images/17.jpg",
-              //   'images1/1.jpg',
-              //   'images1/2.jpg',
-              //   'images1/3.jpg',
-              //   'images1/4.jpg',
-              //   'images1/5.jpg',
-              //   'images1/6.jpg',
-              //   'images1/7.jpg',
-              //   'images1/8.jpg',
-              //   'images1/9.jpg',
-              //   'images1/10.jpg',
-              //   'images1/11.jpg',
-              //   'images1/12.jpg',
-              //   'images1/13.jpg',
-              //   'images1/14.jpg',
-              //   'images1/15.jpg',
-              //   'images1/16.jpg',
-              //   'images1/17.jpg',
-              //   'images1/18.jpg',
-              //   'images1/19.jpg',
-              //   'images1/20.jpg',
-              //   'images1/21.jpg',
-              //   'images1/22.jpg',
-              //   'images1/23.jpg',
-              //   'images1/24.jpg',
-              //   'images1/25.jpg',
-              //   'images1/26.jpg',
-              //   'images1/27.jpg',
-              //   'images1/28.jpg',
-              //   'images1/29.jpg',
-              //   'images1/30.jpg',
-              //   'images1/31.jpg',
-              //   'images1/32.jpg',
-              //   'images1/33.jpg',
-              //   'images1/34.jpg',
-              //   'images1/35.jpg',
-              //   'images1/36.jpg',
-              //   'images1/37.jpg',
-              // ];
-              // datas.forEach((data) => {
-              //   var item = document.createElement('div')
-              //   item.className = 'item'
-              //   item.innerHTML = `<img src="${data}">`
-              // })
-              for(k =0 ;k<35 ;k++){
-                var item = document.createElement('div')
-                item.className = 'item'
-                item.innerHTML = `<img src="images/${myTool.randomNum(1,59)}.jpg">`
-                box.appendChild(item)
-              }
-              let items = box.children
-              for( var i =0 ; i<items.length; i++){
-          if(i < cols){
-            myTool.css(items[i], {
-              top: '0px',
-              left: i*(itemWidth+gap) + 'px'
-            })
-            arr[i] = items[i].offsetHeight+gap
-          }else{
-            for(j = 0, minIndex=0 ; j<arr.length; j++){
-              if(arr[j] < arr[minIndex]) minIndex = j
-            }
-            myTool.css(items[i], {
-              left: minIndex*(itemWidth+gap) + 'px',
-              top: arr[minIndex] + 'px'
-            })
-            arr[minIndex] += items[i].offsetHeight + gap
-          }
-        }
-            },1)
           }
         }
       }
-    // }
+      var timer
+      window.onscroll = function(){
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= items[items.length-1].offsetTop + items[items.length-1].offsetHeight - myTool.getBodySize().height-100) {
+        clearInterval(timer)
+        timer = setTimeout(() => {
+            // var datas = [
+            //   "images/59.jpg",
+            //   "images/58.jpg",
+            //   "images/57.jpg",
+            //   "images/56.jpg",
+            //   "images/55.jpg",
+            //   "images/54.jpg",
+            //   "images/53.jpg",
+            //   "images/52.jpg",
+            //   "images/51.jpg",
+            //   "images/50.jpg",
+            //   "images/49.jpg",
+            //   "images/48.jpg",
+            //   "images/47.jpg",
+            //   "images/46.jpg",
+            //   "images/45.jpg",
+            //   "images/44.jpg",
+            //   "images/43.jpg"
+            // ];
+            // TODO: 随机插图
+            var datas = new Array(20)
+            for(k = 0; k<datas.length; k++){
+              datas[k] = `images/${myTool.randomNum(1, 59)}.jpg` 
+            }
+            console.log(datas)
+            len = items.length
+            datas.forEach((data, index) => {
+            // for(var k = 0 ;k<10 ;k++){
+              let item = document.createElement('div')
+              item.className = 'item'
+              item.innerHTML = `<img src="${data}">`
+            //   item.innerHTML = `<img src="images/${myTool.randomNum(1,59)}.jpg">`
+              box.appendChild(item)
+              items.push(item)
+              item.children[0].onload = function(){
+                if(index === datas.length - 1){
+                  waterfall()
+                }
+            //     if(k === 10) {
+            //       waterfall()
+            //       k++
+            //     }
+              }
+            })
+          },1000)
+        }
+      }
+      window.onresize = function(){
+        cols = parseInt(myTool.getBodySize().width/(itemWidth+gap))
+        myTool.css(box, {
+          width: cols*itemWidth+(cols-1)*gap + 'px'
+        })
+        arr = new Array(cols)
+        len = 0
+        waterfall()
+      }
+    }
   </script>
 </body>
 </html>

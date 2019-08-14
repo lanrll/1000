@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 购物车抛物线效果 -->
+  <script src="../gg/base.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #add{
+      position: fixed;
+      left: 0px;
+      top: 400px;
+      cursor: pointer;
+      width: 400px;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid deeppink;
+      text-align: center;
+      color: deeppink;
+    }
+    #add:hover{
+      color: #cccccc;
+      background-color: deeppink;
+    }
+    #shopCart{
+      position: fixed;
+      left: 1100px;
+      top: 400px;
+      color: royalblue;
+    }
+    #shopNum{
+      width: 60px;
+      height: 25px;
+      background-color: deeppink;
+      color: black;
+      text-align: center;
+      line-height: 25px;
+    }
+    .ac{
+      width: 25px;
+      height: 25px;
+      background-color:deepskyblue;
+      position: absolute;
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="add">添加到购物车</div>
+  <div id="shopCart">
+    购物车
+    <p id="shopNum">0</p>
+  </div>
+  <script>
+    class Drag{
+      constructor(selector, titleSector){
+        this.div = document.querySelector(selector)
+        this.title = titleSector ? this.div.querySelector(titleSector) : this.div
+        this.init()
+      }
+      init(){
+        this.title.onmousedown = e => {
+          let disX = e.offsetX
+          let disY = e.offsetY
+          document.onmousemove = e => {
+            let left = e.clientX - disX
+            let top = e.clientY - disY
+            this.move({left, top})
+          }
+          document.onmouseup = function(){
+            document.onmousemove = null
+          }
+          e.preventDefault()
+        }
+      }
+      move(posObj){
+        if(posObj.left < 0) posObj.left = 0;
+        if(posObj.top < 0) posObj.top = 0;
+        if(posObj.left > myTool.getBodySize().width - this.div.offsetWidth) posObj.left = myTool.getBodySize().width - this.div.offsetWidth;
+        if(posObj.top > myTool.getBodySize().height - this.div.offsetHeight) posObj.top =  myTool.getBodySize().height - this.div.offsetHeight;
+        
+        posObj.left += 'px'
+        posObj.top += 'px'
+        myTool.css(this.div , posObj)
+      }
+    }
+    new Drag('#add')
+    new Drag('#shopCart')
+    // 抛物
+    var btn = document.querySelector('#add'),
+        shopCart = document.querySelector('#shopCart'),
+        shopNum = document.querySelector('#shopNum');
+    btn.onclick = function(e){
+      var div = document.createElement('div')
+      div.className = 'ac'
+      document.body.appendChild(div)
+      var x1 = e.clientX,
+          y1 = e.clientY,
+          x2 = myTool.getBodySize().width-300,
+          y2 = 300,
+          x3 = shopCart.offsetLeft,
+          y3 = shopCart.offsetTop;
+      var a = -((y2-y3)*x1 - (x2-x3)*y1 + x2*y3 - x3*y2) / ((x2-x3)*(x1-x2)*(x1-x3));
+      var b = ((y2-y3)*x1*x1 + x2*x2*y3 - x3*x3*y2 - (x2*x2 - x3*x3)*y1) / ((x2-x3)*(x1-x2)*(x1-x3));
+      var c = ((x2*y3 - x3*y2)*x1*x1 - (x2*x2*y3 - x3*x3*y2)*x1 + (x2*x2*x3 - x2*x3*x3)*y1) / ((x2-x3)*(x1-x2)*(x1-x3));
+      var left = x1;
+      var timer = setInterval(() => {
+        left += 8
+        var top = a*left*left + b*left + c;
+        myTool.css(div, {
+          left: left + 'px',
+          top: top + 'px'
+        })
+        if(left > x3){
+          clearInterval(timer)
+          document.body.removeChild(div)
+          shopNum.innerHTML = parseInt(shopNum.innerHTML) + 1
+        }
+      },30)
+    }
+  </script>
+</body>
+</html>
