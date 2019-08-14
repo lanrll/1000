@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+  <script src="../gg/base.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      height: 2000px;
+    }
+    li,a{
+      list-style: none;
+      text-decoration: none;
+    }
+    #dv{
+      height: 650px;
+      width: 40px;
+      position: fixed;
+      top: 5px;
+      right: 0px;
+      background-color: #000000;
+      z-index: 1;
+    }
+    #dv ul {
+      position: absolute;
+      top: 20%;
+      width: 100%;
+      /* overflow: hidden; */
+    }
+    #dv ul li {
+      text-align: center;
+      position: relative;
+    }
+    #dv ul li:nth-child(7){
+      margin-top: 400%;
+    }
+    #dv ul li:last-child{
+      margin-top: 10%;
+    }
+    #dv ul li a:hover{
+      background-color: #f40;
+    }
+    #dv ul li a{
+      width: 100%;
+      padding: 10px 0;
+      color: aliceblue;
+    }
+    #dv ul li a p{
+      font-size: 12px;
+      margin-top: 5px;
+    }
+    #dv ul li span{
+      width: 80px;
+      height: 36px;
+      background-color: yellow;
+      position: absolute;
+      left: 0;
+      transition: left .5s;
+      z-index: -1;
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="dv">
+    <ul>
+      <li><a href="javascript:;" class="fa fa-address-book"><p>账号</p></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-shopping-bag ac"><p>购<br>物<br> 车</p></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-angle-double-up"></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-angle-double-up"></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-angle-double-up"></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-angle-double-up"></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-angle-double-up"></a><span></span></li>
+      <li><a href="javascript:;" class="fa fa-angle-double-up"></a><span></span></li>
+    </ul>
+  </div>
+  <script>
+    var dv = document.querySelector('#dv')
+    var lis = document.querySelectorAll('#dv ul li')
+    var ul = document.querySelector('#dv ul')
+    var height = myTool.getBodySize().height-20;
+    myTool.css(dv,{
+      height: height +'px'
+    })
+    for(let i= 0 ; i<lis.length ; i++){
+      var h = myTool.getStyle(lis[i], "height") 
+      myTool.css(lis[i].lastChild, {
+        height: h
+      })
+      lis[i].onmouseenter = function () {
+        // iis[i].firstChild.className = 'ac'
+        myTool.css(lis[i].lastChild,{
+          left: -80+'px' ,
+          opacity: 1
+        } )
+      }
+      lis[i].onmouseleave = function () {  
+        myTool.css(lis[i].lastChild, {
+          left: '0px',
+          opacity: 0
+        })
+      }
+      console.log(h)
+    }
+    
+  </script>
+</body>
+</html>
