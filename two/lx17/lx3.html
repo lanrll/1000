@@ -91,30 +91,30 @@
         if (scrollTop >= items[items.length-1].offsetTop + items[items.length-1].offsetHeight - myTool.getBodySize().height-100) {
         clearInterval(timer)
         timer = setTimeout(() => {
-            // var datas = [
-            //   "images/59.jpg",
-            //   "images/58.jpg",
-            //   "images/57.jpg",
-            //   "images/56.jpg",
-            //   "images/55.jpg",
-            //   "images/54.jpg",
-            //   "images/53.jpg",
-            //   "images/52.jpg",
-            //   "images/51.jpg",
-            //   "images/50.jpg",
-            //   "images/49.jpg",
-            //   "images/48.jpg",
-            //   "images/47.jpg",
-            //   "images/46.jpg",
-            //   "images/45.jpg",
-            //   "images/44.jpg",
-            //   "images/43.jpg"
-            // ];
+            var datas = [
+              "images/59.jpg",
+              "images/58.jpg",
+              "images/57.jpg",
+              "images/56.jpg",
+              "images/55.jpg",
+              "images/54.jpg",
+              "images/53.jpg",
+              "images/52.jpg",
+              "images/51.jpg",
+              "images/50.jpg",
+              "images/49.jpg",
+              "images/48.jpg",
+              "images/47.jpg",
+              "images/46.jpg",
+              "images/45.jpg",
+              "images/44.jpg",
+              "images/43.jpg"
+            ];
             // TODO: 随机插图
-            var datas = new Array(20)
-            for(k = 0; k<datas.length; k++){
-              datas[k] = `images/${myTool.randomNum(1, 59)}.jpg` 
-            }
+            // var datas = new Array(20)
+            // for(k = 0; k<datas.length; k++){
+            //   datas[k] = `images/${myTool.randomNum(1, 59)}.jpg` 
+            // }
             console.log(datas)
             len = items.length
             datas.forEach((data, index) => {
