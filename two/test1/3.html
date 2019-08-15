@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li,a{
+      list-style: none;
+      text-decoration: none;
+    }
+    #dv{
+      width: 850px;
+      height: 500px;
+      margin: 50px auto;
+      position: relative;
+    }
+    #dv ul{
+      position: absolute;
+      right: 50px;
+      bottom: 20px;
+      z-index: 9;
+    }
+    #dv ul li{
+      float: left;
+      margin-left: 10px;
+    }
+    #dv ul li a{
+      float: left;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, .4);
+      color: #ffffff;
+      transition: 1s
+    }
+    #dv ul li a.ac{
+      background-color: #f40;
+      box-shadow: 2px 2px 2px black;
+    }
+    #dv #imgs{
+      width: 100%;
+      height: 100%;
+    }
+    #dv #imgs img{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      transition:  1s;
+    }
+    #dv #imgs img.cc{
+      opacity: 1;
+    }
+    #dv>a{
+      position: absolute;
+      top: 45%;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 32px;
+      background-color: rgba(0, 0, 0, .2);
+      font-size: 40px;
+      color: #ffffff;
+    }
+    #goPrev{
+      left: 0;
+    }
+    #goNext{
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="dv">
+    <ul>
+      <li><a href="javascript:;" class="ac">1</a></li>
+      <li><a href="javascript:;">2</a></li>
+      <li><a href="javascript:;">3</a></li>
+      <li><a href="javascript:;">4</a></li>
+      <li><a href="javascript:;">5</a></li>
+    </ul>
+    <div id="imgs">
+      <img src="main1.jpg" class="cc">
+      <img src="banner12.jpg">
+      <img src="banner13.jpg">
+      <img src="banner14.jpg">
+      <img src="banner15.jpg">
+    </div>
+    <a href="havascript:;" id="goPrev">&laquo;</a>
+    <a href="havascript:;" id="goNext">&raquo;</a>
+  </div>
+  <script>
+    var div = document.querySelector('#dv')
+    var lis = document.querySelectorAll('li')
+    var imgs = document.querySelectorAll('img')
+    var goPrev = document.querySelector('#goPrev')
+    var goNext = document.querySelector('#goNext')
+    var len = lis.length
+    var timer
+    var index = 0;
+    var lastIndex = 0;
+    Array.from(lis).forEach((lis,i) => {
+      lis.lastChild.onclick = function(){
+        lastIndex = index
+        index = i
+        change()
+      }
+    })
+    function change(){
+      lis[lastIndex].lastChild.classList.remove('ac')
+      imgs[lastIndex].classList.remove('cc')
+      lis[index].lastChild.classList.add('ac')
+      imgs[index].classList.add('cc')
+    }
+    goNext.onclick = function(){
+      lastIndex = index
+      index++
+      if(index > len-1) index = 0;
+      change()
+    }
+    goPrev.onclick = function(){
+      lastIndex = index
+      index--
+      if(index < 0) index = 4;
+      change()
+    }
+    function t(){
+      timer = setInterval(() => {
+      goNext.onclick()
+    },2000)
+    }
+    t()
+    dv.onmouseenter = function(){
+      clearInterval(timer)
+    }
+    dv.onmouseleave =function(){
+      t()
+    }
+  </script>
+</body>
+</html>

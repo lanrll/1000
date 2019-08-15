@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #dv{
+      width: 400px;
+      margin: 50px auto;
+      border: 1px solid #000000;
+    }
+    #dv #p1{
+      text-align: center;
+      margin-top: 20px ;
+    }
+    #dv #hua{
+      width: 80%;
+      height: 100px;
+      margin: 5% 10%;
+    }
+    #dv button{
+      width: 80px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      margin-left: 300px;
+      margin-bottom: 10px;
+    }
+    .ac {
+      display: block;
+      height: 30px;
+      border-bottom: 1px solid #000000;
+      margin: 10px 10px;
+    }
+    .re{
+      float: right;
+      text-decoration: none;
+    }
+    .re:hover{
+      color: #f40;
+    }
+  </style>
+</head>
+<body>
+  <div id="dv">
+    <p id="p1">说点什么吧！！！</p>
+    <textarea id="hua"></textarea>
+    <button>发送</button>
+  </div>
+  <script>
+    var div = document.querySelector("#dv")
+    var hua = div.querySelector('#hua')
+    var btn = div.querySelector('button')
+    btn.onclick = function(){
+      if(hua.value === ''){
+        clear()
+        alert('重新输入')
+      }else{
+        var newp = document.createElement('p')
+        newp.className = 'ac'
+        newp.innerHTML = `${huas}<a href="havascript:;" class="re">删除</a>`
+        div.appendChild(newp)
+        clear()
+      }
+      re = div.querySelectorAll('.ac')
+      for(i=0 ; i<re.length; i++){
+        re[i].lastChild.onclick = function(){
+          this.parentNode.remove(this.parentNode)
+        }
+      }
+    }
+    function clear(){
+      hua.value = ''
+    }
+  </script>
+</body>
+</html>
