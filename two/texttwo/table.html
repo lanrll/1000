@@ -69,13 +69,13 @@
         <table>
             <thead>
                 <tr>
-                    <td>全选：<input type="checkbox" id="allcheck"></td>
+                    <td>全选：<input type="checkbox" id="allCheck" class="allCheck"></td>
                     <td>名称</td>
                     <td>价格</td>
                     <td>数量</td>
                     <td>编辑</td>
                 </tr>
-            </thead>
+            </thead>  
             <tbody>
                 <tr>
                     <td><input type="checkbox" class="check"></td>
@@ -158,16 +158,20 @@
         </table>
     </div>
     <script>
-        document.querySelector("table").onclick = function(e){
-            e = e || event
-            var target = e.target || e.srcElement
-            var tr = target.parentNode.parentNode
+        var table = document.querySelector('table');
+        var allCheck = document.querySelector('#allCheck')
+        var checks = document.querySelectorAll('.check');
+        var num = 0;
+        table.onclick = function(e){
+            e = e || event;
+            var target = e.target || e.srcElement;
+            var tr = target.parentNode.parentNode;
             switch (target.className){
                 case 'editBtn': 
-                    tr.className = 'edit'
-                    var spans = tr.querySelectorAll('span')
+                    tr.className = 'edit';
+                    var spans = tr.querySelectorAll('span');
                     Array.from(spans).forEach(function(span){
-                        span.nextElementSibling.value = span.innerHTML
+                        span.nextElementSibling.value = span.innerHTML;
                     })
                     break;
                 case 'okBtn': 
@@ -176,56 +180,43 @@
                         span.innerHTML = span.nextElementSibling.value
                     })
                 case 'cancelBtn':
-                    tr.className = ''
+                    tr.className = '';
                     break;
                 case 'delBtn':
                     if(confirm('确定要删除么？')){
-                        tr.parentNode.removeChild(tr)
+                        tr.parentNode.removeChild(tr);
+                        num = 0;
+                        checks = document.querySelectorAll('.check');
+                        Array.from(checks).forEach( (check, i) => {
+                            if(check.checked) num++;
+                        })
+                        allCheck.checked = num === checks.length;
                     }
+                    break;
+                case 'allCheck': 
+                    num = allCheck.checked ? checks.length : 0;
+                    Array.from(checks).forEach( (check, i) => {
+                        check.checked = allCheck.checked;
+                    })
+                    break;
+                case 'check': 
+                    num += target.checked ? 1 : -1;
+                    allCheck.checked = num === checks.length; 
             }
+            totalPrice()
         }
-        var allchecks = document.querySelector("#allcheck")
-        var checks = document.querySelectorAll(".check")
-        var prices = document.querySelectorAll(".price")
-        var nums = document.querySelectorAll('.num')
-        var num = 0
-        var moneys = document.querySelector("#money")
-        var sun = 0
-        allchecks.onchange = function(){
-            sun = 0
-            for( i=0; i<checks.length; i++){
-                checks[i].checked = this.checked
-            }
-            if(this.checked){
-                num = checks.length;
-                for( k=0; k<prices.length; k++) {
-                    sun += prices[k].innerHTML*nums[k].innerHTML 
+        function totalPrice() {  
+            var totalPrices = 0;
+            checks = document.querySelectorAll('.check');
+            Array.from(checks).forEach( (check) => {
+                if( check.checked){
+                    var tr = check.parentNode.parentNode;
+                    var unitPrice = tr.children[2].children[0].innerHTML;
+                    var count = tr.children[3].children[0].innerHTML;
+                    totalPrices += unitPrice * count; 
                 }
-                moneys.innerHTML = sun
-            }else{
-                num = 0
-                sun = 0
-                moneys.innerHTML = sun
-            }
-            // num = this.length ? checks.length : 0
-        }
-        // var index = 0
-        for(let j=0 ;j<checks.length; j++){
-            // checks[j].index = j
-            checks[j].onchange = function(){
-                // var pricesNum = prices[j].innerHTML
-                // var numsNum = nums[j].innerHTML
-                if(this.checked){
-                    num++
-                    sun = sun + prices[j].innerHTML*nums[j].innerHTML
-                }else{
-                    num--
-                    sun = sun - prices[j].innerHTML*nums[j].innerHTML
-                }
-                moneys.innerHTML = sun
-                this.checked ? num++ : num--
-                allchecks.checked = num == checks.length 
-            }
+            })
+            document.querySelector('#money').innerHTML = totalPrices;
         }
     </script>
 </body>
