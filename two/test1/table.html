@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+    #box{
+      width: 500px;
+      margin: 100px auto;
+    }
+    table,th,td{
+      border: 1px solid #000000;
+      border-collapse: collapse;
+    }
+    th,td{
+      width: 100px;
+      height: 30px;
+      padding: 10px;
+    }
+    input[type="text"]{
+      display: none;
+      height: 20px;
+      width: 60px;
+      border: 1px solid #cccccc;
+    }
+    tfoot td{
+      text-align: right;
+    }
+    .delBtn{
+      color: red;
+    }
+    .okBtn,.cancelBtn{
+      display: none;
+    }
+    .edit span{
+      display: none;
+    }
+    .edit input[type="text"]{
+      display: inline-block;
+    }
+    .edit .editBtn,.edit .delBtn{
+      display: none;
+    }
+    .edit .okBtn,.edit .cancelBtn{
+      display: inline;
+    }
+    #money{
+      font-size: 16px;
+      color: red;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <table>
+      <thead>
+        <tr>
+          <td>全选：<input type="checkbox" class="allchexk"></td>
+          <td>名称</td>
+          <td>价格</td>
+          <td>数量</td>
+          <td>编辑</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span class="price">1000</span><input type="text"></td>
+          <td><span class="num">2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span class="price">1000</span><input type="text"></td>
+          <td><span class="num">2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span class="price">1000</span><input type="text"></td>
+          <td><span class="num">2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span class="price">1000</span><input type="text"></td>
+          <td><span class="num">2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span class="price">1000</span><input type="text"></td>
+          <td><span class="num">2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">总价：￥<b id="money"></b></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</body>
+</html>
+  <script>
+    var checks = document.querySelectorAll('.check')
+    var num = 0
+    document.querySelector('table').onclick = function(e){
+      e = e || event
+      var target = e.target || e.srcElement
+      var tr = target.parentNode.parentNode
+      switch(target.className){
+        case 'editBtn':
+          tr.className = 'edit'
+          var spans = tr.querySelectorAll('span')
+          Array.from(spans).forEach( (span) => {
+            span.nextElementSibling.value = span.innerHTML
+          })
+          break;
+        case 'okBtn':
+          var spans = tr.querySelectorAll('span')
+          Array.from(spans).forEach( (span) => {
+            span.innerHTML = span.nextElementSibling.value 
+          })
+        case 'cancelBtn':
+          tr.className = ''
+          break;
+        case 'delBtn':
+          if(confirm('sure?')){
+            tr.parentNode.removeChild(tr)
+          }
+      }
+      // if(target.className === 'allcheck'){
+      //   num = allcheck.checked ? checks.length : 0;
+      //   Array.from(checks).forEach( (check, i) => {
+      //     checks.checked = allcheck.checked
+      //   })
+      // }else if(target.className === 'check'){
+      //   num += target.checked ? 1 : -1
+      //   if(num === checks.length){
+      //     allcheck.checked = true
+      //   }else{
+      //     allcheck.checked = false
+      //   }
+      // }
+    }
+    var allcheck = document.querySelector('#allcheck'),
+        // checks = document.querySelectorAll('.check'),
+        prises = document.querySelectorAll('tr .price'),
+        nums = document.querySelectorAll('tr .num')
+    allcheck.onchange = function(){
+      Array.from(checks).forEach(() => {
+        checks.checkend = this.checkend
+      })
+      num = this.length ? checks.length : 0
+    }
+    for(let j =0 ;j<checks.length; j++){
+      checks[j].onchange = function(){
+        this.checkend ? num++ : num--
+        allcheck.checked = num === checks.length
+      }
+    }
+  </script>
+  
+<script>
+    //删除所选全部物品的函数
+    function removeDivs(){
+        if(window.confirm('这将删除所选物品，是否继续？')){
+            var divs = document.querySelectorAll('#cart-items>div');     //设为局部变量
+            var checkBoxs = document.querySelectorAll('#cart-items>div input[type=checkbox]');
+            for(var i = 0;i < divs.length;i++){
+                if(checkBoxs[i].checked){
+                    document.querySelector('#cart-items').removeChild(divs[i]);
+                }
+            }
+        }
+        sumCount();
+    }
+    //删除单样物品的函数
+    function removeThing(evt){
+        if(window.confirm('这将删除这件物品，是否继续？')){
+            var divs = document.querySelectorAll('#cart-items>div');    //设为局部变量
+            var thing = evt.target||evt.srcElement;
+            document.querySelector('#cart-items').removeChild(thing.parentNode.parentNode);
+        }
+        sumCount();
+    }
+    //调数量加减的函数
+    function changeCount(evt){
+        var operator = evt.target||evt.srcElement;
+        
+        if(operator.textContent == '+'){
+            
+            if(operator.previousElementSibling.value <= 999){
+                operator.previousElementSibling.value = parseInt(operator.previousElementSibling.value) + 1;
+            }
+     //     console.log(operator.previousElementSibling);
+        }else{
+            if(operator.nextElementSibling.value >= 2){
+                operator.nextElementSibling.value = parseInt(operator.nextElementSibling.value) - 1;
+            }
+    //      console.log(operator.nextElementSibling.value);
+        }
+        
+        var price = operator.parentElement.parentElement.querySelector('.price');
+        var countIput = operator.parentElement.querySelector('input').value;
+        if(countIput > 999||countIput<1){
+            window.alert('请输入有效数字！')
+            return ;
+        }
+        var newPrice = parseInt(price.textContent) * parseFloat(countIput);
+
+        operator.parentElement.nextElementSibling.querySelector('span').innerHTML = newPrice.toFixed(2);  //toFixed函数保留两位小数
+        
+        sumCount();
+    }
+    //总数和总价格函数刷新
+    function sumCount(){
+        var divs = document.querySelectorAll('#cart-items>div'); 
+        var count = 0;   //总的数量
+        var sumPrice  = 0; //总价
+        for(var i = 0;i < divs.length;i++){
+            if(divs[i].querySelector('input[type=checkbox]').checked){
+                count += parseInt(divs[i].querySelector('input[type=text]').value);
+                sumPrice += parseInt(divs[i].querySelector('.priceCount').innerHTML);
+            }
+        }
+        
+        document.querySelector('#totalCount').innerHTML = parseInt(count);    //总数成功改变
+        document.querySelector('#totalPrice').innerHTML = '￥' + sumPrice.toFixed(2);   //总的价格改变 
+        
+    }
+    
+    //全选
+    function allIn(){
+   //   var allBtn = evt.target||evt.srcElement;
+        var checkBoxs = document.querySelectorAll('#cart-items>div input[type=checkbox]');
+        if(qxButton.checked){   //如果全选按钮没按
+            for(var i = 0;i < checkBoxs.length;i++){
+                if(!checkBoxs[i].checked){
+                    checkBoxs[i].checked = true;   //
+                }
+            }
+        }else{   //如果不是全选，就变为全选
+            for(var i = 0;i < checkBoxs.length;i++){
+                if(checkBoxs[i].checked){
+                    checkBoxs[i].checked = false;  
+                }
+            }
+        }    
+        sumCount();
+    }
+    
+    //**************************************************FZX-楠木cral*************************************************************//
+    //删除所选物品
+    var removeDiv = document.getElementById('clearSelected');
+    removeDiv.addEventListener('click', removeDivs);
+    //删除单个指定物品
+    var removeThings = document.querySelectorAll('#cart-items>div .center>a');
+    for(var i = 0;i < removeThings.length;i++){
+        removeThings[i].addEventListener('click',removeThing);
+    }
+    //数量加减按钮  数量变化导致价格变化
+    var countButtons = document.querySelectorAll('#cart-items>div .small-button');
+    for(var i= 0;i < countButtons.length;i++){
+        countButtons[i].addEventListener('click',changeCount);
+    }
+    //数量输入框自己输入
+    var inputBorders = document.querySelectorAll('#cart-items>div>div input[type=text]');
+    for(var i= 0;i < inputBorders.length;i++){
+        inputBorders[i].addEventListener('focusout', changeCount);
+    }
+    
+    //总数量以及总计价格功能
+    var checkBoxs = document.querySelectorAll('#cart-items>div input[type=checkbox]');
+    for(var i = 0;i < checkBoxs.length;i++){
+        checkBoxs[i].addEventListener('click', sumCount);
+    }
+    //全选按钮
+    var qxButton = document.getElementById('selectAll');
+    qxButton.addEventListener('click', allIn);
+</script>

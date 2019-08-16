@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    #dv{
+      width: 850px;
+      height: 480px;
+      margin: 50px auto;
+      position: relative;
+      overflow: hidden;
+    }
+    #dv ul{
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+    #dv ul.trans{
+      transition:  1s;
+    }
+    #dv ul li{
+      width: 850px;
+      height: 480px;
+    }
+    img{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    #dv ol{
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+    }
+    #dv ol li{
+      float: left;
+      margin-left: 5px;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, .4);
+      color: white;
+    }
+    #dv ol li.ac{
+      background-color: #f40;
+      color: yellow;
+      box-shadow: 2px 2px 2px black;
+    }
+    #dv>a{
+      text-decoration: none;
+      position: absolute;
+      top: 45%;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 32px;
+      background-color: rgba(0, 0, 0, .2);
+      color: white;
+      font-size: 40px;
+    }
+    #goPrev{
+      left: 0;
+    }
+    #goNext{
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="dv">
+    <ul class="trans">
+      <li><a href="javascript:;"><img src="./images/main1.jpg"></a></li>
+      <li><a href="javascript:;"><img src="./images/banner3.jpg"></a></li>
+      <li><a href="javascript:;"><img src="./images/banner4.jpg"></a></li>
+      <li><a href="javascript:;"><img src="./images/banner8.jpg"></a></li>
+      <li><a href="javascript:;"><img src="./images/banner9.jpg"></a></li>
+      <li><a href="javascript:;"><img src="./images/banner13.jpg"></a></li>
+    </ul>
+    <ol>
+      <li class="ac">1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ol>
+    <a href="javasctipt:;" id="goPrev">&laquo;</a>
+    <a href="javasctipt:;" id="goNext">&raquo;</a>
+  </div>
+  <script>
+    var myTool ={
+      css: function( obj, attr){
+        for(var key in attr){
+          obj.style[key] = attr[key]
+        }
+      }
+    }
+    var div = document.querySelector('#dv'),
+        btns = div.querySelectorAll('ol li'),
+        ul = div.querySelector('ul'),
+        goNext = div.querySelector('#goNext'),
+        goPrev = div.querySelector('#goPrev'),
+        liheight = ul.children[0].offsetHeight,
+        len = ul.children.length,
+        lastIndex = 0,
+        index = 0,
+        timer
+    ul.appendChild(ul.children[0].cloneNode(true))
+    myTool.css(ul, {
+      height: liheight*(len+1) + 'px'
+    })
+    Array.from(btns).forEach( (btn, i) => {
+      btn.onclick = function(){
+        lastIndex = index
+        index = i
+        btns[lastIndex].classList.remove('ac')
+        btns[index].classList.add('ac')
+        ul.style.top = -index*liheight + 'px'
+      }
+    })
+    goNext.onclick = function(){
+      lastIndex = index
+      index++
+      if(index === len){
+        index = 0
+        ul.style.top = -len*liheight + 'px'
+        setTimeout( () => {
+          ul.classList.remove('trans')
+          ul.style.top =  '0px'
+          setTimeout(() => {
+            ul.classList.add('trans')
+          },10);
+        },1100)
+      }else{
+        ul.style.top = -index*liheight + 'px'
+      }
+      btns[lastIndex].classList.remove('ac')
+      btns[index].classList.add('ac')
+    }
+    goPrev.onclick = function(){
+      lastIndex = index
+      index--
+      if(index < 0){
+        index = len - 1
+        ul.classList.remove('trans')
+        ul.style.top = -len*liheight + 'px'
+        setTimeout(() => {
+          ul.classList.add('trans')
+          ul.style.top = -index*liheight + 'px'
+        }, 10);
+      }else{
+        ul.style.top = -index*liheight + 'px'
+      }
+      btns[lastIndex].classList.remove('ac')
+      btns[index].classList.add('ac')
+    }
+    function t(){
+      timer = setInterval ( () => {
+        goNext.onclick()
+      },1500)
+    }
+    t()
+    div.onmouseenter = function(){
+      clearInterval(timer)
+    }
+    div.onmouseleave = function(){
+      t()
+    }
+  </script>
+</body>
+</html>
