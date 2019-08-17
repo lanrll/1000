@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 轮播图-页面滑动 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    .wrap{
+      width: 1200px;
+      margin: 10px auto;
+    }
+    .slide{
+      height: 500px;
+      position: relative;
+    }
+    .slide li{
+      /* height: ; */
+      position: absolute;
+      left: 200px;
+      top: 0;
+      transition: 1s;
+    }
+    .slide li img{
+      width: 100%;
+    }
+    .arrow{
+      opacity: 0;
+    }
+    .arrow>a{
+      text-decoration: none;
+      width: 80px;
+      height: 80px;
+      text-align: center;
+      line-height: 80px;
+      font-size: 60px;
+      background-color: rgba(0, 0, 0, 0);
+      color: darkseagreen;
+      position: absolute;
+      top: 45%;
+      z-index: 9;
+    }
+    .goPrev{
+      left: 0;
+    }
+    .goNext{
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="wrap">
+    <div class="slide" id="slide">
+      <ul>
+        <li><a href="javascript:;"><img src="../images/main1.jpg"></a></li>
+        <li><a href="javascript:;"><img src="../images/banner10.jpg"></a></li>
+        <li><a href="javascript:;"><img src="../images/banner11.jpg"></a></li>
+        <li><a href="javascript:;"><img src="../images/banner12.jpg"></a></li>
+        <li><a href="javascript:;"><img src="../images/banner12.jpg"></a></li>
+      </ul>
+      <div class="arrow" id="arrow">
+        <a href="havascript:;" class="goPrev">&laquo;</a>
+        <a href="havascript:;" class="goNext">&raquo;</a>
+      </div>
+    </div>
+  </div>
+  <script src="../gg/base.js"></script>
+  <script>
+    window.onload = function(){
+      var arr = [
+        {
+          width: 400 + 'px',
+          top:50 + 'px',
+          left:100 + 'px',
+          opacity:.2,
+          zIndex:2
+        },
+        {
+          width: 600 + 'px',
+          top:100 + 'px',
+          left:0,
+          opacity:.7,
+          zIndex:3
+        },
+        {
+          width: 800 + 'px',
+          top:80 + 'px',
+          left:200 + 'px',
+          opacity:1,
+          zIndex:4
+        },
+        {
+          width: 600 + 'px',
+          top:100 + 'px',
+          left:600 + 'px',
+          opacity:.7,
+          zIndex:3
+        },
+        {
+          width: 400 + 'px',
+          top:50 + 'px',
+          left:700 + 'px',
+          opacity:.2,
+          zIndex:2
+        }
+      ]
+      var slide = document.querySelector('#slide');
+      var liArr = slide.querySelectorAll('li');
+      var arrow = slide.children[1];
+      var arrowChildren = arrow.children;
+      var flag = true;
+      var timer;
+      //初始化
+      function init(){
+        Array.from(liArr).forEach( (li,i) => {
+            animation(li, arr[i], function(){
+            flag = true;
+          })
+        })
+      }
+      init();
+      tm();
+      //进入
+      slide.onmouseenter = function(){
+        animation(arrow, {'opacity': 100});
+        clearInterval(timer)
+      }
+      // 离开
+      slide.onmouseleave = function(){
+        animation(arrow, {'opacity': 0});
+        tm();
+      }
+      // 前一张
+      arrowChildren[0].onclick = function(){
+        if(flag){
+          flag = false;
+          move(true);
+        }
+      }
+      // 后一张
+      arrowChildren[1].onclick = function(){
+        if(flag){
+          flag = false;
+          move(false);
+        }
+      }
+      // 前后移动判断
+      function move(bool){
+        if(bool === true || bool === false){
+          bool ? arr.unshift(arr.pop()) : arr.push(arr.shift());
+          // pop()  删除最后一个元素并返回该值
+          // unshift()  添加一个或多个元素到开头，返回新长度
+          // push()   添加一个或多个元素到末尾，返回新长度
+          // shif()  删除第一个元素并返回该值
+        }
+        init();
+      }
+      // 定时
+      function tm(){
+        timer = setInterval( () => {
+          arrowChildren[1].onclick();
+        },1500)
+      }
+      // 移动
+      function animation(obj, json,fn){
+        obj.timer = setTimeout( () => {
+          myTool.css(obj, json);
+        },10)
+        fn && fn();
+      }
+    }
+  </script>
+</body>
+</html>

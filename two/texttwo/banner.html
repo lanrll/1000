@@ -102,83 +102,120 @@
   </div>
   <script>
     var myTool ={
+      getStyle: function(obj, attr){
+        if(obj.currentStyle){
+          return obj.currentStyle[attr];
+        }else{
+          return getComputedStyle(obj, false)[attr];
+        }
+    },
       css: function( obj, attr){
         for(var key in attr){
-          obj.style[key] = attr[key]
+          obj.style[key] = attr[key];
+        }
+      },
+      slowMove: function(obj, attr, end){
+        clearInterval(obj.timer);
+        var start = parseInt(this.getStyle(obj, attr));
+        obj.timer = setInterval(() => {
+          var distance = end - start;
+          var speed = distance > 0 ? Math.ceil(distance/10) : Math.floor(distance/10);
+          start += speed;
+          obj.style[attr] = start + 'px';
+          if(start === end){
+            clearInterval(obj.timer);
+          }
+          console.log(speed)
+        }, 10);
+      }
+    }
+    class banners{
+      constructor(){
+        this.div = document.querySelector('#dv');
+        this.btns = document.querySelectorAll('ol li');
+        this.ul = document.querySelector('ul');
+        this.goNext = document.querySelector('#goNext');
+        this.goPrev = document.querySelector('#goPrev');
+        this.liheight = this.ul.children[0].offsetHeight;
+        this.len = this.ul.children.length;
+        this.lastIndex = 0;
+        this.index = 0;
+        this.init();
+        this.timer();
+        this.mouse();
+        this.clicks();
+      }
+      init() {
+        this.ul.appendChild(this.ul.children[0].cloneNode(true))
+        myTool.css(this.ul, {
+          height: this.liheight*(this.len+1) + 'px'
+        })
+        Array.from(this.btns).forEach( (btn, i) => {
+          btn.onclick = () => {
+            this.lastIndex = this.index
+            this.index = i
+            console.log(this.btns)
+            this.btns[this.lastIndex].classList.remove('ac')
+            this.btns[this.index].classList.add('ac')
+            myTool.slowMove(this.ul, 'top', -this.index*this.liheight)
+          }
+        })
+        console.log(this.ul.style.height)
+      }
+      clicks(){
+        this.goNext.onclick = () => {
+          this.lastIndex = this.index
+          this.index++
+          if(this.index === this.len){
+            this.index = 0
+            this.ul.style.top = -this.len*this.liheight + 'px'
+            setTimeout( () => {
+              this.ul.classList.remove('trans')
+              this.ul.style.top =  '0px'
+              setTimeout(() => {
+                this.ul.classList.add('trans')
+              },31);
+            },1100)
+          }else{
+            myTool.slowMove(this.ul, 'top', -this.index*this.liheight)
+          }
+          this.btns[this.lastIndex].classList.remove('ac')
+          this.btns[this.index].classList.add('ac')
+        }
+        this.goPrev.onclick = () => {
+          this.lastIndex = this.index
+          this.index--
+          if(this.index < 0){
+            this.index = this.len - 1
+            this.ul.classList.remove('trans')
+            this.ul.style.top = -this.len*this.liheight + 'px'
+            setTimeout(() => {
+              this.ul.classList.add('trans')
+              myTool.slowMove(this.ul, 'top', -this.index*this.liheight)
+            }, 31);
+          }else{
+            myTool.slowMove(this.ul, 'top', -this.index*this.liheight)
+          }
+          this.btns[this.lastIndex].classList.remove('ac')
+          this.btns[this.index].classList.add('ac')
+        }
+      }
+      timer(){
+        this.timers = setInterval ( () => {
+          this.goNext.onclick();
+        },1500)
+
+      }
+      mouse(){
+        this.div.onmouseenter = () => {
+          clearInterval(this.timers);
+        }
+        this.div.onmouseleave = () => {
+          this.timer();
         }
       }
     }
-    var div = document.querySelector('#dv'),
-        btns = div.querySelectorAll('ol li'),
-        ul = div.querySelector('ul'),
-        goNext = div.querySelector('#goNext'),
-        goPrev = div.querySelector('#goPrev'),
-        liheight = ul.children[0].offsetHeight,
-        len = ul.children.length,
-        lastIndex = 0,
-        index = 0,
-        timer
-    ul.appendChild(ul.children[0].cloneNode(true))
-    myTool.css(ul, {
-      height: liheight*(len+1) + 'px'
-    })
-    Array.from(btns).forEach( (btn, i) => {
-      btn.onclick = function(){
-        lastIndex = index
-        index = i
-        btns[lastIndex].classList.remove('ac')
-        btns[index].classList.add('ac')
-        ul.style.top = -index*liheight + 'px'
-      }
-    })
-    goNext.onclick = function(){
-      lastIndex = index
-      index++
-      if(index === len){
-        index = 0
-        ul.style.top = -len*liheight + 'px'
-        setTimeout( () => {
-          ul.classList.remove('trans')
-          ul.style.top =  '0px'
-          setTimeout(() => {
-            ul.classList.add('trans')
-          },10);
-        },1100)
-      }else{
-        ul.style.top = -index*liheight + 'px'
-      }
-      btns[lastIndex].classList.remove('ac')
-      btns[index].classList.add('ac')
-    }
-    goPrev.onclick = function(){
-      lastIndex = index
-      index--
-      if(index < 0){
-        index = len - 1
-        ul.classList.remove('trans')
-        ul.style.top = -len*liheight + 'px'
-        setTimeout(() => {
-          ul.classList.add('trans')
-          ul.style.top = -index*liheight + 'px'
-        }, 10);
-      }else{
-        ul.style.top = -index*liheight + 'px'
-      }
-      btns[lastIndex].classList.remove('ac')
-      btns[index].classList.add('ac')
-    }
-    function t(){
-      timer = setInterval ( () => {
-        goNext.onclick()
-      },1500)
-    }
-    t()
-    div.onmouseenter = function(){
-      clearInterval(timer)
-    }
-    div.onmouseleave = function(){
-      t()
-    }
+    new banners()
   </script>
 </body>
 </html>
