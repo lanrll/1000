@@ -64,7 +64,7 @@
         <li><a href="javascript:;"><img src="../images/banner10.jpg"></a></li>
         <li><a href="javascript:;"><img src="../images/banner11.jpg"></a></li>
         <li><a href="javascript:;"><img src="../images/banner12.jpg"></a></li>
-        <li><a href="javascript:;"><img src="../images/banner12.jpg"></a></li>
+        <li><a href="javascript:;"><img src="../images/banner14.jpg"></a></li>
       </ul>
       <div class="arrow" id="arrow">
         <a href="havascript:;" class="goPrev">&laquo;</a>
@@ -165,6 +165,7 @@
       }
       // 定时
       function tm(){
+        clearInterval(timer);
         timer = setInterval( () => {
           arrowChildren[1].onclick();
         },1500)

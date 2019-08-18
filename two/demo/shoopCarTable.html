@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 表格-购物车效果 -->
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+    #box{
+      width: 500px;
+      margin: 100px auto;
+    }
+    table,th,td{
+      border: 1px solid #000000;
+      border-collapse: collapse;
+    }
+    td,th{
+      width: 100px;
+      height: 30px;
+      padding: 10px;
+    }
+    input[type="text"]{
+      display: none;
+      height: 20px;
+      width: 60px;
+      border: 1px solid #cccccc;
+    }
+    tfoot td{
+      text-align: right;
+    }
+    .editBtn{
+      color: #666666;
+    }
+    .delBtn{
+      color: rebeccapurple;
+    }
+    .okBtn,.cancelBtn{
+      display: none;
+    }
+    .edit span{
+      display: none;
+    }
+    .edit input[type="text"]{
+      display: inline-block;
+    }
+    .edit .editBtn,.edit .delBtn{
+      display: none;
+    }
+    .edit .okBtn,.edit .cancelBtn{
+      display: inline;
+    }
+    .money{
+      font-size: 16px;
+      font-weight: 700;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <table>
+      <thead>
+        <tr>
+          <td>全选：<input type="checkbox" id="allCheck" class="allCheck"></td>
+          <td>名称</td>
+          <td>价格</td>
+          <td>数量</td>
+          <td>编辑</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span>3600</span><input type="text"></td>
+          <td><span>2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span>3600</span><input type="text"></td>
+          <td><span>2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span>3600</span><input type="text"></td>
+          <td><span>2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span>3600</span><input type="text"></td>
+          <td><span>2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" class="check"></td>
+          <td><span>小米</span><input type="text"></td>
+          <td><span>3600</span><input type="text"></td>
+          <td><span>2</span><input type="text"></td>
+          <td>
+            <a href="javascript:;" class="editBtn">编辑</a>
+            <a href="javascript:;" class="okBtn">确定</a>
+            <a href="javascript:;" class="cancelBtn">取消</a>
+            <a href="javascript:;" class="delBtn">删除</a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">总价：￥<b class="money"></b></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <script>
+    var table = document.querySelector('table')
+    var allCheck = document.querySelector('.allCheck')
+    var checks = document.querySelectorAll('.check')
+    var num = 0;
+    table.onclick = function (e) {  
+      e = e || window.event;
+      var target = e.target || e.srcElement;
+      var tr = target.parentNode.parentNode;
+      switch(target.className){
+        case 'editBtn':
+          tr.className = 'edit';
+          var spans = tr.querySelectorAll('span');
+          Array.from(spans).forEach( (span) => {
+            span.nextElementSibling.value = span.innerHTML;
+          })
+          break;
+        case 'okBtn': 
+          var spans = tr.querySelectorAll('span');
+          Array.from(spans).forEach( (span) => {
+            span.innerHTML = span.nextElementSibling.value;
+          })
+        case 'cancelBtn':
+          tr.className = '';
+          break;
+        case 'delBtn':
+          if(confirm('sure?')){
+            tr.parentNode.removeChild(tr);
+            num = 0;
+            checks = document.querySelectorAll('.check');
+            Array.from(checks).forEach( (check) => {
+              if(check.checked) num++;
+            })
+            allCheck.checked = num === checks.length;
+          }
+          break;
+        case 'allCheck':
+          num = allCheck.checked ? checks.length : 0;
+          Array.from(checks).forEach( (check) => {
+            check.checked = allCheck.checked;
+          })
+          break;
+        case 'check':
+          num += target.checked ? 1 : -1;
+          allCheck.checked = num === checks.length;
+      }
+      totalPrice();
+    }
+    function totalPrice() {
+      var totalPrices = 0;
+      checks = document.querySelectorAll('.check')
+      Array.from(checks).forEach( (check) => {
+        if(check.checked){
+          var tr = check.parentNode.parentNode;
+          var unitPrice = tr.children[2].children[0].innerHTML;
+          var count = tr.children[3].children[0].innerHTML;
+          totalPrices += unitPrice * count; 
+        }
+      })
+      document.querySelector('.money').innerHTML = totalPrices;
+    }
+  </script>
+</body>
+</html>

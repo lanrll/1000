@@ -89,7 +89,7 @@
       window.onscroll = function(){
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         if (scrollTop >= items[items.length-1].offsetTop + items[items.length-1].offsetHeight - myTool.getBodySize().height-100) {
-        clearInterval(timer)
+        clearTimeout(timer)
         timer = setTimeout(() => {
             // var datas = [
             //   "images/59.jpg",
@@ -110,7 +110,6 @@
             //   "images/44.jpg",
             //   "images/43.jpg"
             // ];
-            // TODO: 随机插图
             var datas = new Array(20)
             for(k = 0; k<datas.length; k++){
               datas[k] = `images/${myTool.randomNum(1, 59)}.jpg` 
