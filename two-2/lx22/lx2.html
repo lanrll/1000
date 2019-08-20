@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="setCookie()">存</button>
+  <button onclick="getCookie()">取</button>
+  <button onclick="delCookie()">删</button>
+  <script>
+    function setCookie(){
+      var date = new Date();
+      date.setDate(date.getDate() + 7);
+      console.log(date.toLocaleString());
+      document.cookie = 'sex=man;expires=' + date.toUTCString();
+    }
+    function getCookie(){
+      console.log(document.cookie);
+    }
+    function delCookie(){
+      var date = new Date();
+      date.setDate(date.getDate() - 7);
+      console.log(date.toLocaleString());
+      document.cookie = 'sex=;expires=' + date.toUTCString();
+    }
+  </script>
+</body>
+</html>

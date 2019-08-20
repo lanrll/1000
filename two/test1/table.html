@@ -63,7 +63,7 @@
     <table>
       <thead>
         <tr>
-          <td>全选：<input type="checkbox" class="allchexk"></td>
+          <td>全选：<input type="checkbox" class="allCheck"></td>
           <td>名称</td>
           <td>价格</td>
           <td>数量</td>
@@ -142,61 +142,45 @@
 </body>
 </html>
   <script>
-    var checks = document.querySelectorAll('.check')
-    var num = 0
+    var table = document.querySelector('table');
+    var allChack = document.querySelector('.allCheck');
+    var checks = document.querySelectorAll('.check');
+    var num = 0;
     document.querySelector('table').onclick = function(e){
-      e = e || event
-      var target = e.target || e.srcElement
-      var tr = target.parentNode.parentNode
+      e = e || event;
+      var target = e.target || e.srcElement;
+      var tr = target.parentNode.parentNode;
       switch(target.className){
         case 'editBtn':
-          tr.className = 'edit'
+          tr.className = 'edit';
           var spans = tr.querySelectorAll('span')
           Array.from(spans).forEach( (span) => {
-            span.nextElementSibling.value = span.innerHTML
+            span.nextElementSibling.value = span.innerHTML;
           })
           break;
         case 'okBtn':
-          var spans = tr.querySelectorAll('span')
+          var spans = tr.querySelectorAll('span');
           Array.from(spans).forEach( (span) => {
-            span.innerHTML = span.nextElementSibling.value 
+            span.innerHTML = span.nextElementSibling.value ;
           })
         case 'cancelBtn':
-          tr.className = ''
+          tr.className = '';
           break;
         case 'delBtn':
           if(confirm('sure?')){
-            tr.parentNode.removeChild(tr)
+            tr.parentNode.removeChild(tr);
+            num = 0;
+            checks = document.querySelectorAll('.check');
+            Array.from(checks).forEach((check) => {
+              if(check.checked) num++ ;
+            })
+            allChack.checked = num === checks.length;
           }
-      }
-      // if(target.className === 'allcheck'){
-      //   num = allcheck.checked ? checks.length : 0;
-      //   Array.from(checks).forEach( (check, i) => {
-      //     checks.checked = allcheck.checked
-      //   })
-      // }else if(target.className === 'check'){
-      //   num += target.checked ? 1 : -1
-      //   if(num === checks.length){
-      //     allcheck.checked = true
-      //   }else{
-      //     allcheck.checked = false
-      //   }
-      // }
-    }
-    var allcheck = document.querySelector('#allcheck'),
-        // checks = document.querySelectorAll('.check'),
-        prises = document.querySelectorAll('tr .price'),
-        nums = document.querySelectorAll('tr .num')
-    allcheck.onchange = function(){
-      Array.from(checks).forEach(() => {
-        checks.checkend = this.checkend
-      })
-      num = this.length ? checks.length : 0
-    }
-    for(let j =0 ;j<checks.length; j++){
-      checks[j].onchange = function(){
-        this.checkend ? num++ : num--
-        allcheck.checked = num === checks.length
+          break;
+        case 'allCheck':
+          num = allChack.checked ? checks.length : 0;
+          
       }
     }
+    
   </script>

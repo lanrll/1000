@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base.js"></script>
+</head>
+<body>
+  名
+  <input type="text" id="a">
+  值
+  <input type="text" id="b">
+  <button onclick="setCookie()">存</button>
+  <button onclick="getCookie()">取</button>
+  <button onclick="delCookie()">删</button>
+  <script>
+    var a = document.querySelector('#a');
+    var b = document.querySelector('#b');
+    console.log(document.cookie);
+    function setCookie(){
+      myTool.setCookie(a.value, b.value, {path: '/', expirse: 7});
+      console.log(document.cookie);}
+    function getCookie(){
+      var password = myTool.getCookie(a.value);
+      console.log(password);
+      console.log(document.cookie);
+    }
+    function delCookie(){
+      myTool.delCookie(a.value);
+      // document.cookie = a.value + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+      console.log(document.cookie);
+    }
+  </script>
+</body>
+</html>
