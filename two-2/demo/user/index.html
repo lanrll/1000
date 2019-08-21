@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../../base.js"></script>
+  <script src="./js/index.js"></script>
+  <style>
+    nav{
+      width: 1000px;
+      margin: 0 auto;
+    }
+    .logo{
+      float: left;
+    }
+    nav .right{
+      float: right;
+    }
+    nav li{
+      float: left;
+      list-style: none;
+      margin: 0 10px;
+    }
+    nav a{
+      color: #333333;
+    }
+    .islogin{
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo"><img src="https://ss2.bdstatic.com/8_V1bjqh_Q23odCf/pacific/1910837798.jpg"></div>
+    <div class="right">
+      <ul class="unlogin">
+        <li><a href="./html/login.html">登录</a></li>
+        <li><a href="./html/register.html">注册</a></li>
+      </ul>
+      <ul class="islogin">
+        <li>欢迎您，<b id="username"></b></li>
+        <li id="logout"><a href="javascript:;">退出</a></li>
+      </ul>
+    </div>
+  </nav>
+</body>
+</html>

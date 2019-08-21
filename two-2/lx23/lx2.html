@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .box{
+      display: flex;
+      flex-flow: wrap;
+    }
+    .box div{
+      width: 200px;
+      height: 300px;
+      margin-bottom: 10px;
+      margin-right: 10px; 
+    }
+    .box p{
+      color: aqua;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="fn()">取</button>
+  <div class="box">
+
+  </div>
+  <script>
+    var box = document.querySelector('.box')
+    function fn(){
+      myTool.get('http://rap2api.taobao.org/app/mock/228909/shopList', null, function(resp){
+        console.log(resp);
+        console.log(resp.list[0])
+        console.log(resp.list[0].id)
+        for(i = 0; i<resp.list.length; i++){
+          var dv = document.createElement('div');
+          dv.innerHTML = `<img src="${resp.list[i].img}">`;
+          // myTool.css(dv, {
+          //   background: url(resp.list[i].img)
+          // })
+          box.appendChild(dv);
+          var ph = document.createElement('p');
+          ph.innerHTML = resp.list[i].text;
+          dv.appendChild(ph);
+          console.log(resp.list[i]);
+        }
+      });
+      
+    }
+  </script>
+</body>
+</html>

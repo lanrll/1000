@@ -75,7 +75,7 @@ var myTool = {
      * @param obj      <Dom object>   要运动的元素    
      * @param attr     <string>       运动的属性名
      * @param end      <number>       运动终点
-    //  * @param duration <number>       运动持续时间，单位ms
+     * @param duration <number>       运动持续时间，单位ms
      * @param fn       <function>     回调函数，动画结束后调用
      */
     slowMove: function(obj, attr, end, fn){
@@ -123,7 +123,8 @@ var myTool = {
         }
     },
     
-    /** 取cookie
+    /** 
+     * 取cookie
      * @param key   <string>    要取的cookie的名称 
      * @return  <string>    要取的cookie的值
      */
@@ -138,7 +139,8 @@ var myTool = {
         return obj[key];
     },
 
-    /**设置修改cookie
+    /**
+     * 设置修改cookie
      * @param key <string>  要设置的cookie的名称
      * @param value <string>    要设置的cookie的值
      * @param option <string>   {expires, path}
@@ -158,11 +160,41 @@ var myTool = {
         document.cookie = str;
     },
 
-    /**删除cookie
+    /**
+     * 删除cookie
      * @param key <string> 要删除的cookie的名称
      */
     delCookie(key){
         document.cookie = key + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
+    },
+
+    /**
+     * get请求
+     * @param url <string> 请求地址
+     * @param query <object> 传递的参数
+     * @param fn <function> 回调函数
+     * @param [isjson] <Boolean> 是否为json，默认为true
+     */
+    get: function(url, query, fn, isjson = true){
+        if(query){
+            url += '?'
+            for(var key in query){
+                url += `${key}=${query[key]}&`
+            }
+            url = url.slice(0, -1);
+        }
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
+                var txt = isjson ? JSON.parse(xhr.responseText) : xhr.responseText;
+                fn && fn(txt);
+            }
+            // else{
+                // fn && fn(xhr.status);
+            // }
+        }
     },
 
     //判断当前浏览器类型
