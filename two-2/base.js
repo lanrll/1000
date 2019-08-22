@@ -197,6 +197,55 @@ var myTool = {
         }
     },
 
+    /**
+     * jsonp跨域请求
+     * @param url <string> jsonp接口的地址
+     * @param cb <object> 全局回调函数的名称
+     * @paeam [query] <object> 请求需要的其他参数
+     */
+    jsonp: function(url, cb, query){
+        url += '?cb=' + cb;
+        if(query){
+            for( var key in query){
+                url += `&${key}=${query[key]}`;
+            }
+        }
+        var script = document.createElement('script');
+        script.src = url;
+        document.body.appendChild(script);
+        document.body.removeChild(script);
+    },
+    /**
+     * promise ajax get 请求
+     * @param url <string> 请求地址
+     * @param query <object> 请求是携带的参数
+     * @param [isjson] <boolean> 是否为json，默认为true
+     */
+    fetch: function(url, query, isjson = true){
+        if(query){
+            url += '?';
+            for( var key in query){
+                url += `${key}=${query[key]}&`;
+            }
+            url = url.slice(0, -1);
+        }
+        return new Promise( (resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200){
+                        var res = isjson ? JSON.parse(xhr.responseText) : xhr.responseText;
+                        resolve(res);
+                    }else{
+                        reject();
+                    }
+                }
+            }
+        })
+    },
+
     //判断当前浏览器类型
     isBrowser: function () {
         var userAgent = navigator.userAgent;

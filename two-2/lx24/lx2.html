@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base.js"></script>
+  <style>
+    li{
+      list-style: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="txt">
+  <ul class="list"></ul>
+  <script>
+    var txt = document.querySelector('#txt');
+    var list = document.querySelector('.list')
+    txt.onkeyup = function(){
+      myTool.jsonp('https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su', 'showList', {wd: txt.value});
+    }
+    function showList(resp){
+      console.log(resp);
+      var ul = document.querySelector('ul')
+      var str = ''
+      resp.s.forEach(item => {
+        str += `<li>${item}</li>`;
+      });
+      ul.innerHTML = str;
+    }
+    list.onmousedown = function(e){
+      if(e.target.nodeName === "LI"){
+        txt.value = e.target.innerHTML;
+        list.innerHTML = '';
+      }
+    }
+    txt.onblur = function(){
+      list.innerHTML = '';
+    }
+
+  </script>
+</body>
+</html>
