@@ -1,0 +1,18 @@
+.btn-add {
+  margin-bottom: 30px;
+}
+.table .btn-ok, .table .btn-cancel {
+  display: none;
+}
+.table tfoot tr td p{
+  float: right;
+}
+.table tfoot tr td #money{
+  font-size: 20px;
+  color: red;
+}
+.table input[type="text"] {display: none;}
+.table .edit span{ display:none}
+.table .edit input[type="text"]{ display:inline-block}
+.table .edit .btn-edit,.edit .btn-del{ display:none}
+.table .edit .btn-ok,.edit .btn-cancel{ display:inline}

@@ -200,8 +200,8 @@ var myTool = {
     /**
      * jsonp跨域请求
      * @param url <string> jsonp接口的地址
-     * @paeam [query] <object> 请求需要的其他参数
      * @param cb <object> 全局回调函数的名称
+     * @paeam [query] <object> 请求需要的其他参数
      */
     jsonp: function(url, cb, query){
         url += '?cb=' + cb;
@@ -215,7 +215,6 @@ var myTool = {
         document.body.appendChild(script);
         document.body.removeChild(script);
     },
-
     /**
      * promise ajax get 请求
      * @param url <string> 请求地址
