@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../base.js"></script>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="box"></div>
+  <div id="box1"></div>
+  <script>
+    class Drag{
+      constructor (selector){
+        this.obj = document.querySelector(selector);
+        this.init();
+      }
+      init(){
+        this.obj.onmousedown = e => {
+          let disX = e.offsetX,
+              disY = e.offsetY;
+          document.onmousemove = e => {
+            let left = e.clientX - disX,
+                top = e.clientY - disY;
+            this.move(left, top);
+          }
+          document.onmouseup = () => {
+            document.onmousemove = null;
+          }
+          e.preventDefault();
+        }
+      }
+      mov (left, top){
+        myTool.css(this.obj, {
+          left: left + 'px',
+          top: top + 'px'
+        })
+      }
+    }
+
+    class Drag1 extends Drag{
+      constructor(selector){
+        super(selector);
+      }
+    }
+  </script>
+</body>
+</html>
