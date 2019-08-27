@@ -7,6 +7,10 @@
   <title>Document</title>
   <script src="../base.js"></script>
   <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
     div{
       width: 200px;
       height: 200px;
@@ -39,7 +43,7 @@
           e.preventDefault();
         }
       }
-      mov (left, top){
+      move (left, top){
         myTool.css(this.obj, {
           left: left + 'px',
           top: top + 'px'
@@ -51,7 +55,19 @@
       constructor(selector){
         super(selector);
       }
+      move(left, top){
+        if(left < 0) left = 0;
+        if(top < 0) top = 0; 
+        if(left > myTool.getBodySize().width - this.obj.offsetWidth) left = myTool.getBodySize().width - this.obj.offsetWidth;
+        if(top > myTool.getBodySize().height - this.obj.offsetHeight) top = myTool.getBodySize().height - this.obj.offsetHeight;
+        myTool.css(this.obj, {
+          left: left + 'px',
+          top: top + 'px'
+        })
+      }
     }
+    new Drag('div');
+    new Drag1('#box1');
   </script>
 </body>
 </html>
