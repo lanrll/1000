@@ -3,7 +3,8 @@ const gulp = require('gulp'),
       cleanCss = require('gulp-clean-css'),
       uglify = require('gulp-uglify'),
       babel = require('gulp-babel'),
-      connect = require('gulp-connect')
+      connect = require('gulp-connect'),
+      sass = require('gulp-sass')
 // 制定html任务：把src里面的html文件压缩之后放进dist目录
 gulp.task('html', () => {
   gulp.src("src/**/*.html")
@@ -22,8 +23,10 @@ gulp.task('html', () => {
 })
 // 制定css任务：把src里css文件取出来，压缩，放进dist目录
 gulp.task('css', () => {
-  gulp.src('src/css/**/*.css')
-    .pipe(cleanCss())
+  // gulp.src('src/css/**/*.css')
+  gulp.src('src/css/**/*.scss')
+    .pipe(sass())
+    // .pipe(cleanCss())
     .pipe(gulp.dest('dist/css'))
     .pipe(connect.reload())
 })
@@ -45,13 +48,23 @@ gulp.task('server', () => {
     livereload: true
   });
 })
+// 制定一个图片任务：把src/images的图片复制到dist里
+gulp.task('img', () => {
+  gulp.src('src/images/**/*')
+    .pipe(gulp.dest('dist/images'))
+})
+// 制定libs任务：把src/libs的文件复制到dist
+gulp.task('libs', () => {
+  gulp.src('src/libs/**/*')
+    .pipe(gulp.dest('dist/libs'))
+})
 // 监听文件的改变，文件改变之后自动执行对应的任务
 gulp.task('watch', () => {
   // 监听html文件的修改，自动执行html任务
   gulp.watch('src/**/*.html', ['html'])
   gulp.watch('src/js/**/*.js', ['js'])
-  gulp.watch('src/css/**/*.css', ['css'])
+  gulp.watch('src/css/**/*.scss', ['css'])
 })
 // 把所有默认要执行的任务放到一起
-gulp.task('default', ['html', 'js', 'css', 'server', 'watch'])
+gulp.task('default', ['html', 'js', 'css', 'server','img','libs', 'watch'])
 

@@ -1,1 +1,5 @@
-*{margin:0;padding:0}h1{text-align:center;color:#0ff}p{text-align:center}
+#logo {
+  width: 100px; }
+
+.col-md-4 {
+  width: 25%; }
