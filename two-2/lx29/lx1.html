@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../jquery-3.4.1.min.js"></script>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    $(document).ready(function () {
+      console.log($('div'));
+      $('div').on('click', function (e) {
+        console.log(e);
+        $(this).css({
+        opacity: .5,
+        width: '-=10',
+        height: 300
+        })
+      })
+    })
+  </script>
+</body>
+</html>

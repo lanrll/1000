@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../jquery-3.4.1.min.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .tab{
+      width: 800px;
+      margin: 0 auto;
+    }
+    li{
+      list-style: none;
+      float: left;
+      width: 100px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+    li.ac{
+      background-color: #cccc;
+    }
+    .tab a{
+      display: block;
+      width: 800px;
+      display: none;
+    }
+    .tab a.ac{
+      display: block;
+    }
+    .tab img{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab">
+    <ul>
+      <li class="ac">item1</li>
+      <li>item2</li>
+      <li>item3</li>
+    </ul>
+    <div>
+      <a href="javascript:;" class="ac"><img src="../images/banner10.jpg"></a>
+      <a href="javascript:;"><img src="../images/banner11.jpg"></a>
+      <a href="javascript:;"><img src="../images/banner13.jpg"></a>
+    </div>
+  </div>
+  <script>
+    $('.tab li').on('click', function(){
+      $(this).addClass('ac').siblings().removeClass('ac');
+      $('.tab a').eq($(this).index()).addClass('ac').siblings().removeClass('ac');
+    })
+  </script>
+</body>
+</html>
