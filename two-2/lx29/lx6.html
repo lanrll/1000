@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../jquery-3.4.1.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    #dv {
+      width: 850px;
+      height: 480px;
+      margin: 50px auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #dv ul {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    #dv ul.trans {
+      transition: left 1s;
+    }
+
+    #dv ul li {
+      height: 480px;
+      float: left;
+    }
+
+    img {
+      height: 480px;
+      width: 850px;
+    }
+
+    #dv ol {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      z-index: 9;
+    }
+
+    #dv ol li {
+      float: left;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      margin-left: 5px;
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, .4);
+      color: #ffffff;
+      border-radius: 10px;
+    }
+
+    #dv ol li.ac {
+      box-shadow: 2px 2px 2px black;
+      color: aqua;
+      background-color: #f40;
+    }
+
+    #dv>a {
+      text-decoration: none;
+      position: absolute;
+      top: 45%;
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      line-height: 32px;
+      font-size: 40px;
+      color: #cccccc;
+      background-color: rgba(0, 0, 0, .2);
+      z-index: 9;
+    }
+
+    #goPrev {
+      left: 0;
+    }
+
+    #goNext {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="dv">
+    <ul class="trans">
+      <li><a href="javascript:;"><img src="../images/main1.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../images/banner2.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../images/banner4.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../images/banner6.png"></a></li>
+      <li><a href="javascript:;"><img src="../images/banner8.jpg"></a></li>
+    </ul>
+    <ol></ol>
+    <a href="javascript:;" id="goPrev">&laquo;</a>
+    <a href="javascript:;" id="goNext">&raquo;</a>
+  </div>
+  <script>
+    var liWidth = $('#dv .trans li').eq(0).width();
+  </script>
+</body>
+
+</html>
