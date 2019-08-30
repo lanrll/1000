@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../jquery-3.4.1.min.js"></script>
+</head>
+<body>
+  <input type="text">
+  <ul></ul>
+  <button class="btn1">发送</button>
+  <button class="btn2">发送</button>
+  <script>
+    $('.btn1').on('click', function(){
+      $.ajax({
+        url: './data.json',
+        method: 'get',
+        data: {id: 2},
+        success: resp => {
+          console.log(resp);
+        },
+        complete: () => {
+          console.log($('.btn1'));
+        },
+        dataType: 'json'
+      })
+    })
+    $('.btn2').on('click', function(){
+      $.get('./data.json', {id: 2, name: "小米"}, resp => {
+        console.log(resp);
+      })
+    })
+    $('input').on('keyup', function(){
+      $.getJSON(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${$('input').val()}&cb=?`, resp => {
+        console.log(resp.s);
+        $('ul').html('');
+        for( i=0; i< resp.s.length; i++){
+          $(`<li>${resp.s[i]}</li>`).appendTo($('ul'));
+        }
+        $('ul li').on('mousedown', function(){
+          $('input').val('');
+          $('input').val($(this).html());
+        })
+        $('input').on('blur', function(){
+          $('ul li').remove();
+        })
+      })
+    })
+  </script>
+</body>
+</html>

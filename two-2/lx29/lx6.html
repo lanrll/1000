@@ -31,9 +31,9 @@
       top: 0;
     }
 
-    #dv ul.trans {
+    /* #dv ul.trans {
       transition: left 1s;
-    }
+    } */
 
     #dv ul li {
       height: 480px;
@@ -98,7 +98,7 @@
 <body>
   <div id="dv">
     <ul class="trans">
-      <li><a href="javascript:;"><img src="../images/main1.jpg"></a></li>
+      <li><a href="javascript:;"><img src="../images/banner9.jpg"></a></li>
       <li><a href="javascript:;"><img src="../images/banner2.jpg"></a></li>
       <li><a href="javascript:;"><img src="../images/banner4.jpg"></a></li>
       <li><a href="javascript:;"><img src="../images/banner6.png"></a></li>
@@ -110,6 +110,85 @@
   </div>
   <script>
     var liWidth = $('#dv .trans li').eq(0).width();
+    var len = $('#dv .trans li').length;
+    var index = 0;
+    var lastIndex = 0;
+    var flag = false;
+    var timer = null;
+    $('#dv .trans li').eq(0).clone().appendTo('#dv .trans');
+    $('#dv .trans').width(liWidth * (len + 1))
+    for( i=1; i <= len; i++){
+      $(`<li>${i}</li>`).addClass(i === 1 ? 'ac' : '').appendTo('#dv ol');
+    }
+    var $btns = $('#dv ol li');
+    $btns.on('click', function(){
+      if(!flag){
+        flag = true;
+        lastIndex = index;
+        index = $(this).index();
+        $btns.eq(lastIndex).removeClass('ac');
+        $btns.eq(index).addClass('ac')
+        $('#dv .trans').animate({
+          left: -index * liWidth
+        },function(){
+          flag = false;
+        })
+      }
+    })
+    $('#goNext').on('click', function(){
+      if(!flag){
+        flag = true;
+        lastIndex = index;
+        index++;
+        if(index === len){
+          index = 0;
+          $('#dv .trans').animate({
+            left: -len * liWidth
+          }, function(){
+            $('#dv .trans').css({left: 0});
+            flag = false;
+          })
+        }else{
+          $('#dv .trans').animate({
+            left: -index * liWidth
+          },function (){
+            flag = false;
+          })
+        }
+        $btns.eq(lastIndex).removeClass('ac');
+        $btns.eq(index).addClass('ac');
+      }
+    })
+    $('#goPrev').on('click', function(){
+      if(!flag){
+        flag = true;
+        lastIndex = index;
+        index--;
+        if(index < 0){
+          index = len - 1;
+          $('#dv .trans').css({left: -len *liWidth}).animate({
+            left: -index * liWidth
+          }, function(){
+            flag = false;
+          });
+        }else{
+          $('#dv .trans').animate({
+            left: -index * liWidth
+          }, function(){
+            flag = false;
+          });
+        }
+        $btns.eq(lastIndex).removeClass('ac');
+        $btns.eq(index).addClass('ac');
+      }
+    })
+    $('#dv').hover(function(){
+      clearInterval(timer);
+    }, function auto(){
+      timer = setInterval(() => {
+        $('#goNext').trigger('click')
+      }, 2000);
+    }());
   </script>
 </body>
 

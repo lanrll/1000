@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./js/jquery-3.4.1.min.js"></script>
+  <script src="./js/jquer-drag.js"></script>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div{
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: red;
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="btn1">
+    <h4>5</h4>
+  </div>
+  <div class="btn2"></div>
+  <script>
+    $('.btn1').Drag('h4')
+    $('.btn2').Drag()
+  </script>
+</body>
+</html>
