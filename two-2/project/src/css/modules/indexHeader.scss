@@ -1,0 +1,40 @@
+nav{
+  height: 54px;
+  .logo{
+    height: 54px;
+    width: 137px;
+    float: left;
+    margin-right: 20px;
+    a{
+      float: left;
+      padding: 16px 6px 16px 10px;
+      height: 100%;
+      width: 137px;
+      img{
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+  .menu{
+    float: left;
+    ul li{
+      float: left;
+      a{
+        text-decoration: none;
+        padding: 16px 8px 10px;
+        height: 48px;
+        display: inline-block;
+      }
+      a:hover{
+        text-decoration-line: underline;
+      }
+    }
+  }
+  .login{
+    float: right;
+    ul li{
+      float: left;
+    }
+  }
+}
