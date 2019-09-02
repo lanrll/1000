@@ -3,6 +3,7 @@ require.config({
   paths: {
     jquery: 'libs/jquery/jquery-3.4.1.min',
     bootstrap: 'libs/bootstrap/js/bootstrap.min',
-    header: 'js/modules/header'
+    indexHeader: 'js/modules/indexHeader',
+    indexBanner: 'js/modules/indexBanner'
   }
 })
