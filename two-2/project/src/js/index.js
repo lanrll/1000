@@ -1,5 +1,5 @@
 require(['./config'], () => {
-  require(['indexHeader','indexBanner'], (header) => {
+  require(['indexHeader','indexBanner','indexProduct','footer'], (header) => {
     
   })
 })

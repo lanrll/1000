@@ -1,7 +1,28 @@
-#logo{
-  width: 100px;
+img{
+  width: 100%;
 }
-.col-md-4 {
-    width: 25%;
+.title{
+  h2{
+    margin-top: 50px;
+    margin-bottom: 0;
+  }
 }
+.guanzhu{
+  margin: 35px 0;
+  p{
+    font-weight: 300;
+    font-size: 25px;
+    a{
+      font-size: 25px;
+      span{
+        margin: 0 5px;
+        padding: 0 5px;
+      }
+    }
+  }
+}
+// .footer{
+//   background-color: #F2F2F2;
+//   height: 400px;
+// }
 
