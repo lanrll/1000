@@ -9,10 +9,7 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
   <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.css">
-  <link rel="stylesheet" href="/css/modules/indexHeader.css">
-  <link rel="stylesheet" href="/css/modules/footer.css">
-  <link rel="stylesheet" href="/css/modules/indexProduct.css">
-  <!-- <link rel="stylesheet" href="/css/list.css"> -->
+  <link rel="stylesheet" href="/css/list.css">
 </head>
 
 <body>
@@ -26,14 +23,25 @@
     
     <div class="row">
       <div class="col-md-12 column">
-        <div class="productShow"></div>
+       <div class="productShow" id="productShow">
+        </div>
+        <script type="text/html" id="officeProductShow">
+          {{each images img index}}
+            <div class="singleProduct">
+                <a href="/html/details.html">
+                  <div class="img">
+                    <img src="{{img.url}}">
+                  </div>
+                  <h3>{{img.title}}</h3>
+                  <p>{{img.desc}}</p>
+                  <span>立即购买 <b>></b></span>
+                </a>
+              </div>
+            {{/each}}
+        </script>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12 column">
-        <div class="productShow"></div>
-      </div>
-    </div>
+
   </div>
   <!-- 尾 -->
   <div class="container-fluid footer">

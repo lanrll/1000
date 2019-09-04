@@ -1,3 +1,7 @@
+@import url(/css/modules/indexHeader.css);
+@import url(/css/modules/footer.css);
+@import url(/css/modules/indexBanner.css);
+@import url(/css/modules/indexProduct.css);
 img {
   width: 100%; }
 
