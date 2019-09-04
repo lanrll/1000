@@ -7,6 +7,14 @@ require.config({
     indexHeader: 'js/modules/indexHeader',
     indexBanner: 'js/modules/indexBanner',
     indexProduct: 'js/modules/indexProduct',
-    footer: 'js/modules/footer'
+    footer: 'js/modules/footer',
+    url: 'js/modules/url',
+    zoom: 'libs/jquery-plugins/jquery.elevateZoom',
+    swiper: 'libs/swiper/js/swiper.min'
+  },
+  shim: {
+    zoom: {
+      deps: ['jquery']
+    }
   }
 })

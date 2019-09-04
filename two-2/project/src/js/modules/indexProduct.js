@@ -7,7 +7,7 @@ define(['jquery'], () => {
     }
     init(){
       return new Promise(resolve => {
-        $('.productShow').load('/html/modules/indexProduct.html', resolve);
+        // $('.productShow').load('/html/modules/indexProduct.html', resolve);
       })
     }
   }

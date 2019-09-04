@@ -33,7 +33,24 @@
     <!-- 产品展示 -->
     <div class="row">
       <div class="col-md-12 column">
-        <div class="productShow"></div>
+        <div class="productShow" id="productShow">
+
+        </div>
+
+        <script type="text/html" id="officeProductShow">
+          {{each images img index}}
+            <div class="singleProduct">
+                <a href="/html/details.html">
+                  <div class="img">
+                    <img src="{{img.url}}">
+                  </div>
+                  <h3>{{img.title}}</h3>
+                  <p>{{img.desc}}</p>
+                  <span>立即购买 <b>></b></span>
+                </a>
+              </div>
+            {{/each}}
+        </script>
       </div>
     </div>
     <!-- 广告 -->
