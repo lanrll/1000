@@ -25,7 +25,7 @@
       <div class="col-md-12 column">
         <div class="cart">
           <div class="leftCart">
-            <p>你的购物车内有<em>0</em>件商品</p>
+            <p>你的购物车内有<em id="productNum">0</em>件商品</p>
             <div class="productCart">
               <ul class="header">
                 <li>商品图片</li>
@@ -33,30 +33,37 @@
                 <li>数量</li>
                 <li>价格</li>
               </ul>
-              <ul class="productSuowOne">
-                <li>
-                  <div  class="img">
-                    <img src="" alt="">
-                  </div>
-                  <b>删除商品</b>
-                </li>
-                <li>
-                  <a href="">Windows 10 家庭版</a>
-                  <p>电子下载版</p>
-                </li>
-                <li>
-                  <span>-</span>
-                  <input type="text" value="1">
-                  <span>+</span>
-                </li>
-                <li>
-                  <span>￥ <i>19,607</i></span>
-                </li>
-              </ul>
+              <div class="singleProductShow">
+
+              </div>
+              <script type="text/html" id="productShowOne">
+                {{each cart cart index}}
+                <ul class="productSuowOne">
+                  <li>
+                    <div class="img">
+                      <img src="{{cart.images[0].image}}">
+                    </div>
+                    <b class="deleteProduct">删除商品</b>
+                  </li>
+                  <li>
+                    <a href="">{{cart.names[0].titleone}}</a>
+                    <p>电子下载版</p>
+                  </li>
+                  <li>
+                    <span>-</span>
+                    <input type="text" value="{{cart.num}}" class="singleProductNum">
+                    <span>+</span>
+                  </li>
+                  <li class="singleProductPrice">
+                    <span>￥ <i >{{cart.price}}</i></span>
+                  </li>
+                </ul>
+                {{/each}}
+              </script>
             </div>
           </div>
           <div class="rightCart">
-            <div>总计<span>￥<i>1,080.00</i></span></div>
+            <div>总计<span>￥<i id="productPriceTotal">0</i>元</span></div>
             <strong>结算</strong>
             <ul>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;30天退还货</a></li>

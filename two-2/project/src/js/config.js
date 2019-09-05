@@ -10,10 +10,14 @@ require.config({
     footer: 'js/modules/footer',
     url: 'js/modules/url',
     zoom: 'libs/jquery-plugins/jquery.elevateZoom',
-    swiper: 'libs/swiper/js/swiper.min'
+    swiper: 'libs/swiper/js/swiper.min',
+    fly: 'libs/jquery-plugins/jquery.fly.min'
   },
   shim: {
     zoom: {
+      deps: ['jquery']
+    },
+    fly: {
       deps: ['jquery']
     }
   }

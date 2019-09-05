@@ -21,54 +21,42 @@
       </div>
     </div>
     <main>
+
+    </main>
+    <script type="text/html" id="productDetails">
       <div class="details">
         <div class="leftDetails">
-          <div class="img">
-            <img src="/images/product1.webp" alt="">
+          <div class="img" >
+            <img class="zoom-img" src="{{images[0].image}}">
           </div>
           <div class="imgList">
             <button class="imgLeft fa fa-angle-left"></button>
             <button class="imgRight fa fa-angle-right"></button>
-            <ul>
-              <li>
-                <img src="/images/product1.webp">
-              </li>
-              <li>
-                <img src="/images/product1.webp">
-              </li>
-              <li>
-                <img src="/images/product1.webp">
-              </li>
-              <li>
-                <img src="/images/product1.webp">
-              </li>
-            </ul>
+            <div class="imgslide">
+              <ul id="imagesList">
+                {{each images img index}}
+                <li deta-img="{{img.image}}">
+                  <img src="{{img.image}}" >
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+           
           </div>
           <div class="desc1">
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
-            <p>• 13.5英寸/15英寸 PixelSense 触摸屏显示器可选</p>
+            {{each descs desc index}}
+            <p>• {{desc.descone}}</p>
+            {{/each}}
           </div>
           <div class="desc2">
+            {{each promotions promotion index}}
             <p>
               <span class="fa fa-shopping-bag"></span>
-              <strong>【12期免息】</strong>
-              下单理想啊实打实大水电费
+              <strong>【{{promotion.promotionone}}】</strong>
+              {{promotion.promotiontwo}}
               <a href="">详情></a>
             </p>
-            <p>
-              <strong>【免息】</strong>
-              下单理想啊实打实大水电费
-              <a href="">详情></a>
-            </p>
-            <p>
-              <strong>【商务】</strong>
-              下单理想啊实打实大水电费
-            </p>
+            {{/each}}
           </div>
         </div>
 
@@ -76,14 +64,14 @@
           <div class="productTitle">
             <h2>微软开学季</h2>
             <h1>
-              微软 Surface Book 2
+              {{names.titleone}}
               <br>
-              8代酷睿 i7/8GB/256GB/GTX 1050 2GB/13.5英寸
+              {{names.titletwo}}
             </h1>
           </div>
           <div class="productPrice">
             <span>售价：</span>
-            <b> ￥16,905</b>
+            <b> ￥1{{price}}</b>
             <em>(14条评论)</em>
             <em><i class="fa  fa-star-o"></i></em>
             <em><i class="fa  fa-star-o"></i></em>
@@ -91,111 +79,63 @@
             <em><i class="fa  fa-star-o"></i></em>
             <em><i class="fa  fa-star-o"></i></em>
           </div>
-          <!-- <hr> -->
           <div class="productSize">
             <p class="titleP">请选择尺寸</p>
             <ul>
-              <li><a href="javascript:;">13.5英寸</a></li>
-              <li><a href="javascript:;">15.6英寸</a></li>
+              {{each sizes size index}}
+              <li><a href="javascript:;">{{size.sizeone}}.{{size.sizetwo}}英寸</a></li>
+              {{/each}}
             </ul>
           </div>
           <div class="productTo-configure">
             <p class="titleP">请选择配置</p>
             <ul>
+              {{each models model index}}
               <li>
                 <button>
                   <p>
-                    酷睿 i5/8GB/256GB/13.5英寸 
-                    <span>¥ 12,068</span>
+                    {{model.model}}
+                    <span>¥ {{model.price}}</span>
                   </p>
                 </button>
               </li>
-              <li>
-                <button>
-                  <p> 8代酷睿 i7/8GB/256GB/GTX 1050 2GB/13.5英寸 
-                    <span>¥ 16,068</span>
-                  </p>
-                </button>
-              </li>
-              <li>
-                <button>
-                  <p>酷睿 i5/8GB/256GB/13.5英寸 
-                    <span>¥ 12,068</span>
-                  </p>
-                </button>
-              </li>
-              <li>
-                <button>
-                  <p> 8代酷睿 i7/8GB/256GB/GTX 1050 2GB/13.5英寸
-                    <span>¥ 16,068</span>
-                  </p>
-                </button>
-              </li>
+              {{/each}}
             </ul>
           </div>
-          <!-- <hr> -->
           <div class="productSet-meal">
             <p class="titleP">请选择特惠套餐</p>
             <ul>
+              {{each meals meal index}}
               <li>
-                  <i>基础套餐</i>
-                  <p>
-                    <span>￥17000</span>
-                    <em>省￥432</em>
-                  </p>
+                <i>{{meal.meal}}</i>
+                <p>
+                  <span>￥{{meal.priceone}}</span>
+                  <em>省￥{{meal.pricetwo}}</em>
+                </p>
               </li>
-              <li>
-                  <i>Office家庭版套餐</i>
-                  <p>
-                    <span>￥17000</span>
-                    <em>省￥432</em>
-                  </p>
-              </li>
-              <li>
-                  <i>office个人版套餐</i>
-                  <p>
-                    <span>￥17000</span>
-                    <em>省￥432</em>
-                  </p>
-              </li>
-              <li>
-                  <i>基础套餐</i>
-                  <p>
-                    <span>￥17000</span>
-                    <em>省￥432</em>
-                  </p>
-              </li>
-              <li>
-                  <i>基础套餐</i>
-                  <p>
-                    <span>￥17000</span>
-                    <em>省￥432</em>
-                  </p>
-              </li>
+              {{/each}}
             </ul>
-            <div class="set-meal-show">
+            <div class="set-meal-show clearfix">
               <p>基础套餐内含：</p>
               <ul>
+                {{each meals meal index}}
                 <li>
-                  <div class="img"></div>
-                  <p>Office 365 订阅 - 1年新订或续订</p>
+                  <div class="img">
+                    <img src="{{meal.image}}" alt="">
+                  </div>
+                  <p>{{meal.mealdesc}}</p>
                 </li>
-                <li>
-                  <div class="img"></div>
-                  <p>微软 Surface 精准鼠标</p>
-                </li>
+                {{/each}}
               </ul>
             </div>
           </div>
-          <!-- <hr> -->
           <div class="productGuarantee">
             <p class="titleP">增值保障</p>
             <p>适用于 Surface Book 的 Microsoft Complete 全方位服务计划 </p>
             <span><a href="javascript:;">了解更多 ></a></span>
           </div>
-          <!-- <hr> -->
           <div class="addShopCar">
-            <span>加入购物车</span>
+            <span id="addToCart">加入购物车</span>
             <ul>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;30天退还货</a></li>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;急速上手服务</a></li>
@@ -207,24 +147,25 @@
                 <a href="javascript:;">为旧机估值></a>
               </p>
               <div class="img">
-                  <img src="" alt="">
+                <img src="{{singleimage}}" alt="">
               </div>
             </div>
           </div>
+          <a href="/html/cart.html" class="shopCart fa fa-shopping-cart" id="shopCart"><a>
         </div>
       </div>
-      <div class="details">
-        <div class="subnav">
-          
-        </div>
-        <div class="banner">
+    </script>
+    <div class="details">
+      <div class="subnav">
 
-        </div>
-        <div class="Main-characteristics">
-
-        </div>
       </div>
-    </main>
+      <div class="banner">
+
+      </div>
+      <div class="Main-characteristics">
+
+      </div>
+    </div>
   </div>
   <!-- 尾 -->
   <div class="container-fluid footer">

@@ -49,6 +49,7 @@ define(['jquery','bootstrap'], () => {
     }
     searchCancle(){
       $('.cancle').on('click', () => {
+        $('#keyWord').val('');
         $('.userLogin,.shopCar,#searchout').css({display: 'block'});
         $('.login form').css({display: 'none'});
       })

@@ -1,9 +1,34 @@
 @import url(/css/modules/indexHeader.css);
 @import url(/css/modules/footer.css);
-@import url(/css/modules/indexBanner.css);
 @import url(/css/modules/indexProduct.css);
 img {
   width: 100%; }
+
+.swiper-container {
+  width: 100%;
+  height: 450px; }
+  .swiper-container img {
+    width: 100%;
+    height: 100%; }
+  .swiper-container .titlesome {
+    width: 400px;
+    height: 150px;
+    position: absolute;
+    left: 7%;
+    top: 10%; }
+    .swiper-container .titlesome h2 {
+      font-size: 24px;
+      font-weight: 700; }
+    .swiper-container .titlesome p {
+      margin-bottom: 20px;
+      font-size: 15px; }
+    .swiper-container .titlesome span {
+      padding: 10px 20px 6px 22px;
+      background-color: #000000;
+      color: #ffffff;
+      cursor: pointer; }
+      .swiper-container .titlesome span:hover {
+        text-decoration-line: underline; }
 
 .title h2 {
   margin-top: 50px;

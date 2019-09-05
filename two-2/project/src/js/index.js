@@ -1,25 +1,38 @@
 require(['./config'], () => {
-  require(['template','url','indexHeader','indexBanner','indexProduct','footer'], (template,url) => {
+  require(['template','url', 'swiper','indexHeader','indexBanner','indexProduct','footer'], (template,url,swiper) => {
     class Index{
       constructor(){
+        // this.banner();
         this.getProductShowData();
       }
+
       getProductShowData(){
         new Promise(resolve => {
           $.get(`${url.rapBaseUrl}/shopList`, resp => {
             resolve(resp)
-            console.log(resp)
           }).then(resp => {
             if(resp.code === 200){
-              console.log(resp)
-              let {url, title, desc} = resp.images[0];
-              console.log({url, title, desc})
-              let str = template('officeProductShow', {...resp});
-              $('#productShow').html(str)
+              // let str = template('officeProductShowOne', {...resp});
+              $('.productShow').html(template('officeProductShow', {...resp}));
+              $('.swiper-wrapper').html(template('banner', {...resp}));
+              this.banner();
             }
           })
         })
       }
+
+      banner () {
+        var mySwiper = new Swiper('.swiper-container', {
+          autoplay: 2000,//可选选项，自动滑动
+          speed:1000,
+          pagination : '.swiper-pagination',
+          prevButton:'.swiper-button-prev',
+          nextButton:'.swiper-button-next',
+          loop: true,
+          effect : 'slide'
+        })
+      }
+
     }
     return new Index(); 
   })
