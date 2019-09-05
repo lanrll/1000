@@ -27,16 +27,16 @@
       <div class="details">
         <div class="leftDetails">
           <div class="img" >
-            <img class="zoom-img" src="{{images[0].image}}">
+            <img class="zoom-img" src="{{images[0].image}}" id="mediumImage">
           </div>
           <div class="imgList">
-            <button class="imgLeft fa fa-angle-left"></button>
-            <button class="imgRight fa fa-angle-right"></button>
+            <button class="imgLeft fa fa-angle-left" id="imagesLeft"></button>
+            <button class="imgRight fa fa-angle-right" id="imagesRight"></button>
             <div class="imgslide">
               <ul id="imagesList">
                 {{each images img index}}
-                <li deta-img="{{img.image}}">
-                  <img src="{{img.image}}" >
+                <li>
+                  <img src="{{img.image}}" id="smallImage" >
                 </li>
                 {{/each}}
               </ul>

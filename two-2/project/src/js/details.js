@@ -4,12 +4,12 @@ require(['./config'], () => {
       constructor(){
         this.addToCart();
         this.getDetailsData().then(resp => {
-          console.log(this.details, this.id) 
           let str = template('productDetails', {...resp.product})
           $('main').html(str)
           this.details = {...resp.product, id: this.id}
-          this.zoom();
           this.shopCartNum();
+          this.pictureSwitching();
+          this.zoom();
         })
       }
       getDetailsData(){
@@ -89,6 +89,33 @@ require(['./config'], () => {
           }, 0)
           $('#shopCart').html(num);
         }
+      }
+
+      pictureSwitching(){
+        var sign = true;
+        let _this = this;
+        $('main').on('click', '#imagesRight', () => {
+          if(sign){
+            $('#imagesList').animate({
+              left: -$('#imagesList li').width()*5 + 'px'
+            },function() {
+              sign = false;
+            })
+          }
+        })
+        $('main').on('click', '#imagesLeft', () => {
+          if(!sign){
+            $('#imagesList').animate({
+              left: '0px'
+            },function() {
+              sign = true;
+            })
+          }
+        })
+        $('main').on('click', '#smallImage', function()  {
+          $('#mediumImage').attr('src',$(this).attr('src'))
+          _this.zoom();
+        })
       }
     }
     return new details();

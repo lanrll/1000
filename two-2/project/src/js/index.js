@@ -4,6 +4,7 @@ require(['./config'], () => {
       constructor(){
         // this.banner();
         this.getProductShowData();
+        this.banner();
       }
 
       getProductShowData(){
@@ -26,6 +27,7 @@ require(['./config'], () => {
           autoplay: 2000,//可选选项，自动滑动
           speed:1000,
           pagination : '.swiper-pagination',
+          paginationClickable :true,
           prevButton:'.swiper-button-prev',
           nextButton:'.swiper-button-next',
           loop: true,
