@@ -44,7 +44,7 @@
               </div>
               <script type="text/html" id="productShowOne">
                 {{each cart cart index}}
-                <ul class="productSuowOne" data-id="{{cart.id}}">
+                <ul class="productShowOne" data-id="{{cart.id}}">
                     <li>
                       <input type="checkbox" class="checks" {{cart.check && "checked"}}>
                     </li>
@@ -55,13 +55,13 @@
                     <b class="deleteProduct" >删除商品</b>
                   </li>
                   <li>
-                    <a href="">{{cart.names[0].titleone}}</a>
+                    <a href="/html/details.html?id={{cart.id}}">{{cart.names[0].titleone}}</a>
                     <p>电子下载版</p>
                   </li>
                   <li>
-                    <span>-</span>
+                    <span class="reduce">-</span>
                     <input type="text" value="{{cart.num}}" class="singleProductNum">
-                    <span>+</span>
+                    <span class='increase'>+</span>
                   </li>
                   <li class="singleProductPrice">
                     <span>￥<i >{{cart.price}}</i></span>

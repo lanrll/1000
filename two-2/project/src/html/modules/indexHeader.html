@@ -86,7 +86,26 @@
         <a class="glyphicon glyphicon-shopping-cart shopCar" title="购物车" href="/html/cart.html"></a>
       </li>
       <li>
-        <a class="glyphicon glyphicon-user userLogin" title="请登录" href="/html/login.html"></a>
+        <!-- <a class="glyphicon glyphicon-user userLogin" title="请登录" href="/html/login.html"></a> -->
+        <div class="dropdown ">
+          <button type="button" class="btn dropdown-toggle glyphicon glyphicon-user userLogin" id="dropdownMenu1" data-toggle="dropdown">
+          </button>
+          <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="#">Java</a>
+              </li>
+              <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="#">数据挖掘</a>
+              </li>
+              <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="#">数据通信/网络</a>
+              </li>
+              <li role="presentation" class="divider"></li>
+              <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="#">分离的链接</a>
+              </li>
+          </ul>
+      </div>
       </li>
     </ul>
   </div>
