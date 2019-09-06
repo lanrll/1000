@@ -14,6 +14,9 @@ require.config({
     fly: 'libs/jquery-plugins/jquery.fly.min'
   },
   shim: {
+    bootstrap:{
+      deps: ['jquery']
+    },
     zoom: {
       deps: ['jquery']
     },

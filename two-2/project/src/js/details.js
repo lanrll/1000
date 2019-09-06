@@ -47,11 +47,11 @@ require(['./config'], () => {
                 return shop
               })
             }else{
-              cart.push({...this.details, num: 1})
+              cart.push({...this.details, num: 1, check: true})
             }
             localStorage.setItem('cart', JSON.stringify(cart))
           }else{
-            let arr = [{...this.details, num: 1}];
+            let arr = [{...this.details, num: 1, check: true}];
             localStorage.setItem('cart', JSON.stringify(arr))
           }
         })

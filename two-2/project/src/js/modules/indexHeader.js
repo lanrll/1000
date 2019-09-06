@@ -1,11 +1,12 @@
 define(['jquery','bootstrap'], () => {
   class indexHeader {
     constructor(){
-      this.num = 0;
+      this.menuNum = 0;
+      this.searchNum = 0
       this.init().then(() => {
         this.downMenu();
         this.search();
-        this.searchCancle();
+        this.searchCancle()
       });
     };
     init(){
@@ -15,20 +16,23 @@ define(['jquery','bootstrap'], () => {
     };
     downMenu(){
       $('#downMenu').on('click', () => {
-        if( this.num%2 === 0){
-          $('.allProduct').css({display: 'block'})
+        if( this.menuNum%2 === 0){
+          $('.allProduct').show()
           $('#downMenu').css({background: '#F2F2F2'});
         }else{
-          $('.allProduct').css({display: 'none'});
+          $('.allProduct').hide();
           $('#downMenu').css({background: '#ffffff'});
         }
-        this.num++;
+        this.menuNum++;
       })
     }
     search(){
-      $('#searchout').on('click', () => {
-        $('.userLogin,.shopCar,#searchout').css({display: 'none'});
-        $('.login form').css({display: 'block'});
+      $('#searchout').on('mousedown', () => {
+        if(this.searchNum%2 === 0){
+          $('.userLogin,.shopCar,#searchout').hide();
+          $('.login form').show()
+          this.searchNum++
+        }
         $('#keyWord').on('keyup', () => {
           $.getJSON(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${$('#keyWord').val()}&cb=?`,resp => {
             console.log(resp)
@@ -50,9 +54,17 @@ define(['jquery','bootstrap'], () => {
     searchCancle(){
       $('.cancle').on('click', () => {
         $('#keyWord').val('');
-        $('.userLogin,.shopCar,#searchout').css({display: 'block'});
-        $('.login form').css({display: 'none'});
+        $('.userLogin,.shopCar,#searchout').show();
+        $('.login form').hide()
+        this.searchNum++
       })
+      // $(document).not($('.login form,#searchout')).on('click', () => {
+      //   if (this.searchNum%2 === 1) {
+      //     $('.cancle').triggerHandler('click');
+      //   }else{
+      //   }
+      //   console.log(this.searchNum)
+      // })
     }
   };
   return new indexHeader();

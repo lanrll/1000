@@ -28,22 +28,31 @@
             <p>你的购物车内有<em id="productNum">0</em>件商品</p>
             <div class="productCart">
               <ul class="header">
+                <li>全选：
+                  <input type="checkbox" id="allCheck">
+                </li>
                 <li>商品图片</li>
                 <li>名称规格</li>
                 <li>数量</li>
                 <li>价格</li>
+                <li>小计</li>
               </ul>
               <div class="singleProductShow">
-
+                <div class="noOne">
+                  你的购物车还没都没有~~~<a href="/index.html">去逛逛></a>
+                </div>
               </div>
               <script type="text/html" id="productShowOne">
                 {{each cart cart index}}
-                <ul class="productSuowOne">
+                <ul class="productSuowOne" data-id="{{cart.id}}">
+                    <li>
+                      <input type="checkbox" class="checks" {{cart.check && "checked"}}>
+                    </li>
                   <li>
                     <div class="img">
                       <img src="{{cart.images[0].image}}">
                     </div>
-                    <b class="deleteProduct">删除商品</b>
+                    <b class="deleteProduct" >删除商品</b>
                   </li>
                   <li>
                     <a href="">{{cart.names[0].titleone}}</a>
@@ -55,7 +64,10 @@
                     <span>+</span>
                   </li>
                   <li class="singleProductPrice">
-                    <span>￥ <i >{{cart.price}}</i></span>
+                    <span>￥<i >{{cart.price}}</i></span>
+                  </li>
+                  <li class="singleProductPrice">
+                    <span>￥<i >{{cart.price*cart.num}}</i></span>
                   </li>
                 </ul>
                 {{/each}}

@@ -5,6 +5,7 @@ const gulp = require('gulp'),
       babel = require('gulp-babel'),
       connect = require('gulp-connect'),
       sass = require('gulp-sass')
+      // css = require('gulp-css')
 // 制定html任务：把src里面的html文件压缩之后放进dist目录
 gulp.task('html', () => {
   gulp.src("src/**/*.html")
@@ -22,13 +23,18 @@ gulp.task('html', () => {
     .pipe(connect.reload())
 })
 // 制定css任务：把src里css文件取出来，压缩，放进dist目录
-gulp.task('css', () => {
+gulp.task('scss', () => {
   // gulp.src('src/css/**/*.css')
   gulp.src('src/css/**/*.scss')
     .pipe(sass())
     // .pipe(cleanCss())
     .pipe(gulp.dest('dist/css'))
     .pipe(connect.reload())
+})
+gulp.task('css', () => {
+  gulp.src('src/css/**/*.css')
+    // .pipe(cleanCss())
+    .pipe(gulp.dest('dist/css'))
 })
 // 制定js任务，把src里面的所有js文件取出来，先ES6转ES5，然后压缩，放进dist目录
 gulp.task('js', () => {
@@ -63,8 +69,8 @@ gulp.task('watch', () => {
   // 监听html文件的修改，自动执行html任务
   gulp.watch('src/**/*.html', ['html'])
   gulp.watch('src/js/**/*.js', ['js'])
-  gulp.watch('src/css/**/*.scss', ['css'])
+  gulp.watch('src/css/**/*.scss', ['scss'])
 })
 // 把所有默认要执行的任务放到一起
-gulp.task('default', ['html', 'js', 'css', 'server','img','libs', 'watch'])
+gulp.task('default', ['html', 'js', 'scss','css', 'server','img','libs', 'watch'])
 
