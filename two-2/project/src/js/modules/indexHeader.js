@@ -1,4 +1,4 @@
-define(['jquery','bootstrap'], () => {
+define(['jquery','bootstrap','cookie'], () => {
   class indexHeader {
     constructor(){
       this.menuNum = 0;
@@ -6,7 +6,8 @@ define(['jquery','bootstrap'], () => {
       this.init().then(() => {
         this.downMenu();
         this.search();
-        this.searchCancle()
+        this.searchCancle();
+        this.islogin();
       });
     };
     init(){
@@ -14,6 +15,27 @@ define(['jquery','bootstrap'], () => {
         $('header').load('/html/modules/indexHeader.html', resolve);
       })
     };
+    islogin(){
+      if($.cookie('logininfo')){
+        $('.oneLogin').hide();
+        $('.alreadyLogin').show();
+        let logininfo = JSON.parse($.cookie('logininfo'));
+        console.log(logininfo);
+        $('#signOut').on('click', () => {
+          if(confirm('suer?')){
+            if($.removeCookie('logininfo')){
+              alert('成功退出')
+              $('.oneLogin').show();
+              $('.alreadyLogin').hide();
+            }
+          }
+        })
+      }else{
+        $('.oneLogin').show();
+        $('.alreadyLogin').hide();
+      }
+
+    }
     downMenu(){
       $('#downMenu').on('click', () => {
         if( this.menuNum%2 === 0){

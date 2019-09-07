@@ -22,7 +22,7 @@ require(['./config'], () => {
         })
         // console.dir($.cookie)
         // console.log($.cookie('i'))
-        console.log(JSON.parse($.cookie('userinfo')))
+        // console.log(JSON.parse($.cookie('userinfo')))
         console.log(window.location.search.slice(1))
         if (window.location.search.slice(1) == 0) {
           _this.loginShow()
@@ -65,9 +65,6 @@ require(['./config'], () => {
               userinfo.forEach((item) => {
                 if(this.$name.val() == item.name) {
                   if(this.$password.val() == item.password){
-
-                    console.log(this.$name.val() == item.name)
-                    console.log(this.$password.val() == item.password)
                     this.ressign = true;
                   }else{
                     this.ressign = false
@@ -85,10 +82,10 @@ require(['./config'], () => {
                   path: '/'
                 } )
                 if(confirm('欢迎登录Microsoft！去逛逛！！！')){
-                  console.log(JSON.parse($.cookie('logininfo')))
+                  console.log(JSON.parse($.cookie('logininfo')));
+                  location.href = 'http://localhost:611/index.html';
+                  // break;
                 }
-                this.$name.val('')
-                this.$password.val('')
               }else{
                 alert('账号密码输入出错或用户未注册！')
               }
@@ -117,9 +114,8 @@ require(['./config'], () => {
             }
             if (this.ressign){
                 alert('用户名已注册，请重新输入！')
-                // this.$name.val('')
               }else{
-                userinfo =  [...userinfo, {name:this.$name.val(), password:  this.$name.val()}]
+                userinfo =  [...userinfo, {name:this.$name.val(), password: this.$password.val()}]
                 console.log(userinfo)
                 $.cookie('userinfo', JSON.stringify(userinfo),{ expires: 7,
                   path: '/'
