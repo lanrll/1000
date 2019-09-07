@@ -85,27 +85,19 @@
       <li>
         <a class="glyphicon glyphicon-shopping-cart shopCar" title="购物车" href="/html/cart.html"></a>
       </li>
-      <li>
-        <!-- <a class="glyphicon glyphicon-user userLogin" title="请登录" href="/html/login.html"></a> -->
-        <div class="dropdown ">
-          <button type="button" class="btn dropdown-toggle glyphicon glyphicon-user userLogin" id="dropdownMenu1" data-toggle="dropdown">
-          </button>
-          <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation">
-                  <a role="menuitem" tabindex="-1" href="#">Java</a>
-              </li>
-              <li role="presentation">
-                  <a role="menuitem" tabindex="-1" href="#">数据挖掘</a>
-              </li>
-              <li role="presentation">
-                  <a role="menuitem" tabindex="-1" href="#">数据通信/网络</a>
-              </li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation">
-                  <a role="menuitem" tabindex="-1" href="#">分离的链接</a>
-              </li>
-          </ul>
-      </div>
+      <li class="dropdown oneLogin">
+        <span class="glyphicon glyphicon-user userLogin dropdown-toggle" title="请登录" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></span>
+        <ul class="dropdown-menu dropdown-menu-right loginuser" aria-labelledby="dropdownMenu1">
+          <li><a href="/html/login.html?0">登录</a></li>
+          <li><a href="/html/login.html?1">注册</a></li>
+        </ul>
+      </li>
+      <li class="dropdown alreadyLogin">
+        <span class="glyphicon glyphicon-user userLogin dropdown-toggle" title="已登录" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></span>
+        <ul class="dropdown-menu dropdown-menu-right loginuser" aria-labelledby="dropdownMenu1">
+          <li><a href="#">个人中心</a></li>
+          <li><a href="#">退出</a></li>
+        </ul>
       </li>
     </ul>
   </div>

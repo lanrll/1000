@@ -34,6 +34,29 @@ nav{
   }
   .login{
     float: right;
+    .oneLogin{
+      .userLogin{
+        margin-right: 16px;
+        height: 50px;
+        line-height: 48px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #262626;
+        background-color: #fff;
+      }
+    }
+    .alreadyLogin{
+      display: none;
+      .userLogin{
+        margin-right: 16px;
+        height: 50px;
+        line-height: 48px;
+        font-size: 16px;
+        cursor: pointer;
+        color: #f40;
+        background-color: #fff;
+      }
+    }
     ul li{
       float: left;
       margin-right: 16px;
@@ -101,15 +124,18 @@ nav{
         color: #262626;
         text-decoration: none;
       }
-      .userLogin{
-        margin-right: 16px;
-        height: 50px;
-        line-height: 48px;
-        font-size: 16px;
-        cursor: pointer;
-        color: #262626;
-        text-decoration: none;
-        background-color: #fff;
+      
+      .loginuser{
+        // width: 100%;
+        li{
+          width: 100%;
+          height: 30px;
+          a{
+            float: left;
+            width: 100%;
+            text-align: center;
+          }
+        } 
       }
       form{
         display: none;

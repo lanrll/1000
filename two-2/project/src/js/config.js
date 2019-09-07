@@ -11,7 +11,8 @@ require.config({
     url: 'js/modules/url',
     zoom: 'libs/jquery-plugins/jquery.elevateZoom',
     swiper: 'libs/swiper/js/swiper.min',
-    fly: 'libs/jquery-plugins/jquery.fly.min'
+    fly: 'libs/jquery-plugins/jquery.fly.min',
+    cookie: 'libs/jquery-plugins/jquery.cookie'
   },
   shim: {
     bootstrap:{
@@ -21,6 +22,9 @@ require.config({
       deps: ['jquery']
     },
     fly: {
+      deps: ['jquery']
+    },
+    cookie: {
       deps: ['jquery']
     }
   }
