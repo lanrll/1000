@@ -26,12 +26,15 @@
           text-align: center;
           width: 80px;
           &:nth-child(2){
-            width: 140px;
+            width: 120px;
           }
           &:nth-child(3){
             text-align: left;
-            width: 330px;
+            width: 300px;
             padding-left: 10px;
+          }
+          &:nth-child(4){
+            width: 130px;
           }
         }
       }
@@ -59,10 +62,10 @@
             }
           }
           &:nth-child(2){
-            width: 140px;
+            width: 120px;
             .img{
-              width: 120px;
-              height: 100px;
+              width: 100px;
+              height: 80px;
               margin: 10px;
               background-color: #cccc;
               img{
@@ -78,7 +81,7 @@
           }
           &:nth-child(3){
             text-align: left;
-            width: 330px;
+            width: 300px;
             padding-left: 10px;
             margin-top: 10px;
             a{
@@ -89,6 +92,7 @@
             }
           }
           &:nth-child(4){
+            width: 130px;
             span{
               width: 25px;
               height: 25px;
@@ -99,7 +103,7 @@
             }
             input{
               float: left;
-              width: 25px;
+              width: 80px;
               height: 25px;
               text-align: center;
               border: 1px solid #D3D3D3;
@@ -145,6 +149,7 @@
       height: 35px;
       line-height: 35px;
       background-color: red;
+      cursor: pointer;
     }
     ul{
       width: 100%;
@@ -163,5 +168,16 @@
         color: red;
       }
     }
+  }
+}
+.SettlementBackground{
+  width: 100%;
+  height: 100%;
+  h3{
+    text-align: center;
+    margin: 20px 0;
+  }
+  img{
+    margin: 0 auto;
   }
 }

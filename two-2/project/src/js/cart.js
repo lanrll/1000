@@ -1,5 +1,5 @@
 require(['./config'], () => {
-  require(['template','indexHeader', 'footer'], (template) => {
+  require(['template','indexHeader', 'footer','bootstrap'], (template, indexHeader) => {
     class cart{
       constructor(){
         this.init();
@@ -8,13 +8,16 @@ require(['./config'], () => {
         // this.allCheckChange();
         // this.productNumberChange();
       }
+      //初始化
       init(){
         let cart = localStorage.getItem('cart')
         let num = 0;
-        if(cart){
+        // 判断是否存在商品
+        if(cart != '[]'){
           $('.noOne').hide();
           this.cart = JSON.parse(cart)
           this.num = 0;
+          //获取总商品数量
           var linum = 0 ;
           this.cart.forEach( shop => {
             linum += shop.check ? +1 : -1;
@@ -25,6 +28,10 @@ require(['./config'], () => {
             return res;
           }, 0)
           $('#productNum').html(num);
+          // console.log(indexHeader)
+          // 头部购物车数量显示
+          indexHeader.constructor(num)
+          // 初始化判断商品勾选情况
           if(this.num == this.cart.length){
             if(this.num === 0){
               $('#allCheck').prop('checked', false)
@@ -41,9 +48,12 @@ require(['./config'], () => {
           this.productPriceTotal();
           this.productNumberChange();
           this.deleteProduct();
+        }else{
+          $('noOne').show();
         }
       }
 
+      // 单选
       checksChange(){
         const _this = this;
         $('.checks').on('change', function(){
@@ -59,6 +69,7 @@ require(['./config'], () => {
         })
       }
 
+      // 全选
       allCheckChange(){
         const _this = this;
         $('#allCheck').on('change', function(){
@@ -72,6 +83,7 @@ require(['./config'], () => {
         })
       }
 
+      // 删除
       deleteProduct(){
         const _this = this;
         $('.deleteProduct').on('click', function() {
@@ -85,8 +97,10 @@ require(['./config'], () => {
         })
       }
 
+      // 商品数量变化
       productNumberChange(){
         const _this = this;
+        // -操作
         $('.reduce').on('click', function(){
           let id = Number($(this).parents('.productShowOne').attr('data-id'));
           _this.cart = _this.cart.map(shop => {
@@ -102,6 +116,7 @@ require(['./config'], () => {
           localStorage.setItem('cart', JSON.stringify(_this.cart))
           _this.init();
         })
+        //+操作
         $('.increase').on('click', function(){
           let id = Number($(this).parents('.productShowOne').attr('data-id'));
           _this.cart = _this.cart.map(shop => {
@@ -111,8 +126,36 @@ require(['./config'], () => {
           localStorage.setItem('cart', JSON.stringify(_this.cart))
           _this.init();
         })
+        // 输入框
+        $('.singleProductNum').on('focus', function () {
+          let id = Number($(this).parents('.productShowOne').attr('data-id'));
+          //回车键改变数量
+          $(this).on('keyup', function (e) {
+            if (e.keyCode == 13) {
+              let id = Number($(this).parents('.productShowOne').attr('data-id'));
+              _this.cart = _this.cart.map(shop => {
+                if (shop.id === id) shop.num = Number($(this).val());
+                return shop;
+              })
+              localStorage.setItem('cart', JSON.stringify(_this.cart))
+              _this.init();
+            }
+          })
+          // console.log(keyup())
+          // 输入框失去焦点改变数量
+          $(this).on('blur', function () {
+            let id = Number($(this).parents('.productShowOne').attr('data-id'));
+            _this.cart = _this.cart.map(shop => {
+              if (shop.id === id) shop.num = Number($(this).val());
+              return shop;
+            })
+            localStorage.setItem('cart', JSON.stringify(_this.cart))
+            _this.init();
+          })
+        })
       }
 
+      // 总价
       productPriceTotal(){
         let cart = localStorage.getItem('cart');
         if(cart){
@@ -125,6 +168,13 @@ require(['./config'], () => {
         }else{
           $('#productPriceTotal').html(0);
         }
+      }
+
+      // 结算
+      Settlement(){
+        $('#Settlement').on('click', () => {
+          
+        })
       }
     }
     return new cart();

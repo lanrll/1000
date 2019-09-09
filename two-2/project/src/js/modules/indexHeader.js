@@ -1,6 +1,6 @@
-define(['jquery','bootstrap','cookie'], () => {
+define(['jquery', 'bootstrap', 'cookie'], () => {
   class indexHeader {
-    constructor(){
+    constructor(num) {
       this.menuNum = 0;
       this.searchNum = 0
       this.init().then(() => {
@@ -8,72 +8,92 @@ define(['jquery','bootstrap','cookie'], () => {
         this.search();
         this.searchCancle();
         this.islogin();
+        this.cartNumberShow(num);
       });
     };
-    init(){
+    // 初始化，加载头部
+    init() {
       return new Promise(resolve => {
         $('header').load('/html/modules/indexHeader.html', resolve);
       })
     };
-    islogin(){
-      if($.cookie('logininfo')){
+
+    // 登录验证
+    islogin() {
+      // 判断是否存在登录信息
+      if ($.cookie('logininfo')) {
+        // 替换为登录头部
         $('.oneLogin').hide();
         $('.alreadyLogin').show();
-        let logininfo = JSON.parse($.cookie('logininfo'));
-        console.log(logininfo);
+        // let logininfo = JSON.parse($.cookie('logininfo'));
+        // console.log(logininfo);
+        // 用户退出功能事件绑定
         $('#signOut').on('click', () => {
-          if(confirm('suer?')){
-            if($.removeCookie('logininfo')){
+          if (confirm('suer?')) {
+            if ($.removeCookie('logininfo')) {
               alert('成功退出')
               $('.oneLogin').show();
               $('.alreadyLogin').hide();
             }
           }
         })
-      }else{
+      } else {
         $('.oneLogin').show();
         $('.alreadyLogin').hide();
       }
-
     }
-    downMenu(){
+
+    // 下拉菜单
+    downMenu() {
       $('#downMenu').on('click', () => {
-        if( this.menuNum%2 === 0){
+        if (this.menuNum % 2 === 0) {
           $('.allProduct').show()
-          $('#downMenu').css({background: '#F2F2F2'});
-        }else{
+          $('#downMenu').css({
+            background: '#F2F2F2'
+          });
+        } else {
           $('.allProduct').hide();
-          $('#downMenu').css({background: '#ffffff'});
+          $('#downMenu').css({
+            background: '#ffffff'
+          });
         }
         this.menuNum++;
       })
     }
-    search(){
+
+    // 搜索框显示，及搜索
+    search() {
+      // 搜索框显示
       $('#searchout').on('mousedown', () => {
-        if(this.searchNum%2 === 0){
+        // 点击隐藏显示判断
+        if (this.searchNum % 2 === 0) {
           $('.userLogin,.shopCar,#searchout').hide();
           $('.login form').show()
           this.searchNum++
         }
+        // 搜索框搜索
         $('#keyWord').on('keyup', () => {
-          $.getJSON(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${$('#keyWord').val()}&cb=?`,resp => {
+          // 请求数据
+          $.getJSON(`https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${$('#keyWord').val()}&cb=?`, resp => {
             console.log(resp)
             $('form ul').html('');
-            for(let i=0; i<resp.s.length; i++){
+            for (let i = 0; i < resp.s.length; i++) {
               $(`<li>${resp.s[i]}</li>`).appendTo($('form ul'));
             };
-            $('form ul li').on('mousedown', function() {
+            $('form ul li').on('mousedown', function () {
               $('#keyWord').val('');
               $('#keyWord').val($(this).html());
             });
-            $('#keyWord').on('blur', function(){
+            $('#keyWord').on('blur', function () {
               $('form ul li').remove();
             })
           })
         })
       })
     }
-    searchCancle(){
+
+    //搜索框关闭
+    searchCancle() {
       $('.cancle').on('click', () => {
         $('#keyWord').val('');
         $('.userLogin,.shopCar,#searchout').show();
@@ -87,6 +107,27 @@ define(['jquery','bootstrap','cookie'], () => {
       //   }
       //   console.log(this.searchNum)
       // })
+    }
+
+    // 头部购物车显示数量
+    cartNumberShow(num){
+      let cart = localStorage.getItem('cart')
+      // num = 0;
+      if(num){
+        // console.log(num)
+        $('.shopCar').html(num);
+      }else{
+        if(cart){
+          cart = JSON.parse(cart)
+          // console.log(cart);
+          num = cart.reduce((res, shop) => {
+            return res += shop.num;
+            // return res;
+          },0)
+          // console.log(num)
+          $('.shopCar').html(num)
+        }
+      }
     }
   };
   return new indexHeader();

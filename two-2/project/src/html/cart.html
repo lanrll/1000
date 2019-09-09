@@ -45,14 +45,14 @@
               <script type="text/html" id="productShowOne">
                 {{each cart cart index}}
                 <ul class="productShowOne" data-id="{{cart.id}}">
-                    <li>
-                      <input type="checkbox" class="checks" {{cart.check && "checked"}}>
-                    </li>
+                  <li>
+                    <input type="checkbox" class="checks" {{cart.check && "checked"}}>
+                  </li>
                   <li>
                     <div class="img">
                       <img src="{{cart.images[0].image}}">
                     </div>
-                    <b class="deleteProduct" >删除商品</b>
+                    <b class="deleteProduct">删除商品</b>
                   </li>
                   <li>
                     <a href="/html/details.html?id={{cart.id}}">{{cart.names[0].titleone}}</a>
@@ -64,10 +64,10 @@
                     <span class='increase'>+</span>
                   </li>
                   <li class="singleProductPrice">
-                    <span>￥<i >{{cart.price}}</i></span>
+                    <span>￥<i>{{cart.price}}</i></span>
                   </li>
                   <li class="singleProductPrice">
-                    <span>￥<i >{{cart.price*cart.num}}</i></span>
+                    <span>￥<i>{{cart.price*cart.num}}</i></span>
                   </li>
                 </ul>
                 {{/each}}
@@ -76,7 +76,7 @@
           </div>
           <div class="rightCart">
             <div>总计<span>￥<i id="productPriceTotal">0</i>元</span></div>
-            <strong>结算</strong>
+            <strong id="Settlement" data-toggle="modal" data-target="#myModal">结算</strong>
             <ul>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;30天退还货</a></li>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;急速上手服务</a></li>
@@ -101,6 +101,27 @@
       </div>
     </div>
   </div>
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="myModalLabel">支付</h4>
+        </div>
+        <div class="modal-body">
+          <div class="SettlementBackground">
+            <h3>来,扫码吧！！！</h3>
+            <img src="/images/loginQR.png" alt="">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">完成(没写)</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+  </div>
+
 </body>
 <script src="/libs/require.min.js" data-main="/js/cart"></script>
 
