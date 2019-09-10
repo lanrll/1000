@@ -3,6 +3,7 @@ require(['./config'], () => {
     class details{
       constructor(){
         this.addToCart();
+        this.goTop();
         this.getDetailsData().then(resp => {
           let str = template('productDetails', {...resp.product})
           $('main').html(str)
@@ -10,8 +11,19 @@ require(['./config'], () => {
           this.shopCartNum();
           this.pictureSwitching();
           this.zoom();
+          this.subnav();
+        })
+        this.getDetailsParameter().then(resp => {
+          let str2 = template('d2d', {...resp.body})
+          $('#d2').html(str2)
+          let str4 = template('d4d', {...resp.body})
+          $('#d4').html(str4)
+          let str6 = template('d6d', {...resp.body})
+          $('#d6').html(str6)
+          this.EvaluationPageSwitching()
         })
       }
+      
       getDetailsData(){
         this.id = Number(window.location.search.slice(4))
         return new Promise(resolve => {
@@ -21,6 +33,7 @@ require(['./config'], () => {
         })
       }
 
+      // 放大镜
       zoom () {
         $(".zoom-img").elevateZoom({
           gallery: 'gal1imagesList', //ul父级盒子的id
@@ -31,6 +44,7 @@ require(['./config'], () => {
         })
       }
 
+      // 加入购物车
       addToCart(){
         $('main').on('click', '#addToCart', e => {
           this.fly(e);
@@ -57,6 +71,7 @@ require(['./config'], () => {
         })
       }
 
+      // 
       fly(e){
         const _this = this
         $(`<div style="width:20px;height:20px;backgroud:red" class="point"></div>`).fly({
@@ -78,6 +93,7 @@ require(['./config'], () => {
         });
       }
 
+      // 右侧边购物车数量显示
       shopCartNum(){
         let cart = localStorage.getItem('cart');
         let num = 0;
@@ -91,6 +107,7 @@ require(['./config'], () => {
         }
       }
 
+      // 小照片切换
       pictureSwitching(){
         var sign = true;
         let _this = this;
@@ -115,6 +132,83 @@ require(['./config'], () => {
         $('main').on('click', '#smallImage', function()  {
           $('#mediumImage').attr('src',$(this).attr('src'))
           _this.zoom();
+        })
+      }
+
+      //底部导航
+      subnav(){
+        $(document).on('scroll', function(){
+          let $subnav = $('.subnav'),
+              $show = $('.subnav ul li a'),
+              $d1 = $('#d1'),
+              $d2 = $('#d2'),
+              $d3 = $('#d3'),
+              $d4 = $('#d4'),
+              $d5 = $('#d5'),
+              $d6 = $('#d6');
+              $show.removeClass('ac');
+            if($subnav.offset().top >= $d1.offset().top -300){
+              $show.removeClass('ac');
+              $(`[href="#d1"]`).addClass('ac');
+            }
+            if($subnav.offset().top >= $d2.offset().top -300){
+              $show.removeClass('ac');
+              $(`[href="#d2"]`).addClass('ac');
+            }
+            if($subnav.offset().top >= $d3.offset().top -300){
+              $show.removeClass('ac');
+              $(`[href="#d3"]`).addClass('ac');
+            }
+            if($subnav.offset().top >= $d4.offset().top -300){
+              $show.removeClass('ac');
+              $(`[href="#d4"]`).addClass('ac');
+            }
+            if($subnav.offset().top >= $d5.offset().top -300){
+              $show.removeClass('ac');
+              $(`[href="#d5"]`).addClass('ac');
+            }
+            if($subnav.offset().top >= $d6.offset().top -300){
+              $show.removeClass('ac');
+              $(`[href="#d6"]`).addClass('ac');
+            }
+        })
+      }
+
+      // 顾客评价页切换
+      EvaluationPageSwitching(){
+        $('.evaluateList li:even').hide()
+        $('#next').on('click', function(){
+          $(this).addClass('disabled')
+          $('#previous').removeClass('disabled')
+          $('.evaluateList li:even').show()
+          $('.evaluateList li:odd').hide()
+        })
+        $('#previous').on('click', function(){
+          $(this).addClass('disabled')
+          $('#next').removeClass('disabled')
+          $('.evaluateList li:odd').show()
+          $('.evaluateList li:even').hide()
+        })
+      }
+
+      // 回到顶部
+      goTop(){
+        $('.gotop').on('click', function(){
+          let start = $(document).scrollTop()
+          let timer1 = setInterval(function(){
+            start -= 20
+            $(document).scrollTop(start)
+            if(start <= 0 ) clearInterval(timer1)
+          },3)
+         })
+      }
+
+      // 技术规格参数等数据获取
+      getDetailsParameter(){
+        return new Promise(resolve => {
+          $.get(`${url.rapBaseUrl}/oneProduct`, resp => {
+            resolve(resp);
+          })
         })
       }
     }

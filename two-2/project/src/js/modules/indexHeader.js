@@ -9,6 +9,8 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
         this.searchCancle();
         this.islogin();
         this.cartNumberShow(num);
+        this.recoedPage();
+        this.Breadcrumb()  
       });
     };
     // 初始化，加载头部
@@ -17,6 +19,28 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
         $('header').load('/html/modules/indexHeader.html', resolve);
       })
     };
+
+    Breadcrumb(){
+      let arr = [];
+      arr = window.location.pathname.split('/') 
+      let thatPage = window.location.search.slice(1);
+      let dataPage = thatPage.split('=')
+      let baseUrl =  window.location.origin;
+      $('').appendTo('#breadCrumb')
+      let str = `<li><a href=${baseUrl}>Home<a></li>`
+      if(arr[1]){
+        if(dataPage[0] == 'id'){
+          str += `<li><a href=${baseUrl}/${arr[1]/arr[2]}?${dataPage}>Datails</a></li>`
+        }else{
+          str += `<li><a href=${baseUrl}/${arr[1]/arr[2]}>${thatPage}</a></li>`
+        }
+      }
+      $(str).appendTo('#breadCrumb')
+
+    }
+    recoedPage(){
+      localStorage.setItem('that', window.location.href)
+    }
 
     // 登录验证
     islogin() {
@@ -30,10 +54,11 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
         // 用户退出功能事件绑定
         $('#signOut').on('click', () => {
           if (confirm('suer?')) {
-            if ($.removeCookie('logininfo')) {
-              alert('成功退出')
+            if ($.removeCookie('logininfo',{path: '/'})) {
+              alert('成功退出');
               $('.oneLogin').show();
               $('.alreadyLogin').hide();
+
             }
           }
         })

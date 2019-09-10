@@ -171,11 +171,6 @@ require(['./config'], () => {
       }
 
       // 结算
-      Settlement(){
-        $('#Settlement').on('click', () => {
-          
-        })
-      }
     }
     return new cart();
   })

@@ -23,6 +23,8 @@ require(['./config'], () => {
           path: '/'
         })
         // 通过Url判断初始为登录页或注册页
+        
+        console.log(localStorage.getItem('that'))
         console.log(window.location.search.slice(1))
         if (window.location.search.slice(1) == 0) {
           _this.loginShow()
@@ -95,9 +97,10 @@ require(['./config'], () => {
                 expires: 7,
                 path: '/'
               })
-              if (confirm('欢迎登录Microsoft！去逛逛！！！')) {
+              if (confirm('欢迎登录Microsoft！返回页面！！！')) {
                 console.log(JSON.parse($.cookie('logininfo')));
-                location.href = 'http://localhost:611/index.html';
+                window.location.href = localStorage.getItem('that')
+                
                 // break;
               }
             } else {

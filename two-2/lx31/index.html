@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+  <input type="text" placeholder="输入时期，如2019-9-9" id="timers">
+  <span id="show"></span>
+  <script>
+    console.log($('#timers'))
+    $('#timers').on('blur', function () {
+      let arr = []
+      arr = $(this).val().split('-')
+      arr = arr.map(item => {
+        return Number(item)
+      })
+      arr[1] = arr[1] - 1
+      $('#show').html(showDate(arr[0], arr[1], arr[2]))
+    })
+    $('#timers').on('keyup', function(e){
+      if(e.keyCode === 13){
+      let arr = []
+      arr = $(this).val().split('-')
+      arr = arr.map(item => {
+        return Number(item)
+      })
+      arr[1] = arr[1] - 1
+      $('#show').html(showDate(arr[0], arr[1], arr[2]))
+      }
+    })
+    function showDate(year, month, day) {
+      let nowData = new Date(),
+        data = new Date(year, month, day),
+        nowYear = Number(nowData.getFullYear()),
+        nowMonth = Number(nowData.getMonth()) + 1,
+        nowday = Number(nowData.getDate()),
+        week = Number(data.getDay());
+        console.log(data.getFullYear());
+      year = Number(data.getFullYear());
+      month = Number(data.getMonth()) + 1;
+      retMonth = Number(data.getMonth()) + 1;
+      day = Number(data.getDate());
+      console.log(day - nowday)
+      if (nowYear === year) {
+        if (nowMonth === month) {
+          let disday = day - nowday;
+          if (disday === 0) {
+            return '今天'
+          } else if (disday === 1) {
+            return '明天'
+          } else if (disday === 2) {
+            return '后天'
+          } else if (disday === -1) {
+            return '昨天'
+          } else if (disday === -2) {
+            return '前天'
+          } else {
+            return ret(week, year, retMonth, day)
+          }
+        } else {
+          return ret(week, year, retMonth, day)
+        }
+      } else {
+        return ret(week, year, retMonth, day)
+      }
+    }
+    function ret(week, year, retMonth, day){
+      if (week == 0) {
+          return `${year}年${retMonth}月${day}号星期天`
+        } else {
+          return `${year}年${retMonth}月${day}号星期${week}`
+        }
+    }
+  </script>
+</body>
+
+</html>

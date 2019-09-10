@@ -1,99 +1,124 @@
 @import '/css/modules/indexHeader.css';
 @import '/css/modules/footer.css';
-.cart{
-  margin-top:20px; 
-  .leftCart{
+
+.cart {
+  margin-top: 20px;
+
+  .leftCart {
     width: 70%;
     float: left;
     margin-left: 10px;
-    p{
+
+    p {
       font-size: 18px;
       margin-bottom: 10px;
-      em{
+
+      em {
         color: red;
       }
     }
-    .productCart{
+
+    .productCart {
       width: 100%;
-      min-height: 400px;
-      .header{
+      min-height: 600px;
+
+      .header {
         height: 30px;
         line-height: 30px;
         width: 100%;
         border-bottom: 1px solid #c7c7c7;
-        li{
+
+        li {
           float: left;
           text-align: center;
           width: 80px;
-          &:nth-child(2){
+
+          &:nth-child(2) {
             width: 120px;
           }
-          &:nth-child(3){
+
+          &:nth-child(3) {
             text-align: left;
             width: 300px;
             padding-left: 10px;
           }
-          &:nth-child(4){
+
+          &:nth-child(4) {
             width: 130px;
           }
         }
       }
-      .singleProductShow{
+
+      .singleProductShow {
         width: 100%;
-        .noOne{
+
+        .noOne {
           width: 80%;
           text-align: center;
           margin: 130px auto;
         }
       }
-      .productShowOne{
+
+      .productShowOne {
         width: 100%;
         height: 140px;
-        li{
+
+        li {
           float: left;
           text-align: center;
           width: 80px;
-          &:nth-child(1){
+
+          &:nth-child(1) {
             height: 100%;
             line-height: 125px;
-            input{
+
+            input {
               width: 20px;
               height: 20px;
             }
           }
-          &:nth-child(2){
+
+          &:nth-child(2) {
             width: 120px;
-            .img{
+
+            .img {
               width: 100px;
               height: 80px;
               margin: 10px;
               background-color: #cccc;
-              img{
+
+              img {
                 width: 100%;
                 height: 100%;
               }
             }
-            b{
+
+            b {
               font-weight: normal;
               text-decoration-line: underline;
               cursor: pointer;
             }
           }
-          &:nth-child(3){
+
+          &:nth-child(3) {
             text-align: left;
             width: 300px;
             padding-left: 10px;
             margin-top: 10px;
-            a{
+
+            a {
               font-size: 20px;
             }
-            p{
+
+            p {
               font-size: 14px;
             }
           }
-          &:nth-child(4){
+
+          &:nth-child(4) {
             width: 130px;
-            span{
+
+            span {
               width: 25px;
               height: 25px;
               float: left;
@@ -101,7 +126,8 @@
               cursor: pointer;
               font-size: 20px;
             }
-            input{
+
+            input {
               float: left;
               width: 80px;
               height: 25px;
@@ -109,11 +135,13 @@
               border: 1px solid #D3D3D3;
             }
           }
-          &:nth-child(5){
+
+          &:nth-child(5) {
             color: red;
             font-size: 16px;
           }
-          &:nth-child(6){
+
+          &:nth-child(6) {
             color: deepskyblue;
             font-size: 16px;
           }
@@ -121,7 +149,8 @@
       }
     }
   }
-  .rightCart{
+
+  .rightCart {
     width: 27%;
     padding-bottom: 10px;
     // position: sticky;
@@ -129,19 +158,22 @@
     // top: 0;
     float: right;
     // background-color: #ccc;
-    border-bottom: 1px solid  #c7c7c7;
-    div{
+    border-bottom: 1px solid #c7c7c7;
+
+    div {
       float: right;
       width: 90%;
       font-size: 20px;
       font-weight: 700;
       margin: 10px;
-      span{
+
+      span {
         float: right;
         color: red;
-      } 
+      }
     }
-    strong{
+
+    strong {
       margin-top: 30px;
       float: right;
       width: 150px;
@@ -151,33 +183,40 @@
       background-color: red;
       cursor: pointer;
     }
-    ul{
+
+    ul {
       width: 100%;
       float: right;
       margin-top: 20px;
-      li{
+
+      li {
         width: 120px;
-        margin:  10px;
+        margin: 10px;
       }
     }
-    p{
+
+    p {
       float: right;
       text-align: right;
       font-size: 14px;
-      &:nth-last-child(1){
+
+      &:nth-last-child(1) {
         color: red;
       }
     }
   }
 }
-.SettlementBackground{
+
+.SettlementBackground {
   width: 100%;
   height: 100%;
-  h3{
+
+  h3 {
     text-align: center;
     margin: 20px 0;
   }
-  img{
+
+  img {
     margin: 0 auto;
   }
 }
