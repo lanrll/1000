@@ -7,10 +7,10 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
         this.downMenu();
         this.search();
         this.searchCancle();
-        this.islogin();
         this.cartNumberShow(num);
         this.recoedPage();
-        this.Breadcrumb()  
+        this.Breadcrumb();
+        this.islogin();
       });
     };
     // 初始化，加载头部
@@ -20,25 +20,25 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
       })
     };
 
-    Breadcrumb(){
+    Breadcrumb() {
       let arr = [];
-      arr = window.location.pathname.split('/') 
+      arr = window.location.pathname.split('/')
       let thatPage = window.location.search.slice(1);
       let dataPage = thatPage.split('=')
-      let baseUrl =  window.location.origin;
+      let baseUrl = window.location.origin;
       $('').appendTo('#breadCrumb')
       let str = `<li><a href=${baseUrl}>Home<a></li>`
-      if(arr[1]){
-        if(dataPage[0] == 'id'){
+      if (arr[1]) {
+        if (dataPage[0] == 'id') {
           str += `<li><a href=${baseUrl}/${arr[1]/arr[2]}?${dataPage}>Datails</a></li>`
-        }else{
+        } else {
           str += `<li><a href=${baseUrl}/${arr[1]/arr[2]}>${thatPage}</a></li>`
         }
       }
       $(str).appendTo('#breadCrumb')
 
     }
-    recoedPage(){
+    recoedPage() {
       localStorage.setItem('that', window.location.href)
     }
 
@@ -52,19 +52,28 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
         // let logininfo = JSON.parse($.cookie('logininfo'));
         // console.log(logininfo);
         // 用户退出功能事件绑定
+        $('#warning').hide();
+        $('#settlement').attr('data-target', '#myModal')
         $('#signOut').on('click', () => {
           if (confirm('suer?')) {
-            if ($.removeCookie('logininfo',{path: '/'})) {
+            if ($.removeCookie('logininfo', {
+                path: '/'
+              })) {
               alert('成功退出');
               $('.oneLogin').show();
               $('.alreadyLogin').hide();
-
+              $('#warning').show();
+              $('#settlement').attr('data-target', '')
             }
           }
         })
+        return true;
       } else {
         $('.oneLogin').show();
         $('.alreadyLogin').hide();
+        $('#warning').show();
+        $('#settlement').attr('data-target', '')
+        return false;
       }
     }
 
@@ -135,20 +144,20 @@ define(['jquery', 'bootstrap', 'cookie'], () => {
     }
 
     // 头部购物车显示数量
-    cartNumberShow(num){
+    cartNumberShow(num) {
       let cart = localStorage.getItem('cart')
       // num = 0;
-      if(num){
+      if (num) {
         // console.log(num)
         $('.shopCar').html(num);
-      }else{
-        if(cart){
+      } else {
+        if (cart) {
           cart = JSON.parse(cart)
           // console.log(cart);
           num = cart.reduce((res, shop) => {
             return res += shop.num;
             // return res;
-          },0)
+          }, 0)
           // console.log(num)
           $('.shopCar').html(num)
         }

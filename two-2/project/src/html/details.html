@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-12 column">
         <header></header>
-      </div>
+      </div> 
     </div>
     <div class="gotop fa fa-chevron-up">
     </div>
@@ -66,9 +66,8 @@
           <div class="productTitle">
             <h2>微软开学季</h2>
             <h1>
-              {{names[0].titleone}}
-              <br>
-              {{names[0].titletwo}}
+              <p>{{names[0].titleone}}</p>
+              <p>{{names[0].titletwo}}</p>
             </h1>
           </div>
           <div class="productPrice">
@@ -82,40 +81,40 @@
             <em><i class="fa  fa-star"></i></em>
           </div>
           <div class="productSize">
-            <p class="titleP">请选择尺寸</p>
+            <p class="titleP">请选择尺寸:</p>
             <ul>
               {{each sizes size index}}
               <li>
-                <button>{{size.sizeone}}.{{size.sizetwo}}英寸</button>
+                <div class="CanBeSelected">{{size.sizeone}}.{{size.sizetwo}}英寸</div>
               </li>
               {{/each}}
             </ul>
           </div>
           <div class="productTo-configure">
-            <p class="titleP">请选择配置</p>
+            <p class="titleP">请选择配置:</p>
             <ul>
               {{each models model index}}
               <li>
-                <button>
+                <div class="CanBeSelected">
                   {{model.model}}
+                  <br>
                   <span>¥ {{model.price}}</span>
-                </button>
+                </div>
               </li>
               {{/each}}
             </ul>
           </div>
           <div class="productSet-meal">
-            <p class="titleP">请选择特惠套餐</p>
+            <p class="titleP">请选择特惠套餐:</p>
             <ul>
               {{each meals meal index}}
               <li>
-                <button>
+                <div class="CanBeSelected">
                   <i>{{meal.meal}}</i>
-                  <p>
+                  <br>
                     <span>￥{{meal.priceone}}</span>
                     <em>省￥{{meal.pricetwo}}</em>
-                  </p>
-                </button>
+                </div>
               </li>
               {{/each}}
             </ul>

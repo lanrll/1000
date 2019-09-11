@@ -1,7 +1,7 @@
 require(['./config'], () => {
-  require(['template','indexHeader', 'footer','bootstrap'], (template, indexHeader) => {
-    class cart{
-      constructor(){
+  require(['template', 'indexHeader', 'footer', 'bootstrap'], (template, indexHeader) => {
+    class cart {
+      constructor() {
         this.init();
         // this.deleteProduct();
         // this.checksChange();
@@ -9,17 +9,17 @@ require(['./config'], () => {
         // this.productNumberChange();
       }
       //初始化
-      init(){
+      init() {
         let cart = localStorage.getItem('cart')
         let num = 0;
         // 判断是否存在商品
-        if(cart != '[]'){
+        if (cart != '[]') {
           $('.noOne').hide();
-          this.cart = JSON.parse(cart)
+          this.cart = JSON.parse(cart);
           this.num = 0;
           //获取总商品数量
-          var linum = 0 ;
-          this.cart.forEach( shop => {
+          var linum = 0;
+          this.cart.forEach(shop => {
             linum += shop.check ? +1 : -1;
           })
           this.num = linum;
@@ -32,34 +32,42 @@ require(['./config'], () => {
           // 头部购物车数量显示
           indexHeader.constructor(num)
           // 初始化判断商品勾选情况
-          if(this.num == this.cart.length){
-            if(this.num === 0){
+          if (this.num == this.cart.length) {
+            if (this.num === 0) {
               $('#allCheck').prop('checked', false)
-            }else{
+            } else {
               $('#allCheck').prop('checked', true)
             }
-          }else{
+          } else {
             $('#allCheck').prop('checked', false)
           }
-          let str = template('productShowOne', {cart: this.cart})
+          let str = template('productShowOne', {
+            cart: this.cart
+          })
           $('.singleProductShow').html(str)
           this.checksChange();
           this.allCheckChange();
           this.productPriceTotal();
           this.productNumberChange();
           this.deleteProduct();
-        }else{
-          $('noOne').show();
+          // this.verification();
+        } else {
+          indexHeader.constructor(num);
+          $('#productNum').html(num);
+          $('#allCheck').prop('checked', false);
+          this.productPriceTotal();
+          $('.singleProductShow').html('');
+          $('.noOne').show();
         }
       }
 
       // 单选
-      checksChange(){
+      checksChange() {
         const _this = this;
-        $('.checks').on('change', function(){
+        $('.checks').on('change', function () {
           const id = Number($(this).parents('.productShowOne').attr('data-id'))
           _this.cart = _this.cart.map(shop => {
-            if(shop.id === id) shop.check = $(this).prop('checked')
+            if (shop.id === id) shop.check = $(this).prop('checked')
             return shop;
           })
           _this.num += $(this).prop('checked') ? +1 : -1;
@@ -70,44 +78,46 @@ require(['./config'], () => {
       }
 
       // 全选
-      allCheckChange(){
+      allCheckChange() {
         const _this = this;
-        $('#allCheck').on('change', function(){
-            _this.cart.forEach(shop => {
-              shop.check = $(this).prop('checked')
-            })
-            $('.checks').prop('checked', $(this).prop('checked'))
-            _this.num = $(this).prop('checked') ? _this.cart.length : 0;
-            localStorage.setItem('cart', JSON.stringify(_this.cart));
-            _this.productPriceTotal();
+        $('#allCheck').on('change', function () {
+          _this.cart.forEach(shop => {
+            shop.check = $(this).prop('checked')
+          })
+          $('.checks').prop('checked', $(this).prop('checked'))
+          _this.num = $(this).prop('checked') ? _this.cart.length : 0;
+          localStorage.setItem('cart', JSON.stringify(_this.cart));
+          _this.productPriceTotal();
         })
       }
 
       // 删除
-      deleteProduct(){
+      deleteProduct() {
         const _this = this;
-        $('.deleteProduct').on('click', function() {
-          _this.cart = JSON.parse(localStorage.getItem('cart'))
-          const id = Number($(this).parents('.productShowOne').attr('data-id'));
-          _this.cart = _this.cart.filter(shop => {
-            return shop.id != id ;
-          })
-          localStorage.setItem('cart', JSON.stringify(_this.cart))
-          _this.init();
+        $('.deleteProduct').on('click', function () {
+          if (confirm('sure?')) {
+            _this.cart = JSON.parse(localStorage.getItem('cart'))
+            const id = Number($(this).parents('.productShowOne').attr('data-id'));
+            _this.cart = _this.cart.filter(shop => {
+              return shop.id != id;
+            })
+            localStorage.setItem('cart', JSON.stringify(_this.cart))
+            _this.init();
+          }
         })
       }
 
       // 商品数量变化
-      productNumberChange(){
+      productNumberChange() {
         const _this = this;
         // -操作
-        $('.reduce').on('click', function(){
+        $('.reduce').on('click', function () {
           let id = Number($(this).parents('.productShowOne').attr('data-id'));
           _this.cart = _this.cart.map(shop => {
-            if(shop.id === id) {
-              if(shop.num !=1){
+            if (shop.id === id) {
+              if (shop.num != 1) {
                 shop.num--
-              }else{
+              } else {
                 shop.num = 1;
               }
             }
@@ -117,10 +127,10 @@ require(['./config'], () => {
           _this.init();
         })
         //+操作
-        $('.increase').on('click', function(){
+        $('.increase').on('click', function () {
           let id = Number($(this).parents('.productShowOne').attr('data-id'));
           _this.cart = _this.cart.map(shop => {
-            if(shop.id === id) shop.num++
+            if (shop.id === id) shop.num++
             return shop;
           })
           localStorage.setItem('cart', JSON.stringify(_this.cart))
@@ -134,7 +144,12 @@ require(['./config'], () => {
             if (e.keyCode == 13) {
               let id = Number($(this).parents('.productShowOne').attr('data-id'));
               _this.cart = _this.cart.map(shop => {
-                if (shop.id === id) shop.num = Number($(this).val());
+                if (shop.id === id)
+                  if (Number($(this).val()) == 0) {
+                    shop.num = 1
+                  } else {
+                    shop.num = Number($(this).val())
+                  }
                 return shop;
               })
               localStorage.setItem('cart', JSON.stringify(_this.cart))
@@ -146,7 +161,13 @@ require(['./config'], () => {
           $(this).on('blur', function () {
             let id = Number($(this).parents('.productShowOne').attr('data-id'));
             _this.cart = _this.cart.map(shop => {
-              if (shop.id === id) shop.num = Number($(this).val());
+              if (shop.id === id) {
+                if (Number($(this).val()) == 0) {
+                  shop.num = 1
+                } else {
+                  shop.num = Number($(this).val())
+                }
+              }
               return shop;
             })
             localStorage.setItem('cart', JSON.stringify(_this.cart))
@@ -156,21 +177,27 @@ require(['./config'], () => {
       }
 
       // 总价
-      productPriceTotal(){
+      productPriceTotal() {
         let cart = localStorage.getItem('cart');
-        if(cart){
+        if (cart) {
           this.cart = JSON.parse(cart);
           let allMoney = this.cart.reduce((money, shop) => {
-            if(shop.check) money += shop.num * shop.price;
+            if (shop.check) money += shop.num * shop.price;
             return money;
           }, 0)
           $('#productPriceTotal').html(allMoney);
-        }else{
+        } else {
           $('#productPriceTotal').html(0);
         }
       }
 
       // 结算
+      // verification(){
+      //   $('#settlement').on('mousedown', function(){
+      //     console.log(indexHeader.islogin())
+      //   })
+      // }
+
     }
     return new cart();
   })

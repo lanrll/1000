@@ -17,14 +17,19 @@
         <a href="/index.html"><img src="/images/RE1Mu3b.png"></a>
       </div>
       <h2 id="title">
-        <span id="titleone">登录</span> 
+        <span id="titleone">登录</span>
         <span id="titletwo">注册</span>
       </h2>
       <input type="text" name="" id="name" placeholder="电话，电子邮件或Skype">
       <input type="password" name="" id="password" placeholder="密码">
-      <button class="loginBtn" id="login">登录</button>
-      <button class="register" id="register">注册</button>
-      <button class="clancelBtn close"><a href="/index.html">取消</a></button>
+      <div class="recordId">
+        <input type="checkbox" checked="checked" id="recordPassword">记住账号密码
+      </div>
+      <div>
+        <button class="loginBtn" id="login">登录</button>
+        <button class="register" id="register">注册</button>
+        <button class="clancelBtn"><a class="close" href="javascript:;">取消</a></button>
+      </div>
     </div>
   </div>
   <script src="/libs/require.min.js" data-main="/js/login"></script>

@@ -39,38 +39,32 @@
       }
     }
     h2{
-      height: 50px;
-      line-height: 50px;
-      margin: 10px 0;
-      font-size: 35px;
+      height: 35px;
+      line-height: 35px;
+      margin: 0;
       span{
         padding: 10px;
-        margin: 0 45px;
-        font-weight: 700;
+        border: 1px solid #cccc;
         border-radius: 10px;
         cursor: pointer;
-        background-color: greenyellow;
-        // &:hover{
-        //   background-color: #f40;
-        // }
       }
       .ac{
         cursor: default;
         background-color: #cccc;
       }
-      .bc:hover{
-        background-color: deepskyblue;
-      }
+      // .bc:hover{
+      //   background-color: deepskyblue;
+      // }
     }
     input[type="text"]{
-      margin: 20px 0;
+      margin: 10px 0;
       width: 100%;
       height: 10%;
       outline-style: none;
       border-bottom: 1px solid #000000;
     }
     input[type="password"]{
-      margin: 20px 0;
+      margin: 10px 0;
       width: 100%;
       height: 10%;
       outline-style: none;

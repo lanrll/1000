@@ -1,5 +1,5 @@
 require(['./config'], () => {
-  require(['template','url','indexHeader', 'footer','zoom','fly'], (template,url) => {
+  require(['template','url','indexHeader', 'footer','zoom','fly'], (template, url, indexHeader) => {
     class details{
       constructor(){
         this.addToCart();
@@ -12,6 +12,7 @@ require(['./config'], () => {
           this.pictureSwitching();
           this.zoom();
           this.subnav();
+          this.selected();
         })
         this.getDetailsParameter().then(resp => {
           let str2 = template('d2d', {...resp.body})
@@ -63,15 +64,13 @@ require(['./config'], () => {
             }else{
               cart.push({...this.details, num: 1, check: true})
             }
-            localStorage.setItem('cart', JSON.stringify(cart))
           }else{
-            let arr = [{...this.details, num: 1, check: true}];
-            localStorage.setItem('cart', JSON.stringify(arr))
+            cart = [{...this.details, num: 1, check: true}];
           }
+          localStorage.setItem('cart', JSON.stringify(cart))
         })
       }
 
-      // 
       fly(e){
         const _this = this
         $(`<div style="width:20px;height:20px;backgroud:red" class="point"></div>`).fly({
@@ -104,6 +103,7 @@ require(['./config'], () => {
             return res;
           }, 0)
           $('#shopCart').html(num);
+          indexHeader.cartNumberShow(num)
         }
       }
 
@@ -135,42 +135,34 @@ require(['./config'], () => {
         })
       }
 
+      // 大小，配置，套餐选择
+      selected(){
+        $('.productSize .CanBeSelected').on('click', function(){
+          $('.productSize .CanBeSelected').css({border: '1px solid #c7c7c7'})
+          $(this).css({border: '1px solid #3b7efb'})
+        })
+        $('.productTo-configure .CanBeSelected').on('click', function(){
+          $('.productTo-configure .CanBeSelected').css({border: '1px solid #c7c7c7'})
+          $(this).css({border: '1px solid #3b7efb'})
+        })
+        $('.productSet-meal .CanBeSelected').on('click', function(){
+          $('.productSet-meal .CanBeSelected').css({border: '1px solid #c7c7c7'})
+          $(this).css({border: '1px solid #3b7efb'})
+        })
+      }
+
       //底部导航
       subnav(){
         $(document).on('scroll', function(){
           let $subnav = $('.subnav'),
-              $show = $('.subnav ul li a'),
-              $d1 = $('#d1'),
-              $d2 = $('#d2'),
-              $d3 = $('#d3'),
-              $d4 = $('#d4'),
-              $d5 = $('#d5'),
-              $d6 = $('#d6');
+              $show = $('.subnav ul li a');
               $show.removeClass('ac');
-            if($subnav.offset().top >= $d1.offset().top -300){
-              $show.removeClass('ac');
-              $(`[href="#d1"]`).addClass('ac');
-            }
-            if($subnav.offset().top >= $d2.offset().top -300){
-              $show.removeClass('ac');
-              $(`[href="#d2"]`).addClass('ac');
-            }
-            if($subnav.offset().top >= $d3.offset().top -300){
-              $show.removeClass('ac');
-              $(`[href="#d3"]`).addClass('ac');
-            }
-            if($subnav.offset().top >= $d4.offset().top -300){
-              $show.removeClass('ac');
-              $(`[href="#d4"]`).addClass('ac');
-            }
-            if($subnav.offset().top >= $d5.offset().top -300){
-              $show.removeClass('ac');
-              $(`[href="#d5"]`).addClass('ac');
-            }
-            if($subnav.offset().top >= $d6.offset().top -300){
-              $show.removeClass('ac');
-              $(`[href="#d6"]`).addClass('ac');
-            }
+              for(let i=1;i<7;i++){
+                if($subnav.offset().top >= $('#d'+i).offset().top -300){
+                  $show.removeClass('ac');
+                 $(`[href="#d${i}"]`).addClass('ac');
+                }
+              }
         })
       }
 

@@ -23,7 +23,11 @@
 
     <div class="row">
       <div class="col-md-12 column">
+        <div class="alert alert-warning" id="warning" role="alert">警告！你还没有登录,不能结算。
+            <a href="/html/login.html?0" class="alert-link">去登录></a>
+        </div>
         <div class="cart">
+
           <div class="leftCart">
             <p>你的购物车内有<em id="productNum">0</em>件商品</p>
             <div class="productCart">
@@ -37,10 +41,10 @@
                 <li>价格</li>
                 <li>小计</li>
               </ul>
+              <div class="noOne">
+                你的购物车什么都还没都没有~~~<a href="/index.html">去逛逛></a>
+              </div>
               <div class="singleProductShow">
-                <div class="noOne">
-                  你的购物车还没都没有~~~<a href="/index.html">去逛逛></a>
-                </div>
               </div>
               <script type="text/html" id="productShowOne">
                 {{each cart cart index}}
@@ -76,7 +80,7 @@
           </div>
           <div class="rightCart">
             <div>总计<span>￥<i id="productPriceTotal">0</i>元</span></div>
-            <strong id="Settlement" data-toggle="modal" data-target="#myModal">结算</strong>
+            <strong id="settlement" data-toggle="modal" data-target="#myModal">结算</strong>
             <ul>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;30天退还货</a></li>
               <li class="fa fa-universal-access"><a href="javascript:;">&nbsp;急速上手服务</a></li>
