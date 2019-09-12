@@ -23,17 +23,18 @@
       arr[1] = arr[1] - 1
       $('#show').html(showDate(arr[0], arr[1], arr[2]))
     })
-    $('#timers').on('keyup', function(e){
-      if(e.keyCode === 13){
-      let arr = []
-      arr = $(this).val().split('-')
-      arr = arr.map(item => {
-        return Number(item)
-      })
-      arr[1] = arr[1] - 1
-      $('#show').html(showDate(arr[0], arr[1], arr[2]))
+    $('#timers').on('keyup', function (e) {
+      if (e.keyCode === 13) {
+        let arr = []
+        arr = $(this).val().split('-')
+        arr = arr.map(item => {
+          return Number(item)
+        })
+        arr[1] = arr[1] - 1
+        $('#show').html(showDate(arr[0], arr[1], arr[2]))
       }
     })
+
     function showDate(year, month, day) {
       let nowData = new Date(),
         data = new Date(year, month, day),
@@ -41,7 +42,7 @@
         nowMonth = Number(nowData.getMonth()) + 1,
         nowday = Number(nowData.getDate()),
         week = Number(data.getDay());
-        console.log(data.getFullYear());
+      console.log(data.getFullYear());
       year = Number(data.getFullYear());
       month = Number(data.getMonth()) + 1;
       retMonth = Number(data.getMonth()) + 1;
@@ -70,12 +71,13 @@
         return ret(week, year, retMonth, day)
       }
     }
-    function ret(week, year, retMonth, day){
+
+    function ret(week, year, retMonth, day) {
       if (week == 0) {
-          return `${year}年${retMonth}月${day}号星期天`
-        } else {
-          return `${year}年${retMonth}月${day}号星期${week}`
-        }
+        return `${year}年${retMonth}月${day}号星期天`
+      } else {
+        return `${year}年${retMonth}月${day}号星期${week}`
+      }
     }
   </script>
 </body>
