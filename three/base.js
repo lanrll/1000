@@ -1,46 +1,45 @@
-var myTool = {
+module.exports = {
     /** 
      * 封装一个获取外部样式的方法
-     * @param obj   <DOM object> 获取样式的DOM元素
-     * @param attr  <string>     要获取的属性的名称
-     * @return      <string>     样式属性值
-     *  */
-    getStyle: function (obj, attr) {
+    * @param obj   <DOM object> 获取样式的DOM元素
+    * @param attr  <string>     要获取的属性的名称
+    * @return      <string>     样式属性值
+    *  */ 
+    getStyle: function ( obj, attr){
         if (obj.currentStyle) {
             return obj.currentStyle[attr]
-        } else {
-            return getComputedStyle(obj, false)[attr]
+        } else{
+            return getComputedStyle( obj, false)[attr]        
         }
     },
 
     /** 
      * 设置元素的样式
-     * @param obj  <DOM object> 要设置样式的DOM元素
-     * @param attr <object>     设置样式的键值对  比如： {left: '100px', top: '200px'}
-     *  */
+    * @param obj  <DOM object> 要设置样式的DOM元素
+    * @param attr <object>     设置样式的键值对  比如： {left: '100px', top: '200px'}
+    *  */
     css: function (obj, attr) {
         for (var key in attr) {
-            obj.style[key] = attr[key]
+        obj.style[key] = attr[key] 
         }
     },
 
     /** 
      * 给一个元素添加事件监听
-     * @param obj   <DOM object>  条件事件监听的DOM元素
-     * @param type  <string>      要监听的事件类型（不带‘on’）
-     * @param fn    <function>    事件处理函数
-     * @param isCapture <boolean> 是否捕获（true代表在捕获阶段处理事件，false代表在冒泡阶段处理，默认为false）
-     *  */
-    on: function (obj, type, fn, isCapture) {
+    * @param obj   <DOM object>  条件事件监听的DOM元素
+    * @param type  <string>      要监听的事件类型（不带‘on’）
+    * @param fn    <function>    事件处理函数
+    * @param isCapture <boolean> 是否捕获（true代表在捕获阶段处理事件，false代表在冒泡阶段处理，默认为false）
+    *  */
+    on: function( obj, type, fn, isCapture){
         // 判断isCapture是否被传递，如果没传值是undefined，这个时候就应该赋值为false，否则就等于传递进来的值
         isCapture = isCapture === undefined ? false : isCapture
-        if (obj.attachEvent) {
-            var box = document.querySelector('#box')
-            box.onclick = function () {
-                myTool.move(box, 'left', 500, 3000)
-            }
-            obj.attachEvent('on' + type, fn)
-        } else {
+        if(obj.attachEvent){ var box = document.querySelector('#box')
+        box.onclick = function(){
+          myTool.move(box, 'left', 500, 3000)
+        }
+            obj.attachEvent('on' + type,fn)
+        }else{
             obj.addEvevtListener(type, fn, isCapture)
         }
     },
@@ -53,22 +52,22 @@ var myTool = {
      * @param duration <number>       运动持续时间，单位ms
      * @param fn       <function>     回调函数，动画结束后调用
      */
-    move: function (obj, attr, end, duration, fn) {
+    move: function(obj, attr, end, duration, fn){
         clearInterval(obj.timer)
         var start = parseInt(this.getStyle(obj, attr))
         var distance = end - start
-        var step = parseInt(duration / 30)
-        var speed = distance / step
+        var step = parseInt(duration/30)
+        var speed = distance/step
         var n = 0
-        obj.timer = setInterval(function () {
+        obj.timer = setInterval( function(){
             n++
-            obj.style[attr] = start + n * speed + 'px'
-            if (n === step) {
+            obj.style[attr] = start + n*speed + 'px'
+            if(n === step){
                 clearInterval(obj.timer)
                 obj.style[attr] = end + 'px'
                 fn && fn()
             }
-        }, 30)
+        },30)
     },
 
     /**
@@ -79,15 +78,15 @@ var myTool = {
      * @param duration <number>       运动持续时间，单位ms
      * @param fn       <function>     回调函数，动画结束后调用
      */
-    slowMove: function (obj, attr, end, fn) {
+    slowMove: function(obj, attr, end, fn){
         clearInterval(obj.timer)
         var start = parseInt(this.getStyle(obj, attr))
         obj.timer = setInterval(() => {
             var distance = end - start
-            var speed = distance > 0 ? Math.ceil(distance / 10) : Math.floor(distance / 10)
+            var speed = distance > 0 ? Math.ceil(distance/10) : Math.floor(distance/10)
             start += speed
             obj.style[attr] = start + 'px'
-            if (start === end) {
+            if(start === end){
                 clearInterval(obj.timer)
             }
         }, 30);
@@ -95,17 +94,17 @@ var myTool = {
 
     /**
      * 随机数 
-     * @param min    <number>    随机的最小数
-     * @param max    <number>    随机的最大数
-     * @return       <number>    随机数
-     * */
-    randomNum: function (min, max) {
-        switch (arguments.length) {
+    * @param min    <number>    随机的最小数
+    * @param max    <number>    随机的最大数
+    * @return       <number>    随机数
+    * */
+    randomNum: function( min, max){
+        switch(arguments.length){
             case 1:
-                return parseInt(Math.random() * min + 1)
+                return parseInt(Math.random()*min+1)
                 break;
             case 2:
-                return parseInt(Math.random() * (max - min + 1) + min)
+                return parseInt(Math.random()*(max-min+1)+min)
                 break;
             default:
                 return 0
@@ -117,19 +116,19 @@ var myTool = {
      * 获取浏览器宽高
      * @return  <object>    { width, height}
      */
-    getBodySize: function () {
-        return {
+    getBodySize: function(){
+        return{
             width: document.documentElement.clientWidth || document.body.clientWidth,
             height: document.documentElement.clientHeight || document.body.clientHeight
         }
     },
-
+    
     /** 
      * 取cookie
      * @param key   <string>    要取的cookie的名称 
      * @return  <string>    要取的cookie的值
      */
-    getCookie(key) {
+    getCookie(key){
         var str = document.cookie;
         var arr = str.split('; ');
         var obj = {};
@@ -146,16 +145,16 @@ var myTool = {
      * @param value <string>    要设置的cookie的值
      * @param option <string>   {expires, path}
      */
-    setCookie(key, value, option) {
+    setCookie(key, value, option){
         var str = key + '=' + encodeURIComponent(value);
-        if (option) {
-            if (option.expires) {
+        if(option){
+            if(option.expires){
                 var date = new Date();
                 date.setDate(date.getDate() + option.expires);
-                str += ';expires=' + date.toUTCString();
+                str += ';expires=' + date.toUTCString() ;
             }
-            if (option.path) {
-                str += ';path=' + option.path;
+            if(option.path){
+                str += ';path=' + option.path ;
             }
         }
         document.cookie = str;
@@ -165,7 +164,7 @@ var myTool = {
      * 删除cookie
      * @param key <string> 要删除的cookie的名称
      */
-    delCookie(key) {
+    delCookie(key){
         document.cookie = key + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/';
     },
 
@@ -176,10 +175,10 @@ var myTool = {
      * @param fn <function> 回调函数
      * @param [isjson] <Boolean> 是否为json，默认为true
      */
-    get: function (url, query, fn, isjson = true) {
-        if (query) {
+    get: function(url, query, fn, isjson = true){
+        if(query){
             url += '?'
-            for (var key in query) {
+            for(var key in query){
                 url += `${key}=${query[key]}&`
             }
             url = url.slice(0, -1);
@@ -187,13 +186,13 @@ var myTool = {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', url);
         xhr.send();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status === 200){
                 var txt = isjson ? JSON.parse(xhr.responseText) : xhr.responseText;
                 fn && fn(txt);
             }
             // else{
-            // fn && fn(xhr.status);
+                // fn && fn(xhr.status);
             // }
         }
     },
@@ -204,10 +203,10 @@ var myTool = {
      * @paeam [query] <object> 请求需要的其他参数
      * @param cb <object> 全局回调函数的名称
      */
-    jsonp: function (url, cb, query) {
+    jsonp: function(url, cb, query){
         url += '?cb=' + cb;
-        if (query) {
-            for (var key in query) {
+        if(query){
+            for( var key in query){
                 url += `&${key}=${query[key]}`;
             }
         }
@@ -223,24 +222,24 @@ var myTool = {
      * @param query <object> 请求是携带的参数
      * @param [isjson] <boolean> 是否为json，默认为true
      */
-    fetch: function (url, query, isjson = true) {
-        if (query) {
+    fetch: function(url, query, isjson = true){
+        if(query){
             url += '?';
-            for (var key in query) {
+            for( var key in query){
                 url += `${key}=${query[key]}&`;
             }
             url = url.slice(0, -1);
         }
-        return new Promise((resolve, reject) => {
+        return new Promise( (resolve, reject) => {
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url);
             xhr.send();
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    if(xhr.status === 200){
                         var res = isjson ? JSON.parse(xhr.responseText) : xhr.responseText;
                         resolve(res);
-                    } else {
+                    }else{
                         reject();
                     }
                 }
@@ -252,34 +251,35 @@ var myTool = {
     isBrowser: function () {
         var userAgent = navigator.userAgent;
         //微信内置浏览器
-        if (userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
+        if(userAgent.match(/MicroMessenger/i) == 'MicroMessenger') {
             return "MicroMessenger";
         }
         //QQ内置浏览器
-        else if (userAgent.match(/QQ/i) == 'QQ') {
+        else if(userAgent.match(/QQ/i) == 'QQ') {
             return "QQ";
         }
         //Chrome
-        else if (userAgent.match(/Chrome/i) == 'Chrome') {
+        else if(userAgent.match(/Chrome/i) == 'Chrome') {
             return "Chrome";
         }
         //Opera
-        else if (userAgent.match(/Opera/i) == 'Opera') {
+        else if(userAgent.match(/Opera/i) == 'Opera') {
             return "Opera";
         }
         //Firefox
-        else if (userAgent.match(/Firefox/i) == 'Firefox') {
+        else if(userAgent.match(/Firefox/i) == 'Firefox') {
             return "Firefox";
         }
         //Safari
-        else if (userAgent.match(/Safari/i) == 'Safari') {
+        else if(userAgent.match(/Safari/i) == 'Safari') {
             return "Safari";
         }
         //IE
-        else if (!!window.ActiveXObject || "ActiveXObject" in window) {
+        else if(!!window.ActiveXObject || "ActiveXObject" in window) {
             return "IE";
-        } else {
-            return "未定义:" + userAgent;
+        }
+        else {
+            return "未定义:"+userAgent;
         }
     }
 }
