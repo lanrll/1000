@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>用户列表</title>
+  <style>
+    ul {
+      height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <ul>
+
+    </ul>
+  </div>
+  <div>
+    <span class="prev">上一页</span>
+    <span class="next">下一页</span>
+    <span class="add">添加</span>
+  </div>
+  <div id="edit">
+    <form name="edit">
+      <p><label>函数名：</label><input type="text" name="name"></p>
+      <p><label>作用：</label> <textarea name="effect" id="" cols="30" rows="10"></textarea></p>
+      <p><label>返回值：</label><input type="text" name="return"></p>
+      <p><label>是否掌握：</label><input type="checkbox" name="state" id="" checked="checked"></p>
+    </form>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  window.onload = function () {
+    init()
+  }
+
+  function init() {
+    $.ajax({
+      url: '/func/list',
+      method: 'get',
+      success(fun) {
+        console.log(fun.data)
+        let str = ''
+        fun.data.forEach(item => {
+          str += `
+          <li id="${item._id}">函数名：${item.name}
+            <br>
+            作用：${item.effect}
+            <br>
+            返回值：${item.return}
+            <br>
+            是否掌握：${item.state}
+            </li>`
+        })
+        $('div ul').html(str)
+      }
+    })
+  }
+  $('.next').on('click', function () {
+    $.ajax({
+      url: '/func/next',
+      method: 'get',
+      success(fun) {
+        console.log(fun.data)
+        let str = ''
+        fun.data.forEach(item => {
+          str += `
+          <li id="${item._id}">函数名：${item.name}
+            <br>
+            作用：${item.effect}
+            <br>
+            返回值：${item.return}
+            <br>
+            是否掌握：${item.state}
+            </li>`
+        })
+        $('div ul').html(str)
+        console.log(1)
+      }
+    })
+  })
+  $('.prev').on('click', function () {
+    $.ajax({
+      url: '/func/prev',
+      method: 'get',
+      success(fun) {
+        console.log(fun.data)
+        let str = ''
+        fun.data.forEach(item => {
+          str += `
+          <li id="${item._id}">函数名：${item.name}
+            <br>
+            作用：${item.effect}
+            <br>
+            返回值：${item.return}
+            <br>
+            是否掌握：${item.state}
+            </li>`
+        })
+        $('div ul').html(str)
+        console.log(0)
+      }
+    })
+  })
+</script>
+
+</html>
