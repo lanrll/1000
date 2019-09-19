@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  width: 1000px;
+  margin: 50px auto;
+}
+
+.tb-list{
+  border-collapse: collapse;
+  width: 100%;
+}
+.tb-list tr{
+  height: 50px;
+}
+.tb-list th,.tb-list td{
+  border: 1px solid #cccccc;
+  text-align: left;
+  padding-left: 10px;
+}

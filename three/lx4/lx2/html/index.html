@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <div class="container">
+    <h2>js所学方法</h2>
+    <div>
+      <input type="text" id="keyword">
+      <input type="button" value="搜索" id="search">
+      <input type="button" value="重置条件" onclick="reset()">
+    </div>
+    <table class="tb-list">
+      <thead>
+        <tr>
+          <th>函数名</th>
+          <th>作用</th>
+          <th>返回值</th>
+          <th>是否掌握</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody id="tb-body">
+        <tr>
+          <td>a</td>
+          <td>a</td>
+          <td>a</td>
+          <td>a</td>
+          <td><a href="">编辑</a><a href="">删除</a></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <select id="page-num"></select>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  var pageVars = {
+    pageInfo: {
+      pageSize: 5,
+      page: 1
+    },
+    filter: {
+      name: ''
+      // state: ''
+    },
+    list: [],
+    pages: 0,
+    tbBody: $('#tb-body'),
+    pageNum: $('#page-num'),
+    serchBtn: $('#search'),
+    oInput: $('#keyword')
+  }
+  getData()
+
+  function getData() {
+    $.ajax({
+      url: '/api/func/list',
+      data: {
+        ...pageVars.pageInfo,
+        ...pageVars.filter
+      },
+      method: 'get',
+      success(res) {
+        if (res.code == 0) {
+          pageVars.list = res.data.list
+          pageVars.pages = Math.ceil(res.data.total / pageVars.pageInfo.pageSize);
+          readData();
+          readPage();
+        }
+      }
+    })
+  }
+
+  function readData() {
+    let str = `
+    <tr>
+      <td>{{name}}</td>
+      <td>{{effect}}</td>
+      <td>{{return}}</td>
+      <td>{{state}}</td>
+      <td><a href="">编辑</a><a href="">删除</a></td>
+    </tr>
+    `
+    let content = ''
+    pageVars.list.forEach(item => {
+      let cont = str.replace(/\{\{([a-z]+)\}\}/ig, (v, v1) => {
+        return item[v1]
+      })
+      content += cont
+    })
+    pageVars.tbBody.html(content)
+  }
+
+  function readPage() {
+    let pageStr = '';
+    for (let i = 1; i <= pageVars.pages; i++) {
+      let selected = i == pageVars.pageInfo.page ? 'selected' : '';
+      pageStr += '<option ' + selected + '>' + i + '</option>'
+    }
+    pageVars.pageNum.html(pageStr)
+  }
+  pageVars.pageNum.change( function(){
+    pageVars.pageInfo.page = this.value;
+    getData();
+  })
+  pageVars.serchBtn.click(function(){
+    var input = pageVars.oInput.val()
+    if(input){
+      pageVars.filter.name = input
+      getData()
+    }
+  })
+  pageVars.oInput.on('keyup',function(e){
+    if(e.keyCode == 13)
+    var input = pageVars.oInput.val()
+    if(input){
+      pageVars.filter.name = input
+      getData()
+    }
+  })
+  function reset(){
+    pageVars.filter.name ='';
+    pageVars.oInput.val('')
+    getData()
+  }
+</script>
+
+</html>
