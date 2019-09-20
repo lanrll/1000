@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>聊天室</title>
+    <style>
+    *{margin:0;padding:0}
+    .chat-wrap{
+        width:1100px;
+        margin:0 auto;
+    }
+
+    .chat-room{
+        height: 400px; 
+        border: 1px solid #ccc;  
+        box-sizing: border-box;
+        margin-top: 20px;
+    }
+    .fl{
+        float:left;
+        box-sizing: border-box
+    }
+    .chat-room-left{
+        width:800px;
+        height: 400px; 
+        color:#999;
+    }
+    .chat-room-right{
+        width:290px;
+        border-left: 1px solid #ccc;
+        height: 400px; 
+        color:orchid;
+    }
+    </style>
+</head>
+<body>
+<div class="chat-wrap">
+    <h2>快乐大本营</h2>
+    <div>
+        <p><input type="text" id="username"/><input onclick="enterRoom()" type="button" value="进入聊天室"/></p>
+    </div>
+    <div class="chat-room">
+        <div class="chat-room-left fl" id="leftroom">聊天内容</div>
+        <div class="chat-room-right fl" id="rightroom">系统消息</div>
+    </div>
+    <div>
+        <p><input type="text" id="words"/><input type="button" value="发送" onclick="send()"/></p>
+    </div>
+</div>
+
+<script src="./js/socket.io.js"></script>
+<script>
+var obj = {
+    user:document.getElementById('username'),
+    rightroom:document.getElementById('rightroom'),
+    leftroom:document.getElementById('leftroom'),
+    socket:null,
+    words:document.getElementById('words')
+}
+
+ function enterRoom(){
+    if(!obj.user.value) {
+        alert('请输入你的昵称!!')
+        return
+    }
+    obj.socket = io('http://localhost:3000');  // 连接服务端的socket
+    // socket.emit('事件名称',传递的数据)   
+    obj.socket.emit('enter',obj.user.value)  // 触发enter事件并且传递当前用户名数据
+
+    obj.socket.on('systemInfo',(msg)=>{
+        console.log('服务端发来消息：'+msg)
+        obj.rightroom.innerHTML += '<p>'+msg+'</p>'
+    })
+
+    obj.socket.on('chating',(msg)=>{
+        console.log('服务端发来消息：'+msg)
+        obj.leftroom.innerHTML += '<p>'+msg+'</p>'
+    })
+ }   
+
+
+ function send(){
+     console.log(111)
+     if(obj.words.value){
+        obj.socket.emit('chating',obj.words.value)
+        obj.words.value = ''
+     }
+
+ }
+</script>
+<script>
+</script>
+</body>
+</html>
