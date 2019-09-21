@@ -4,7 +4,10 @@
 }
 .container{
   width: 1000px;
-  margin: 50px auto;
+  margin: auto;
+  padding:  100px 0;
+  position: relative; 
+  /* z-index: -1; */
 }
 
 .tb-list{
@@ -18,4 +21,91 @@
   border: 1px solid #cccccc;
   text-align: left;
   padding-left: 10px;
+}
+.tb-list tr td:nth-child(1){
+  text-align: center;
+}
+.tb-list tr td:nth-child(2){
+  width: 62%;
+}
+.tb-list tr td:nth-child(3){
+  width: 20%;
+}
+.tb-list tr td:nth-child(4){
+  text-align: center;
+  width: 8%;
+}
+.tb-list tr td:nth-child(5){
+  width: 20%;
+  text-align: center;
+}
+.add{
+  margin-left: 200px;
+  cursor: pointer;
+}
+.editCss{
+  position: absolute;
+  width: 100%;
+  height: 100%; 
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .5);
+  /* z-index: 9; */
+  /* display: none; */
+}
+.editCss form{
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 400px;
+  height: 400px;
+  background-color: #ffffff;
+}
+.editCss form .title{
+  display: block;
+  margin: 10px 30px;
+  margin-top: 20px;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 5px;
+  position: relative;
+}
+.editCss form .title span{
+  position: absolute;
+  right: -30px;
+  top: -20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.editCss form p{
+  display: inline-block;
+  width: 100%;
+  margin:5px auto;
+}
+.editCss form label{
+  display: inline-block;
+  width: 25%;
+  text-align: right;
+}
+.editCss form p:nth-child(3) label{
+  float: left;
+}
+.editCss form input{
+  display: inline-block;
+  margin-left: 10px;
+}
+.editCss form textarea{
+  margin-left: 10px;
+}
+.editCss form p i{
+  float: right;
+  margin: 10px 20px;
+  cursor: pointer;
 }

@@ -4,7 +4,8 @@ router.get('/list', (req, res) => {
   let {
     pageSize,
     page,
-    name
+    name,
+    state
   } = req.query
   if (!pageSize) pageSize = 5;
   if (!page) page = 1;
@@ -14,9 +15,13 @@ router.get('/list', (req, res) => {
     condition = {
       name: {
         $regex: new RegExp(name)
-      }
+      },
+      state: state
     }
   }
+  // condition = {
+  //   state: 1
+  // }
   let getTotal = funcModel.countDocuments(condition);
   let getList = funcModel.find(condition).skip(skip).limit(pageSize);
   Promise.all([getTotal, getList]).then(result => {
@@ -43,6 +48,11 @@ router.get('/list', (req, res) => {
       result,
       state
     } = req.body;
+    if(state){
+      state = 1;
+    }else{
+      state = 0;
+    }
     if (!name || !effect) {
       res.send({
         code: 3,

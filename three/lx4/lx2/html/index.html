@@ -10,41 +10,61 @@
 </head>
 
 <body>
-  <div class="container">
-    <h2>js所学方法</h2>
-    <div>
-      <input type="text" id="keyword">
-      <input type="button" value="搜索" id="search">
-      <input type="button" value="重置条件" onclick="reset()">
+  <main>
+    <div class="container">
+      <h2>js所学方法</h2>
+      <div>
+        <label>函数名：</label>
+        <input type="text" id="keyword">
+        <label>是否掌握：</label>
+        <input type="checkbox" checked="checked" id="state">
+        <input type="button" value="搜索" id="search">
+        <input type="button" value="重置条件" onclick="reset()">
+      </div>
+      <table class="tb-list">
+        <thead>
+          <tr>
+            <th>函数名</th>
+            <th>作用</th>
+            <th>返回值</th>
+            <th>是否掌握</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="tb-body">
+          <tr>
+            <td>a</td>
+            <td>a</td>
+            <td>a</td>
+            <td>a</td>
+            <td><a href="">编辑</a><a href="">删除</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <select id="page-num"></select>
+              <i class="add">添加</i>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-    <table class="tb-list">
-      <thead>
-        <tr>
-          <th>函数名</th>
-          <th>作用</th>
-          <th>返回值</th>
-          <th>是否掌握</th>
-          <th>操作</th>
-        </tr>
-      </thead>
-      <tbody id="tb-body">
-        <tr>
-          <td>a</td>
-          <td>a</td>
-          <td>a</td>
-          <td>a</td>
-          <td><a href="">编辑</a><a href="">删除</a></td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="5">
-            <select id="page-num"></select>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+    <div class="editCss">
+      <form name="edit">
+        <div class="title">添加 <span class="close">x</span></div>
+        <p><label>函数名：</label><input type="text" name="name" id="nameInput"></p>
+        <p><label>作用：</label><textarea name="effect" cols="30" rows="10" id="effrctInput"></textarea></p>
+        <p><label>返回值：</label><input type="text" name="result" id="resultInput"></p>
+        <p><label>是否掌握：</label><input type="checkbox" name="state" id="stateInput"  checked="checked"></p>
+        <p>
+          <i class="close">取消</i>
+          <i id="editBtn">修改</i>
+          <i id="addBtn">添加</i>
+          </p>
+      </form>
+    </div>
+  </main>
 </body>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script>
@@ -54,19 +74,39 @@
       page: 1
     },
     filter: {
-      name: ''
-      // state: ''
+      name: '',
+      state: 1
     },
+    funcInfo: document.edit,
     list: [],
     pages: 0,
     tbBody: $('#tb-body'),
     pageNum: $('#page-num'),
     serchBtn: $('#search'),
-    oInput: $('#keyword')
+    oInput: $('#keyword'),
+    state: $('#state'),
+    add: $('.add'),
+    addBtn: $('#addBtn'),
+    edit: $('.edit'),
+    editCss: $('.editCss'),
+    editBtn: $('#editBtn'),
+    close: $('.close'),
+    nameInput: $('#nameInput'),
+    effrctInput: $('#effectInput'),
+    resultInput: $('#resultInupt'),
+    stateInput: $('#stateInput')
   }
+  pageVars.editCss.hide();
   getData()
-
+  //获取数据
   function getData() {
+    let sign = pageVars.state.prop('checked')
+    // console.log(pageVars.state.prop('checked'))
+    if (sign) {
+      pageVars.filter.state = 1
+    } else {
+      pageVars.filter.state = 0
+    }
     $.ajax({
       url: '/api/func/list',
       data: {
@@ -84,27 +124,29 @@
       }
     })
   }
-
+  //渲染数据
   function readData() {
     let str = `
-    <tr>
+    <tr id="{{_id}}">
       <td>{{name}}</td>
       <td>{{effect}}</td>
       <td>{{return}}</td>
       <td>{{state}}</td>
-      <td><a href="">编辑</a><a href="">删除</a></td>
+      <td><a href="#edit" class="edit">编辑</a><a class="del">删除</a></td>
     </tr>
     `
     let content = ''
     pageVars.list.forEach(item => {
-      let cont = str.replace(/\{\{([a-z]+)\}\}/ig, (v, v1) => {
+      // console.log(item)
+      let cont = str.replace(/\{\{(.+)\}\}/ig, (v, v1) => {
+        // console.log(v,v1)
         return item[v1]
       })
       content += cont
     })
     pageVars.tbBody.html(content)
   }
-
+  //页数渲染
   function readPage() {
     let pageStr = '';
     for (let i = 1; i <= pageVars.pages; i++) {
@@ -113,29 +155,65 @@
     }
     pageVars.pageNum.html(pageStr)
   }
-  pageVars.pageNum.change( function(){
+  //下拉框页数功能
+  pageVars.pageNum.change(function () {
     pageVars.pageInfo.page = this.value;
     getData();
   })
-  pageVars.serchBtn.click(function(){
+
+  //搜索
+  pageVars.serchBtn.click(function () {
     var input = pageVars.oInput.val()
-    if(input){
+    if (input) {
       pageVars.filter.name = input
       getData()
     }
   })
-  pageVars.oInput.on('keyup',function(e){
-    if(e.keyCode == 13)
-    var input = pageVars.oInput.val()
-    if(input){
+  //搜索
+  pageVars.oInput.on('keyup', function (e) {
+    if (e.keyCode == 13)
+      var input = pageVars.oInput.val()
+    if (input) {
       pageVars.filter.name = input
       getData()
     }
   })
-  function reset(){
-    pageVars.filter.name ='';
+  //重置
+  function reset() {
+    pageVars.filter.name = '';
     pageVars.oInput.val('')
     getData()
+  }
+
+  //添加数据
+  pageVars.addBtn.click(function(){
+    // console.log(pageVars)
+    var data = $(pageVars.funcInfo).serialize()
+    console.log(data)
+    $.ajax({
+      url: '/api/func/add',
+      method: 'post',
+      data: data,
+      success(res){
+        console.log(res)
+      }
+    })
+  })
+  //打开添加修改框
+  pageVars.add.click(function(){
+    pageVars.editCss.show();
+    console.log(1)
+  })
+  //关闭添加修改框
+  pageVars.close.on('click', function(){
+    clearWhile();
+    pageVars.editCss.hide();
+  })
+  function clearWhile(){
+    pageVars.nameInput.val('');
+    pageVars.effrctInput.val('');
+    pageVars.resultInput.val('');
+    // pageVars.stateInput.val('');
   }
 </script>
 
