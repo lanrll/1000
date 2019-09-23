@@ -13,11 +13,14 @@
   <div id="app">
     <div>
       <input type="text" v-model="list">
-      <button v-show="chan == index" @click="sgin ? add() : up()" v-for="(item,index) in btn">{{item}}</button>
+      <button v-show="chan == index" @click="sign ? add() : up()" v-for="(item,index) in btn">{{item}}</button>
       <span>{{errorMsg}}</span>
     </div>
     <ul>
-      <li v-for="(item,index) in lists">{{item}}-----<a href="javascript:;"
+      <li>全选：<input type="checkbox" :checked="allCheck" @change="allChange($event)"></li>
+      <li v-for="(item,index) in lists">
+        <input type="checkbox" :checked="check" @change="checks($event)">
+        {{item}}-----<a href="javascript:;"
           @click="edit(index)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="del(index)">删除</a></li>
     </ul>
   </div>
@@ -29,10 +32,13 @@
       btn: ['添加', '修改'],
       lists: ['html', 'css', 'js', 'jquery', 'vue'],
       chan: 0,
-      sgin: true,
+      sign: true,
       list: '',
       errorMsg: '',
-      editIndex: 0
+      editIndex: 0,
+      allCheck: true,
+      check: true,
+      num: 5,
     },
     methods: {
       //添加
@@ -56,31 +62,34 @@
           this.errorMsg = '';
         }, 1000)
       },
+
       //修改切换
       edit(index) {
         this.list = this.lists[index];
         this.chan = 1;
-        this.sgin = false;
+        this.sign = false;
         this.editIndex = index;
       },
+
       //修改功能
       up() {
         console.log(this.list)
         if (this.list) {
           // if (confirm('sure?')) {
-            if (this.lists.indexOf(this.list) === -1) {
-              this.lists.splice(this.editIndex, 1, this.list);
-              this.list = '';
-              alert('修改成功！！！');
-              this.chan = 0;
-              return;
-            } else {
-              this.errorMsg = '已存在！！！';
-              setTimeout(() => {
-                this.errorMsg = '';
-              }, 1000)
-              return;
-            }
+          if (this.lists.indexOf(this.list) === -1) {
+            this.lists.splice(this.editIndex, 1, this.list);
+            this.list = '';
+            alert('修改成功！！！');
+            this.chan = 0;
+            this.sign = true;
+            return;
+          } else {
+            this.errorMsg = '已存在！！！';
+            setTimeout(() => {
+              this.errorMsg = '';
+            }, 1000)
+            return;
+          }
           // }
         } else {
           this.errorMsg = '不能为空！！！';
@@ -89,14 +98,29 @@
           }, 1000)
         }
       },
+
       //删除
       del(index) {
         // console.log(this.lists[index])
         if (confirm('sure?')) {
           this.lists.splice(index, 1)
         }
-      }
+      },
 
+      //全选
+      allChange(e){
+        // if( this.num != this.lists.length){
+          this.check = this.allCheck = e.target.checked
+          this.num = this.allCheck ? this.lists.length : 0
+          console.log(this.num,e.target.checked,this.check,this.allCheck)
+        // }
+      },
+      //单选
+      checks(e){
+        this.num += e.target.checked ? 1 : -1;
+        this.allCheck = this.num === this.lists.length 
+        console.log(this.num) 
+      }
     }
   })
 </script>
