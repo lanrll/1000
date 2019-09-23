@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+  <style>
+    .ac{
+      color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <button :class="index == weekDay ? 'ac' : ''" v-for="(item,index) in weeks">{{item}}</button>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      weeks: ['周天', '周一', '周二', '周三', '周四', '周无', '周六',],
+      weekDay: new Date().getDay()
+    }
+  })
+</script>
+</html>

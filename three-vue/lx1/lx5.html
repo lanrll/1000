@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" checked @change='chan($event)'><label>同意xxxxxxxxxx</label>
+    <button :disabled="!ogrne">注册</button>
+  </div>
+</body>
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    ogrne: true,
+  },
+  methods: {
+    chan(e){
+      this.ogrne = e.target.checked
+    }
+  }
+})
+</script>
+</html>

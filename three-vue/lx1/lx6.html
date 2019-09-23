@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../vue.js"></script>
+  <script src="./json-data.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .lists {
+      width: 1200px;
+      margin: 20px auto;
+    }
+
+    .lists ul {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
+
+    .lists ul li {
+      width: 200px;
+      /* float: left; */
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .lists ul li .img {
+      padding: 20px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .lists ul li {
+      text-align: center;
+    }
+
+    .pages {
+      width: 1200px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .fpage span {
+      margin-right: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="lists">
+      <ul>
+        <li v-for="item in records">
+          <div class="img">
+            <a href="javascropt:;"><img :src="item.cover" /></a>
+          </div>
+          <p>{{item.yearPeriod}}</p>
+          <a href="javascript:;">查看目录</a>
+        </li>
+      </ul>
+    </div>
+    <div class="pages">
+      <div class="fpage">
+        <span>总共{{total}}条,{{Math.ceil(total/size)}}页</span>
+        <span>
+          当前页
+          <select>
+            <option v-for="item in Math.ceil(total/size)">{{item}}</option>
+          </select>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      ...dzData
+    }
+  })
+</script>
+
+</html>
