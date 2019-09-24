@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 表格-购物车效果 -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    #box {
+      width: 800px;
+      margin: 100px auto;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid #000000;
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      width: 150px;
+      height: 30px;
+      padding: 10px;
+    }
+
+    input[type="text"] {
+      display: none;
+      height: 20px;
+      width: 80px;
+      border: 1px solid #cccccc;
+    }
+
+    tfoot td {
+      text-align: right;
+    }
+    tfoot td a{
+      float: left;
+    }
+
+    .editBtn {
+      color: #666666;
+    }
+
+    .delBtn {
+      color: rebeccapurple;
+    }
+
+    .okBtn,
+    .cancelBtn {
+      display: none;
+    }
+
+    .edit span {
+      display: none;
+    }
+
+    .edit input[type="text"] {
+      display: inline-block;
+    }
+
+    .edit .editBtn,
+    .edit .delBtn {
+      display: none;
+    }
+
+    .edit .okBtn,
+    .edit .cancelBtn {
+      display: inline;
+    }
+
+    .money {
+      font-size: 16px;
+      font-weight: 700;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <table>
+      <thead>
+        <tr>
+          <td>全选：<input type="checkbox"  class="allCheck" v-model="allCheck" @click="allChecked()">
+              反选：<input type="checkbox"  class="allCheck" v-model="fAllCheck" @click="fAllCheck()">
+          </td>
+          <td>名称</td>
+          <td>价格</td>
+          <td>数量</td>
+          <td>编辑</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(product,index) in products">
+          <td><input type="checkbox" class="check"  @click="checks(index,$event)"></td>
+          <td><span>{{product.name}}</span><input type="text" value="product.name"></td>
+          <td><span>{{product.price}}</span><input type="text" value="product.price"></td>
+          <td><span>{{product.num}}</span><input type="text" value="product.num"></td>
+          <td>
+            <a href="javascript:;" class="editBtn" @click=edit(index)>编辑</a>
+            <a href="javascript:;" class="okBtn" @click="sure(index)">确定</a>
+            <a href="javascript:;" class="cancelBtn" @click="quit(index)">取消</a>
+            <a href="javascript:;" class="delBtn" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="5">
+            <a href="javascript:;">删除选中</a>
+            总价：￥<b class="money">{{totalPrice}}</b></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <!-- <script>
+    var table = document.querySelector('table')
+    var allCheck = document.querySelector('.allCheck')
+    var checks = document.querySelectorAll('.check')
+    var num = 0;
+    table.onclick = function (e) {  
+      e = e || window.event;
+      var target = e.target || e.srcElement;
+      var tr = target.parentNode.parentNode;
+      switch(target.className){
+        case 'editBtn':
+          tr.className = 'edit';
+          var spans = tr.querySelectorAll('span');
+          Array.from(spans).forEach( (span) => {
+            span.nextElementSibling.value = span.innerHTML;
+          })
+          break;
+        case 'okBtn': 
+          var spans = tr.querySelectorAll('span');
+          Array.from(spans).forEach( (span) => {
+            span.innerHTML = span.nextElementSibling.value;
+          })
+        case 'cancelBtn':
+          tr.className = '';
+          break;
+        case 'delBtn':
+          if(confirm('sure?')){
+            tr.parentNode.removeChild(tr);
+            num = 0;
+            checks = document.querySelectorAll('.check');
+            Array.from(checks).forEach( (check) => {
+              if(check.checked) num++;
+            })
+            allCheck.checked = num === checks.length;
+          }
+          break;
+        case 'allCheck':
+          num = allCheck.checked ? checks.length : 0;
+          Array.from(checks).forEach( (check) => {
+            check.checked = allCheck.checked;
+          })
+          break;
+        case 'check':
+          num += target.checked ? 1 : -1;
+          allCheck.checked = num === checks.length;
+      }
+      totalPrice();
+    }
+    function totalPrice() {
+      var totalPrices = 0;
+      checks = document.querySelectorAll('.check')
+      Array.from(checks).forEach( (check) => {
+        if(check.checked){
+          var tr = check.parentNode.parentNode;
+          var unitPrice = tr.children[2].children[0].innerHTML;
+          var count = tr.children[3].children[0].innerHTML;
+          totalPrices += unitPrice * count; 
+        }
+      })
+      document.querySelector('.money').innerHTML = totalPrices;
+    }
+  </script> -->
+</body>
+<script src="../vue.js"></script>
+<script>
+  new Vue({
+    el: '#box',
+    data: {
+      products: [{
+          name: 'a米',
+          price: 3600,
+          num: 2
+        },
+        {
+          name: 'b米',
+          price: 3600,
+          num: 2
+        },
+        {
+          name: 'c米',
+          price: 3600,
+          num: 2
+        },
+        {
+          name: 'd米',
+          price: 3600,
+          num: 2
+        },
+        {
+          name: 'e米',
+          price: 3600,
+          num: 2
+        },
+        {
+          name: 'f米',
+          price: 3600,
+          num: 2
+        }
+      ],
+      check: true,
+      allCheck: true,
+      fAllCheck: false,
+    },
+    computed: {
+      //计算价格
+      totalPrice() {
+        return this.products.reduce((prev,curr) => {
+          return prev + (curr.price * curr.num)
+        },0)
+      },
+    },
+    watch: {
+      // allCheck(){
+      //   // console.log(newValue,oldValue)
+      // },
+    },
+    methods: {
+      //全选
+      // allChecked(){
+      //   console.log(this.allCheck)
+        
+      //   this.check = !this.allCheck
+      // },
+      //单选
+      checks(index){
+        
+      },
+      //删除
+      del(index){
+        if(confirm('sure???')){
+          this.products.splice(index,1)
+        }
+      },
+      
+    }
+  })
+</script>
+
+</html>

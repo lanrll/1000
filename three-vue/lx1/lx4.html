@@ -18,15 +18,15 @@
     </div>
     <ul>
       <li>全选：<input type="checkbox" :checked="allCheck" @change="allChange($event)"></li>
-      <li v-for="(item,index) in lists">
-        <input type="checkbox" :checked="check" @change="checks($event)">
+      <li  v-for="(item,index) in lists" :key='index'>
+        <input  type="checkbox" :checked="check" @change="checks($event)">
         {{item}}-----<a href="javascript:;"
-          @click="edit(index)">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="del(index)">删除</a></li>
+          @click="edit(index)">修改</a>&nbsp;&nbsp;<a href="javascript:;" @click="del(index)">删除</a></li>
     </ul>
   </div>
 </body>
 <script>
-  new Vue({
+  var vue = new Vue({
     el: '#app',
     data: {
       btn: ['添加', '修改'],
@@ -39,6 +39,7 @@
       allCheck: true,
       check: true,
       num: 5,
+      r:Math.random()
     },
     methods: {
       //添加
@@ -73,7 +74,7 @@
 
       //修改功能
       up() {
-        console.log(this.list)
+        // console.log(this.list)
         if (this.list) {
           // if (confirm('sure?')) {
           if (this.lists.indexOf(this.list) === -1) {
@@ -112,14 +113,16 @@
         // if( this.num != this.lists.length){
           this.check = this.allCheck = e.target.checked
           this.num = this.allCheck ? this.lists.length : 0
-          console.log(this.num,e.target.checked,this.check,this.allCheck)
+          if(this.check) this.check = Math.random()
+          console.log('allChange',this.num,e.target.checked,this.check,this.allCheck)
+          this.r = Math.random()
         // }
       },
       //单选
       checks(e){
         this.num += e.target.checked ? 1 : -1;
         this.allCheck = this.num === this.lists.length 
-        console.log(this.num) 
+        // console.log(this.num,e.target.checked,this.check,this.allCheck) 
       }
     }
   })

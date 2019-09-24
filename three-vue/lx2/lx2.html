@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./city-data.js"></script>
+  <script src="../vue.js"></script>
+  <style>
+    ul li {
+      list-style: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root">
+    <input type="text" v-model="wk" @enter="serch()">
+    <ul>
+      <li v-for="item in city">{{item.name}}</li>
+    </ul>
+  </div>
+</body>
+<script>
+  let arr = [];
+  cityData.data.cities.sort((a, b) => {
+    var nameA = a.pinyin.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.pinyin.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  })
+  for (var i = 0; i < cityData.data.cities.length; i++) {
+    arr.push(cityData.data.cities[i]);
+  }
+  var brr = []
+  let c;
+  let index = 0;
+  for (let i = 1; i < arr.length; i++) {
+    c = arr[index].pinyin.slice(0, 1);
+    if (c !== arr[i].pinyin.slice(0, 1)) {
+
+      let d = i - index
+      brr.push({name:c,pinyin:c}, ...arr.slice(index, i))
+      index = i;
+    }
+    if (i == arr.length - 1) {
+      brr.push({name:c,pinyin:c}, ...arr.slice(index, -1))
+    }
+  }
+  new Vue({
+    el: '#root',
+    data: {
+      brr,
+      wk: ''
+    },
+    computed: {
+      city() {
+        return this.brr.filter(item => {
+          return item.name.includes(this.wk)
+        })
+      }
+    },
+    methods: {
+      serch() {
+      }
+    }
+  })
+</script>
+
+</html>
