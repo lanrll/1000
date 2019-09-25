@@ -43,3 +43,6 @@ ul li{
     line-height: 40px;
     cursor: pointer;
 }
+.active{
+    background-color: #69f;
+}

@@ -13,25 +13,80 @@
     <div id="app">
         <div>
             <input type="text" v-model="list">
-            <button v-show="chan == index" @click="sign ? add() : up()" v-for="(item,index) in btn">{{item}}</button>
+            <input type="button" @click="sign ? add() : up()" :value="sign ? btn[0] : btn[1]"></input>
             <span>{{errorMsg}}</span>
         </div>
         <ul>
-            <li>全选：<input type="checkbox" :checked="allCheck" @change="allChange($event)"></li>
+            <div><input type="checkbox" v-model="allCheck">全选：</div>
             <li v-for="(item,index) in lists" :key='index'>
-                <input type="checkbox" :checked="check" @change="checks($event)">
-                {{item}}-----<a href="javascript:;" @click="edit(index)">修改</a>&nbsp;&nbsp;<a href="javascript:;"
-                    @click="del(index)">删除</a></li>
+                <input type="checkbox" v-model="check" :value="item.id">
+                {{item.name}}-----
+                <a href="javascript:;" @click="edit(item.id)">修改</a>
+                &nbsp;&nbsp;
+                <a href="javascript:;" @click="del(item.id)">删除</a>
+            </li>
         </ul>
     </div>
 </body>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                btn: ['添加', '修改'],
-                lists: ['html', 'css', 'js', 'jquery', 'vue'],
+<script>
+    let lists = [{
+            id: 1,
+            name: 'html'
+        },
+        {
+            id: 2,
+            name: 'css'
+        },
+        {
+            id: 3,
+            name: 'js'
+        },
+        {
+            id: 4,
+            name: 'jquery'
+        },
+        {
+            id: 5,
+            name: 'node'
+        },
+        {
+            id: 6,
+            name: 'vue'
+        },
+    ]
+    var app = new Vue({
+        el: '#app',
+        data: {
+            btn: ['添加', '修改'],
+            lists: lists,
+            sign: true,
+            list: '',
+            errorMsg: '',
+        },
+        computed: {
+            allCheck() {
+
+            },
+            check() {
+
             }
-        })
-    </script>
+        },
+        methods: {
+            add() {
+                if (!this.list) {
+                    this.errorMsg = '不能为空';
+                    setTimeout(() => {
+                        this.errorMsg = ''
+                    }, 1000)
+                    return;
+                }
+                this.lists.forEach((item,index) => {
+                    
+                })
+                this.lists.push({id:this.lists[this.lists.length-1].id+1,name:this.list})
+            },
+        }
+    })
+</script>
+
 </html>

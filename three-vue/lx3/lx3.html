@@ -17,11 +17,14 @@
 </body>
 <script>
     const test1 = {
+        props: {
+            active: Number
+        },
         template: `
         <div class="box1">
             <span>&nbsp;<&nbsp;</span>
             <ul>
-                <li v-for="item in 5" @click="emit(item)">{{item}}</li>
+                <li v-for="item in 5" :class=" active === item ? 'active' : ''"  @click="emit(item)">{{item}}</li>
             </ul>    
             <span>&nbsp;>&nbsp;</span>
         </div>
@@ -33,10 +36,11 @@
         }
     };
     Vue.component('ZyqA', {
+        
         template: `
             <div class="box" >
                {{num}}
-            <zyq @showPage="show($event)"></zyq>
+            <zyq @showPage="show($event)" :active="num"></zyq>
             </div>
         `,
         data(){
