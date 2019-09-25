@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="./lx3.css">
+</head>
+
+<body>
+    <div id="app">
+        <zyq-a></zyq-a>
+    </div>
+</body>
+<script>
+    const test1 = {
+        template: `
+        <div class="box1">
+            <span>&nbsp;<&nbsp;</span>
+            <ul>
+                <li v-for="item in 5" @click="emit(item)">{{item}}</li>
+            </ul>    
+            <span>&nbsp;>&nbsp;</span>
+        </div>
+        `,
+        methods:{
+            emit(val){
+                this.$emit('showPage',val)
+            }
+        }
+    };
+    Vue.component('ZyqA', {
+        template: `
+            <div class="box" >
+               {{num}}
+            <zyq @showPage="show($event)"></zyq>
+            </div>
+        `,
+        data(){
+            return{
+                num: 1
+            }  
+        },
+        methods: {
+            show(val) {
+                console.log(val)
+                console.log(vue.val)
+                this.num = val;
+            }
+        },
+        components: {
+            zyq: test1,
+        },
+    })
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            val: 111
+        },
+        methods: {
+            
+        },
+       
+    })
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <input type="text" v-model="list">
+            <button v-show="chan == index" @click="sign ? add() : up()" v-for="(item,index) in btn">{{item}}</button>
+            <span>{{errorMsg}}</span>
+        </div>
+        <ul>
+            <li>全选：<input type="checkbox" :checked="allCheck" @change="allChange($event)"></li>
+            <li v-for="(item,index) in lists" :key='index'>
+                <input type="checkbox" :checked="check" @change="checks($event)">
+                {{item}}-----<a href="javascript:;" @click="edit(index)">修改</a>&nbsp;&nbsp;<a href="javascript:;"
+                    @click="del(index)">删除</a></li>
+        </ul>
+    </div>
+</body>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                btn: ['添加', '修改'],
+                lists: ['html', 'css', 'js', 'jquery', 'vue'],
+            }
+        })
+    </script>
+</html>

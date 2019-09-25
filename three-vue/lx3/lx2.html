@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./lx2.css">
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="root">
+    <zyq-alert theme="success" title="啥都不是" sub="爱上你发过来哈VR阿斯蒂芬"></zyq-alert>
+    <zyq-alert theme="error" title="啥都不是" sub="爱上你发过来哈VR阿斯蒂芬"></zyq-alert>
+    <zyq-alert theme="info" title="啥都不是" sub="爱上你发过来哈VR阿斯蒂芬"></zyq-alert>
+    <zyq-alert theme="warning" title="啥都不是" sub="爱上你发过来哈VR阿斯蒂芬"></zyq-alert>
+  </div>
+</body>
+<script>
+  Vue.component('ZyqAlert',{
+    props:{
+      title:String,
+      sub:String,
+      theme:{
+        type:String,
+        default:'success',
+        validator(val){
+          let flag = ['success','info','warning','error',].indexOf(val) !== -1
+          return flag
+        }
+      }
+    },
+    template:`
+    <div :class="['el-alert','is-light','el-alert--'+theme]">
+      <div class="el-alert__content">
+        <span class="el-alert__title is-bold">{{title}}</span>
+        <p class="el-alert__description">{{sub}}</p>
+      </div>
+    </div>
+    `
+  })
+  new Vue({
+    el: '#root'
+  })
+</script>
+</html>
