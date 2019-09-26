@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>兄弟组件通讯</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <zyq-a></zyq-a>
+        <zyq-b></zyq-b>
+    </div>
+</body>
+<script>
+    var bus = new Vue()
+    Vue.component('ZyqA', {
+        template: `
+            <div>A组件
+                <input type="text" v-model="num" @keyup.enter="brrow()" />
+            </div>
+        `,
+        data() {
+            return {
+                num: 0,
+            }
+        },
+        methods: {
+            brrow() {
+                bus.$emit('dalao', this.num)
+            }
+        },
+        created(){
+            bus.$on('answer', (val) => {
+                console.log(val)
+            })
+        }
+    })
+    Vue.component('ZyqB', {
+        template: `
+        <div>B组件
+            <span>{{msg}}</span>
+        </div>
+        `,
+        data(){
+            return{
+                msg:'',
+                bank: 10000,
+                ok:'ok',
+                no: 'no'
+            }
+        },
+        created(){
+            let _this = this
+            bus.$on('dalao',function(val){
+                console.log(_this.$data)
+                if(_this.bank >= val){
+                    _this.bank -= val
+                    bus.$emit('answer', _this.ok)
+                    _this.msg = _this.ok
+                }else{
+                    bus.$emit('answer', _this.no)
+                    _this.msg = _this.no
+                }
+            })
+        }
+    })
+    new Vue({
+        el: '#box'
+    })
+</script>
+
+</html>

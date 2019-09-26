@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分页</title>
+    <link rel="stylesheet" href="../base.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        .box {
+            width: 800px;
+            height: 100px;
+            margin: 0 auto;
+            position: relative;
+
+        }
+
+        .bg-box {
+            width: 100%;
+            height: 100px;
+            background-color: #ccc;
+            color: red;
+            text-align: center;
+            line-height: 100px;
+        }
+
+        .page-box {
+            width: 100%;
+            height: 30px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-size: 20px;
+        }
+
+        .page-box button {
+            float: left;
+            margin: 0 10px;
+            width: 30px;
+            background-color: #f4f4f5;
+            cursor: pointer;
+        }
+
+        .el-page {
+            float: left;
+        }
+
+        .el-page li {
+            cursor: pointer;
+            float: left;
+            height: 25px;
+            line-height: 25px;
+            margin: 0 10px;
+            text-align: center;
+            background-color: #f4f4f5;
+            color: #606266;
+            min-width: 30px;
+            border-radius: 2px;
+        }
+
+        .el-page li:not(.ac):hover {
+            color: #409eff;
+        }
+
+        .el-page .ac {
+            background-color: #409eff;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="box">
+            <div class="bg-box">當前</div>
+            <div class="page-box">
+                <button disabled="disabled" class="prev fa fa-angle-left"></button>
+                <ul class="el-page" v-show="start">
+                    <li v-for="item in pages" :class="item == nowPageac ? 'ac' : ''" @click="nowPage(item)">{{item}}
+                    </li>
+                    <li @click="nowPage(6)">6</li>
+                    <li class="fa fa-ellipsis-h"></li>
+                    <li  @click="endpa()">{{totalPages}}</li>
+                </ul>
+                <ul class="el-page" v-show="mid">
+                    <li @click="startpa()"> {{1}}</li>
+                    <li class="fa fa-ellipsis-h"></li>
+                    <li v-for="item in pages" :class="item == nowPageac ? 'ac' : ''" @click="nowPage(item)">{{item}}
+                    </li>
+                    <li class="fa fa-ellipsis-h"></li>
+                    <li  @click="endpa()">{{totalPages}}</li>
+                </ul>
+                <ul class="el-page" v-show="end">
+                    <li @click="startpa()"> {{1}}</li>
+                    <li class="fa fa-ellipsis-h"></li>
+                    <li v-for="item in pages" :class="item == nowPageac ? 'ac' : ''" @click="nowPage(item)">{{item}}</li>
+                </ul>
+                <button class="next fa fa-angle-right"></button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            allPages: [1, 2, 3, 4, 5],
+            // pages: [1, 2, 3, 4, 5],
+            startPage: 1,
+            nowPageac: 1,
+            totalPages: 100,
+            start: true,
+            mid: false,
+            end: false
+        },
+        computed: {
+            pages() {
+                let arr = [1, 2, 3, 4, 5]
+                return this.allPages
+            }
+        },
+        wtach: {
+
+        },
+        created() {
+            this.init()
+        },
+        methods: {
+            init() {
+                for (let i = 0; i < this.totalPages; i++) {
+
+                }
+            },
+            startpa() {
+                this.allPages = this.allPages.map((item, index) => {
+                    return item = index + 1
+                })
+                this.start = true
+                this.mid = false
+            },
+            nowPage(val) {
+                this.nowPageac = val
+                // if (val === 1) return;
+                if (val <= 2) {
+                    return;
+                }
+                if(val >= 98){
+                    this.start = false
+                    this.mid = false
+                    this.end = true
+                    return
+                }
+                if (val >= 5 && val < 98) {
+                    this.allPages[0] = val - 2
+                    this.allPages[1] = val - 1
+                    this.allPages[2] = val
+                    this.allPages[3] = val + 1
+                    this.allPages[4] = val + 2
+                        this.start = false
+                        this.mid = true
+                }
+               
+            },
+            endpa(){
+                // let a = 
+                this.allPages = this.allPages.map((item, index) => {
+                    return item = this.totalPages - this.allPages.length + index + 1
+                })
+                this.start = false
+                this.mid = false
+                this.end = true
+            }
+        }
+    })
+</script>
+
+</html>

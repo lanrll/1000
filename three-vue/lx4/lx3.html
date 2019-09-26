@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>swiper</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <style>
+        .zyq-banner {
+            width: 1000px;
+            height: 500px;
+        }
+
+        .zyq-banner img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div class="swiper-container zyq-banner">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in bannerList">
+                    <img :src="item.imgUrl" />
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/swiper/js/swiper.min.js"> </script>
+<script src="../axios.min.js"></script>
+<script src="../vue.js"></script>
+<script>
+    new Vue({
+        el: '#root',
+        data: {
+            bannerList: [],
+            swiperFlag: false
+        },
+        created() {
+            this.getBanner()
+        },
+        updated() {
+            !this.swiperFlag && this.initBanner()
+        },
+        methods: {
+            getBanner() {
+                axios({
+                    url: 'https://m.maizuo.com/gateway?type=2&cityId=510100&k=9369912',
+                    method: 'get',
+                    headers: {
+                        'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"156767148210033043604248"}',
+                        'X-Host': 'mall.cfg.common-banner'
+                    }
+                }).then(res => {
+                    let result = res.data
+                    if (result.status === 0) {
+                        this.bannerList = result.data
+                    }
+                })
+            },
+            initBanner() {
+                console.log(123)
+                this.swiperFlag = true;
+                new Swiper('.zyq-banner', {
+                    autoplay:true,
+                    loop: true,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                })
+            }
+        }
+    })
+</script>
+
+</html>

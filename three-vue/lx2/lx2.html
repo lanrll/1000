@@ -6,70 +6,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="../base.css">
   <script src="./city-data.js"></script>
   <script src="../vue.js"></script>
   <style>
-    ul li {
-      list-style: none;
+    .zyq {
+      margin: 20px auto 0px;
+      width: 1173px;
+      height: 100%;
+      position: relative;
+      font-size: 16px;
+    }
+
+    .group {
+      border-top: 10px;
+    }
+
+    .first {
+      background-color: slategray;
+      height: 30px;
+      padding-left: 5px;
+      line-height: 30px;
+    }
+
+    input {
+      height: 30px;
+      width: 1173px;
+      border: 1px solid #cccccc;
+      margin-bottom: 10px;
+    }
+
+    li {
+      border-bottom: 1px solid #f4f4f4;
+      height: 48px;
+      line-height: 48px;
     }
   </style>
 </head>
 
 <body>
-  <div id="root">
-    <input type="text" v-model="wk" @enter="serch()">
-    <ul>
-      <li v-for="item in city">{{item.name}}</li>
+  <div id="root" class="zyq">
+    <input type="text" v-model="wk">
+    <template v-if="!wk">
+      <template v-for="key in words">
+        <div class="first">{{key.toUpperCase()}}</div>
+        <ul>
+          <li v-for="item in citys[key]">{{item.name}}</li>
+        </ul>
+      </template>
+    </template>
+    <ul v-else>
+      <li v-for="item in city" :value="city.lenhth">{{item.name}}</li>
+      <li>{{city.length ? '' : '无数据！！！'}}</li>
     </ul>
   </div>
 </body>
 <script>
-  let arr = [];
-  cityData.data.cities.sort((a, b) => {
-    var nameA = a.pinyin.toUpperCase(); // ignore upper and lowercase
-    var nameB = b.pinyin.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
-      return -1;
-    }
-    if (nameA > nameB) {
-      return 1;
-    }
-    return 0;
-  })
-  for (var i = 0; i < cityData.data.cities.length; i++) {
-    arr.push(cityData.data.cities[i]);
-  }
-  var brr = []
-  let c;
-  let index = 0;
-  for (let i = 1; i < arr.length; i++) {
-    c = arr[index].pinyin.slice(0, 1);
-    if (c !== arr[i].pinyin.slice(0, 1)) {
-
-      let d = i - index
-      brr.push({name:c,pinyin:c}, ...arr.slice(index, i))
-      index = i;
-    }
-    if (i == arr.length - 1) {
-      brr.push({name:c,pinyin:c}, ...arr.slice(index, -1))
-    }
-  }
-  console.log(brr)
   new Vue({
     el: '#root',
     data: {
-      brr,
-      wk: ''
+      cities: cityData.data.cities,
+      wk: '',
+      cityIndex: []
     },
     computed: {
       city() {
-        return this.brr.filter(item => {
-          return item.name.includes(this.wk)
+        return this.cities.filter(item => {
+          return item.name.includes(this.wk) || item.pinyin.includes(this.wk)
         })
+      },
+      citys() {
+        let obj = {}
+        this.cities.forEach(item => {
+          let key = item.pinyin.charAt(0)
+          if (!obj[key]) {
+            obj[key] = []
+          }
+          obj[key].push(item)
+        })
+        return obj
+      },
+      words() {
+        let arr = []
+        this.cities.forEach(item => {
+          let key = item.pinyin.charAt(0)
+          if (arr.indexOf(key) === -1) {
+            arr.push(key)
+          }
+        })
+        arr.sort()
+        return arr
       }
     },
     methods: {
-      // serch() {
+      // init() {
+      //   console.log(this.cities)
+      //   let arr = []
+      // },
+      // serch(){
+
       // }
     }
   })

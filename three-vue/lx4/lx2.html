@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slot分页</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="box">
+        <zyq-swiper>
+            <div>
+                <hr/>
+                <hr/>
+                <hr/>
+            </div>
+            <div slot="pagination">
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                </ul>
+            </div>
+        </zyq-swiper>
+    </div>
+</body>
+<script>
+    const ZyqSwiper = {
+        template: `
+        <div class="swiper-container">
+            <div class='swiper-items'>
+                <slot>swiper要播放的项</slot>
+            </div>
+            <div class="swiper-pagination">
+                 <slot name="pagination">swiper的分页器</slot>
+            </div>
+       </div>
+        `
+    }
+    var vue = new Vue({
+        el: '#box',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            // ZyqBtn,
+            ZyqSwiper,
+        }
+    })
+</script>
+
+</html>
