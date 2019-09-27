@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义分页组件</title>
+    <script src='../js/vue.js'></script>
+    <style>
+        .fq-pagination {
+            white-space: nowrap;
+            padding: 2px 5px;
+            color: #303133;
+            font-weight: 700;
+        }
+
+        .fq-pager {
+            user-select: none;
+            list-style: none;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .btn {
+            margin: 0 5px;
+            background-color: #f4f4f5;
+            color: #606266;
+            min-width: 30px;
+            border-radius: 2px;
+            color: #c0c4cc;
+        }
+
+        ul li {
+            margin: 0 5px;
+            background-color: #f4f4f5;
+            color: #606266;
+            min-width: 30px;
+            border: 1px solid #333;
+            border-radius: 2px;
+            padding: 0 4px;
+            vertical-align: top;
+            display: inline-block;
+            font-size: 13px;
+            height: 28px;
+            line-height: 28px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        li.active {
+            color: #409eff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>当前是：{{currentNum}}</h3>
+        <fq-page num='6' total-num='50' :test='test2' @judge-page='judgePageFn'></fq-page>
+    </div>
+    <script>
+        Vue.component('FqPage', {
+            template: `
+            <div class="fq-pagination">
+                <button class="btn" @click='emitDel()' type='button'>-</button>
+                <ul class="fq-pager">
+                    <template v-if='currentPage<6'>
+                        <li v-for='n in num*1' @click='emitCurrent(n)' :class='{active:n==currentPage}'>{{n}}</li>
+                        <li @click='emitAddFive()'>...</li>
+                        <li @click='emitCurrent(totalNum)'>{{totalNum}}</li>
+                    </template>
+                    <template v-else-if='currentPage<=totalNum-5'>
+                        <li @click='emitCurrent(1)'>1</li>
+                        <li @click='emitDelFive()'>...</li>
+                        <li @click='emitCurrent(currentPage+n-3)' v-for='n in 5' :class='{active:currentPage+n-3==currentPage}'>{{currentPage+n-3}}</li>
+                        <li @click='emitAddFive()'>...</li>
+                        <li @click='emitCurrent(totalNum)'>{{totalNum}}</li>
+                    </template>
+                    <template v-else>
+                        <li @click='emitCurrent(1)'>1</li>
+                        <li @click='emitDelFive()'>...</li>
+                        <li v-for='n in 6' @click='emitCurrent(totalNum-6+n)' :class='{active:n==currentPage-totalNum+6}'>{{totalNum-6+n}}</li>
+                    </template>
+                </ul>
+                <button class="btn" @click='emitAdd()' type='button'>+</button>
+        </div>`,
+            data() {
+                return {
+                    currentPage: 1,
+                }
+            },
+            props: ['num', 'test', 'totalNum'],
+            methods: {
+                emitAdd() {
+
+                    if (this.currentPage < this.totalNum) {
+                        this.currentPage++;
+                    }
+                    console.log(this.currentPage)
+                    this.$emit('judge-page', this.currentPage);
+                },
+                emitDel() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--;
+                    }
+                    this.$emit('judge-page', this.currentPage);
+                },
+                emitCurrent(n) {
+                    this.currentPage = n;
+                    this.$emit('judge-page', n);
+                },
+                emitDelFive() {if(this.currentPage >= 5) {
+                        this.currentPage -= 5;
+                    }
+                    this.$emit('judge-page', this.currentPage);
+                },
+                emitAddFive() {
+                    if(this.currentPage <= 95) {
+                        this.currentPage += 5;
+                    }
+                    this.$emit('judge-page', this.currentPage);
+                }
+            }
+        })
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                test2: 1,
+                currentNum: 1
+            },
+            methods: {
+                judgePageFn(e) {
+                    console.log(e);
+                    this.currentNum = e;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

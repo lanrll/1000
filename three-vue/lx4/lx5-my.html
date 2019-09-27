@@ -26,7 +26,8 @@
             line-height: 100px;
             font-size: 30px;
         }
-        .bg-box b{
+
+        .bg-box b {
             color: #409eff;
         }
 
@@ -72,17 +73,33 @@
             background-color: #409eff;
             color: #fff;
         }
-        .inputPaging{
-            background-color: rgb(104, 70, 70);
-        }
     </style>
 </head>
 
 <body>
     <div id="box">
         <div class="box">
-            <div class="bg-box">当前第<b>{{nowPage}}</b>页</div>
-            <div class="page-box">
+            <div class="bg-box" >当前第<b>{{nowPage}}</b>页</div>
+            <paging :total-page='totalPages' @page="newPage"></paging>
+        </div>
+        <!-- <div>分<input type="text" v-model="totalPages">页</div> -->
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    Vue.component('Paging', {
+        props: ['totalPage'],
+        data() {
+            return {
+                totalPages: [],
+                nowPage: 1,
+                starPages: [],
+                endPages: [],
+                sign: true
+            }
+        },
+        template: `
+        <div class="page-box">
                 <button :disabled="nowPage == 1" class="prev fa fa-angle-left" @click="prove()"></button>
                 <ul class="el-page">
                     <template v-if="nowPage < 5">
@@ -107,83 +124,87 @@
                 </ul>
                 <button class="next fa fa-angle-right" @click="next()" :disabled="nowPage == totalPage"></button>
             </div>
-            <div class="inputPaging">分页<input type="text" v-model="totalPage"></div>
-        </div>
-    </div>
-</body>
-<script src="../vue.js"></script>
-<script>
-    new Vue({
-        el: '#box',
-        data: {
-            totalPage: 10,
-            totalPages: [],
-            nowPage: 1,
-            starPages: [],
-            endPages:[],
-            sign: true
-        },
+        `,
         computed: {
-            mindPages(){
-                return this.totalPages.slice(this.nowPage-2,this.nowPage+3)
+            mindPages() {
+                return this.totalPages.slice(this.nowPage - 2, this.nowPage + 3)
             }
         },
         created() {
             this.init()
         },
-        beforeUpdate () {
-          this.init()  
-        },
         updated () {
-        //   this.init()  
+            this.$emit('page',  this.nowPage)
         },
         methods: {
             init() {
-                for(let i = 0; i <= this.totalPage; i++){
+                for (let i = 0; i <= this.totalPage; i++) {
                     this.totalPages[i] = i
                 }
-                this.starPages = this.totalPages.slice(1,7)
-                this.endPages = this.totalPages.slice(this.totalPage-5,this.totalPage+1)
-                console.log(this.totalPage)
-                if(this.nowPage > this.totalPage){
-                    this.nowPage = 1
-                }
+                this.starPages = this.totalPages.slice(1, 7)
+                this.endPages = this.totalPages.slice(this.totalPage - 5, this.totalPage + 1)
+                this.$emit('page',  this.nowPage)
             },
-            goStartPage(){
+            goStartPage() {
                 this.nowPage = 1
+                // this.$emit('page',  this.nowPage)
             },
-            goEndPage(){
+            goEndPage() {
                 this.nowPage = this.totalPage
+                // this.$emit('page',  this.nowPage)
             },
-            proveTenPage(){
-                if(this.nowPage <= 10){
+            proveTenPage() {
+                if (this.nowPage <= 10) {
                     this.nowPage = 1
+                    // this.$emit('page',  this.nowPage)
                     return
                 }
                 this.nowPage -= 10
+                // this.$emit('page',  this.nowPage)
             },
-            nextTenPage(){
-                if(this.nowPage >= this.totalPage-10){
+            nextTenPage() {
+                if (this.nowPage >= this.totalPage - 10) {
                     this.nowPage = this.totalPage
+                    // this.$emit('page',  this.nowPage)
                     return;
                 }
                 this.nowPage += 10
+                // this.$emit('page',  this.nowPage)
             },
-            startNowPage(val){
+            startNowPage(val) {
                 this.nowPage = val
+                // this.$emit('page',  this.nowPage)
             },
-            mindNowPage(val){
+            mindNowPage(val) {
                 this.nowPage = val
-            },endNowPage(val){
-                this.nowPage = val
+                // this.$emit('page',  this.nowPage)
             },
-            prove(){
-                if( this.nowPage == 1) return;
+            endNowPage(val) {
+                this.nowPage = val
+                // this.$emit('page',  this.nowPage)
+            },
+            prove() {
+                if (this.nowPage == 1) return;
                 this.nowPage--
+                // this.$emit('page',  this.nowPage)
             },
-            next(){
-                if( this.nowPage == this.totalPage) return;
+            next() {
+                if (this.nowPage == this.totalPage) return;
                 this.nowPage++
+                // this.$emit('page',  this.nowPage)
+            }
+        }
+
+    })
+    new Vue({
+        el: '#box',
+        data: {
+            totalPages: 100,
+            nowPage: 1,
+        },
+        methods: {
+            newPage(val){
+                this.nowPage = val
             }
         }
     })
