@@ -76,28 +76,29 @@
         <div class="box">
             <div class="bg-box">當前</div>
             <div class="page-box">
-                <button disabled="disabled" class="prev fa fa-angle-left"></button>
-                <ul class="el-page" v-show="start">
-                    <li v-for="item in pages" :class="item == nowPageac ? 'ac' : ''" @click="nowPage(item)">{{item}}
-                    </li>
-                    <li @click="nowPage(6)">6</li>
-                    <li class="fa fa-ellipsis-h"></li>
-                    <li  @click="endpa()">{{totalPages}}</li>
+                <button disabled="disabled" class="prev fa fa-angle-left" @click="prve()"></button>
+                <ul class="el-page">
+                    <template v-if="nowpage < 5">
+                        <li v-for="item in starPages" :class="item == nowpage ? 'ac' : ''" @click="startNowPage(item)">{{item}}
+                        </li>
+                        <li class="fa fa-ellipsis-h"></li>
+                        <li @click="goEndPage">{{totalPage}}</li>
+                    </template>
+                    <template v-else-if="nowpage <= totalPage - 4">
+                        <li @click="goStartPage()"> 1</li>
+                        <li class="fa fa-ellipsis-h"></li>
+                        <li v-for="item in mindPages" :class="item == nowpage ? 'ac' : ''" @click="mideNowPage(item)">{{item}}
+                        </li>
+                        <li class="fa fa-ellipsis-h"></li>
+                        <li  @click="goEndPage">{{totalPage}}</li>
+                    </template>
+                    <template v-else>
+                        <li @click="goStartPage()">1</li>
+                        <li class="fa fa-ellipsis-h"></li>
+                        <li v-for="item in endPages" :class="item == nowpage ? 'ac' : ''" @click="endNowPage(item)">{{item}}</li>
+                    </template>
                 </ul>
-                <ul class="el-page" v-show="mid">
-                    <li @click="startpa()"> {{1}}</li>
-                    <li class="fa fa-ellipsis-h"></li>
-                    <li v-for="item in pages" :class="item == nowPageac ? 'ac' : ''" @click="nowPage(item)">{{item}}
-                    </li>
-                    <li class="fa fa-ellipsis-h"></li>
-                    <li  @click="endpa()">{{totalPages}}</li>
-                </ul>
-                <ul class="el-page" v-show="end">
-                    <li @click="startpa()"> {{1}}</li>
-                    <li class="fa fa-ellipsis-h"></li>
-                    <li v-for="item in pages" :class="item == nowPageac ? 'ac' : ''" @click="nowPage(item)">{{item}}</li>
-                </ul>
-                <button class="next fa fa-angle-right"></button>
+                <button class="next fa fa-angle-right" @click="next()" ></button>
             </div>
         </div>
     </div>
@@ -107,74 +108,209 @@
     new Vue({
         el: '#box',
         data: {
-            allPages: [1, 2, 3, 4, 5],
-            // pages: [1, 2, 3, 4, 5],
-            startPage: 1,
-            nowPageac: 1,
-            totalPages: 100,
-            start: true,
-            mid: false,
-            end: false
-        },
-        computed: {
-            pages() {
-                let arr = [1, 2, 3, 4, 5]
-                return this.allPages
-            }
-        },
-        wtach: {
-
+            totalPage: 100,
+            totalPages: [],
+            nowpage: 1,
+            num: 6,
+            starPages: [],
+            mindPages:[],
+            endPages:[]
         },
         created() {
             this.init()
         },
+        mounted() {
+            
+        },
+        updated() {
+        console.log(this.nowpage,this.mindPages)    
+        },
         methods: {
             init() {
-                for (let i = 0; i < this.totalPages; i++) {
+                for(let i = 0; i <= this.totalPage; i++){
+                    this.totalPages[i] = i
+                }
+                this.starPages = this.totalPages.slice(1,7)
+                this.mindPages = this.totalPages.slice(3,8)
+                this.endPages = this.totalPages.slice(this.totalPage-5,this.totalPage+1)
+                
+                console.log(this.starPages,this.endPages )
+            },
+            goStartPage(){
+                this.nowpage = 1
+            },
+            goEndPage(){
+                this.nowpage = 100
+            },
+            startNowPage(val){
+                this.nowpage = val
+            },
+            mideNowPage(val){
+                // if(nowpage == 5){
+                //     this.mindPages = this.totalPages.slice(nowpage-2,nowpage+3)
+                // }
+                // if(val>=5 &&  val<= 96){
+                    this.mindPages = this.totalPages.slice(val-2,val+3)
+                    this.nowpage = val
+                // }
+                // console.log(val)
+            },endNowPage(val){
+                this.nowpage = val
+            },
+            prev(){
 
-                }
             },
-            startpa() {
-                this.allPages = this.allPages.map((item, index) => {
-                    return item = index + 1
-                })
-                this.start = true
-                this.mid = false
-            },
-            nowPage(val) {
-                this.nowPageac = val
-                // if (val === 1) return;
-                if (val <= 2) {
-                    return;
-                }
-                if(val >= 98){
-                    this.start = false
-                    this.mid = false
-                    this.end = true
-                    return
-                }
-                if (val >= 5 && val < 98) {
-                    this.allPages[0] = val - 2
-                    this.allPages[1] = val - 1
-                    this.allPages[2] = val
-                    this.allPages[3] = val + 1
-                    this.allPages[4] = val + 2
-                        this.start = false
-                        this.mid = true
-                }
-               
-            },
-            endpa(){
-                // let a = 
-                this.allPages = this.allPages.map((item, index) => {
-                    return item = this.totalPages - this.allPages.length + index + 1
-                })
-                this.start = false
-                this.mid = false
-                this.end = true
+            next(){
+
             }
         }
     })
 </script>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义分页组件</title>
+    <script src='../js/vue.js'></script>
+    <style>
+        .fq-pagination {
+            white-space: nowrap;
+            padding: 2px 5px;
+            color: #303133;
+            font-weight: 700;
+        }
+
+        .fq-pager {
+            user-select: none;
+            list-style: none;
+            display: inline-block;
+            vertical-align: top;
+            font-size: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .btn {
+            margin: 0 5px;
+            background-color: #f4f4f5;
+            color: #606266;
+            min-width: 30px;
+            border-radius: 2px;
+            color: #c0c4cc;
+        }
+
+        ul li {
+            margin: 0 5px;
+            background-color: #f4f4f5;
+            color: #606266;
+            min-width: 30px;
+            border: 1px solid #333;
+            border-radius: 2px;
+            padding: 0 4px;
+            vertical-align: top;
+            display: inline-block;
+            font-size: 13px;
+            height: 28px;
+            line-height: 28px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        li.active {
+            color: #409eff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3>当前是：{{currentNum}}</h3>
+        <fq-page num='6' total-num='50' :test='test2' @judge-page='judgePageFn'></fq-page>
+    </div>
+    <script>
+        Vue.component('FqPage', {
+            template: `
+            <div class="fq-pagination">
+                <button class="btn" @click='emitDel()' type='button'>-</button>
+                <ul class="fq-pager">
+                    <template v-if='currentPage<6'>
+                        <li v-for='n in num*1' @click='emitCurrent(n)' :class='{active:n==currentPage}'>{{n}}</li>
+                        <li @click='emitAddFive()'>...</li>
+                        <li @click='emitCurrent(totalNum)'>{{totalNum}}</li>
+                    </template>
+                    <template v-else-if='currentPage<=totalNum-5'>
+                        <li @click='emitCurrent(1)'>1</li>
+                        <li @click='emitDelFive()'>...</li>
+                        <li @click='emitCurrent(currentPage+n-3)' v-for='n in 5' :class='{active:currentPage+n-3==currentPage}'>{{currentPage+n-3}}</li>
+                        <li @click='emitAddFive()'>...</li>
+                        <li @click='emitCurrent(totalNum)'>{{totalNum}}</li>
+                    </template>
+                    <template v-else>
+                        <li @click='emitCurrent(1)'>1</li>
+                        <li @click='emitDelFive()'>...</li>
+                        <li v-for='n in 6' @click='emitCurrent(totalNum-6+n)' :class='{active:n==currentPage-totalNum+6}'>{{totalNum-6+n}}</li>
+                    </template>
+                </ul>
+                <button class="btn" @click='emitAdd()' type='button'>+</button>
+        </div>`,
+            data() {
+                return {
+                    currentPage: 1,
+                }
+            },
+            props: ['num', 'test', 'totalNum'],
+            methods: {
+                emitAdd() {
+
+                    if (this.currentPage < this.totalNum) {
+                        this.currentPage++;
+                    }
+                    console.log(this.currentPage)
+                    this.$emit('judge-page', this.currentPage);
+                },
+                emitDel() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--;
+                    }
+                    this.$emit('judge-page', this.currentPage);
+                },
+                emitCurrent(n) {
+                    this.currentPage = n;
+                    this.$emit('judge-page', n);
+                },
+                emitDelFive() {if(this.currentPage >= 5) {
+                        this.currentPage -= 5;
+                    }
+                    this.$emit('judge-page', this.currentPage);
+                },
+                emitAddFive() {
+                    if(this.currentPage <= 95) {
+                        this.currentPage += 5;
+                    }
+                    this.$emit('judge-page', this.currentPage);
+                }
+            }
+        })
+        var vue = new Vue({
+            el: '.box',
+            data: {
+                test2: 1,
+                currentNum: 1
+            },
+            methods: {
+                judgePageFn(e) {
+                    console.log(e);
+                    this.currentNum = e;
+                }
+            }
+        })
+    </script>
+</body>
 
 </html>

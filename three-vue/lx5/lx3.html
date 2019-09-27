@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过滤1024字节</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <input type="text" v-model.number="num">
+        <span>{{num | weekcn}}</span>
+    </div>
+</body>
+<script>
+    Vue.filter('weekcn', (val) => {
+        let base = 1024
+        let arr = ['字节','Kb','Mb','Gb','Tb']
+        let i  = 0
+        if(val < 1024) return val + arr[i]
+        while(val >= base){
+            val = val/base
+            i++
+        }
+        return val.toFixed(3) + arr[i]
+
+    })
+    new Vue({
+        el: '#root',
+        data: {
+            num: 0,
+        }
+    })
+</script>
+
+</html>

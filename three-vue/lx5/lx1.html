@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义指令</title>
+    <script src="../vue.js"></script>
+    <style>
+        .main {
+            width: 200px;
+            height: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0)
+        }
+
+        .box {
+            position: fixed;
+            left: 50px;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            z-index: -9;
+            text-align: center;
+        }
+        input[type="text"]{
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <div class="main">
+            <p>
+                <label>left:</label>
+                <input type="button" value="-" @click="leftVal -= 10">
+                <input type="text" v-model="leftVal">
+                <input type="button" value="+" @click="leftVal += 10"></p>
+            <p>
+                <label>top:</label>
+                <input type="button" value="-" @click="topVal -= 10">
+                <input type="text" v-model="topVal">
+                <input type="button" value="+" @click="topVal += 10"></p>
+        </div>
+        <div class="box" v-flixd="[leftVal,topVal]">
+            <p>left:{{leftVal}}</p>
+            <p>top:{{topVal}}</p>
+        </div>
+    </div>
+</body>
+<script>
+    Vue.directive('flixd',function(el,binding,vnode){
+        el.style.left = binding.value[0] + 'px'
+        el.style.top = binding.value[1] + 'px'
+    })
+    var vue = new Vue({
+        el: '#root',
+        data: {
+            leftVal: 0,
+            topVal: 0
+        },
+    })
+</script>
+
+</html>
