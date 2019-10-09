@@ -1,12 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-// import Magazine from './views/Magazine.vue'
-import Magazines from './views/magazines/Index.vue'
-import Now from './views/magazines/Now.vue'
-import Old from './views/magazines/Old.vue'
-import Subscribe from './views/Subscribe.vue'
-import NotFound from './views/NotFound.vue'
 
 Vue.use(Router)
 
@@ -28,30 +22,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/magazines',
-      name: 'magazines',
-      component: Magazines,
-      children: [{
-        path: '',
-        redirect: '/magazines/Now'
-      },{
-        path: 'Now',
-        component: Now
-      },{
-        path: 'Old',
-        component: Old
-      }]
-    },
-    {
-      path: '/subscribe',
-      name: 'subscribe',
-      component: Subscribe
-    },{
-      path: '/404',
-      component: NotFound
-    },{
-      path: '*',
-      redirect: '/404'
+      path: '/list',
+      name: 'list',
+      component: () => import(/* webpackChunkName: "about" */ './views/List.vue')
     }
   ]
 })

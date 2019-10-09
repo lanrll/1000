@@ -1,13 +1,23 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/list">list</router-link>
+      <Nav></Nav>
     </div>
+    <main>
     <router-view/>
+    </main>
   </div>
 </template>
+
+<script>
+import Nav from '@/components/Nav.vue'
+export default {
+   name: 'home',
+  components: {
+    Nav,
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -16,9 +26,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  width: 1000px;
+  margin: 0 auto;
 }
 #nav {
-  padding: 30px;
+  padding: 0 30px;
   a {
     font-weight: bold;
     color: #2c3e50;
@@ -26,5 +38,9 @@
       color: #42b983;
     }
   }
+}
+main{
+  margin:  20px;
+  font-size: 20px;
 }
 </style>
