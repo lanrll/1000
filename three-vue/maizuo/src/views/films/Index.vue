@@ -1,6 +1,6 @@
 <template>
   <div class="film-list">
-    <banner :data="bannerLists" v-if="bannerLists.length"></banner>
+    <!-- <banner :data="bannerLists" v-if="bannerLists.length"></banner> -->
     <tab-nav></tab-nav>
     <router-view></router-view>
   </div>
@@ -27,7 +27,6 @@ export default {
       getFilmBannerList().then((res)=>{
         if(res.status == 0){
           this.bannerLists = res.data
-          console.log(this.bannerLists)
         }
       })
     }

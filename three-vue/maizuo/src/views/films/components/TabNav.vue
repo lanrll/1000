@@ -2,13 +2,14 @@
   <div class="tab-bar-wrap">
     <ul class="tab-bar-nav">
       <li>
-        <router-link to="/films/nowPlaying" class="active">正在热映</router-link>
+        <router-link to="/films/nowPlaying">正在热映</router-link>
       </li>
       <li>
         <router-link to="/films/comingSoon" >即将上映</router-link>
       </li>
     </ul>
-    <div class="tab-bar-line-wrap">
+    <div class="tab-bar-line-wrap" :style="{transform:`translate3d(${translateX}%, 0px, 0px)`}">
+    <!-- <div class="tab-bar-line-wrap" > -->
       <span class="tab-bar-line"></span>
     </div>
   </div>
@@ -17,8 +18,17 @@
 export default {
     data() {
         return {
-            
+            translateX: 0
         }
+    },
+    watch: {
+      $route: {
+        handler(val){
+          // this.translateX = val.path == '/films/nowPlaying' ? 0 : 100
+          this.translateX = val.meta.lineX
+        },
+        immediate: true
+      }
     },
 }
 </script>
@@ -65,17 +75,16 @@ export default {
     line-height: 0.88rem;
     color: #191a1b;
 }
-.tab-bar-nav a.active{
+.tab-bar-nav .router-link-exact-active{
     color: #ff5f16;
 }
 .tab-bar-line-wrap{
     position: absolute;
     bottom: 0;
-    width: 16%;
+    width: 50%;
     z-index: 200;
     left:0;
     transition: transform .2s;
-    transform: translate3d(100%, 0px, 0px);
 }
 .tab-bar-line{
     border-bottom: 2px solid #ff5f16;

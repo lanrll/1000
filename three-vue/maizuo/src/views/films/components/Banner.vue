@@ -20,7 +20,9 @@ export default {
   mounted() {
     var swiper = new Swiper(".banner-wrap", {
       pagination: {
-        el: ".swiper-pagination"
+        el: ".swiper-pagination",
+        autoplay:true,
+        loop: true,
       }
     });
   },

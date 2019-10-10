@@ -1,5 +1,6 @@
 <template>
   <div class="film-list-content">
+    <van-list v-model="isLoading" :finished="finished"  @load="loadMore()" finished-text="没有更多了">
     <ul class="film-list-group">
       <!-- 一个列表项start -->
       <li class="film-list-item" v-for="item in dataList" :key="item.filmId">
@@ -31,6 +32,7 @@
         </router-link>
       </li>
     </ul>
+    </van-list>
   </div>
 </template>
 <script>
@@ -40,35 +42,48 @@ export default {
     data(){
       return {
         dataList:[],
+        isLoading: false,
+        finished: false,
         pageInfo:{
           pageSize:10,
-          pageNum:1,
-          total:0
+          pageNum:0,
+          total:-1
         }
       }
     },
     created(){
-      this.getData()
+      // this.getData()
     },
     methods:{
       getData(){
+        this.pageInfo.pageNum++
         let query = {type:1,...this.pageInfo}
         delete query.total
         getFilmList(query).then(res=>{
           if(res.status == 0){
-            this.dataList = res.data.films
+            this.dataList.push(...res.data.films)
             this.pageInfo.total = res.data.total
           }
+          this.isLoading = false
         })
+      },
+      loadMore(){
+        if(this.pageInfo.total == this.dataList.length){
+          this.isLoading = false;
+          this.finished = true;
+          return
+        }
+        this.getData();
       }
     }
 }
 </script>
-<style scoped>
+<style scoped lang="scss">
 /* 电影列表项 */
 .film-list-content{
     /* margin-top:1.86rem; */
     background: #fff;
+    padding-bottom: .98rem;
 }
 .film-list-group{
     padding:0 0.3rem;

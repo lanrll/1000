@@ -5,6 +5,8 @@ import NowPlaying from './views/films/NowPlaying.vue'
 import ComingSoon from './views/films/ComingSoon.vue'
 import FilmDetail from '@/views/films/FilmDetail'
 import CinemasIndex from './views/cinemas/Index'
+import CinemaDetail from './views/cinemas/CinemaDetail.vue'
+import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
 
 Vue.use(Router)
 
@@ -24,11 +26,18 @@ export default new Router({
         },
         {
           path: 'nowPlaying',
-          component: NowPlaying
+          component: NowPlaying,
+          meta: {
+            lineX: 0,
+            footerNav: 0
+          }
         },
         {
           path: 'comingSoon',
-          component: ComingSoon
+          component: ComingSoon,
+          meta: {
+            lineX: 100
+          }
         }
       ]
     },
@@ -39,8 +48,19 @@ export default new Router({
     },
     {
       path: '/cinemas',
-      component: CinemasIndex
+      component: CinemasIndex,
+      meta: {
+        footerNav: 1
+      }
       // component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+    },
+    {
+      path: '/cinema/:cid',
+      component: CinemaDetail,
+      children: [{
+        path: 'film/:fid/:date',
+        component: CinemaFilmInfo
+      }]
+    },
   ]
 })
