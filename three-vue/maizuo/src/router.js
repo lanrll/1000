@@ -44,13 +44,16 @@ export default new Router({
     {
       path: '/film/:id',
       name: 'filmDetail',
-      component: FilmDetail
+      component: FilmDetail,
+      meta: {
+        footerNav: 1
+      }
     },
     {
       path: '/cinemas',
       component: CinemasIndex,
       meta: {
-        footerNav: 1
+        footerNav: 0
       }
       // component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
@@ -59,7 +62,10 @@ export default new Router({
       component: CinemaDetail,
       children: [{
         path: 'film/:fid/:date',
-        component: CinemaFilmInfo
+        component: CinemaFilmInfo,
+        meta:{
+          footerNav: 1
+        }
       }]
     },
   ]

@@ -1,6 +1,6 @@
 <template>
   <div class="film-list">
-    <!-- <banner :data="bannerLists" v-if="bannerLists.length"></banner> -->
+    <banner :data="bannerLists" v-if="bannerLists.length"></banner>
     <tab-nav></tab-nav>
     <router-view></router-view>
   </div>

@@ -36,7 +36,7 @@ export default {
         return item.name == obj.name
       })
       if(index === -1){
-        this.lists.push({id:this.lists[this.lists.length - 1].id+ 1,...obj})
+        this.lists.push({id:this.lists[this.lists.length - 1].id + 1,...obj})
       }
     },
     delItem(val){

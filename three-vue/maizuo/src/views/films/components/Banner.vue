@@ -19,13 +19,13 @@ export default {
   },
   mounted() {
     var swiper = new Swiper(".banner-wrap", {
+      loop: true,
+      autoplay: true,
       pagination: {
-        el: ".swiper-pagination",
-        autoplay:true,
-        loop: true,
+        el: ".swiper-pagination"
       }
     });
-  },
+  }
 };
 </script>
 

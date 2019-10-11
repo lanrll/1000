@@ -5,48 +5,65 @@
     <van-tabbar-item name="news" icon=" fa fa-leanpub" to="/new">资讯</van-tabbar-item>
     <van-tabbar-item name="my" icon=" fa fa-user" to="/my">我的</van-tabbar-item>
   </van-tabbar>-->
-  <ul class="nav-bar">
-    <li>
-      <router-link to="/" :class="active">
-        <i class="fa fa-film"></i>
-        <span>电影</span>
-      </router-link>
-    </li>
-    <li>
-      <router-link to="/cinemas" :class="active" >
-        <i class="fa fa-home"></i>
-        <span>影院</span>
-      </router-link>
-    </li>
-    <li>
-      <router-link to="/new" :class="active" >
-        <i class="fa fa-leanpub"></i>
-        <span>资讯</span>
-      </router-link>
-    </li>
-    <li>
-      <router-link to="/my" :class="active" >
-        <i class="fa fa-user"></i>
-        <span>我的</span>
-      </router-link>
-    </li>
-  </ul>
+  <div v-show="isok">
+    <ul class="nav-bar">
+      <li>
+        <router-link to="/" :class="active===0 ? 'active': ''">
+          <i class="fa fa-film"></i>
+          <span>电影</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/cinemas" :class="active===1 ? 'active': ''">
+          <i class="fa fa-home"></i>
+          <span>影院</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/new" :class="active===2 ? 'active': ''">
+          <i class="fa fa-leanpub"></i>
+          <span>资讯</span>
+        </router-link>
+      </li>
+      <li>
+        <router-link to="/my" :class="active===3 ? 'active': ''">
+          <i class="fa fa-user"></i>
+          <span>我的</span>
+        </router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      isok: true,
       active: 0
     };
   },
   watch: {
-      $royte: {
-          handler(val){
-              console.log(this.active)
-              this.active = val.meta.footerNav
-          }
-      }
-  },
+    $route: {
+      handler(val) {
+        if(val.path == '/cinemas'){
+          this.active = 1
+        }else if(val.path == '/new'){
+          this.active = 2
+        }else if(val.path == '/my'){
+          this.active = 3
+        }else{
+          this.active = 0
+        }
+        if (val.meta.footerNav !== 1) {
+          this.isok = true;
+          return;
+        }
+        this.isok = false;
+      },
+      deep: true,
+      immediate: true
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -61,6 +78,9 @@ export default {
   justify-content: center;
   font-size: 0.2rem;
   background-color: #fff;
+  .active {
+    color: #f40;
+  }
 }
 .nav-bar:before {
   content: " ";
@@ -80,9 +100,6 @@ export default {
   flex: 1;
   text-align: center;
   height: 0.98rem;
-  .active {
-    color: #f40;
-  }
 }
 .nav-bar a {
   color: #797d82;
@@ -93,9 +110,6 @@ export default {
   position: relative;
   padding-top: 0.08rem;
   box-sizing: border-box;
-  &:hover {
-    color: #f40;
-  }
 }
 .nav-bar i {
   font-size: 0.4rem;
