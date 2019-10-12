@@ -14,7 +14,7 @@
       <div class="film-base-desc">
         <p>
           <span>{{filmDetail.name}}</span>
-          <span>{{name}}</span>
+          <span>{{filmTypeName}}</span>
           <span>
             <b>{{filmDetail.grade}}</b>分
           </span>
@@ -34,11 +34,15 @@
       <!-- 电影演员相片 -->
       <div class="film-actors-desc">
         <h3>演员人员</h3>
-        <actors-banner :data="filmDetail.actors"></actors-banner>
+        <actors-banner :data="filmDetail.actors" v-if="actorsLength>0"></actors-banner>
       </div>
       <!-- 电影剧照介绍 -->
       <div class="film-photo-desc">
-        <photos-banner :data="filmDetail.photos"></photos-banner>
+        <div class="photos">
+          <b>剧照部分</b>
+          <span>全部{{photosLength}} ></span>
+        </div>
+        <photos-banner :data="filmDetail.photos"  v-if="photosLength>0"></photos-banner>
       </div>
     </div>
     <div class="nav-bar">
@@ -54,7 +58,9 @@ export default {
   data() {
     return {
       filmDetail: {},
-      name: null,
+      filmTypeName: null,
+      photosLength: null,
+      actorsLength: null,
       showdesc: false
     };
   },
@@ -65,8 +71,9 @@ export default {
     getData() {
       getFilmDetail(this.$route.params).then(res => {
         this.filmDetail = res.data.film;
-        this.name = this.filmDetail.filmType.name;
-        console.log(res.data.film);
+        this.filmTypeName = this.filmDetail.filmType.name;
+        this.photosLength = this.filmDetail.photos.length;
+        this.actorsLength = this.filmDetail.actors.length;
       });
     },
     goBack() {
@@ -92,7 +99,7 @@ export default {
   width: 100%;
   height: 0.88rem;
   line-height: 0.88rem;
-  z-index: 9000;
+  z-index: 9;
   background-color: hsla(0, 0%, 100%, 0);
   color: transparent;
   text-align: center;
@@ -224,44 +231,6 @@ export default {
     height: 0.45rem;
     line-height: 0.44rem;
   }
-  div {
-    height: 2.8rem;
-    background: rgb(255, 255, 255);
-    ul {
-      height: 2.8rem;
-      display: flex;
-      -webkit-box-pack: start;
-      -webkit-justify-content: flex-start;
-      -ms-flex-pack: start;
-      justify-content: flex-start;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
-      position: relative;
-      width: 100%;
-      margin: 0;
-      padding-left: 0.3rem;
-      list-style: none;
-      li {
-        float: left;
-        width: 1.7rem;
-        height: 2.62rem;
-        margin-right: 0.2rem;
-        img {
-          width: 100%;
-        }
-        p {
-          margin-top: 0.1rem;
-          font-size: 0.2rem;
-          text-align: center;
-          &:nth-child(3) {
-            color: #797d82;
-          }
-        }
-      }
-    }
-  }
 }
 //剧照
 .film-photo-desc {
@@ -288,20 +257,7 @@ export default {
       line-height: 0.44rem;
     }
   }
-  ul {
-    height: 2.3rem;
-    background: rgb(255, 255, 255);
-    padding-left: 0.3rem;
-    
-  }
-  .swiper-wrapper {
-    .swiper-slide{
-      width: 3rem;
-    img {
-      width: 100%;
-    }
-    }
-  }
+  
 }
 /* 选座购票固定区域 */
 .nav-bar {

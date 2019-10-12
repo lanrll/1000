@@ -1,12 +1,12 @@
 <template>
-  <div class="swiper-container banner-wrap">
-    <ul class="swiper-wrapper">
-      <li class="swiper-slide" v-for="(item, index) in data" :key="index">
+  <div class="swiper-container banner-wrap-actors">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" v-for="(item, index) in data" :key="index">
         <img :src="item.avatarAddress" />
         <p>{{item.name}}</p>
         <p>{{item.role}}</p>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -16,16 +16,34 @@ export default {
   data() {
     return {};
   },
-  updated(){
-    console.log(this.data);
-    var swiper = new Swiper(".banner-wrap", {
-     slidesPerView: 4,
+  mounted() {
+    var swiper = new Swiper(".banner-wrap-actors", {
+       slidesPerView: 4,
       spaceBetween: 30,
-      freeMode: true,
     });
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import url("~@/assets/css/swiper.min.css");
+.banner-wrap-actors {
+  height: 2.6rem;
+  background: rgb(255, 255, 255);
+  .swiper-wrapper {
+    padding: 0 0.3rem;
+    .swiper-slide {
+      img {
+        width: 100%;
+      }
+      p {
+        margin-top: 0.1rem;
+        font-size: 0.2rem;
+        text-align: center;
+        &:nth-child(3) {
+          color: #797d82;
+        }
+      }
+    }
+  }
+}
 </style>

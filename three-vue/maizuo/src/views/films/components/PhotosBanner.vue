@@ -1,35 +1,52 @@
 <template>
   <div>
-    <div class="photos">
-      <b>剧照部分</b>
-      <span>全部{{data.length}} ></span>
-    </div>
-    <div class="swiper-container banner-wrap">
-      <div class="swiper-container banner-wrap">
-        <ul class="swiper-wrapper">
-          <li class="swiper-slide" v-for="(item, index) in data" :key="index" style="width:3rem">
-            <img :src="item" />
-          </li>
-        </ul>
+    <div class="swiper-container banner-wrap-photos">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="(item, index) in data" :key="index">
+          <img :src="item" @click="photoshow(index)" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import Swiper from "swiper";
+import { ImagePreview } from 'vant';
 export default {
   props: ["data"],
   data() {
-    console.log(this.data);
     return {};
   },
-  updated() {
-    console.log(this.data);
-    var swiper = new Swiper(".banner-wrap", {
+  mounted() {
+    // console.log(this.data);
+    var swiper = new Swiper(".banner-wrap-photos", {
       slidesPerView: 2,
-    //   slidesPerView: "auto",
-      spaceBetween: 10,
-      freeMode: true
+      spaceBetween: 10
     });
+  },
+  methods: {
+    photoshow(index) {
+      ImagePreview({
+        images: this.data,
+        startPosition: index,
+      });
+    },
   }
 };
 </script>
+<style lang="scss">
+@import url("~@/assets/css/swiper.min.css");
+.banner-wrap-photos {
+  height: 2.3rem;
+  background: rgb(255, 255, 255);
+  padding-left: 0.3rem;
+  .swiper-wrapper {
+    .swiper-slide {
+      width: 3rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+</style>

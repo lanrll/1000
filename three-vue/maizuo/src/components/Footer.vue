@@ -72,7 +72,7 @@ export default {
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 9;
   display: flex;
   flex-direction: row;
   justify-content: center;
