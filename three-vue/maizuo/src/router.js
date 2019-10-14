@@ -7,7 +7,7 @@ import FilmDetail from '@/views/films/FilmDetail'
 import CinemasIndex from './views/cinemas/Index'
 import CinemaDetail from './views/cinemas/CinemaDetail.vue'
 import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
-
+import CityList from './views/city/index.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -68,5 +68,9 @@ export default new Router({
         }
       }]
     },
+    {
+      path: '/city',
+      component: CityList
+    }
   ]
 })

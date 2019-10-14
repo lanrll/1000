@@ -5,7 +5,9 @@
       <!-- <span class="header-title-center">昆虫总动员2：来自远方的后援军</span> -->
     </header>
     <main>
+      <van-sticky >
       <div>{{cinemaInfo.name}}</div>
+      </van-sticky>
       <div>
         <span v-for="(item,index) in cinemaInfo.services" :key="index">{{item.name}}</span>
         <!-- {{cinemaInfo.services | operateActors}} -->
@@ -126,6 +128,7 @@ main {
       height: .88rem;
       line-height: .88rem;
       color: #191a1b;
+      background-color: #fff;
     }
     &:nth-child(2){
         font-size: .3rem;

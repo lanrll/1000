@@ -8,10 +8,12 @@
       </div>
     </div>
     <div class="swiper-pagination"></div>
+    <router-link to="/city">
     <div class="cityChoose">
       成都
       <span class="fa fa-angle-down"></span>
     </div>
+    </router-link>
   </div>
 </template>
 <script>

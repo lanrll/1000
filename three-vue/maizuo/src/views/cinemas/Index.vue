@@ -1,7 +1,9 @@
 <template>
   <div>
     <van-nav-bar title="影院" left-text="成都" @click-left="onClickLeft" @click-right="onClickRight">
-      <span slot="left">成都</span>
+      <!-- <router-link to="/city"> -->
+      <span slot="left" >成都</span>
+      <!-- </router-link> -->
       <van-icon name="arrow-down" slot="left" />
       <van-icon name="search" slot="right" />
     </van-nav-bar>

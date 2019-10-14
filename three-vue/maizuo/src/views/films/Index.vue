@@ -2,11 +2,14 @@
   <div class="film-list">
     <banner :data="bannerLists" v-if="bannerLists.length"></banner>
     <van-sticky @scroll="topShow">
+      
       <nav v-show="isok">
+        <router-link to="/city">
         <div>
           成都
           <span class="fa fa-angle-down"></span>
         </div>
+        </router-link>
         <div>电影</div>
       </nav>
       <tab-nav></tab-nav>
