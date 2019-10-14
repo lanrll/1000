@@ -8,7 +8,6 @@ export const getCinemaList = () =>{
         }
     })
 }
-
 // 获取某个影院的基本信息
 export const getCinemaInfo = (params={cid:7828}) =>{
     return request({
