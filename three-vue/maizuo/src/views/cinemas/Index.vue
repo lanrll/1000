@@ -58,7 +58,6 @@ export default {
     },
     changeArea(val){
       this.value3 = val
-      console.log(val)
       this.$refs.item.toggle();
     }
   },

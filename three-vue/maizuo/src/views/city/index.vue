@@ -154,11 +154,13 @@ export default {
         console.log(this.host)
         console.log(id,name)
       this.setCity(id, name);
-      this.$router.push("/films");
+      history.back()
+      // this.$router.push("/films");
     },
     close(){
       this.setCity(this.gpsCityId, this.gpsCityName);
-      this.$router.push("/films");
+      history.back()
+      // this.$router.push("/films");
     }
   }
 };

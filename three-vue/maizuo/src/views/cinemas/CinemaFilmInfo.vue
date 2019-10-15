@@ -13,7 +13,6 @@
           <span>{{filmInfo.actors | operateActors}}</span>
         </p>
       </router-link>
-    
     <van-tabs v-model="active">
       <van-tab
         v-for="(item) in filmInfo.showDate"
@@ -21,10 +20,8 @@
         :to="`/cinema/${$route.params.cid}/film/${$route.params.fid}/${item}`"
       >
         <div slot="title">
-         
             {{item | formatDate}}
             <!-- <van-icon name="more-o" />选项 -->
-         
         </div>
         <!-- 内容 {{ item }} -->
         <!-- <ul class="list">
@@ -102,7 +99,7 @@ export default {
         dat = this.$route.params.date;
       getCinemaFilmSchedule({ cid: id1, fid: id2, date: dat }).then(res => {
         this.schedules = res.data.schedules;
-        console.log(res.data.schedules);
+        // console.log(res.data.schedules);
       });
     }
   }

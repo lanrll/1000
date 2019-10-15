@@ -78,7 +78,7 @@ export default {
     getCinemaFilmLists() {
       getCinemaFilms({ cid: this.cid }).then(res => {
         this.cinemaFilms = res.data.films;
-        console.log(res.data.films)
+        // console.log(res.data.films)
       });
     },
     changeFilm(index) {
@@ -90,7 +90,8 @@ export default {
       );
     },
     goBack() {
-      history.go(-2);
+      this.$router.push('/cinemas')
+      // history.go(-2);
     }
   },
   components: {

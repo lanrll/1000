@@ -1,23 +1,26 @@
 <template>
-  <ul class="cinema-lists">
-    <li v-for="item in dataLists" :key="item.cinemaId">
-      <router-link :to="`/cinema/${item.cinemaId}`" class="cineams">
-        <div>
-          <p>{{item.name}}</p>
-          <p>{{item.address}}</p>
-        </div>
-        <div>
-          <p>￥{{item.lowPrice/100}}起</p>
-          <p>距离未知</p>
-        </div>
-      </router-link>
-    </li>
-  </ul>
+  <div>
+    
+    <ul class="cinema-lists" >
+      <li v-for="item in areaList" :key="item.cinemaId">
+        <router-link :to="`/cinema/${item.cinemaId}`" class="cineams">
+          <div>
+            <p>{{item.name}}</p>
+            <p>{{item.address}}</p>
+          </div>
+          <div>
+            <p>￥{{item.lowPrice/100}}起</p>
+            <p>距离未知</p>
+          </div>
+        </router-link>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 import { getCinemaList } from "@/api/cinema";
 export default {
-  props: ["data"],
+  props: ['data'],
   data() {
     return {
       dataLists: [],
@@ -29,13 +32,12 @@ export default {
     areaList() {
       let arr = [];
       this.dataLists.forEach(el => {
-        if (el.districtName == data) {
+        if (el.districtName == this.data) {
           arr.push(el);
         }
       });
-      console.log(data)
-      console.log(arr)
-      return arr
+      if(arr.length === 0 ) arr = this.dataLists
+      return arr;
     }
   },
   created() {
@@ -60,11 +62,13 @@ export default {
 <style lang="scss" scoped>
 .cinema-lists {
   font-size: 0.3rem;
+  margin-bottom: 1rem;
   li {
     width: 100%;
     padding: 0.3rem;
     border-bottom: 0.02rem solid #ededed;
-    float: left;
+    display: inline-block;
+    // float: left;
     box-sizing: border-box;
   }
   .cineams {
