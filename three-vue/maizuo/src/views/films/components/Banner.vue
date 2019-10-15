@@ -10,7 +10,7 @@
     <div class="swiper-pagination"></div>
     <router-link to="/city">
     <div class="cityChoose">
-      成都
+     {{$store.state.cityName}}
       <span class="fa fa-angle-down"></span>
     </div>
     </router-link>

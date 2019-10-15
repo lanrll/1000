@@ -54,7 +54,7 @@ export default {
         }else{
           this.active = 0
         }
-        if (val.meta.footerNav !== 1) {
+        if (val.meta.footerNav) {
           this.isok = true;
           return;
         }

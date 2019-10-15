@@ -8,22 +8,24 @@ let service = axios.create({
 })
 
 // request interceptor----全局请求拦截
-  service.interceptors.request.use(
-    config => {
-        config.headers['X-Client-Info'] = '{"a":"3000","ch":"1002","v":"5.0.4","e":"156767148210033043604248"}'
-        if (config.data.xHost) {
-          config.headers['X-Host'] = config.data.xHost
-          delete config.data.xHost
-        
-        return config
-      }
-    },
-    error => {
-      // do something with request error
-      console.log(error) // for debug
-      return Promise.reject(error)
+service.interceptors.request.use(
+  config => {
+    config.headers['X-Client-Info'] = '{"a":"3000","ch":"1002","v":"5.0.4","e":"156767148210033043604248"}'
+    if (config.data.xHost) {
+      config.headers['X-Host'] = config.data.xHost
     }
-  )
+    if(config.url.indexOf('__CITYID__') !== -1){
+      config.url = config.url.replace('__CITYID__','cityId='+store.state.cityId)
+    }
+      delete config.data.xHost
+      return config
+  },
+  error => {
+    // do something with request error
+    console.log(error) // for debug
+    return Promise.reject(error)
+  }
+)
 // }
 
 // response interceptor----全局响应拦截

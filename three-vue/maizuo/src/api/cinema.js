@@ -1,8 +1,8 @@
 import request from '@/utils/request'
 // 获取影院列表接口
-export const getCinemaList = () =>{
+export const getCinemaList = (id) =>{
     return request({
-        url:'/gateway?cityId=510100&ticketFlag=1',
+        url:`/gateway?cityId=${id}&ticketFlag=1`,
         data:{
             xHost:'mall.film-ticket.cinema.list'
         }

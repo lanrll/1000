@@ -17,20 +17,42 @@
 <script>
 import { getCinemaList } from "@/api/cinema";
 export default {
+  props: ["data"],
   data() {
     return {
-      dataLists: []
+      dataLists: [],
+      area: []
+      // areaList: []
     };
+  },
+  computed: {
+    areaList() {
+      let arr = [];
+      this.dataLists.forEach(el => {
+        if (el.districtName == data) {
+          arr.push(el);
+        }
+      });
+      console.log(data)
+      console.log(arr)
+      return arr
+    }
   },
   created() {
     this.getData();
   },
   methods: {
     getData() {
-      getCinemaList().then(res => {
+      getCinemaList(this.$store.state.cityId).then(res => {
         this.dataLists = res.data.cinemas;
-        console.log(res.data.cinemas);
+        this.dataLists.forEach(el => {
+          if (this.area.indexOf(el.districtName) == -1) {
+            this.area.push(el.districtName);
+          }
+        });
+        this.$emit("Administrative", this.area);
       });
+      // console.log(this.area);
     }
   }
 };
@@ -55,7 +77,7 @@ export default {
         text-align: left;
         float: left;
         p {
-            display: block;
+          display: block;
           &:nth-child(1) {
             color: #191a1b;
             font-size: 0.3rem;
@@ -86,12 +108,12 @@ export default {
         margin-right: -5px;
         p {
           &:nth-child(1) {
-            font-size: .3rem;
+            font-size: 0.3rem;
             color: #ff5f16;
           }
-          &:nth-child(2){
-              margin-top: .1rem;
-              color: #797d82;
+          &:nth-child(2) {
+            margin-top: 0.1rem;
+            color: #797d82;
           }
         }
       }

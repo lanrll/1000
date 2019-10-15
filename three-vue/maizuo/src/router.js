@@ -7,10 +7,12 @@ import FilmDetail from '@/views/films/FilmDetail'
 import CinemasIndex from './views/cinemas/Index'
 import CinemaDetail from './views/cinemas/CinemaDetail.vue'
 import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
-import CityList from './views/city/index.vue'
+import CityList from './views/city/Index.vue'
+import MyIndex from './views/my/Index.vue'
+import store from './store'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   // mode: 'history',
   // base: process.env.BASE_URL,
   routes: [{
@@ -29,14 +31,15 @@ export default new Router({
           component: NowPlaying,
           meta: {
             lineX: 0,
-            footerNav: 0
+            footerNav: true
           }
         },
         {
           path: 'comingSoon',
           component: ComingSoon,
           meta: {
-            lineX: 100
+            lineX: 100,
+            footerNav: true
           }
         }
       ]
@@ -45,15 +48,12 @@ export default new Router({
       path: '/film/:id',
       name: 'filmDetail',
       component: FilmDetail,
-      meta: {
-        footerNav: 1
-      }
     },
     {
       path: '/cinemas',
       component: CinemasIndex,
       meta: {
-        footerNav: 0
+        footerNav: true
       }
       // component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
@@ -63,14 +63,28 @@ export default new Router({
       children: [{
         path: 'film/:fid/:date',
         component: CinemaFilmInfo,
-        meta:{
-          footerNav: 1
-        }
       }]
     },
     {
       path: '/city',
       component: CityList
+    },
+    {
+      path: '/my',
+      component: MyIndex,
+      meta: {
+        footerNav: true 
+      }
     }
   ]
 })
+let whiteList =  ['/city']
+router.beforeEach((to, from, next) => {
+  if(whiteList.indexOf(to.path) === -1 && !store.state.cityId){
+    next('/city')
+    return
+  }
+  next()
+})
+
+export default router

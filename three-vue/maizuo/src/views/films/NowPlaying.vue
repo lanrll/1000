@@ -160,6 +160,9 @@ export default {
     border-radius: 2px;
 }
 .film-list-item-desc .info-col{
+    display: block;
+    width: 100%;
+    padding: 0.02rem 0;
     font-size:.26rem;
     color: #797d82;
     margin-top:.12rem;
@@ -167,7 +170,6 @@ export default {
     -o-text-overflow: ellipsis;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
 }
 .item-desc-grade .grade{
     color: #ffb232;
