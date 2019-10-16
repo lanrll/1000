@@ -146,7 +146,7 @@ div {
   }
 }
 .list {
-  font-size: 0.35rem;
+  font-size: 0.3rem;
   li {
     width: 100%;
     display: flex;

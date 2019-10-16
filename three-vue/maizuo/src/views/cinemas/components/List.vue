@@ -1,7 +1,6 @@
 <template>
   <div>
-    
-    <ul class="cinema-lists" >
+    <ul class="cinema-lists">
       <li v-for="item in areaList" :key="item.cinemaId">
         <router-link :to="`/cinema/${item.cinemaId}`" class="cineams">
           <div>
@@ -20,8 +19,9 @@
 <script>
 import { getCinemaList } from "@/api/cinema";
 export default {
-  props: ['data'],
+  props: ["data", "keyw"],
   data() {
+    console.log(1)
     return {
       dataLists: [],
       area: []
@@ -30,23 +30,69 @@ export default {
   },
   computed: {
     areaList() {
-      let arr = [];
-      this.dataLists.forEach(el => {
-        if (el.districtName == this.data) {
-          arr.push(el);
+      var arr = [];
+      var brr = [];
+      let key = 0;
+      console.log(this.keyw);
+      console.log(this.data);
+      // console.log(this.dataLists);
+      if (this.data.length > 0) {
+        this.dataLists.forEach(el => {
+          if (el.districtName == this.data) {
+            arr.push(el);
+          }
+        });
+        if (this.data == "全城") {
+          if (this.keyw.length > 0) {
+            arr = [];
+            this.dataLists.forEach(el => {
+              if (el.name.includes(this.keyw)) {
+                arr.push(el);
+              }
+            });
+          } else {
+            arr = this.dataLists;
+          }
         }
-      });
-      if(arr.length === 0 ) arr = this.dataLists
+      }
+      console.log(arr);
       return arr;
+      // return this.dataLists
+      // this.dataLists.forEach(el => {
+      //   if (el.districtName === this.data) {
+      //     arr.push(el);
+      //     key = 2;
+      //   }
+      //   // if (this.keyw.length>0) {
+      //   //   key = 1;
+      //   // }
+      //   if (reg.test(el.name)) {
+      //     // console.log(1);
+      //     arr.push(el);
+      //     key = 2;
+      //   } else if (this.keyw.length > 0) {
+      //     key = 1;
+      //   }
+      // });
+      // console.log(key);
+      // if (key == 0) {
+      //   return (arr = this.dataLists);
+      // } else if (key == 1) {
+      //   return (arr = []);
+      // } else if (key == 2) {
+      //   return arr;
+      // }
     }
   },
   created() {
     this.getData();
+    console.log(1)
   },
   methods: {
     getData() {
       getCinemaList(this.$store.state.cityId).then(res => {
         this.dataLists = res.data.cinemas;
+        this.firstList = res.data.cinemas.slice(0, 6);
         this.dataLists.forEach(el => {
           if (this.area.indexOf(el.districtName) == -1) {
             this.area.push(el.districtName);

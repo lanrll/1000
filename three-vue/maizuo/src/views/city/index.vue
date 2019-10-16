@@ -6,7 +6,7 @@
         <i>当前城市-{{$store.state.cityName}}</i>
       </header>
       <div>
-        <van-search background="#f4f4f4" v-model="kw" placeholder="请输入搜索关键词" show-action />
+        <van-search background="#f4f4f4" v-model="kw" placeholder="请输入搜索关键词"  />
       </div>
     </van-sticky>
     <div class="city">
@@ -22,9 +22,9 @@
       </div>
     </div>
     <div v-if="!kw">
-      <van-index-bar :index-list="indexes">
+      <van-index-bar :index-list="indexes" :sticky-offset-top="95">
         <template v-for="(char) in indexes">
-          <van-index-anchor :index="char" :key="char" />
+          <van-index-anchor :index="char" :key="char" class="shouzimu"/>
           <van-cell
             @click="selectCity(city.cityId,city.name)"
             :title="city.name"
@@ -172,15 +172,17 @@ main {
     height: 0.88rem;
     line-height: 0.88rem;
     background-color: #fff;
-    font-size: 0.5rem;
+    font-size: 0.4rem;
     display: flex;
     align-items: center;
+    position: relative;
     span {
       padding: 0.2rem;
+      position: absolute;
     }
     i {
       display: block;
-      width: 70%;
+      width: 100%;
       text-align: center;
     }
   }
@@ -208,5 +210,12 @@ main {
       }
     }
   }
+  .van-search__content{
+    background-color: #fff;
+  }
+  .shouzimu{
+    background-color: #f4f4f4;
+  }
+  
 }
 </style>

@@ -52,6 +52,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.film-list{
+  a{
+    color: #333;
+  }
+}
 nav {
   font-size: 0.35rem;
   width: 100%;

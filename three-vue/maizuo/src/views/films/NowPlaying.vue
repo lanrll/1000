@@ -27,7 +27,9 @@
             </p>
           </div>
           <div class="film-list-item-action padding">
+            <router-link :to="{name:'FilmCinemas',params:{id:item.filmId}}">
             <span href class="buy">购买</span>
+            </router-link>
           </div>
         </router-link>
       </li>

@@ -4,11 +4,15 @@ import FilmsIndex from './views/films/Index'
 import NowPlaying from './views/films/NowPlaying.vue'
 import ComingSoon from './views/films/ComingSoon.vue'
 import FilmDetail from '@/views/films/FilmDetail'
-import CinemasIndex from './views/cinemas/Index'
+import FilmCinemas from './views/cinemas/FilmCinemas.vue'
+import CinemaIndex from './views/cinemas/Index'
 import CinemaDetail from './views/cinemas/CinemaDetail.vue'
 import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
+import CinemaSearch from './views/cinemas/CinemaSearch.vue'
 import CityList from './views/city/Index.vue'
 import MyIndex from './views/my/Index.vue'
+import Login from './views/my/Login.vue'
+
 import store from './store'
 Vue.use(Router)
 
@@ -48,14 +52,29 @@ const router = new Router({
       path: '/film/:id',
       name: 'filmDetail',
       component: FilmDetail,
+      children: [{
+        path: 'cinemas',
+        name: 'FilmCinemas',
+        component: FilmCinemas
+      }]
     },
+    // {
+
+    // },
     {
       path: '/cinemas',
-      component: CinemasIndex,
+      component: CinemaIndex,
       meta: {
         footerNav: true
-      }
-      // component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      },
+      // children: [{
+      //   path: 'search',
+      //   component: CinemaSearch,
+      // }]
+    },
+    {
+      path: '/cinemas/search',
+      component: CinemaSearch,
     },
     {
       path: '/cinema/:cid',
@@ -73,18 +92,28 @@ const router = new Router({
       path: '/my',
       component: MyIndex,
       meta: {
-        footerNav: true 
+        footerNav: true
       }
+    },
+    {
+      path: '/login',
+      compinent: Login
     }
   ]
 })
-let whiteList =  ['/city']
+//首次进入
+let whiteList = ['/city']
 router.beforeEach((to, from, next) => {
-  if(whiteList.indexOf(to.path) === -1 && !store.state.cityId){
+  if (whiteList.indexOf(to.path) === -1 && !store.state.cityId) {
     next('/city')
     return
   }
   next()
 })
-
+//导航重复解决
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
+  return originalPush.call(this, location).catch(err => err)
+}
 export default router

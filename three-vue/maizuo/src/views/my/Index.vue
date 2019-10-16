@@ -5,7 +5,7 @@
           <img src="@/assets/logo.png" alt="">
       </div>
       <div>
-          立即登录
+          <router-link to="/login">立即登录</router-link>
       </div>
     </header>
     <div class="tab">
@@ -59,7 +59,10 @@ export default {
             }
             &:nth-child(2){
                 margin-right: 2rem;
+                a{
+
                 color: #fff;
+                }
             }
         }
     }

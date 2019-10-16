@@ -2,7 +2,9 @@
   <div class="swiper-container banner-wrap-actors">
     <div class="swiper-wrapper">
       <div class="swiper-slide" v-for="(item, index) in data" :key="index">
-        <img :src="item.avatarAddress" />
+        <div>
+        <img :src="item.avatarAddress"/>
+        </div>
         <p>{{item.name}}</p>
         <p>{{item.role}}</p>
       </div>
@@ -19,7 +21,7 @@ export default {
   mounted() {
     var swiper = new Swiper(".banner-wrap-actors", {
        slidesPerView: 4,
-      spaceBetween: 30,
+      spaceBetween: 20,
     });
   }
 };
@@ -32,8 +34,19 @@ export default {
   .swiper-wrapper {
     padding: 0 0.3rem;
     .swiper-slide {
+      div{
+        width: 100%;
+        height: 1.7rem;
+        overflow: hidden;
+        text-align: center;
+        line-height: 1rem;
+        position: relative;
       img {
         width: 100%;
+        position: absolute;
+        top: -15%;
+        left: 0;
+      }
       }
       p {
         margin-top: 0.1rem;
