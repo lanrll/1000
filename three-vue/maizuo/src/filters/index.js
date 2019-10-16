@@ -16,7 +16,7 @@ export const formatTime = (num) => {
     return  date
 }
 export const formatDate = (num) => {
-    let arr
+    let arr= []
     let date = new Date(num * 1000);
     date = date.toLocaleDateString();
     arr = date.split('/')

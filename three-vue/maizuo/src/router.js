@@ -5,10 +5,12 @@ import NowPlaying from './views/films/NowPlaying.vue'
 import ComingSoon from './views/films/ComingSoon.vue'
 import FilmDetail from '@/views/films/FilmDetail'
 import FilmCinemas from './views/cinemas/FilmCinemas.vue'
+
 import CinemaIndex from './views/cinemas/Index'
 import CinemaDetail from './views/cinemas/CinemaDetail.vue'
 import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
 import CinemaSearch from './views/cinemas/CinemaSearch.vue'
+
 import CityList from './views/city/Index.vue'
 import MyIndex from './views/my/Index.vue'
 import Login from './views/my/Login.vue'
@@ -52,15 +54,12 @@ const router = new Router({
       path: '/film/:id',
       name: 'filmDetail',
       component: FilmDetail,
-      children: [{
-        path: 'cinemas',
-        name: 'FilmCinemas',
-        component: FilmCinemas
-      }]
     },
-    // {
-
-    // },
+    {
+      path: '/film/:id/cinemas',
+      name: 'FilmCinemas',
+      component: FilmCinemas
+    },
     {
       path: '/cinemas',
       component: CinemaIndex,

@@ -12,6 +12,7 @@ export const getFilmList = (params = {
     }
   })
 }
+//电影详情
 export const getFilmDetail = (params) => {
   return request({
     url: 'gateway?filmId=' + params.id + '&k=4210892',
@@ -26,6 +27,15 @@ export const getFilmBannerList = () => {
     url: '/gateway?type=2&cityId=510100&k=7729231',
     data: {
       xHost: 'mall.cfg.common-banner'
+    }
+  })
+}
+// 获取电影播放影院
+export const getFilmPlayCinema = (fid,cid) => {
+  return request({
+    url: `/gateway?filmId=${fid}&cityId=${cid}&k=7729231`,
+    data: {
+      xHost: 'mall.film-ticket.cinema.film-show-cinema'
     }
   })
 }

@@ -8,3 +8,12 @@ export const getCityList = () =>{
         }
     })
 }
+//电影日期影院列表
+export  const getFilmTimeCinema = (num) => {
+    return request({
+        url:'gateway?cityId='+num+'&k=7209940',
+        data: {
+            xHost: 'mall.cfg.cinema.banners'
+        }
+    })
+}

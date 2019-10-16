@@ -1,4 +1,13 @@
 import request from '@/utils/request'
+// 获取某天某电影影院列表
+export const getTimeCinemaList = () =>{
+    return request({
+        url:`/gateway?&k=9975962`,
+        data:{
+            xHost:'mall.film-ticket.cinema.batch-cinema'
+        }
+    })
+}
 // 获取影院列表接口
 export const getCinemaList = (id) =>{
     return request({
