@@ -23,11 +23,11 @@ export const setToken = (val) => {
     return localStorage.setItem('token',val)
 }
 
-export const getUserInfo = () => {
+export const getUserData = () => {
     let userInfo = localStorage.getItem('userInfo')
-    return userInfo ? userInfo : ''
+    return userInfo ? JSON.parse(userInfo) : ''
 }
-export const setUserinfo = (val) => {
-    return localStorage.setItem('userInfo',val)
+export const setUserData = (val) => {
+    return localStorage.setItem('userInfo',JSON.stringify(val))
 }
 

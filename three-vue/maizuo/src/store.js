@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getCityId, getCityName,getUserInfo} from './utils/local-data'
+import { getCityId, getCityName,getUserData} from './utils/local-data'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     cityId: getCityId(),
     cityName: getCityName(),
-    userInfo: getUserInfo()
+    userInfo: getUserData()
   },
   mutations: {
     setCityId(state,val){

@@ -6,7 +6,7 @@
       </div>
       <div>
         <router-link to="/login" v-if="!userInfo.nickName">立即登录</router-link>
-        <router-link to="/" v-if="userInfo.nickName">{{userInfo.nickName}}</router-link>
+        <router-link to="/user/info" v-if="userInfo.nickName">{{userInfo.nickName}}</router-link>
       </div>
     </header>
     <div class="tab">
@@ -25,15 +25,16 @@
     </div>
     <div class="list">
       <van-cell title="卖座卷" is-link icon="coupon-o" to="/user/volume" />
-      <van-cell title="组合红包" is-link icon="bill-o" to="/user/red"/>
-      <van-cell title="余额" is-link value="￥0" icon="balance-o" to="/user/balance"/>
-      <van-cell title="设置" is-link icon="setting-o" to="/user/set"/>
+      <van-cell title="组合红包" is-link icon="bill-o" to="/user/red" />
+      <van-cell title="余额" is-link value="￥0" icon="balance-o" to="/user/balance" />
+      <van-cell title="设置" is-link icon="setting-o" to="/user/set" />
       <van-cell title="设置" is-link icon="setting-o" v-show="false" />
     </div>
   </div>
 </template>
 <script>
 import { getUserInfo } from "@/api/user.js";
+import { getUserData, setUserData } from "@/utils/local-data.js";
 export default {
   data() {
     return {

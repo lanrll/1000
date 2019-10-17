@@ -102,6 +102,11 @@ export default {
   },
   created() {
     location.coordinate("container", res => {
+      if(res.type == 'error') {
+        // console.log(res.info)
+        this.$toast('未能精确定位');
+        return
+      }
       let brr = [res.position.lng, res.position.lat];
       this.dataLists = this.dataLists.map(el => {
         let ds = location.distance(el.gpsAddress.split(":"), brr);

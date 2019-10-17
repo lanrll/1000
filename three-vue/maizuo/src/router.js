@@ -11,7 +11,7 @@ import CinemaDetail from './views/cinemas/CinemaDetail.vue'
 import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
 import CinemaSearch from './views/cinemas/CinemaSearch.vue'
 
-import CityList from './views/city/Index.vue'
+import CityList from './views/city/index.vue'
 import MyIndex from './views/my/Index.vue'
 import Login from './views/my/Login.vue'
 
@@ -23,6 +23,7 @@ import UserRed from './views/my/UserRed.vue'
 import UserBalance from './views/my/UserBalance.vue'
 import UserSet from './views/my/UserSet.vue'
 import UserCommodity from './views/my/UserCommodity.vue'
+import UserInfo from './views/my/UserInfo.vue'
 
 import store from './store'
 Vue.use(Router)
@@ -108,6 +109,13 @@ const router = new Router({
       component: MyIndex,
       meta: {
         footerNav: true
+      }
+    },
+    {
+      path: '/user/info',
+      component: UserInfo,
+      meta: {
+        title: '我的资料'
       }
     },
     {

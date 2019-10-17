@@ -29,7 +29,7 @@
 </template>
 <script>
 import { getCode ,Login} from "@/api/user.js";
-import { setToken,setUserinfo} from "@/utils/local-data.js";
+import { setToken,setUserData} from "@/utils/local-data.js";
 export default {
   data() {
     return {
@@ -51,13 +51,17 @@ export default {
   methods: {
     getSmsCode() {
       getCode(this.phone).then(res => {
-        console.log(res);
+        if(res.status == 0){
+          this.$toast('发送成功！');
+        }else{
+          this.$toast(res.msg);
+        }
       });
     },
     userLogin(){
       Login(this.phone,this.smsCode).then(res => {
         this.$store.commit('setUserinfo',res.data)
-        setUserinfo(res.data)
+        setUserData(res.data)
         setToken(res.data.token)
         if(res.status ==0){
           this.$router.push('/my')

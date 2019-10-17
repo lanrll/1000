@@ -41,7 +41,8 @@ const location = {
             cb(res)
       }); //返回定位信息
       AMap.event.addListener(geolocation, 'error',function(res) {
-        console.log(res)
+        cb(res)
+        // console.log(res)
   }); //返回定位出错信息
     });
   },
