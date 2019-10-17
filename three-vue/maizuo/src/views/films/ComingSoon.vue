@@ -26,7 +26,9 @@
             </p>
           </div>
           <div class="film-list-item-action padding">
+            <router-link :to="{name:'FilmCinemas',params:{id:item.filmId}}">
             <span href class="buy">预购</span>
+            </router-link>
           </div>
         </router-link>
       </li>
@@ -147,6 +149,7 @@ export default {
 .film-list-item-desc .info-col{
     font-size:.26rem;
     color: #797d82;
+    padding: 0.02rem 0;
     margin-top:.12rem;
     overflow-x: hidden;
     -o-text-overflow: ellipsis;

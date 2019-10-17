@@ -15,7 +15,7 @@
       </router-link>
     <van-tabs v-model="active">
       <van-tab
-        v-for="(item) in filmInfo.showDate"
+        v-for="(item) in showDate"
         :key="item"
         :to="`/cinema/${$route.params.cid}/film/${$route.params.fid}/${item}`"
       >
@@ -77,11 +77,13 @@ export default {
     return {
       schedules: [],
       active: 0,
-      container: null
+      container: null,
+      showDate: this.filmInfo.showDate.sort()
     };
   },
   mounted() {
     this.container = this.$refs.container;
+    console.log(this.filmInfo)
   },
   watch: {
     $route: {

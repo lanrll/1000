@@ -15,7 +15,7 @@
             </h3>
             <p class="item-desc-grade info-col">
               <span>观众评分</span>
-              <span class="grade">{{item.grade}}</span>
+              <span class="grade">{{item.grade ? item.grade: '无'}}</span>
             </p>
             <p class="item-desc-actors info-col">
               <label>主演：</label>
@@ -91,7 +91,7 @@ export default {
     padding:0 0.3rem;
 }
 .film-list-item{
-    height: 1.88rem;
+    height: 1.88rem; 
     padding:0.3rem 0;
     position: relative;
 }

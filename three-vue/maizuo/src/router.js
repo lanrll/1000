@@ -15,6 +15,15 @@ import CityList from './views/city/Index.vue'
 import MyIndex from './views/my/Index.vue'
 import Login from './views/my/Login.vue'
 
+import NewsIndex from './views/news/Index.vue'
+
+import UserOrder from './views/my/FilmOrder.vue'
+import UserVolume from './views/my/UserVolume.vue'
+import UserRed from './views/my/UserRed.vue'
+import UserBalance from './views/my/UserBalance.vue'
+import UserSet from './views/my/UserSet.vue'
+import UserCommodity from './views/my/UserCommodity.vue'
+
 import store from './store'
 Vue.use(Router)
 
@@ -88,6 +97,13 @@ const router = new Router({
       component: CityList
     },
     {
+      path: '/news',
+      component: NewsIndex,
+      meta: {
+        footerNav: true
+      }
+    },
+    {
       path: '/my',
       component: MyIndex,
       meta: {
@@ -95,8 +111,50 @@ const router = new Router({
       }
     },
     {
+      path: '/user/order',
+      component: UserOrder,
+      meta: {
+        title: '电影订单'
+      }
+    },
+    {
+      path: '/user/commodity',
+      component: UserCommodity,
+      meta: {
+        title: '商品订单'
+      }
+    },
+    {
+      path: '/user/volume',
+      component: UserVolume,
+      meta: {
+        title: '卖座卷'
+      }
+    },
+    {
+      path: '/user/red',
+      component: UserRed,
+      meta: {
+        title: '组合红包'
+      }
+    },
+    {
+      path: '/user/balance',
+      component: UserBalance,
+      meta: {
+        title: '余额'
+      }
+    },
+    {
+      path: '/user/set',
+      component: UserSet,
+      meta: {
+        title: '设置'
+      }
+    },
+    {
       path: '/login',
-      compinent: Login
+      component: Login
     }
   ]
 })

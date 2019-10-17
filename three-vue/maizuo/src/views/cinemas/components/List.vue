@@ -9,7 +9,7 @@
           </div>
           <div>
             <p>￥{{item.lowPrice/100}}起</p>
-            <p>距离未知</p>
+            <p>{{item.dis}}Km</p>
           </div>
         </router-link>
       </li>
@@ -18,13 +18,17 @@
 </template>
 <script>
 import { getCinemaList } from "@/api/cinema";
+import location from "@/utils/locations";
+import axios from "axios";
 export default {
-  props: ["data", "keyw"],
+  props: ["data", "keyw", "cinemas"],
   data() {
-    console.log(1)
+    // console.log(1)
     return {
       dataLists: [],
-      area: []
+      area: [],
+      addres1: [],
+      addres2: []
       // areaList: []
     };
   },
@@ -33,9 +37,10 @@ export default {
       var arr = [];
       var brr = [];
       let key = 0;
-      console.log(this.keyw);
-      console.log(this.data);
+      // console.log(this.keyw);
+      // console.log(this.data);
       // console.log(this.dataLists);
+
       if (this.data.length > 0) {
         this.dataLists.forEach(el => {
           if (el.districtName == this.data) {
@@ -55,7 +60,18 @@ export default {
           }
         }
       }
-      console.log(arr);
+      // console.log(arr);
+      // for (let i = 0; i < arr.length - 1; i++) {
+      //         for (let j = 1; j < arr.length - 1 - i; j++) {
+      //           if (arr[j].dis > arr[j + 1].dis) {
+      //             let temp = arr[j + 1];
+      //             arr[j + 1] = arr[j];
+      //             arr[j] = temp;
+      //           }
+      //         }
+      //       }
+      arr.sort(this.compare("dis"))
+      console.log(arr[0])
       return arr;
       // return this.dataLists
       // this.dataLists.forEach(el => {
@@ -85,22 +101,75 @@ export default {
     }
   },
   created() {
+    location.coordinate("container", res => {
+      let brr = [res.position.lng, res.position.lat];
+      this.dataLists = this.dataLists.map(el => {
+        let ds = location.distance(el.gpsAddress.split(":"), brr);
+        // console.log(ds);
+        ds = Number((ds / 1000).toFixed(2))
+        return { ...el, dis:  ds};
+      });
+      // console.log(this.addres1)
+    });
     this.getData();
-    console.log(1)
+    // console.log(1)
   },
   methods: {
     getData() {
       getCinemaList(this.$store.state.cityId).then(res => {
-        this.dataLists = res.data.cinemas;
         this.firstList = res.data.cinemas.slice(0, 6);
+        if (this.cinemas) {
+          this.dataLists = this.cinemas;
+        } else {
+          this.dataLists = res.data.cinemas;
+        }
         this.dataLists.forEach(el => {
           if (this.area.indexOf(el.districtName) == -1) {
             this.area.push(el.districtName);
           }
         });
+        // let aa = this.dataLists[0];
+        // console.log(aa)
+        // this.dataLists.forEach(item => {
+        // let arr = aa.gpsAddress.split(":");
+        // console.log(arr)
+        // arr = this.getCinemaAddres(arr);
+        // console.log(this.getCinemaAddres(arr))
+        // location.coordinate("container", res => {
+        // let brr = [res.position.lng, res.position.lat];
+        // console.log(res.position);
+        // console.log(this.addres1, this.addres2);
+        // let ds = location.distance(arr, brr);
+        // this.dataLists[0] = {...this.dataLists[0],dis:ds}
+        // console.log(ds);
+        // console.log(this.dataLists[0])
+        // });
+        // });
+        // console.log(aa);
         this.$emit("Administrative", this.area);
       });
       // console.log(this.area);
+    },
+    getCinemaAddres(params) {
+      axios({
+        url: `https://restapi.amap.com/v3/assistant/coordinate/convert?locations=${
+          params[0]
+        },${
+          params[1]
+        }&coordsys=gps&output=JSON&key=55b14f37d88ac29d9bca2205bdca3cb8`
+      }).then(res => {
+        // console.log(res.data.locations);
+        let arr = res.data.locations.split(",");
+        // this.addres2 = arr
+        // return arr;
+      });
+    },
+    compare(p) {
+      //这是比较函数
+      return function(m, n) {};
+      var a = m[p];
+      var b = n[p];
+      return a - b; //升序
     }
   }
 };

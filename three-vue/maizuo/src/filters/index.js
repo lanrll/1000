@@ -26,7 +26,7 @@ export const formatDate = (num) => {
 export const filmsTime = (num) => {
     let date = new Date(num * 1000);
     let hours = date.getHours();
-    let minutes = date.getMinutes() 
+    let minutes = date.getMinutes()
     if(hours<10){
         hours = '0' + hours
     }

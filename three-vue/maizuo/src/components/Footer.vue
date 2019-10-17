@@ -5,7 +5,7 @@
     <van-tabbar-item name="news" icon=" fa fa-leanpub" to="/new">资讯</van-tabbar-item>
     <van-tabbar-item name="my" icon=" fa fa-user" to="/my">我的</van-tabbar-item>
   </van-tabbar>-->
-  <div v-show="isok">
+  <div v-show="isok" class="footer-nav">
     <ul class="nav-bar">
       <li>
         <router-link to="/" :class="active===0 ? 'active': ''">
@@ -20,7 +20,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/new" :class="active===2 ? 'active': ''">
+        <router-link to="/news" :class="active===2 ? 'active': ''">
           <i class="fa fa-leanpub"></i>
           <span>资讯</span>
         </router-link>
@@ -47,7 +47,7 @@ export default {
       handler(val) {
         if(val.path == '/cinemas'){
           this.active = 1
-        }else if(val.path == '/new'){
+        }else if(val.path == '/news'){
           this.active = 2
         }else if(val.path == '/my'){
           this.active = 3
@@ -67,6 +67,9 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.footer-nav{
+  width: 100%;
+}
 .nav-bar {
   height: 0.98rem;
   position: fixed;

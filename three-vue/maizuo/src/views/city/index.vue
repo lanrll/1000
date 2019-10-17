@@ -89,7 +89,7 @@ export default {
   methods: {
     ...mapMutations(["setCityId", "setCityName"]),
     /**获取地图定位*/
-    getLocation() {
+    getLocation() { 
       let _that = this;
       let geolocation = location1.initMap("container", cityName => {
         //   localStorage.setItem('local',cityName) ;

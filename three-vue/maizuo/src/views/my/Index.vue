@@ -2,88 +2,113 @@
   <div class="contener">
     <header class="header">
       <div>
-          <img src="@/assets/logo.png" alt="">
+        <img src="@/assets/logo.png" alt />
       </div>
       <div>
-          <router-link to="/login">立即登录</router-link>
+        <router-link to="/login" v-if="!userInfo.nickName">立即登录</router-link>
+        <router-link to="/" v-if="userInfo.nickName">{{userInfo.nickName}}</router-link>
       </div>
     </header>
     <div class="tab">
-        <div>
-            <span class="fa fa-file-text-o"></span>
-            <p>电影订单</p>
-        </div>
-        <div>
-            <span class="fa fa-file-text-o"></span>
-            <p>商品订单</p>
-        </div>
+      <div>
+        <router-link to="/user/order">
+          <span class="fa fa-file-text-o"></span>
+          <p>电影订单</p>
+        </router-link>
+      </div>
+      <div>
+        <router-link to="/user/commodity">
+          <span class="fa fa-file-text-o"></span>
+          <p>商品订单</p>
+        </router-link>
+      </div>
     </div>
     <div class="list">
-        <van-cell title="卖座卷" is-link  icon="coupon-o"/>
-        <van-cell title="组合红包" is-link  icon="bill-o"/>
-        <van-cell title="余额" is-link  value="￥0" icon="balance-o"/>
-        <van-cell title="设置" is-link  icon="setting-o"/>
-        <van-cell title="设置" is-link  icon="setting-o" v-show="false"/>
+      <van-cell title="卖座卷" is-link icon="coupon-o" to="/user/volume" />
+      <van-cell title="组合红包" is-link icon="bill-o" to="/user/red"/>
+      <van-cell title="余额" is-link value="￥0" icon="balance-o" to="/user/balance"/>
+      <van-cell title="设置" is-link icon="setting-o" to="/user/set"/>
+      <van-cell title="设置" is-link icon="setting-o" v-show="false" />
     </div>
   </div>
 </template>
 <script>
+import { getUserInfo } from "@/api/user.js";
 export default {
   data() {
     return {
       active: 0,
+      userInfo: "",
+      alreadyLogin: false
     };
+  },
+  created() {
+    this.getUserData();
+  },
+  methods: {
+    getUserData() {
+      getUserInfo().then(res => {
+        console.log(res);
+        if (res.status == 0) {
+          this.userInfo = res.data;
+          this.alreadyLogin = true;
+        }
+      });
+    }
   }
 };
 </script>
 <style lang="scss">
-.contener{
-    width: 100%;
-    height: 100%;
-    background-color: #F4F4F4;
+.contener {
+  width: 100%;
+  height: 100%;
+  background-color: #f4f4f4;
 }
-    .header{
-        width: 100%;
-        height: 3rem;
-        display: flex;
-        align-items: center;
-        flex-flow: wrap;
-        justify-content: space-around;
-        font-size: .4rem;
-        background-color: #FFA607;
-        div{
-            width: 2rem;
-            img{
-                width: 100%;
-                border-radius: 50%; 
-            }
-            &:nth-child(2){
-                margin-right: 2rem;
-                a{
-
-                color: #fff;
-                }
-            }
-        }
+.header {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  justify-content: space-around;
+  font-size: 0.4rem;
+  background-color: #ffa607;
+  div {
+    width: 2rem;
+    img {
+      width: 100%;
+      border-radius: 50%;
     }
-    .tab{
-        width: 100%;
-        height: 1.6rem;
-        font-size: .3rem;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        background-color: #fff;
-        margin-bottom: .2rem;
-        div{
-            text-align: center;
-            span{
-                font-size: .5rem;
-                margin-bottom: .2rem;
-            }
-        }
+    &:nth-child(2) {
+      margin-right: 2rem;
+      a {
+        color: #fff;
+      }
     }
-    .list{
-        padding-bottom: 5rem;
+  }
+}
+.tab {
+  width: 100%;
+  height: 1.6rem;
+  font-size: 0.3rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  margin-bottom: 0.2rem;
+  div {
+    a {
+      display: block;
+      text-align: center;
+      color: #000;
+      span {
+        font-size: 0.5rem;
+        margin-bottom: 0.2rem;
+      }
     }
+  }
+}
+.list {
+  padding-bottom: 5rem;
+}
 </style>
