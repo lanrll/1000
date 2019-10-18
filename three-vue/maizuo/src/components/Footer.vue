@@ -73,9 +73,9 @@ export default {
 .nav-bar {
   height: 0.98rem;
   position: fixed;
-  bottom: 0;
+  bottom: -0.01rem;
   width: 100%;
-  z-index: 9;
+  z-index: 99;
   display: flex;
   flex-direction: row;
   justify-content: center;

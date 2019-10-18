@@ -11,7 +11,7 @@
     </header>
     <div class="tab">
       <div>
-        <router-link to="/user/order">
+        <router-link :to="alreadyLogin ? '/user/order':''">
           <span class="fa fa-file-text-o"></span>
           <p>电影订单</p>
         </router-link>
@@ -52,10 +52,10 @@ export default {
         console.log(res);
         if (res.status == 0) {
           this.userInfo = res.data;
-          this.$toast(`欢迎！${res.data.nickName}`);
+          // this.$toast(`欢迎！${res.data.nickName}`);
           this.alreadyLogin = true;
         }else{
-          this.$toast(`欢迎！${res.msg}`);
+          this.$toast(`${res.msg}`);
         }
       });
     }

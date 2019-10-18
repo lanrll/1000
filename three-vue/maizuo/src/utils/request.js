@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 // create an axios instance
 let service = axios.create({
   baseURL: 'https://m.maizuo.com', // url = base url + request url

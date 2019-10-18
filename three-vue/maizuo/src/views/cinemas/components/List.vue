@@ -9,7 +9,7 @@
           </div>
           <div>
             <p>￥{{item.lowPrice/100}}起</p>
-            <p>{{item.dis}}km</p>
+            <p>{{item.dis ? item.dis+'km': '距离未知'}}</p>
           </div>
         </router-link>
       </li>
@@ -60,7 +60,7 @@ export default {
           }
         }
       }
-      console.log(arr[0]);
+      // console.log(arr[0]);
       for (let i = 0; i < arr.length - 1; i++) {
         for (let j = 0; j < arr.length - 1 - i; j++) {
           if (arr[j].dis > arr[j + 1].dis) {
@@ -72,7 +72,7 @@ export default {
       }
       // console.log(arr[0])
       // arr.sort(this.compare("dis"))
-      console.log(arr[0]);
+      // console.log(arr[0]);
       return arr;
       // return this.dataLists
       // this.dataLists.forEach(el => {

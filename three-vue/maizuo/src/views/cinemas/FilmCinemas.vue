@@ -87,7 +87,7 @@ export default {
               str += item + ",";
             });
             getTimeCinemaList(this.$store.state.cityId, str).then(res => {
-              console.log(0, res);
+              // console.log(0, res);
               this.cinemas = res.data.cinemas;
             });
           }
@@ -106,7 +106,7 @@ export default {
         str += item + ",";
       });
       getTimeCinemaList(this.$store.state.cityId, str).then(res => {
-        console.log(333, res);
+        // console.log(333, res);
         this.cinemas = res.data.cinemas;
         this.value3 = "全城";
       });

@@ -10,8 +10,9 @@
       <van-action-sheet
         v-model="show"
         :actions="actions"
-        cancel-text="取消"
         description="更改性别"
+        cancel-text="取消"
+       
         @cancel="onCancel"
         close-on-click-action
       />
