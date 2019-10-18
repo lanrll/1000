@@ -9,7 +9,7 @@
           </div>
           <div>
             <p>￥{{item.lowPrice/100}}起</p>
-            <p>{{item.dis}}Km</p>
+            <p>{{item.dis}}km</p>
           </div>
         </router-link>
       </li>
@@ -20,6 +20,7 @@
 import { getCinemaList } from "@/api/cinema";
 import location from "@/utils/locations";
 import axios from "axios";
+import { getNowGps, setNowGps } from "@/utils/local-data.js";
 export default {
   props: ["data", "keyw", "cinemas"],
   data() {
@@ -27,8 +28,7 @@ export default {
     return {
       dataLists: [],
       area: [],
-      addres1: [],
-      addres2: []
+      addres: []
       // areaList: []
     };
   },
@@ -60,18 +60,19 @@ export default {
           }
         }
       }
-      // console.log(arr);
-      // for (let i = 0; i < arr.length - 1; i++) {
-      //         for (let j = 1; j < arr.length - 1 - i; j++) {
-      //           if (arr[j].dis > arr[j + 1].dis) {
-      //             let temp = arr[j + 1];
-      //             arr[j + 1] = arr[j];
-      //             arr[j] = temp;
-      //           }
-      //         }
-      //       }
-      arr.sort(this.compare("dis"))
-      console.log(arr[0])
+      console.log(arr[0]);
+      for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+          if (arr[j].dis > arr[j + 1].dis) {
+            let temp = arr[j + 1];
+            arr[j + 1] = arr[j];
+            arr[j] = temp;
+          }
+        }
+      }
+      // console.log(arr[0])
+      // arr.sort(this.compare("dis"))
+      console.log(arr[0]);
       return arr;
       // return this.dataLists
       // this.dataLists.forEach(el => {
@@ -101,23 +102,11 @@ export default {
     }
   },
   created() {
-    location.coordinate("container", res => {
-      if(res.type == 'error') {
-        // console.log(res.info)
-        this.$toast('未能精确定位');
-        return
-      }
-      let brr = [res.position.lng, res.position.lat];
-      this.dataLists = this.dataLists.map(el => {
-        let ds = location.distance(el.gpsAddress.split(":"), brr);
-        // console.log(ds);
-        ds = Number((ds / 1000).toFixed(2))
-        return { ...el, dis:  ds};
-      });
-      // console.log(this.addres1)
-    });
     this.getData();
     // console.log(1)
+    this.getdis();
+  },
+  updated() {
   },
   methods: {
     getData() {
@@ -128,8 +117,9 @@ export default {
         } else {
           this.dataLists = res.data.cinemas;
         }
+        
         this.dataLists.forEach(el => {
-          if (this.area.indexOf(el.districtName) == -1) {
+          if (this.area.indexOf(el.districtName) === -1) {
             this.area.push(el.districtName);
           }
         });
@@ -169,6 +159,36 @@ export default {
         // return arr;
       });
     },
+    getdis() {
+      let gps = getNowGps();
+      if (gps) {
+      console.log(gps)
+        this.addres = gps;
+        this.pushDis();
+      } else {
+        location.coordinate("container", res => {
+          console.log(res);
+          if (res.type === "error") {
+            // console.log(res.info)
+            this.$toast("未能精确定位！");
+            return;
+          }
+          this.addres = [res.position.lng, res.position.lat];
+          setNowGps([res.position.lng, res.position.lat]);
+          this.pushDis();
+          setTimeout(res => {
+            localStorage.removeItem("gps");
+          }, 60000 * 5);
+        });
+      }
+    },
+    pushDis() {
+      this.dataLists = this.dataLists.map(el => {
+        let ds = location.distance(el.gpsAddress.split(":"), this.addres);
+        ds = Number((ds / 1000).toFixed(2));
+        return { ...el, dis: ds };
+      });
+    },
     compare(p) {
       //这是比较函数
       return function(m, n) {};
@@ -197,7 +217,7 @@ export default {
     height: 100%;
     div {
       &:nth-child(1) {
-        width: 5rem;
+        width: 4.8rem;
         text-align: left;
         float: left;
         p {
@@ -236,6 +256,7 @@ export default {
             color: #ff5f16;
           }
           &:nth-child(2) {
+            font-size: 0.25rem;
             margin-top: 0.1rem;
             color: #797d82;
           }

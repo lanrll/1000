@@ -82,7 +82,7 @@ export default {
         //     console.log(num.toPrecision(7))
         //     arr[i] = num.toPrecision(7)
         // }
-        console.log(res.data.cinema);
+        // console.log(res.data.cinema);
         // this.getCinemaAddres(arr);
         // console.log(res.data.cinema);
       });

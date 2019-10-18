@@ -20,7 +20,7 @@ export const formatDate = (num) => {
     let date = new Date(num * 1000);
     date = date.toLocaleDateString();
     arr = date.split('/')
-    date = arr[1]+'月'+arr[2]+'日'
+    date = `${arr[1]}月${arr[2]}日`
     return  date
 }
 export const filmsTime = (num) => {

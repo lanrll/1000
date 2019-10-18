@@ -113,7 +113,7 @@ export default {
     },
     area(val) {
       val.forEach(el => {
-        if (this.qu.indexOf(el) == -1) {
+        if (this.qu.indexOf(el) === -1) {
           this.qu.push(el);
         }
       });

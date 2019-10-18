@@ -11,7 +11,7 @@ import CinemaDetail from './views/cinemas/CinemaDetail.vue'
 import CinemaFilmInfo from './views/cinemas/CinemaFilmInfo.vue'
 import CinemaSearch from './views/cinemas/CinemaSearch.vue'
 
-import CityList from './views/city/index.vue'
+import CityList from './views/city/Index.vue'
 import MyIndex from './views/my/Index.vue'
 import Login from './views/my/Login.vue'
 

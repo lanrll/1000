@@ -17,17 +17,17 @@
         </router-link>
       </div>
       <div>
-        <router-link to="/user/commodity">
+        <router-link :to="alreadyLogin ? '/user/commodity':''">
           <span class="fa fa-file-text-o"></span>
           <p>商品订单</p>
         </router-link>
       </div>
     </div>
     <div class="list">
-      <van-cell title="卖座卷" is-link icon="coupon-o" to="/user/volume" />
-      <van-cell title="组合红包" is-link icon="bill-o" to="/user/red" />
-      <van-cell title="余额" is-link value="￥0" icon="balance-o" to="/user/balance" />
-      <van-cell title="设置" is-link icon="setting-o" to="/user/set" />
+      <van-cell title="卖座卷" is-link icon="coupon-o" :to="alreadyLogin ? '/user/volume':''" />
+      <van-cell title="组合红包" is-link icon="bill-o" :to="alreadyLogin ? '/user/red':''" />
+      <van-cell title="余额" is-link value="￥0" icon="balance-o" :to="alreadyLogin ? '/user/balance':''" />
+      <van-cell title="设置" is-link icon="setting-o" :to="alreadyLogin ? '/user/set':''" />
       <van-cell title="设置" is-link icon="setting-o" v-show="false" />
     </div>
   </div>
@@ -52,7 +52,10 @@ export default {
         console.log(res);
         if (res.status == 0) {
           this.userInfo = res.data;
+          this.$toast(`欢迎！${res.data.nickName}`);
           this.alreadyLogin = true;
+        }else{
+          this.$toast(`欢迎！${res.msg}`);
         }
       });
     }

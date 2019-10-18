@@ -37,31 +37,33 @@ export default {
     return {
       value: "",
       value1: 0,
-      value2: 0,
+      value2: 1,
       value3: "全城",
       option1: [{ text: "APP订票", value: 0 }, { text: "前台兑换", value: 1 }],
       option2: [{ text: "最近去过", value: 0 }, { text: "离我最近", value: 1 }],
       qu: ["全城"]
     };
-  },
+  }, 
   methods: {
     onClickLeft() {
       this.$router.push("/city");
     },
     onClickRight() {
       // this.value3 = "全城";
-      console.log(1)
-      this.$router.push("/cinemas/search")
+      console.log(1);
+      this.$router.push("/cinemas/search");
     },
     area(val) {
       val.forEach(el => {
-        this.qu.push(el);
+        if (this.qu.indexOf(el) === -1) {
+          this.qu.push(el);
+        }
       });
     },
     changeArea(val) {
       this.value3 = val;
       this.$refs.item.toggle();
-    },
+    }
   },
   components: {
     CinemaList

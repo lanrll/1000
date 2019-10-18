@@ -25,9 +25,18 @@ export const setToken = (val) => {
 
 export const getUserData = () => {
     let userInfo = localStorage.getItem('userInfo')
-    return userInfo ? JSON.parse(userInfo) : ''
+    return userInfo ? userInfo : ''
 }
 export const setUserData = (val) => {
     return localStorage.setItem('userInfo',JSON.stringify(val))
 }
+
+export const getNowGps = () => {
+    let userInfo = localStorage.getItem('gps')
+    return userInfo ? userInfo : ''
+}
+export const setNowGps = (val) => {
+    return localStorage.setItem('gps',JSON.stringify(val))
+}
+
 

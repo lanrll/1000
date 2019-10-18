@@ -83,7 +83,7 @@ export default {
   },
   mounted() {
     this.container = this.$refs.container;
-    console.log(this.filmInfo)
+    // console.log(this.filmInfo)
   },
   watch: {
     $route: {
