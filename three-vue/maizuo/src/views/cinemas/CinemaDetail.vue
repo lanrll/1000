@@ -103,6 +103,7 @@ export default {
     },
     goBack() {
       this.$router.push("/cinemas");
+      this.$store.commit('setFilmId','')
     }
   },
   components: {

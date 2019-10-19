@@ -25,6 +25,8 @@ import UserSet from './views/my/UserSet.vue'
 import UserCommodity from './views/my/UserCommodity.vue'
 import UserInfo from './views/my/UserInfo.vue'
 
+import Schedule from './views/schedule/Index.vue'
+
 import store from './store'
 Vue.use(Router)
 
@@ -88,10 +90,16 @@ const router = new Router({
     {
       path: '/cinema/:cid',
       component: CinemaDetail,
-      children: [{
-        path: 'film/:fid/:date',
-        component: CinemaFilmInfo,
-      }]
+      children: [
+        {
+          path: 'film/:fid/:date',
+          component: CinemaFilmInfo,
+        }
+      ]
+    },
+    {
+      path: '/schedule/:sd',
+      component: Schedule,
     },
     {
       path: '/city',

@@ -32,7 +32,7 @@
       </van-dropdown-menu>
       <van-tab v-for="(item,index) in data" :key="index">
         <div slot="title" :key="item.showDate">{{item.showDate | formatDate}}</div>
-        <cinema-list @Administrative="area($event)" :data="value3" keyw :cinemas="cinemasList"></cinema-list>
+        <cinema-list @Administrative="area($event)" :data="value3" keyw :cinemas="cinemasList" ></cinema-list>
       </van-tab>
     </van-tabs>
   </div>
@@ -65,14 +65,15 @@ export default {
   },
   methods: {
     film() {
-      // console.log(this.$router.history.current.params.id);
-      getFilmDetail(this.$router.history.current.params).then(res => {
+      // console.log(this.$route.params);
+      getFilmDetail(this.$route.params).then(res => {
         this.filmName = res.data.film.name;
+        this.$store.commit('setFilmId',res.data.film.filmId)
         getFilmPlayCinema(res.data.film.filmId, this.$store.state.cityId).then(
           res => {
             let data = res.data.showCinemas;
             for (let i = 0; i < data.length - 1; i++) {
-              for (let j = 1; j < data.length - 1 - i; j++) {
+              for (let j = 0; j < data.length - 1 - i; j++) {
                 if (data[j].showDate > data[j + 1].showDate) {
                   let temp = data[j + 1];
                   data[j + 1] = data[j];

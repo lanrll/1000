@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="nav-bar">
-      <a href class="go-shedule">选座购票</a>
+      <router-link :to="{name:'FilmCinemas',params:{id:filmDetail.filmId}}" class="go-shedule">选座购票</router-link>
     </div>
   </div>
 </template>

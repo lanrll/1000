@@ -8,6 +8,7 @@ export default new Vuex.Store({
     cityId: getCityId(),
     cityName: getCityName(),
     userInfo: getUserData(),
+    filmId: ''
   },
   mutations: {
     setCityId(state,val){
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     setUserinfo(state,val){
       state.userInfo = val
     },
+    setFilmId(state,val){
+      state.filmId = val
+    }
   },
   actions: {
 

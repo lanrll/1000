@@ -14,6 +14,40 @@ export const getUserInfo = () => {
         }
     })
 }
+//获取头像地址
+export const getUserImg = (img) => {
+    let token = getToken();
+    return request({
+        method: 'POST',
+        url: '/gateway?k=1497436',
+        headers: {
+            'X-Token': token
+        },
+        data: {
+            xHost: 'mall.img.upload',
+            file: img
+        }
+    })
+}
+//修改用户资料
+export const setUserInfo = (birth,sex,img,name) => {
+    let token = getToken();
+    return request({
+        method: 'POST',
+        url: '/gateway?k=6189433',
+        headers: {
+            'X-Token': token
+        },
+        data: {
+            xHost: 'mall.user.update',
+            birthday: birth,
+            gender: sex,
+            headIcon: img,
+            nickname: name,
+        }
+    })
+}
+
 //获取验证码
 export const getCode = (phone) => {
     phone = phone+''

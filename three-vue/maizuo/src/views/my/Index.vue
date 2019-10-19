@@ -2,7 +2,8 @@
   <div class="contener">
     <header class="header">
       <div>
-        <img src="@/assets/logo.png" alt />
+        <!-- <img :src="userInfo.headIcon ? userInfo.headIcon : ' @/assets/logo.png'"  /> -->
+        <van-image round width="2rem" height="2rem" :src="userInfo.headIcon ? userInfo.headIcon : ' @/assets/logo.png'"/>
       </div>
       <div>
         <router-link to="/login" v-if="!userInfo.nickName">立即登录</router-link>
@@ -49,7 +50,7 @@ export default {
   methods: {
     getUserData() {
       getUserInfo().then(res => {
-        console.log(res);
+        // console.log(res);
         if (res.status == 0) {
           this.userInfo = res.data;
           // this.$toast(`欢迎！${res.data.nickName}`);
@@ -79,12 +80,14 @@ export default {
   background-color: #ffa607;
   div {
     width: 2rem;
+    height: 2rem;
     img {
       width: 100%;
       border-radius: 50%;
     }
     &:nth-child(2) {
       margin-right: 2rem;
+      line-height: 2rem;
       a {
         color: #fff;
       }

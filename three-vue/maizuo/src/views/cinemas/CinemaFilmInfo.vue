@@ -13,18 +13,18 @@
           <span>{{filmInfo.actors | operateActors}}</span>
         </p>
       </router-link>
-    <van-tabs v-model="active">
-      <van-tab
-        v-for="(item) in showDate"
-        :key="item"
-        :to="`/cinema/${$route.params.cid}/film/${$route.params.fid}/${item}`"
-      >
-        <div slot="title">
+      <van-tabs v-model="active">
+        <van-tab
+          v-for="(item) in showDate"
+          :key="item"
+          :to="`/cinema/${$route.params.cid}/film/${$route.params.fid}/${item}`"
+        >
+          <div slot="title">
             {{item | formatDate}}
             <!-- <van-icon name="more-o" />选项 -->
-        </div>
-        <!-- 内容 {{ item }} -->
-        <!-- <ul class="list">
+          </div>
+          <!-- 内容 {{ item }} -->
+          <!-- <ul class="list">
           <li v-for="item in schedules" :key="item.scheduleId">
             <div>
               <p>{{item.showAt | filmsTime}}</p>
@@ -37,19 +37,19 @@
             <div>￥{{item.salePrice/100}}</div>
             <div>购票</div>
           </li>
-        </ul>-->
-      </van-tab>
-      <!-- <van-tab @title="item" :name="item" v-for="(item) in filmInfo.showDate" :key="item">{{item}}</van-tab> -->
-      <!-- <van-tab :title="item" v-for="(item) in filmInfo.showDate" :key="item">{{item}}</van-tab> -->
-      <!-- <template v-for="(item,index) in filmInfo.showDate">
+          </ul>-->
+        </van-tab>
+        <!-- <van-tab @title="item" :name="item" v-for="(item) in filmInfo.showDate" :key="item">{{item}}</van-tab> -->
+        <!-- <van-tab :title="item" v-for="(item) in filmInfo.showDate" :key="item">{{item}}</van-tab> -->
+        <!-- <template v-for="(item,index) in filmInfo.showDate">
         <router-link
           :to="`/cinema/${$route.params.cid}/film/${$route.params.fid}/${item}`"
           :key="item"
         >{{item}}</router-link>
         <br :key="item+'-'+index" />
-      </template>-->
-    </van-tabs>
-     </van-sticky>
+        </template>-->
+      </van-tabs>
+    </van-sticky>
     <!-- <ul>
       <li v-for="item in schedules" :key="item.scheduleId">{{item.hallName}}</li>
     </ul>-->
@@ -64,7 +64,9 @@
           <p>{{item.hallName}}</p>
         </div>
         <div>￥{{item.salePrice/100}}</div>
-        <div>购票</div>
+        <div>
+          <router-link :to="`/schedule/${item.scheduleId}`">购票</router-link>
+        </div>
       </li>
     </ul>
   </div>
@@ -101,7 +103,7 @@ export default {
         dat = this.$route.params.date;
       getCinemaFilmSchedule({ cid: id1, fid: id2, date: dat }).then(res => {
         this.schedules = res.data.schedules;
-        // console.log(res.data.schedules);
+        console.log(res.data.schedules);
       });
     }
   }
@@ -183,7 +185,9 @@ div {
         border-radius: 0.05rem;
         text-align: center;
         font-size: 0.24rem;
+        a{
         color: #ff5f16;
+        }
         border: 0.02rem solid #ff5f16;
       }
     }

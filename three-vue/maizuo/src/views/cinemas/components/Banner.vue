@@ -24,17 +24,30 @@ export default {
     this.initSwiper();
   },
   computed: {
-    poster(){
-      let data = ''
-      this.data.forEach((item,index) => {
-        if(index == this.index){
+    poster() {
+      let data = "";
+      this.data.forEach((item, index) => {
+        if (index == this.index) {
           // console.log(item.poster)
-          data = item.poster
+          data = item.poster;
         }
         // console.log(item.poster,this.index)
-      })
+      });
       // let src = data.poster
-      return data
+      return data;
+    },
+    acIndex() {
+      // console.log(this.$store.state.filmId);
+      // console.log(this.data[0].filmId);
+      // if(this.$store.state.filmId.length=0) return this.index
+      for (let i = 0; i < this.data.length; i++) {
+        if (this.data[i].filmId === this.$store.state.filmId) {
+          // console.log(i)
+          this.index = i
+          return this.index
+        }
+      }
+      // return this.index;
     }
   },
   methods: {
@@ -44,12 +57,14 @@ export default {
         slidesPerView: 3,
         spaceBetween: 20,
         centeredSlides: true,
+        initialSlide : this.acIndex,
         on: {
           transitionEnd: function() {
             _this.$emit("selectEvt", this.activeIndex);
             // console.log(this.activeIndex);
             // console.log( this.data);
-            _this.index = this.activeIndex
+            _this.index = this.activeIndex;
+            // console.log(_this.acIndex);
           }
         }
       });
@@ -69,19 +84,19 @@ export default {
     top: 0;
     left: 0;
     z-index: -1;
-    img{
+    img {
       width: 100%;
       position: absolute;
       top: -50%;
-      filter: blur(1rem);
+      filter: blur(.5rem);
     }
   }
-  .down{
+  .down {
     position: absolute;
     bottom: 0.4rem;
     left: 47%;
-    height: .2rem;
-    width: .2rem;
+    height: 0.2rem;
+    width: 0.2rem;
     color: #ffffff;
     font-size: 1rem;
   }
