@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.js"></script>
+    <style>
+        ul li{
+            list-style: none;
+        }
+        li:nth-child(odd){
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script type="text/babel">
+    fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json()).then(json => {
+        ReactDOM.render(
+        <div>
+            <List arr={json} />   
+        </div>
+    ,document.querySelector('#box'))
+    })
+    var List = (props) =>{
+    return <ul>
+        {
+            props.arr.map(item => {
+                return <li key={item.id}>{item.title}</li>
+            })
+        }
+        </ul>
+    }
+</script>
+
+</html>
