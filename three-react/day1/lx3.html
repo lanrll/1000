@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计时</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+<script type="text/babel">
+    var secned = 0 ;
+    var now = 0 ;
+    var times
+    function start() {
+        times = setInterval(() => {
+        timer()
+        }, 500); 
+    };
+    var timer = () => {
+        ReactDOM.render(
+            <div>
+                <h2>计数：{secned++}</h2>
+                <h2>当前时间：{new Date().toLocaleTimeString()}</h2>
+                <p>
+                <input type="button" value="开始" onClick={()=>{clearInterval(times);start()}} />
+                <input type="button" value="暂停" onClick={()=>{clearInterval(times)}} />
+                <input type="button" value="重置" onClick={()=> {secned=0;timer();clearInterval(times)}} />
+                </p>
+            </div>
+            ,document.querySelector('#box'))
+        }
+    timer()
+</script>
+
+</html>

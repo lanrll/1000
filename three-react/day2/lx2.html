@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+<script type="text/babel">
+var obj = {a:1,b:2,c:3}
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                list: []
+            }
+        }
+        componentDidMount(){
+            fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json()).then(res => {
+                console.log(res)
+                this.setState({
+                    list: res
+                })
+            })
+        }
+        render() {
+            return <div>
+                <List list={this.state.list} />
+            </div>
+        }
+    }
+    class List extends React.Component {
+        render() {
+            return <ul>
+                {
+                    this.props.list.map(item => {
+                        return <li key={item.id} style={{background: item.id%2 ? '#ccc':''}}>{item.title}</li>
+                    })
+                }
+            </ul>
+        }
+    }
+    ReactDOM.render(
+        <App  />
+    ,document.querySelector('#box'))
+</script>
+</html>

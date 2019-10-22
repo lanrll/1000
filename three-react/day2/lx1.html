@@ -1,39 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>列表</title>
+    <title>Document</title>
     <script src="../js/react.development.js"></script>
     <script src="../js/react-dom.development.js"></script>
     <script src="../js/babel.js"></script>
 </head>
-
 <body>
     <div id="box"></div>
 </body>
 <script type="text/babel">
-    var arr = ['a','b','c']
-    var List = (props) =>{
-        return <ul>
-            {
-                props.arr.map(item => {
-                    return <li key={item}>{item}</li>
-                })
-            }
-            </ul>
+var obj = {a:1,b:2,c:3}
+    class App extends React.Component {
+        render() {
+            return <div>
+            <h1>app</h1>
+            <p>{console.log(Object.keys(this.props.obj))}</p>
+            <p>{console.log(Object.values(this.props.obj))}</p>
+            <p>{console.log(Object.entries(this.props.obj))}</p>
+            </div>
+        }
     }
     ReactDOM.render(
-        <div>
-            <h1>hello react</h1>
-            <p>{arr}</p>   
-            <div>
-                <List arr={arr} />   
-            </div>
-        </div>
+        <App  obj={obj}/>
     ,document.querySelector('#box'))
 </script>
-
 </html>

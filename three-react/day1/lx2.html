@@ -5,16 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="./js/react.development.js"></script>
-    <script src="./js/react-dom.development.js"></script>
-    <script src="./js/babel.js"></script>
+    <title>获取数据展示</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.js"></script>
     <style>
         ul li{
             list-style: none;
         }
         li:nth-child(odd){
-            background-color: #ccc;
+            /* background-color: #ccc; */
         }
     </style>
 </head>
@@ -34,7 +34,7 @@
     return <ul>
         {
             props.arr.map(item => {
-                return <li key={item.id}>{item.title}</li>
+                return <li key={item.id} style={{background: item.id%2 ? '#ccc':''}}>{item.title}</li>
             })
         }
         </ul>
