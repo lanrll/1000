@@ -1,7 +1,9 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import Todo from './components/Todo'
+// import Todo from './components/day3/lx3/Todo'
+// import Get from './components/day3/lx4/Get'
+import Todo from './components/day4/Todo'
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
         </a>
       </header> */}
       <Todo />
+      {/* <Get /> */}
     </div>
   );
   

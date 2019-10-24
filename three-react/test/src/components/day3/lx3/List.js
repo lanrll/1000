@@ -9,18 +9,17 @@ export default class List extends Component {
     }
     edit(val){
         // console.log(val,this.state.sign)
-        if(val == this.state.sign){
-            this.setState({
-                sign: null
-            })
-            this.props.preser(val)
-        }else{
-            this.setState({
-                sign: val
-            })
+        // if(val == this.state.sign){
+        //     // this.setState({
+        //     //     sign: null
+        //     // })
+        //     this.props.preser(val)
+        // }else{
+        //     this.setState({
+        //         sign: val
+        //     })
             this.props.edit(val)
-        }
-
+        // }
     }
     render() {
         let {list} = this.props
@@ -28,7 +27,9 @@ export default class List extends Component {
             <ul>
                 {
                     list.map(item => {
-                        return <li key={item.id} >{item.text}-----<input type="button" value={this.state.sign==item.id ? "保存": "修改"}  onClick={this.edit.bind(this,item.id)} />---<input type="button" value="删除" onClick={this.props.del.bind(this,item.id)}/></li>
+                        return <li key={item.id} >{item.id}----{item.text}-----
+                        <input type="button" value="修改"  onClick={this.edit.bind(this,item.id)}/>-----
+                        <input type="button" value="删除" onClick={this.props.del.bind(this,item.id)}/></li>
                     })
                 }
             </ul>

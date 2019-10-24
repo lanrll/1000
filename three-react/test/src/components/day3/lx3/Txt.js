@@ -4,27 +4,8 @@ export default class Txt extends Component {
     constructor(props){
         super(props);
         this.state = {
-            str:this.props.text
+            str: ''
         }
-        // console.log(this.props)
-    }
-    componentWillReceiveProps(){
-        console.log(111,this.props.text)
-        // this.setState({
-        //     str: this.props.text
-        // })
-    }
-    componentDidMount(){
-        //  this.setState({
-        //     str: this.props.text
-        // })
-    }
-    componentWillUpdate(){
-        console.log(222,this.props.text)
-    }
-    componentDidUpdate(){
-        console.log(333,this.props.text)
-        // this.init()
     }
     add = (e) => {
         if(e.keyCode === 13){
@@ -33,25 +14,39 @@ export default class Txt extends Component {
                 str: ''
             })
         }else{
-            this.props.search(this.state.str)
-        }
-    }
+			this.props.search(this.state.str)
+		}
+	}
+	modifOk = () => {
+		this.props.modifyFinish(this.props.id,this.props.str)
+		this.setState({
+			str: ''
+		})
+	}
     init(e){
-        // console.log(text,e)
-        if(this.props.text){
-            this.setState({
-                str: this.props.text
-            })
-        }
-        this.setState({
-            str: e.target.value
-        })
-    }
+		if(!this.props.id){
+			this.setState({
+				str: e.target.value
+			})
+		}else{
+			this.props.modifyStr(e.target.value)
+		}
+	}
+	// search(){
+	// 	this.props.search(this.state.str)
+		// this.setState({
+		// 	str: ''
+		// })
+	// }
     render() {
-        // let {text} = this.props
+        let {str,id} = this.props
         // console.log(text)
         return (
-            <input type="text" onKeyUp={this.add} value={this.state.str} onChange={this.init.bind(this)}/>
+            <div>
+                <input type="text" placeholder="请输入！" onKeyUp={this.add} value={id ? str : this.state.str} onChange={this.init.bind(this)}/>
+                {/* <input type="button" value="搜索" onClick={this.search.bind(this)} /> */}
+                <input type="button" value="修改完成"  onClick={this.modifOk} />
+            </div>
         )
     }
 }
