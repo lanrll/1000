@@ -10,6 +10,7 @@ export default class Txt extends Component {
     add(e){
         if(e.keyCode === 13){
             this.props.add(this.state.value)
+            if(this.props.id) return
             this.setState({
                 value:''
             })
