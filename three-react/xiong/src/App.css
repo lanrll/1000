@@ -1,8 +1,27 @@
 .App {
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
-ul li{
-  list-style:none;
+footer{
+  position: fixed;
+  bottom: 0;
+  z-index: 99;
+  width: 100%;
+  height: 1.12rem;
+  font-size: .5rem;
+  padding: 0 .7rem;
+  box-sizing: border-box;
+  border-top: .01rem solid #e9e9e9;
+  background-color: #fff;
+}
+footer a{
   float: left;
-  margin: 0 20px;
+  width: 1.52rem;
+  height: 100%;
+  color: #9a9a9a;
+  padding-top: .1rem;
+}
+.active{
+  color: #d44d44;
 }
