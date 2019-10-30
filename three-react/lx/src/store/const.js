@@ -1,0 +1,8 @@
+export const INC = 'INC'
+export const DEL = 'DEL'
+export const ADD = 'ADD'
+export const DELD = 'DELD'
+export const EDIT = 'EDIT'
+export const EDITOK = 'EDITOK'
+export const CHANGE = 'CHANGE'
+export const ALLCHANGE = 'ALLCHANGE'
