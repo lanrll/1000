@@ -20,7 +20,7 @@ export default class input extends Component {
         })
     }
     add(e){
-        // console.log(this.state.k)
+        console.log(this.state.k)
         if(e.keyCode === 13){
             if(this.state.k){
                 store.dispatch(actionsCreator.editOk(this.state.value))

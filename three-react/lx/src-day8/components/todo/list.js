@@ -17,7 +17,7 @@ export default class list extends Component {
     }
     del(id){
         store.dispatch(actionCreator.del(id))
-        // console.log(id)
+        console.log(id)
     }
     edit(id){
         store.dispatch(actionCreator.edit(id))

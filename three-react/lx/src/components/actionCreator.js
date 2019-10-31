@@ -1,15 +1,19 @@
-import {INC,DEL} from '../store/const'
+import {INC,DEL, BASE} from '../store/const'
 export default {
-    inc(base){
+    inc(){
         return{
             type:INC,
-            base:base
         }
     },
-    del(base){
+    del(){
         return{
             type:DEL,
-            base:base
+        }
+    },
+    change(e){
+        return{
+            type:BASE,
+            base:e.target.value
         }
     }
 }

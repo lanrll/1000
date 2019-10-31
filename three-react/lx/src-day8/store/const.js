@@ -1,6 +1,5 @@
 export const INC = 'INC'
 export const DEL = 'DEL'
-export const BASE = 'BASE'
 export const ADD = 'ADD'
 export const DELD = 'DELD'
 export const EDIT = 'EDIT'
