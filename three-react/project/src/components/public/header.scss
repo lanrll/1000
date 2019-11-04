@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font: 0.14rem "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+  color: #333;
+}
+.nav-bar {
+  position: relative;
+  height: 0.88rem;
+  .container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    display: -webkit-box;
+    border-bottom: 1px solid #f3f3f3;
+    background-color: #fff;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    text-align: center;
+    .back {
+        background: url(http://c-shuqi.11222.cn/assets/backIcon_ba492d1.png) no-repeat center;
+        background-size: .44rem .36rem;
+    }
+    .icon {
+        display: block;
+    height: .88rem;
+    width: 1rem;
+    }
+    .title {
+        -webkit-box-flex: 1;
+        color: #333;
+        font-size: .32rem;
+    }
+    .icon.home {
+        background: url(http://c-shuqi.11222.cn/assets/home_48a04f5.png) no-repeat center;
+        background-size: .4rem .4rem;
+    }
+  }
+}
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-break: break-all;
+}

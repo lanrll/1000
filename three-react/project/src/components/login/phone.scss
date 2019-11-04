@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font: 0.14rem "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    color: #494949;
+    background: #fafafa;
+    min-width: 3.2rem;
+    line-height: 1;
+  }
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: middle;
+    outline: 0;
+    border: 0;
+  }
+  .main_title {
+    ul {
+      column-count: 2;
+      column-gap: 0;
+      li {
+        text-align: center;
+        height: 0.92rem;
+        line-height: 0.92rem;
+        font-size: 0.32rem;
+        color: #333;
+        border-bottom: 1px #e6e7ed solid;
+      }
+      .on {
+        color: #00c98d;
+        border-bottom: 1px #00c98d solid;
+      }
+    }
+  }
+  .main {
+    max-width: 100%;
+    padding: 0.52rem 0.56rem 0;
+    .login-input-wrap {
+      border-bottom: 1px solid #f3f3f3;
+      font-size: 0.32rem;
+      display: -webkit-box;
+      margin-top: 0.44rem;
+      position: relative;
+      overflow: hidden;
+      .bold {
+        color: #333;
+        line-height: 0.5rem;
+        margin-right: 0.56rem;
+      }
+      input {
+        height: 0.4rem;
+        user-select: text;
+        overflow: hidden;
+      }
+      .can_see {
+        height: 0.4rem;
+        width: 0.4rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-size: 0.48rem;
+      }
+      .can_see_it {
+        background-image: url("../imgs/eye.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        display: block !important;
+      }
+      .vcode_parent {
+        position: absolute;
+        right: 0;
+        top: -6px;
+        .get_vcode {
+            display: inline-block;
+            margin-top: 6px;
+            height: .5rem;
+            line-height: .5rem;
+            padding: 0 .18rem;
+            font-size: .24rem;
+            color: #fff;
+            background-color: #00c98d;
+            border-radius: .06rem;
+            text-align: center;
+        }
+    }
+    }
+  }
+  .error-info {
+    margin-top: 0.16rem;
+    height: 0.24rem;
+  }
+  .service-procotol {
+    padding: 0 0.56rem;
+    margin-top: 0.32rem;
+    text-align: center;
+    font-size: .28rem;
+    display: block;
+    color: #999;
+    line-height: 0.4rem;
+    padding-top: 0.4rem !important;
+    span {
+      color: #00c98d;
+    }
+  }
+  .login-button {
+      width: 100%;
+      height: .88rem;
+      font-size: .32rem;
+      background-color: #E6E7ED;
+      color: #C6C7CC;
+      text-align: center;
+      line-height: .88rem;
+      margin-top: .32rem;
+      border-radius: .08rem;
+  }
+  .link-dom {
+      display: -webkit-box;
+      -webkit-box-pack: justify;
+      margin-top: .32rem;
+      padding: 0 .56rem;
+      .text-gray-link {
+          color: #999;
+          font-size: .28rem;
+      }
+      .text-green-link {
+          color: #00C98D;
+          font-size: 14px;
+      }
+  }
+  

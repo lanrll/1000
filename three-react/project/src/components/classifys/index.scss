@@ -1,0 +1,98 @@
+.box1 {
+  background-color: #F8F8F8;
+  .title {
+    font-size: 0.24rem;
+    padding-top: 0.27rem;
+    padding-bottom: 0.2rem;
+    padding-left: 0.32rem;
+    color: #999;
+  }
+  .novel-list {
+    li {
+      position: relative;
+      background-color: #fff;
+      a {
+        padding: 0.28rem 0.32rem;
+        padding-right: 0;
+        background-color: #fff;
+        display: block;
+        div {
+          display: inline-block;
+        }
+        .left {
+          background: url("../imgs/tubiao.png") no-repeat 0 0;
+          height: 0.73rem;
+          width: 0.72rem;
+          background-size: 100%;
+          margin-right: 0.2rem;
+        }
+        .sec {
+          background-position: 0 -0.97rem;
+        }
+        .thr {
+          background-position: 0 -1.94rem;
+        }
+        .for {
+          background-position: 0 -2.91rem;
+        }
+        .a {
+          background-position: 0 -3.89rem;
+        }
+        .b {
+          background-position: 0 -4.86rem;
+        }
+        .c {
+          background-position: 0 -5.83rem;
+        }
+        .d {
+          background-position: 0 -6.8rem;
+        }
+        .e {
+          background-position: 0 -7.77rem;
+        }
+        .f {
+          background-position: 0 -8.74rem;
+        }
+        .g {
+          background-position: 0 -9.71rem;
+        }
+        .h {
+          background-position: 0 -10.68rem;
+        }
+        .i {
+          background-position: 0 -11.65rem;
+        }
+        .j {
+          background-position: 0 -12.62rem;
+        }
+        .k {
+          background-position: 0 -13.59rem;
+        }
+        .middle {
+          overflow: hidden;
+          span {
+            display: inline-block;
+            vertical-align: text-top;
+        }
+          .large-title {
+            color: #333;
+            font-size: 0.28rem;
+            margin-bottom: 0.12rem;
+            margin-top: 0.1rem;
+          }
+          .category-name {
+            font-size: 0.24rem;
+            overflow: hidden;
+            color: #999;
+            .ellipsis {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                word-break: break-all;
+            }
+          }
+        }
+      }
+    }
+  }
+}

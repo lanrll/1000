@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: 400;
+}
+.contain {
+   
+    .tabs {
+        height: .88rem;
+        line-height: .88rem;
+        display: -webkit-box;
+        background: #fff;
+        border-bottom: 1px solid #f3f3f3;
+        li {
+            -webkit-box-flex: 1;
+            color: #333;
+            text-align: center;
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            font-size: .28rem;
+        }
+        .on {
+            color: #00c98d;
+            border-bottom: .06rem solid #00c98d;
+        }
+    }
+}
+.block {
+    background-color: #fff;
+    display: block;
+    .listsmall-ul {
+        overflow: hidden;
+        .big-wrap {
+            padding: .4rem .32rem .4rem 0;
+            display: -webkit-box;
+            border-bottom: 1px solid #f3f3f3;
+        }
+        .listbook-cove {
+            margin-right: .32rem;
+            width: 1.12rem;
+            height: 1.48rem;
+            position: relative;
+            overflow: hidden;
+            background: url(http://c-shuqi.11222.cn/assets/default-book_8d24e62.jpg);
+            background-size: 1.12rem 1.48rem;
+            .book-cover-img {
+                display: block;
+                width: 100%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                min-width: 100%;
+                min-height: 100%;
+                height: 100%;
+            }
+        }
+        .listbook-info {
+            -webkit-box-flex: 1;
+            h3 {
+                color: #333;
+                font-size: .32rem;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                word-break: break-all;
+                height: .36rem;
+                line-height: .36rem;
+                margin-bottom: .22rem;
+            }
+            .author_wrap {
+                display: -webkit-box;
+                padding-right: .32rem;
+                position: relative;
+                .authorinfo {
+                    -webkit-box-flex: 1;
+                    margin-right: .56rem;
+                    display: -webkit-box;
+                    -webkit-box-align: center;
+                    .author {
+                        height: .32rem;
+                        line-height: .32rem;
+                        font-size: .24rem;
+                        color: #999;
+                        -webkit-box-flex: 1;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        word-break: break-all;
+                    }
+                }
+                .view {
+                    left: 3.5rem;
+                    width: .9rem;
+                    padding-left: .4rem;
+                    color: #999;
+                    font-size: .24rem;
+                    line-height: .24rem;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    word-break: break-all;
+                    position: absolute;
+                    display: inline-block;
+                    .views {
+                        width: .32rem;
+                        height: .32rem;
+                        display: inline-block;
+                        background: url("../imgs/eye.png") no-repeat center center;
+                        -webkit-background-size: .32rem .32rem;
+                        background-size: .32rem .32rem;
+                        margin-right: .08rem;
+                        position: absolute;
+                        top: -.03rem;
+                        left: 0;
+                    }
+                }
+            }
+            .book-tag {
+                font-size: 0;
+                margin-top: .22rem;
+                height: .4rem;
+                overflow: hidden;
+                line-height: .34rem;
+                span {
+                    font-size: .2rem;
+                    height: .34rem;
+                    line-height: .36rem;
+                    border: 1px solid rgba(153,153,153,.3);
+                    border-radius: .04rem;
+                    padding: 0 .12rem;
+                    margin-right: .08rem;
+                    padding-top: .01rem;
+                    color: #999;
+                    display: inline-block;
+                }
+                .lz {
+                    color: #499fff;
+                    border-color: rgba(73,159,255,.3);
+                }
+                .wj {
+                    color: #00c98d;
+                    border-color: rgba(0,201,141,.3);
+                }
+            }
+        }
+        li {
+            padding-left: 0;
+            padding: 0 0 0 .32rem;
+            position: relative;
+            a {
+                display: block;
+                padding-left: .32rem;
+                .big-wrap {
+                    border-bottom: 0;
+                }
+            }
+        }
+    }
+}

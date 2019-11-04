@@ -2,15 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './reset1.css';
-import './font-awesome/css/font-awesome.min.css'
 import App from './App';
+import './font-awesome/css/font-awesome.css'
 import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 import store from './store/index';
-
-ReactDOM.render(<Provider store={store}>
-                    <App /> 
-                </Provider>
+import {HashRouter as Router} from 'react-router-dom';
+ReactDOM.render(
+                <Router>
+                    <Provider store={store}>
+                        <App />
+                    </Provider>
+                </Router>
                 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

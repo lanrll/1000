@@ -1,14 +1,27 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-// import fetch from 'fetch';
+import ShowOne from '../public/showOne';
+import ShowTwo from '../public/showTwo';
+import ShowThree from '../public/showThree';
+import ShowFore from '../public/showFore';
+import ShowFive from '../public/showFive';
+import Footer from '../public/footer';
 import './index.scss';
+import {NavLink} from 'react-router-dom';
+const rotue = ['classify','rank','girl','boy','book'] 
 export default class home extends Component {
     constructor(props){
         super(props);
         this.state = {
             topData:[],
             qualityRecommendation:[],
-            sex:[]
+            // sex:[],
+            girl:[],
+            boy:[],
+            newBook:[],
+            rank:[],
+            bookList:[],
+            interest:[]
         }
     }
     componentDidMount(){
@@ -16,7 +29,7 @@ export default class home extends Component {
     }
     getTopData(){
         axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572609460&type=2&resetcache=&func_id=24%2C20%2C11%2C19%2C33&orderid=1%2C3%2C4%2C6%2C7&sign=13C5962199EB53E237F4415D7B51BF1E&key=shuqiapi&_=1572609460516',).then(res => {
-            console.log(res)
+            // console.log(res)
             let data = res.data.data.module
             this.setState({
                 topData: data,
@@ -27,25 +40,68 @@ export default class home extends Component {
             // console.log(res)
             let data = res.data.data.module
             this.setState({
-                sex:[data[3],data[8]]
+                // sex:[data[3],data[8]],
+                girl:data[3],
+                boy:data[8]
+            })
+        })
+        axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572834862&type=2&resetcache=&func_id=11%2C33%2C11%2C19%2C33%2C12%2C33%2C11%2C19%2C33&orderid=18%2C19%2C23%2C24%2C25%2C26%2C27%2C28%2C29%2C30&sign=0FDB68D342B49846AE37491EAC0688CB&key=shuqiapi&_=1572834862952').then(res => {
+            // console.log(res)
+            let data = res.data.data.module
+            this.setState({
+               newBook:data[3],
+               rank:data[8],
+            })
+        })
+        axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572838945&type=2&resetcache=&func_id=12%2C33%2C11%2C28%2C33%2C12%2C33%2C11%2C19&orderid=31%2C32%2C33%2C34%2C35%2C36%2C37%2C38%2C39&sign=9D06D5427B57370423704EA35E0AFFFC&key=shuqiapi&_=1572838945494').then(res => {
+            // console.log(res)
+            let data = res.data.data.module
+            this.setState({
+               bookList: data[3],
+               interest: data[8],
             })
         })
     }
-    changeData(){
-        axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572660884&type=2&resetcache=&func_id=19&orderid=6&mid=6&lmkTxt=index&sign=E12EC27DE65DF28D94D2DD5D332AD732&key=shuqiapi&_=1572660884964').then(res => {
-            console.log(res)
-            this.setState({
-                // topData: res.data.data.module,
-                qualityRecommendation:res.data.data.module[0]
-            })
-        })
-
+    changeData(val){
+        switch(val){
+            case 1: 
+                axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572660884&type=2&resetcache=&func_id=19&orderid=6&mid=6&lmkTxt=index&sign=E12EC27DE65DF28D94D2DD5D332AD732&key=shuqiapi&_=1572660884964').then(res => {
+                    // console.log(res)
+                    this.setState({
+                        // topData: res.data.data.module,
+                        qualityRecommendation:res.data.data.module[0]
+                    })
+                })
+                break
+            case 2: 
+                axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572847818&type=2&resetcache=&func_id=19&orderid=11&mid=12&lmkTxt=index&sign=0FD2E7C461107A4B457AA5B5776A5AF6&key=shuqiapi&_=1572847818181').then(res => {
+                    console.log(res)
+                    let data = res.data.data.module
+                    this.setState({
+                        girl:data[0],
+                    })
+                })
+                break
+            case 3: 
+                axios('http://bookstoreapi.shuqireader.com/eva_bookstore/v1/module/query?appId=1&pageId=1&channelId=&versionId=&ver=&shuqi_h5=&md5key=&userId=8000000&timestamp=1572848323&type=2&resetcache=&func_id=19&orderid=16&mid=17&lmkTxt=index&sign=C65B8961AEDA67757EDABC9020169080&key=shuqiapi&_=1572848323225').then(res => {
+                    let data = res.data.data.module
+                    this.setState({
+                        boy:data[0]
+                    })
+                })
+                break
+            case 4:
+                this.props.history.push('/rank/list')
+                break
+            case 5:
+                this.props.history.push('/book')
+                break
+        }
     }
     render() {
-        if(this.state.topData.length == 0 || this.state.sex.length ==0) return <h1>未找到！！！</h1>
+        if(this.state.topData.length == 0 || this.state.girl.length ==0 || this.state.newBook.length == 0 || this.state.bookList.length == 0) return <h1>未找到！！！</h1>
         // console.log(this.state.qualityRecommendation)
         let topData = this.state.topData
-        let sex = this.state.sex
         let base = 0.775
         return (
             <>
@@ -56,109 +112,35 @@ export default class home extends Component {
                     <a>
                         <span>懒人小说</span>
                     </a>
-                    <a >
+                    <NavLink to="/user/login">
                         <img src={require("./logo192.png")} />
-                    </a>
+                    </NavLink>
                     <a><span className="fa fa-book"></span></a>
-                    <a><span className="fa fa-search"></span></a>
+                    <NavLink to="/search"><span className="fa fa-search"></span></NavLink>
                 </header>
                 <nav>
                     {
                         topData[0].content.map((item,index) => {
-                            return ( <a key={item.url}>
+                            return ( <NavLink to={rotue[index]} key={item.url}>
                                         <div>
                                             <img src={topData[0].icon_img_url} style={{top:-index*base+'rem'}}/>
                                         </div>
                                         <p>{item.title}</p>
-                                    </a>)
+                                    </NavLink>)
                         })
                     }
                 </nav>
                 <div className="banner">
                     <a><img src={topData[1].content[0].image_url} /></a> 
                 </div>
-                <div className="showContainer">
-                    <div className="title">
-                        <p>{this.state.qualityRecommendation.m_s_name}</p>
-                    </div>
-                    <div className="content" >
-                        {
-                            this.state.qualityRecommendation.content.map(item => {
-                                return(
-                                        <a key={item.bid}>
-                                            <div>
-                                                <img src={item.book_cover} />
-                                            </div>
-                                            <p>{item.bookname}</p>
-                                            <p>{item.author_name}</p>
-                                        </a>
-                                )
-                            })
-                        }
-                        {/* <a>
-                            <div>
-                                <img src={require("./logo192.png")} />
-                            </div>
-                            <p>asdfafsdgadf</p>
-                            <p>asg</p>
-                        </a> */}
-                    </div>
-                    <div className="exchange" onClick={this.changeData.bind(this)} >
-                        <span>换一换</span><span className="fa fa-refresh"></span>
-                    </div>
-                </div>
-                {
-                    sex.map(item => {
-                        return (
-                            <>
-                            <div className="showContainer" key={item.id} >
-                                <div className="title">
-                                        <p>{item.m_s_name}</p>
-                                    </div>
-                                    <div className="content">
-                                        {
-                                            item.content.map((i,index) => {
-                                                return (
-                                                        index < 4 ? 
-                                                        <a key={i.bid} >
-                                                            <div>
-                                                                <img src={i.book_cover} />
-                                                            </div>
-                                                            <p>{i.bookname}</p>
-                                                            <p>{i.author_name}</p>
-                                                        </a> : ''
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    <div className="contentList">
-                                        {
-                                            item.content.map((i,index) => {
-                                                return (
-                                                    index > 3 ?
-                                                    <a key={i.bid} >
-                                                        <div>
-                                                            <span>{i.bookname}</span>
-                                                            <div>
-                                                                <span>{i.stat_name}</span>
-                                                                <span>{i.class_name}</span>
-                                                            </div>
-                                                        </div>
-                                                        <p>{i.book_info}</p>
-                                                    </a> : ''
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                    <div className="exchange">
-                                        <span>换一换</span><span className="fa fa-refresh"></span>
-                                    </div>
-                            </div>
-                            </>
-                        )
-                    })
-                }
-
+                <ShowOne  data={this.state.qualityRecommendation} changeData={this.changeData.bind(this,1)} />
+                <ShowTwo  data={this.state.girl} changeData={this.changeData.bind(this,2)} />    
+                <ShowTwo  data={this.state.boy} changeData={this.changeData.bind(this,3)} />    
+                <ShowThree data={this.state.newBook} changeData={this.changeData.bind(this,4)} />
+                <ShowThree data={this.state.rank} changeData={this.changeData.bind(this,4)} />
+                <ShowFore data={this.state.bookList} changeData={this.changeData.bind(this,5)} />
+                <ShowFive data={this.state.interest}  />
+                <Footer />
             </>
         )
     }

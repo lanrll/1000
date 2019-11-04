@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 100%;
+    font-weight: 400;
+  }
+  .sdlist-ul {
+    overflow: hidden;
+    background-color: #fff;
+    .sdlist-li {
+      padding-left: 0.32rem;
+      .sdwrap {
+        padding: 0.4rem 0.32rem 0.4rem 0;
+        display: -webkit-box;
+        border-bottom: 1px solid #f3f3f3;
+        .sdlist-info {
+          -webkit-box-flex: 1;
+          margin-right: 0.32rem;
+          h3 {
+            color: #333;
+            font-size: 0.32rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            word-break: break-all;
+          }
+          p {
+            font-size: 0.24rem;
+            height: 0.72rem;
+            color: #999;
+            line-height: 0.36rem;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            margin-top: 0.22rem;
+            max-height: 100%;
+          }
+          .book-tag {
+              font-size: 0;
+              height: .44rem;
+              margin-top: .16rem;
+              overflow: hidden;
+              span {
+                  font-size: .2rem;
+                  height: .36rem;
+                  line-height: .38rem;
+                  border: 1px solid rgba(153,153,153,.3);
+                  border-radius: .04rem;
+                  padding: 0 .1rem;
+                  margin-right: .08rem;
+                  color: #999;
+                  display: inline-block;
+              }
+          }
+        }
+        .sdlist-cove {
+          width: 1.68rem;
+          height: 1.6rem;
+          position: relative;
+          overflow: hidden;
+          margin-top: 0.22rem;
+          .bg1 {
+            left: 0;
+            width: 0.9rem;
+            height: 1.2rem;
+            bottom: 0;
+            z-index: 1;
+            position: absolute;
+          }
+          .bg2 {
+            width: 1.2rem;
+            height: 1.6rem;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 2;
+            position: absolute;
+          }
+          .bg3 {
+            right: 0;
+            width: 0.9rem;
+            height: 1.2rem;
+            bottom: 0;
+            z-index: 1;
+            position: absolute;
+          }
+          .book-cover-img {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  
