@@ -21,7 +21,7 @@ export default class home extends Component {
             newBook:[],
             rank:[],
             bookList:[],
-            interest:[]
+            interest:[],
         }
     }
     componentDidMount(){
@@ -107,13 +107,13 @@ export default class home extends Component {
             <>
                 <header>
                     <a>
-                        <img src={require("./logo192.png")} />
+                        <img src={require("../imgs/logo.png")} />
                     </a>
                     <a>
                         <span>懒人小说</span>
                     </a>
                     <NavLink to="/user/login">
-                        <img src={require("./logo192.png")} />
+                        <img src={require("../imgs/touxiang.png")} />
                     </NavLink>
                     <a><span className="fa fa-book"></span></a>
                     <NavLink to="/search"><span className="fa fa-search"></span></NavLink>

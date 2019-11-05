@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import CL from './CL.scss'
 import Header from '../public/header'
+import {NavLink} from 'react-router-dom';
 
 export default class classifyList extends Component {
     constructor(props) {
@@ -207,7 +208,7 @@ export default class classifyList extends Component {
                     {
                         this.state.list.map((item) => {
                             return <li className="list-li">
-                                <a>
+                                <NavLink to="/detail">
                                     <div className="big-wrap">
                                         <div className="listbook-cove">
                                             <img className="book-cover-img" src={item.cover} />
@@ -228,7 +229,7 @@ export default class classifyList extends Component {
                                             </div>
                                         </div>
                                     </div>
-                                </a>
+                                </NavLink>
                             </li>
                         })
 

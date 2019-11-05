@@ -3,6 +3,8 @@ import  './bookList.scss'
 import axios from 'axios'
 import Header from '../public/header';
 import Footer from '../public/footer';
+import {NavLink} from 'react-router-dom';
+
 export default class bookList extends Component {
     constructor(props) {
         super(props)
@@ -35,7 +37,7 @@ export default class bookList extends Component {
                         {
                             this.state.list.map((item) => {
                                 return <li className="listBig-li">
-                                    <a>
+                                    <NavLink to="/detail">
                                         <div className="big-wrap">
                                             <div className="listbook-cove">
                                                 <img className="book-cover-img" src={item.cover} />
@@ -48,7 +50,7 @@ export default class bookList extends Component {
                                                 </div>
                                             </div>
                                         </div>
-                                    </a>
+                                    </NavLink>
                                     <p className="js_sdtext sddisc clamp3">{item.desc}<i className="arr show"></i></p>
                                 </li>
                             })

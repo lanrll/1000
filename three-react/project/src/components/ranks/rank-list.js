@@ -2,13 +2,15 @@ import React, { Component } from 'react'
 import './rank-list.scss'
 import axios from 'axios'
 import Header from '../public/header'
+import {NavLink} from 'react-router-dom';
 
 export default class rankList extends Component {
     constructor(props) {
         super(props)
         this.state = {
             list: [],
-            title: '新书排行'
+            title: '新书排行',
+            flag:1
         }
     }
     componentDidMount() {
@@ -21,14 +23,30 @@ export default class rankList extends Component {
             })
         })
     }
+    changeGirl = () => {
+        axios.get("http://read.xiaoshuo1-sm.com/novel/i.php?do=is_novelrank&p=1&page=1&size=10&onlyCpBooks=1&gender=2&type=1&shuqi_h5=&_=1572918949735").then((res) => {
+            this.setState({
+                list: res.data.data,
+                flag: 0
+            })
+        })
+    }
+    changeBoy = () => {
+        axios.get("http://read.xiaoshuo1-sm.com/novel/i.php?do=is_novelrank&p=1&page=1&size=10&onlyCpBooks=1&gender=1&type=1&shuqi_h5=&_=1572836934219").then((res) => {
+            this.setState({
+                list: res.data.data,
+                flag:1
+            })
+        })
+    }
     render() {
         return (
             <div>
                 <Header title={this.state.title} />
                 <div className="contain">
                     <ul className="tabs">
-                        <li className="tab-item on">男生</li>
-                        <li className="tab-item">女生</li>
+                            <li className={this.state.flag === 1 ? "on" : ""} onClick={this.changeBoy}>男生</li>
+                            <li className={this.state.flag === 1 ? "" : "on"} onClick={this.changeGirl}>女生</li>
                     </ul>
                 </div>
                 <div className="block">
@@ -37,7 +55,7 @@ export default class rankList extends Component {
                             {
                                 this.state.list.map((item) => {
                                     return <li>
-                                        <a className="sc-sjzs">
+                                        <NavLink to="/detail" className="sc-sjzs">
                                             <div className="big-wrap">
                                                 <div className="listbook-cove">
                                                     <img className="book-cover-img" src={item.cover} />
@@ -60,7 +78,7 @@ export default class rankList extends Component {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </NavLink>
                                     </li>
                                 })
                             }
