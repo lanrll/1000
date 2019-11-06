@@ -1,14 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+// import './index.css';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {Provider} from 'react-redux';
+import {BrowserRouter as Router,Switch,Route,Redirect} from 'react-router-dom'
+import {mainRoutes} from './router'
+// import {Provider} from 'react-redux';
 // import store from './store/index';
 
 ReactDOM.render(
     // <Provider store={store}>
-        <App />
+    <Router>
+        <Switch>
+            {
+               mainRoutes.map((item)=>{
+                   console.log(item)
+                return <Route key={item.path} path={item.path} component={item.component} />
+                })
+                
+            }
+            <Redirect from='/' to="/home" exact />
+            <Redirect to="/404" />
+            {/* // <App /> */}
+        </Switch>
+            
+    </Router>
     // </Provider>
     , document.getElementById('root'));
 
