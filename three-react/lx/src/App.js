@@ -9,7 +9,7 @@ import { Button } from 'antd';
 export default class  Home extends Component {
   render() {
     return (
-      <div >
+      < >
        {/* <Button type="primary">Primary</Button>
       <Button>Default</Button>
       <Button type="dashed">Dashed</Button>
@@ -25,7 +25,7 @@ export default class  Home extends Component {
             <Redirect from="/home" to ="/home/list" exact />
           </Switch>
         </Layout>
-      </div>
+      </>
     );
   }
 }

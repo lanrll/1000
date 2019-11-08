@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script src="/javascripts/user.js"></script>
+</head>
+<body>
+	<div id="box">
+			<input type="text" id="name" />
+			<input type="text" id="age" />
+			<input type="hidden" id="id" />
+			<button id="btn">确认修改</button>
+
+	</div>	
+	<script>
+			var id = location.search.slice(1).split("=")[1];
+			$.get("/getDocById",{
+				id:id
+			}).then((res)=>{
+				if(res.status===0){
+					$("#name").val(res.doc.name);
+					$("#age").val(res.doc.age);
+					$("#id").val(res.doc._id);
+				}
+			})
+
+			$("#btn").click(()=>{
+				$.post("/modifyok",{
+					id:$("#id").val(),
+					name:$("#name").val(),
+					age:$("#age").val()
+				}).then((res)=>{
+					 if(res.status===0){
+					 	location.href="/list.html";
+					 }
+				})
+			})
+	</script>
+</body>
+</html>

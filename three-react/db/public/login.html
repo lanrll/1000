@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+
+</head>
+<body>
+	<div id="box">
+		<input type="text" id="username" />
+		<input type="text" id="password" />
+		<button id="login">登录</button>
+		<div id="info"></div>
+	</div>	
+	<script>
+	$("#login").click(function(){
+		$.post("/users/login",{
+			username:$("#username").val(),
+			password:$("#password").val()
+		}).then((res)=>{
+			if(res.status===0 && res.data.login){
+				location.href="/list.html";
+			}
+			else{
+				$("#info").html("登录失败")
+			}
+		})
+	})
+	</script>
+</body>
+</html>

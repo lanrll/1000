@@ -7,12 +7,12 @@ const { Header, Content, Sider } = Layout;
 @withRouter
  class Main extends Component {
   go=({item,key})=>{
-      console.log(this.props)
+      console.log(item,key)
       this.props.history.push(key)
   }
   render() {
     return (
-      <div>
+      <>
           <Layout>
             <Header className="header">
                 <div style={{color:"#FFF"}}>
@@ -29,7 +29,9 @@ const { Header, Content, Sider } = Layout;
                 >
                     <Menu.Item key="/home/dashboard" onClick={this.go}>仪表盘</Menu.Item>
                     <Menu.Item key="/home/list" onClick={this.go}>信息管理</Menu.Item>
+                    <Menu.Item key="/home/notify" onClick={this.go}>通知中心</Menu.Item>
                     <Menu.Item key="/home/setting" onClick={this.go}>设置</Menu.Item>
+                    <Menu.Item key="/home/my" onClick={this.go}>个人中心</Menu.Item>
                 </Menu>
             </Sider>
             <Layout style={{ padding: '0 24px 24px' }}>
@@ -46,7 +48,7 @@ const { Header, Content, Sider } = Layout;
             </Layout>
             </Layout>
         </Layout>
-      </div>
+      </>
     )
   }
 }
