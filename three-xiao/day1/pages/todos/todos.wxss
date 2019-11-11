@@ -1,0 +1,4 @@
+/* pages/todos/todos.wxss */
+input{
+  border: 2px solid silver;
+}

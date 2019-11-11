@@ -1,0 +1,8 @@
+<!--pages/todos/todos.wxml-->
+<view>
+  <input placeholder="qingshur" bindinput="input" value="{{str}}" bindconfirm="add" focus="{{sign}}" auto-focus="{{sign}}"></input>
+</view>
+{{sign}}
+<view wx:for="{{list}}">
+  {{item.id}}-----{{item.text}}-----<button size="mini" bindtap="del" data-id="{{item.id}}">删除</button>
+</view>
