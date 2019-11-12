@@ -1,0 +1,43 @@
+/* pages/lag/lag.wxss */
+.one{
+  /* height: 200px; */
+  display: flex;
+  justify-content:space-between; 
+  align-items: center;
+  padding: 10px;
+  font-size: 12px;
+  border-bottom: 1px solid #ccc;
+}
+.one .img{
+  width: 100rpx;
+  height: 50px;
+} 
+.one .img image{
+  width: 100%;
+  height: 100%;
+}
+.center{
+  width: 400rpx;
+  /* margin-right: 50rpx; */
+}
+.center view{
+  margin: 2px 0;
+}
+.center view:nth-child(1){
+  /* color: #888; */
+  font-weight: 700;
+}
+.center view:nth-child(3){
+  color: #888;
+}
+.long{
+  width: 100%;
+  /* text-decoration: hiden */
+  white-space: nowrap;
+  overflow: hidden ;
+  text-overflow: ellipsis;
+}
+.sa{
+  color: #00b38a;
+}
+

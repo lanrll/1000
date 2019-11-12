@@ -1,0 +1,17 @@
+<template name="component">
+    <view class="img">
+      <image src="http://www.lgstatic.com/{{companyLogo}}"></image>
+    </view>
+    <view class="center">
+      <view>
+      {{companyName}}
+      </view>
+      <view class="long">
+      {{positionName}}[{{city}}]
+      </view>
+      <view>
+      {{createTime}}
+      </view>
+    </view>
+    <view class="sa">{{salary}}</view>
+</template>

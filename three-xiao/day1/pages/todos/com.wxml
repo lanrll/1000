@@ -1,0 +1,4 @@
+<template name="component">
+<checkbox checked="{{flag}}" ></checkbox>-----
+  {{id}}-----{{text}}-----<button size="mini" bindtap="del" data-id="{{id}}">删除</button>
+</template>

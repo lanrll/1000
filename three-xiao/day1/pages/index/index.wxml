@@ -7,7 +7,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <navigator url="/pages/todos/todos">todos</navigator>
-  <navigator url="/pages/logs/logs">logs</navigator>
+  <navigator url="/pages/todos/todos" open-type="switchTab">todos</navigator>
+  <navigator url="/pages/logs/logs" open-type="switchTab">logs</navigator>
+  <switch bindchange="change"></switch>
+  <view wx:if="{{sign}}">
   <image src="/img/cc.jpeg"></image>
+  </view>
 </view>

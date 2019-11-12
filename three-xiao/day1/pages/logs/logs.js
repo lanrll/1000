@@ -18,9 +18,9 @@ Page({
       let str = new Date(item)
       arr.push(str.toLocaleString())
     })
-    console.log(getCurrentPages())
-    console.dir(wx.getStorageSync('logs'))
-    console.dir(arr)
-    console.log(this.data)
+    // console.log(getCurrentPages())
+    // console.dir(wx.getStorageSync('logs'))
+    // console.dir(arr)
+    // console.log(this.data)
   }
 })

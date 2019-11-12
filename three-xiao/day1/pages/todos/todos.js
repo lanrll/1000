@@ -8,14 +8,17 @@ Page({
     list:[
       {
         text:'asdgf',
-        id:1
+        id:1,
+        flag:true
       },{
         text: 'aoipjx',
-        id:2
+        id:2,
+        flag:true
       }
     ],
     model:2,
-    sign:true
+    sign:true,
+    length:true
   },
   input(e){
     this.setData({
@@ -24,8 +27,9 @@ Page({
   },
   add(){
     this.setData({
-      list:[...this.data.list,{id:++this.data.model,text:this.data.value}],
-      str:''
+      list:[...this.data.list,{id:++this.data.model,text:this.data.value,flag:true}],
+      str:'',
+      sign:true
     })
   },
   del(e){
@@ -36,11 +40,34 @@ Page({
       list: list
     })
   },
+  change(e){
+    console.log(e.detail.value)
+    let arr = e.detail.value
+    let is = false
+    console.log(arr.indexOf('all'))
+    if (arr.indexOf('all') !== -1){
+      // console.log(2)
+      this.data.list.map(item => {
+        item.flag = true
+      })
+    }else{
+      this.data.list.map(item => {
+        item.flag = false
+      })
+    }
+    this.setData({
+      list: this.data.list
+    })
+   
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad:  (options) => {
+    // console.log(this.globalData)
+    getApp().globalData.db.collection("user").get().then((res) => {
+      console.log(res);
+    })
   },
 
   /**

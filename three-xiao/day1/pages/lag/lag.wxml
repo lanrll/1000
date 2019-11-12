@@ -1,0 +1,8 @@
+<!--pages/lag/lag.wxml-->
+<import src="./com.wxml" />
+<view>
+  <view wx:for="{{list}}" wx:key="{{item.companyId}}" class="one">
+    <template is="component" data="{{...item}}"></template>
+  </view>
+  <button bindtap="getMore">more</button>
+</view>

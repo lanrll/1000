@@ -1,0 +1,32 @@
+<!--pages/list/list.wxml-->
+<view>
+  <view class="swiper">
+      <swiper indicator-dots="true" autoplay="true" circular="true">
+        <block wx:for="{{banner}}" wx:key="{{item.bannnerId}}">
+          <swiper-item>
+              <image src="{{item.imgUrl}}" mode="scaleToFill"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  <view>
+    <van-tabs active="{{ active }}" bind:change="onChange">
+      <van-tab title="正在放映" />
+      <van-tab title="即将放映" />
+     </van-tabs>
+        <view wx:for="{{list}}" wx:key="{{item.fimId}}" class="one" >
+          <!-- <view> -->
+            <image src="{{item.poster}}"></image>
+          <!-- </view> -->
+          <view class="main">
+            <view>{{item.name}}<text>{{item.filmType.name}}</text></view>
+            <view>观众评分{{item.grade}}</view>
+            <view class="actors">主演: <block wx:for="{{item.actors}}" wx:for-item="ac" wx:key="{{ac.name}}">{{ac.name}} </block>
+            </view>
+            <view>{{item.nation}} | {{item.runtime}}分钟
+            </view>
+          </view>
+          <view class="buy">购买</view>
+        </view>
+  </view>
+</view>

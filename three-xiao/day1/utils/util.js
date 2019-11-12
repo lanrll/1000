@@ -9,6 +9,13 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+const form = arr => {
+  let str = ''
+  return arr.map(item => {
+    str += item.name + ' '
+  })
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
