@@ -1,0 +1,27 @@
+<view class="row">
+  <label>地  址</label>
+  <view bindtap="choose">
+      {{info.address}}
+  </view>
+</view>
+<view class="row">
+  <label>类   型</label>
+  <view>
+      <block wx:if="{{info.type}}"><image src="/resources/{{info.type}}.png"></image></block>
+         {{info.type == 'sell' ? '转让':'求购'}}
+  </view>
+</view>
+<view class="row">
+  <label>说    明</label>
+  <view>
+     {{info.desc}}
+  </view>
+</view>
+<view class="row">
+  <label>联系方式</label>
+  <view>
+     {{info.contact}}
+  </view>
+</view>
+
+

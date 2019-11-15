@@ -1,0 +1,19 @@
+/* pages/detail/detail.wxss */
+/* pages/public/pablic.wxss */
+/* pages/public/public.wxss */
+.row{
+  display: flex;
+  line-height: 60rpx;
+  border-bottom: 1px solid #ccc;
+  margin-top:20rpx;
+  padding-bottom:20rpx;
+  
+}
+.row label{
+   width:300rpx;
+   text-align: center;
+}
+image{
+  width: 100rpx;
+  height: 100rpx;
+}

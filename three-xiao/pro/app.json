@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/search/search",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/public/public",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#03bbd5",
+    "navigationBarTitleText": "平台",
+    "navigationBarTextStyle": "white"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

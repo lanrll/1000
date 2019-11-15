@@ -1,0 +1,36 @@
+/* pages/search/search.wxss */
+input{
+  display: block;
+  width: 580rpx;
+  margin: 10rpx 25rpx;
+  margin-right: 0;
+  background: white;
+  height: 70rpx;
+  border-radius: 20rpx;
+  padding-left: 20rpx;
+}
+.search{
+  display: flex;
+  background: #03bbd5;
+  justify-content: space-between;
+}
+.sear{
+  display: block;
+  margin: 20rpx;
+  margin-right: 30rpx;
+  margin-left: 0;
+  color: white;
+}
+page{
+  width: 100%;
+  height: 100%;
+  background: #a0c0c0;
+}
+.one{
+  margin: 20rpx 0;
+  padding: 20rpx;
+  background: white;
+}
+.one view:nth-child(1){
+  color: #fa0;
+}

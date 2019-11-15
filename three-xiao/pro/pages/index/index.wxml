@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view>
+  <view class="map">
+      <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" show-location style="width: 100%; "></map>
+    </view>
+    <view class="nav">
+        <view bindtap="go" data-page="/pages/public/public">发布</view>
+        <view  bindtap="go" data-page="/pages/search/search">搜索</view>
+    </view>
+</view>

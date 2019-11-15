@@ -1,0 +1,25 @@
+/* pages/public/pablic.wxss */
+/* pages/public/public.wxss */
+.row{
+  display: flex;
+  line-height: 60rpx;
+  border-bottom: 1px solid #ccc;
+  margin-top:20rpx;
+  padding-bottom:20rpx;
+  
+}
+.row label{
+   width:300rpx;
+   text-align: center;
+}
+.info{
+  background: #FF9700;
+  color:white;
+  width:90%;
+  height:100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  display: block;
+  border-radius: 20rpx;
+  margin: 10rpx auto;
+}

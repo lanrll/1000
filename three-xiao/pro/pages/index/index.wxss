@@ -1,0 +1,27 @@
+.map{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:80rpx;
+}
+.map map{
+  height: 100%;
+}
+.nav{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width:100%;
+  background: #03bbd5;
+}
+.nav view{
+  flex:1;
+  text-align: center;
+  line-height: 80rpx;
+  height: 80rpx;
+  color:white;
+}
+.nav view:nth-of-type(1){
+   background: #ff9700;
+}

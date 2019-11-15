@@ -1,0 +1,10 @@
+<view class="search">
+  <input bindinput="change" placeholder="请输入地点！！！" value="{{kw}}"></input>
+  <text class="sear" bindtap="search" >搜索</text>
+</view>
+<block wx:for="{{list}}" wx:key="{{index}}">
+  <view class="one" bindtap="go" data-id="{{item._id}}">
+    <view>{{item.address}} ({{item.type=='sell' ? '转让':'求购'}})</view>
+    <view>{{item.desc}}</view>
+  </view>
+</block>
